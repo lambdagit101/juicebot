@@ -118,4 +118,4 @@ if (message.content.toLowerCase().includes("kys nolan")) {
 });
 
 // Log our bot in using the token from https://discordapp.com/developers/applications/me
-client.login("NzIyNDkwMzY4MDAzNjcwMDI4.Xuj28Q.l7aEkqeqskLMcyEMhOscM8rxgT4");
+client.login("lol no");
