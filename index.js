@@ -1,9 +1,3 @@
-'use strict';
-
-/**
- * A ping pong bot, whenever you send "ping", it replies "pong".
- */
-
 // Import the discord.js module
 const Discord = require('discord.js');
 // Create an instance of a Discord client
@@ -101,6 +95,11 @@ if (message.content.toLowerCase().includes("kys nolan")) {
 	});
   }
   
+  https://cdn.discordapp.com/attachments/725409201492459592/727583476181631056/lmaoface.jpg
+  if (message.content.toLowerCase().includes("real nolan")) {
+    message.channel.send('https://cdn.discordapp.com/attachments/725409201492459592/727583476181631056/lmaoface.jpg');
+  }
+  
   if (message.content.toLowerCase().includes("nolan moment")) {
     message.channel.send('https://media.discordapp.net/attachments/698692718125121556/718032579323887677/final_5ed8bd6d260cea00154600ea_782301.gif');
   }
@@ -119,11 +118,4 @@ if (message.content.toLowerCase().includes("kys nolan")) {
 });
 
 // Log our bot in using the token from https://discordapp.com/developers/applications/me
-const token = require('./token.json').token;
-client.login(token)
-.catch(error => {
-  /* Print an error to the console if login fails */
-  console.log('Failed to log in. Did you provide a valid token?');
-  console.log();
-  console.error(error);
-});
+client.login("NzIyNDkwMzY4MDAzNjcwMDI4.Xuj28Q.l7aEkqeqskLMcyEMhOscM8rxgT4");
