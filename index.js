@@ -119,4 +119,11 @@ if (message.content.toLowerCase().includes("kys nolan")) {
 });
 
 // Log our bot in using the token from https://discordapp.com/developers/applications/me
-client.login("You won't get this one, boy. Get your own!");
+const token = require('./token.json').token;
+client.login(token)
+.catch(error => {
+  /* Print an error to the console if login fails */
+  console.log('Failed to log in. Did you provide a valid token?');
+  console.log();
+  console.error(error);
+});
