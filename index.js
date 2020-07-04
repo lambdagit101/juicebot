@@ -118,4 +118,4 @@ if (message.content.toLowerCase().includes("kys nolan")) {
 });
 
 // Log our bot in using the token from https://discordapp.com/developers/applications/me
-client.login("lol no");
+client.login(process.env.BOT_TOKEN);
