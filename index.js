@@ -1,3 +1,9 @@
+'use strict';
+
+/**
+ * A ping pong bot, whenever you send "ping", it replies "pong".
+ */
+
 // Import the discord.js module
 const Discord = require('discord.js');
 // Create an instance of a Discord client
@@ -9,6 +15,23 @@ const client = new Discord.Client();
  */
 client.on('ready', () => {
   console.log('I am ready!');
+});
+
+client.on('message', async message => {
+  // Voice only works in guilds, if the message does not come from a guild,
+  // we ignore it
+  if (!message.guild) return;
+
+  if (message.content === '/join') {
+    // Only try to join the sender's voice channel if they are in one themselves
+    if (message.member.voice.channel) {
+      const connection = await message.member.voice.channel.join();
+    } else {
+      message.reply("can't nolanize the voice chat without you being in one!");
+    }
+  }
+  
+  
 });
 
 // Create an event listener for messages
@@ -35,11 +58,11 @@ if (message.content.toLowerCase().includes("kys nolan")) {
     message.channel.send("https://youtu.be/Ee4ATNFER_Y");
   }
   
-  if (message.content.toLowerCase().includes("remove lemon")) {
+  if (message.content.toLowerCase().includes("remove lemmon")) {
     message.channel.send("https://cdn.discordapp.com/attachments/725409286951403581/726848388523360377/unknown.png");
   }
   
-  if (message.content.toLowerCase().includes("omegalemon")) {
+  if (message.content.toLowerCase().includes("omegalemmon")) {
     message.channel.send("https://cdn.discordapp.com/attachments/725409286951403581/726849685095972914/Png.png");
   }
   
@@ -84,7 +107,8 @@ if (message.content.toLowerCase().includes("kys nolan")) {
 		sentMessage.delete({timeout:35000});
 	});
   }
-  
+
+
   if (message.content.toLowerCase().includes("lemmon rain")) {
     message.channel.send("https://cdn.discordapp.com/attachments/726794126049280064/726794181196120064/unknown-51.png");
   }
@@ -94,8 +118,7 @@ if (message.content.toLowerCase().includes("kys nolan")) {
 		sentMessage.delete({timeout:35000});
 	});
   }
-  
-  https://cdn.discordapp.com/attachments/725409201492459592/727583476181631056/lmaoface.jpg
+ 
   if (message.content.toLowerCase().includes("real nolan")) {
     message.channel.send('https://cdn.discordapp.com/attachments/725409201492459592/727583476181631056/lmaoface.jpg');
   }
@@ -118,4 +141,4 @@ if (message.content.toLowerCase().includes("kys nolan")) {
 });
 
 // Log our bot in using the token from https://discordapp.com/developers/applications/me
-client.login(process.env.BOT_TOKEN);
+client.login("lol no lmfao");
