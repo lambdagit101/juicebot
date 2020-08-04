@@ -50,13 +50,27 @@ client.on('message', async message => {
 		
 			if(!servers[message.guild.id]) servers[message.guild.id] = {
 				queue: []
-				
 			};
 						
 			if (!message.guild.voice.connection)
-				message.member.voice.channel.join().then(function(connection) 
-				play(connection, message);
+				message.member.voice.channel.join();
 			});
+			
+			var server = servers[message.guild.id];
+				server.dispatcher = connection.play(ytdl(server.queue[0], {filter: "audioonly"}));
+				server.queue.shift();
+				server.dispatcher.on("end", function() {
+					if(server.queue[0]){
+						play(connection, message);
+						message.channel.send("Now playing...");
+						
+					} else {
+						connection.disconnect();
+						
+					};
+					
+				)};
+			
 			
 		break;
 		
