@@ -18,17 +18,9 @@ client.on('message', async message => {
 
   if (message.author.bot) return;
   if (!message.guild) return;
-
-  if (message.content === '/join') {
-    if (message.member.voice.channel) {
-      const connection = await message.member.voice.channel.join();
-    } else {
-      message.reply("can't nolanize the voice chat without you being in one!");
-    }
-  }
 	
 	let args = message.content.substring(PREFIX.length).split(" ")
-    console.log('Now playing');
+    	console.log('Now playing');
 	switch (args[0]) {
 		case 'play':
 		
