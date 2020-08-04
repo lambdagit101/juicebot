@@ -20,8 +20,7 @@ client.on('message', async message => {
 	let args = message.content.substring(PREFIX.length).split(" ")
     	console.log('Now playing');
 	switch (args[0]) {
-		case 'play':
-		
+		case 'play':				
 			function play(connection, message) {
 				var server = servers[message.guild.id];
 				server.dispatcher = connection.play(ytdl(server.queue[0], {filter: "audioonly"}));
@@ -34,34 +33,34 @@ client.on('message', async message => {
 					} else {
 						connection.disconnect();
 						
-					}
+					};
 					
 				)};
-			}
+			};
 		
 		
 			if(!args[1]){
 				message.channel.send("You must insert a YouTube link");
 				return;
-			}
+			};
 			
 			if(!message.member.voice.channel){
 				message.channel.send("You are not connected to a voice channel.");
-				return
-			}
+				return;
+			};
 		
 			if(!servers[message.guild.id]) servers[message.guild.id] = {
 				queue: []
 				
-			}
+			};
 			
 			var server = servers[message.guild.id];
 			
 			server.queue.push(args[1]);
 			
 			if(!message.guild.voice.connection) message.member.voice.channel.join().then(function(connection) {
-				play(connection, message)
-			})
+				play(connection, message);
+			});
 			
 			
 			
@@ -83,13 +82,13 @@ client.on('message', async message => {
 				for(var i = server.queue.length -1; i >=0; i-- ){
 					server.queue.splice(i, 1);
 					
-				}
+				};
 				server.dispatcher.end();
 				message.channel.send("Stopped the queue.");
 				console.log("Stopped the queue");
-			}
+			};
 		break;
-	}
+	};
 
 
   
