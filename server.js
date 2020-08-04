@@ -15,7 +15,7 @@ client.on('ready', () => {
 client.on('message', async message => {
 
   if (message.author.bot) return;
-  if (!message.guild) return;
+  if (!message.guild) return; 
 	
 	let args = message.content.substring(PREFIX.length).split(" ")
     	console.log('Now playing');
@@ -87,10 +87,6 @@ client.on('message', async message => {
 				server.dispatcher.end();
 				message.channel.send("Stopped the queue.");
 				console.log("Stopped the queue");
-			}
-			if (message.guild.connection){
-				message.guild.voice.connection.disconnect();
-				
 			}
 		break;
 	}
