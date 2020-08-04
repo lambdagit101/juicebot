@@ -31,6 +31,13 @@ client.on('message', async message => {
     }
   }
   
+  if (message.content.startsWith('/play')) {
+    console.log('play');
+    if (!message.member.voice.channel) return message.channel.send('you need to be in a fucking voice channel you ass poopoo head face');
+    message.member.voice.channel.join().then(connection => {
+      connection.play('./test.mp3');
+    });
+  }
   
 });
 
@@ -141,4 +148,4 @@ if (message.content.toLowerCase().includes("kys nolan")) {
 });
 
 // Log our bot in using the token from https://discordapp.com/developers/applications/me
-client.login("lol no lmfao");
+client.login(require('./token.json').token);
