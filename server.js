@@ -20,7 +20,7 @@ client.on('message', async message => {
 	let args = message.content.substring(PREFIX.length).split(" ")
     	console.log('Now playing');
 	switch (args[0]) {
-		case 'play':				
+		case 'play':		
 			function play(connection, message) {
 				var server = servers[message.guild.id];
 				server.dispatcher = connection.play(ytdl(server.queue[0], {filter: "audioonly"}));
@@ -37,8 +37,7 @@ client.on('message', async message => {
 					
 				)};
 			};
-		
-		
+						     
 			if(!args[1]){
 				message.channel.send("You must insert a YouTube link");
 				return;
@@ -53,20 +52,12 @@ client.on('message', async message => {
 				queue: []
 				
 			};
-			
-			var server = servers[message.guild.id];
-			
-			server.queue.push(args[1]);
-			
-			if(!message.guild.voice.connection) message.member.voice.channel.join().then(function(connection) {
+						
+			if (!message.guild.voice.connection)
+				message.member.voice.channel.join().then(function(connection) 
 				play(connection, message);
 			});
 			
-			
-			
-			
-			
-		
 		break;
 		
 		case 'skip':
