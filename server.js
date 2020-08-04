@@ -210,4 +210,4 @@ if (message.content.toLowerCase().includes("kys nolan")) {
   }
 });
 
-client.login(process.env.TOKEN);
+client.login(process.env.BOT_TOKEN);
