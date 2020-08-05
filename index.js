@@ -106,6 +106,10 @@ if (message.content.toLowerCase().includes("kys nolan")) {
 	console.log("I got destroyed");
 	  message.channel.send('https://cdn.discordapp.com/attachments/716123164609871892/722532266835968041/3bsewe.png ');
   }
+  if (message.content.toLowerCase().includes("/help")) {
+	console.log("Help");
+	  message.channel.send('https://cdn.discordapp.com/attachments/686015484281225241/740512829811064892/20200803_124704.jpg');
+  }
   if (message.content.toLowerCase().includes("/abueno adios master")) {
 	console.log("abueno adios master");
 	  message.channel.send('https://youtu.be/fmuezkEzJvo');
