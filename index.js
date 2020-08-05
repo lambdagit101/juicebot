@@ -123,10 +123,17 @@ if (message.content.toLowerCase().includes("kys nolan")) {
     console.log("I have become nolan");
     message.channel.send('https://cdn.discordapp.com/attachments/686015484281225241/722534532615635024/Untitled457_20200616153313.png');
   }
-  
   if (message.content.toLowerCase().includes("nolan gets destroyed")) {
 	console.log("I got destroyed");
 	  message.channel.send('https://cdn.discordapp.com/attachments/716123164609871892/722532266835968041/3bsewe.png ');
+  }
+  if (message.content.toLowerCase().includes("abueno adios master")) {
+	console.log("abueno adios master");
+	  message.channel.send('https://youtu.be/fmuezkEzJvo');
+  }
+  if (message.content.toLowerCase().includes("/green")) {
+	console.log("green");
+	  message.channel.send('https://youtu.be/eQge6usvb2A');
   }
 });
 
