@@ -1,3 +1,3 @@
 @echo off
 echo Launching Nolan
-node server.js
+node index.js
