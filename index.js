@@ -236,12 +236,12 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
     console.log("I have become nolan");
     message.channel.send('https://cdn.discordapp.com/attachments/686015484281225241/722534532615635024/Untitled457_20200616153313.png');
   }
-  if (message.content.toLowerCase().startsWith(`${PREFIX}help`)) {
+  if (message.content.toLowerCase() === (`${PREFIX}help`)) {
 	console.log("Help");
 	  message.channel.send('For now there is no link. Coming soon!');
 	  message.channel.send('https://cdn.discordapp.com/attachments/722508329678798881/741004886841229402/Help.png');
   }
-if (message.content.toLowerCase().startsWith(`${PREFIX}help music`)) {
+if (message.content.toLowerCase() === (`${PREFIX}help music`)) {
 	console.log("Help with music");
 	  message.channel.send('https://cdn.discordapp.com/attachments/722508329678798881/741004511035916368/Help.png');
   }
@@ -253,7 +253,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}help music`)) {
 	console.log("green");
 	  message.channel.send('https://youtu.be/eQge6usvb2A');
   }
- if (message.content.toLowerCase().startsWith(`${PREFIX}credits`)) {
+ if (message.content.toLowerCase() === (`${PREFIX}credits`)) {
 	console.log("Made by lambdaguy101");
 	  message.channel.send('NolanBot - Made by lambdaguy101.');
 	  message.channel.send('Type /github for the source code.');
