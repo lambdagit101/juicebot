@@ -139,6 +139,16 @@ client.on('message', message => {
 			message.channel.send(url);
 		});  
 	}
+	if (message.content.toLowerCase().startsWith(`${PREFIX}animeme`)) {
+		randomPuppy('Animemes').then(url => {
+			message.channel.send(url);
+		});  
+	}
+	if (message.content.toLowerCase().startsWith(`${PREFIX}comedyheaven`)) {
+		randomPuppy('comedyheaven').then(url => {
+			message.channel.send(url);
+		});  
+	}
 	if (message.content.toLowerCase().startsWith(`${PREFIX}requestavatar`)) {
 		message.channel.send("Here is your avatar!");
 		message.channel.send(message.author.displayAvatarURL());	
@@ -199,17 +209,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
     console.log("GTA 4 Pager!");
     message.channel.send("https://youtu.be/Ee4ATNFER_Y");
   }
-  
-  if (message.content.toLowerCase().startsWith(`${PREFIX}remove lemmon`)) {
-    console.log("Remove Lemmon!");
-    message.channel.send("https://cdn.discordapp.com/attachments/725409286951403581/726848388523360377/unknown.png");
-  }
-  
-  if (message.content.toLowerCase().startsWith(`${PREFIX}omegalemmon`)) {
-    console.log("Omegalemmon!");
-    message.channel.send("https://cdn.discordapp.com/attachments/725409286951403581/726849685095972914/Png.png");
-  }
-
+ 
   if (message.content.toLowerCase().startsWith(`${PREFIX}nolan`)) {
     console.log("Nolanized");
     message.channel.send('Nolan').then(sentMessage => {
@@ -217,48 +217,11 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 	});
   }
 
-
-  if (message.content.toLowerCase().startsWith(`${PREFIX}lemmon rain`)) {
-    console.log("Lemmon Rain!");
-    message.channel.send("https://cdn.discordapp.com/attachments/726794126049280064/726794181196120064/unknown-51.png");
-  }
- 
-  if (message.content.toLowerCase().startsWith(`${PREFIX}real nolan`)) {
-    console.log("Ew!");
-    message.channel.send('https://cdn.discordapp.com/attachments/725409201492459592/727583476181631056/lmaoface.jpg');
-  }
-  
-  if (message.content.toLowerCase().startsWith(`${PREFIX}nolan moment`)) {
-    console.log("Nolan Moment");
-    message.channel.send('https://media.discordapp.net/attachments/698692718125121556/718032579323887677/final_5ed8bd6d260cea00154600ea_782301.gif');
-  }
-  
   if (message.content.toLowerCase().startsWith(`${PREFIX}bonk`)) {
 	console.log("Hey can somebody keep track of my heads batted in? BONK");
 	message.channel.send('https://cdn.discordapp.com/attachments/686015484281225241/722533493435007066/posterbonk.png');
   }
-  
-  if (message.content.toLowerCase().startsWith(`${PREFIX}detroit become nolan`)) {
-    console.log("I have become nolan");
-    message.channel.send('https://cdn.discordapp.com/attachments/686015484281225241/722534532615635024/Untitled457_20200616153313.png');
-  }
-  if (message.content.toLowerCase() === (`${PREFIX}help`)) {
-	console.log("Help");
-	  message.channel.send('For now there is no link. Coming soon!');
-	  message.channel.send('https://cdn.discordapp.com/attachments/722508329678798881/741004886841229402/Help.png');
-  }
-if (message.content.toLowerCase() === (`${PREFIX}help music`)) {
-	console.log("Help with music");
-	  message.channel.send('https://cdn.discordapp.com/attachments/722508329678798881/741004511035916368/Help.png');
-  }
-  if (message.content.toLowerCase().startsWith(`${PREFIX}abueno`)) {
-	console.log("abueno adios master");
-	  message.channel.send('https://youtu.be/fmuezkEzJvo');
-  }
-  if (message.content.toLowerCase().startsWith(`${PREFIX}green`)) {
-	console.log("green");
-	  message.channel.send('https://youtu.be/eQge6usvb2A');
-  }
+
  if (message.content.toLowerCase() === (`${PREFIX}credits`)) {
 	console.log("Made by lambdaguy101");
 	  message.channel.send('NolanBot - Made by lambdaguy101.');
