@@ -238,7 +238,12 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
   }
   if (message.content.toLowerCase().startsWith(`${PREFIX}help`)) {
 	console.log("Help");
-	  message.channel.send('https://cdn.discordapp.com/attachments/686015484281225241/740512829811064892/20200803_124704.jpg');
+	  message.channel.send('For now there is no link. Coming soon!');
+	  message.channel.send('https://cdn.discordapp.com/attachments/722508329678798881/741004886841229402/Help.png');
+  }
+if (message.content.toLowerCase().startsWith(`${PREFIX}help music`)) {
+	console.log("Help with music");
+	  message.channel.send('https://cdn.discordapp.com/attachments/722508329678798881/741004511035916368/Help.png');
   }
   if (message.content.toLowerCase().startsWith(`${PREFIX}abueno`)) {
 	console.log("abueno adios master");
@@ -247,6 +252,11 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
   if (message.content.toLowerCase().startsWith(`${PREFIX}green`)) {
 	console.log("green");
 	  message.channel.send('https://youtu.be/eQge6usvb2A');
+  }
+ if (message.content.toLowerCase().startsWith(`${PREFIX}credits`)) {
+	console.log("Made by lambdaguy101");
+	  message.channel.send('NolanBot - Made by lambdaguy101.');
+	  message.channel.send('Type /github for the source code.');
   }
 });
 
