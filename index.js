@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 
+const randomPuppy = require('random-puppy');
+
 const client = new Discord.Client();
 
 const ytdl = require('ytdl-core');
@@ -12,7 +14,7 @@ client.on('ready', () => {
 });
 
 const queue = new Map();
-
+// This part of code was made by Gabriel Tanner, not me!
 client.on("message", async message => {
   if (message.author.bot) return;
   if (!message.content.startsWith(PREFIX)) return;
@@ -79,7 +81,7 @@ async function execute(message, serverQueue) {
     }
   } else {
     serverQueue.songs.push(song);
-    return message.channel.send(`${song.title} has been added to the queue!`);
+    return message.channel.send(`**${song.title}** has been added to the queue!`);
   }
 }
 
@@ -132,7 +134,9 @@ client.once("disconnect", () => {
 client.on('message', message => {
   if (message.author.bot) return;
   if (!message.guild) return;
-	
+	if (message.content.toLowerCase().startsWith(`${PREFIX}meme`)) {
+		randomPuppy('dankmemes');  
+	}
 	if (message.content.toLowerCase().startsWith(`${PREFIX}requestavatar`)) {
 		message.channel.send("Here is your avatar!");
 		message.channel.send(message.author.displayAvatarURL());	
