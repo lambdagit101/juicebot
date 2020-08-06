@@ -25,7 +25,7 @@ client.on('message', message => {
       if (member) {
         member.kick('Kick was requested')
           .then(() => {
-            message.reply('Kicked ${user.tag} successfully!');
+            message.reply(`Kicked ${user.tag} successfully!`);
           })
           .catch(err => {
             message.reply('Unable to kick the member');
@@ -49,7 +49,7 @@ if (message.content.startsWith('/ban')) {
             reason: 'Ban was requested',
           })
           .then(() => {
-            message.reply('Banned ${user.tag} successfully!');
+            message.reply(`Banned ${user.tag} successfully!`);
           })
           .catch(err => {
             message.reply('Unable to ban the member');
