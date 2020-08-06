@@ -122,7 +122,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 	console.log("Help");
 	  message.channel.send('https://cdn.discordapp.com/attachments/686015484281225241/740512829811064892/20200803_124704.jpg');
   }
-  if (message.content.toLowerCase().startsWith(`${PREFIX}abueno`")) {
+  if (message.content.toLowerCase().startsWith(`${PREFIX}abueno`)) {
 	console.log("abueno adios master");
 	  message.channel.send('https://youtu.be/fmuezkEzJvo');
   }
