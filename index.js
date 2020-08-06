@@ -135,7 +135,9 @@ client.on('message', message => {
   if (message.author.bot) return;
   if (!message.guild) return;
 	if (message.content.toLowerCase().startsWith(`${PREFIX}meme`)) {
-		randomPuppy('dankmemes');  
+		randomPuppy('dankmemes').then(url => {
+			message.channel.send(url);
+		});  
 	}
 	if (message.content.toLowerCase().startsWith(`${PREFIX}requestavatar`)) {
 		message.channel.send("Here is your avatar!");
