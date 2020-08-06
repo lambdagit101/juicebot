@@ -11,6 +11,16 @@ client.on('ready', () => {
   client.user.setActivity('Hentai', { type: 'WATCHING' });
 });
 
+const queue = new Map();
+
+client.once("reconnecting", () => {
+  console.log("Reconnecting!");
+});
+
+client.once("disconnect", () => {
+  console.log("Disconnect!");
+});
+
 client.on('message', message => {
   if (message.author.bot) return;
   if (!message.guild) return;
