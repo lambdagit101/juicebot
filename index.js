@@ -2,8 +2,6 @@ const Discord = require('discord.js');
 
 const randomPuppy = require('random-puppy');
 
-let api = require('nekos-image-api');
-
 const client = new Discord.Client();
 
 const ytdl = require('ytdl-core');
@@ -153,6 +151,11 @@ client.on('message', message => {
 	}
 	if (message.content.toLowerCase().startsWith(`${PREFIX}dankmeme`)) {
 		randomPuppy('dankmemes').then(url => {
+			message.channel.send(url);
+		});  
+	}
+	if (message.content.toLowerCase().startsWith(`${PREFIX}4chan`)) {
+		randomPuppy('greentext').then(url => {
 			message.channel.send(url);
 		});  
 	}
