@@ -327,6 +327,17 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 	});
   }
 
+  if (message.content.toLowerCase().startsWith(`${PREFIX}help music`)) {
+	console.log("Music helped");
+	message.channel.send('https://cdn.discordapp.com/attachments/722508329678798881/741004511035916368/Help.png');
+  }
+	
+  if (message.content.toLowerCase().startsWith(`${PREFIX}help general`)) {
+	console.log("General helped");
+	message.channel.send("Link coming soon!");
+	message.channel.send('https://cdn.discordapp.com/attachments/722508329678798881/741004886841229402/Help.png');
+  }
+	
   if (message.content.toLowerCase().startsWith(`${PREFIX}bonk`)) {
 	console.log("Hey can somebody keep track of my heads batted in? BONK");
 	message.channel.send('https://cdn.discordapp.com/attachments/686015484281225241/722533493435007066/posterbonk.png');
