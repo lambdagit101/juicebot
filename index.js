@@ -220,22 +220,22 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
   if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw`)) {
       if (message.channel.nsfw === true) {
       	const nsfwarguments = message.content.split(" ");
-      	const typeofporn = nsfwarguments[1]; 
+      	const typeofporn = nsfwarguments[0]; 
 	switch (nsfwarguments[0]) {
 		case 'hentai':
 			randomPuppy("hentai").then(url => {
 				message.channel.send(url);	
-			};
+			});
 		break;
 		case 'tittydrop':
 			randomPuppy("TittyDrop").then(url => {
 				message.channel.send(url);	
-			};
+			});
 		break;
 		case 'porn':
 			randomPuppy("porn").then(url => {
 				message.channel.send(url);	
-			};
+			});
 		break;
 		default:
 			message.channel.send("Invalid arguments.");
