@@ -13,11 +13,11 @@ Also you need a bot token. If you haven't created one yet, go to https://discord
 
 # How to install
 1) Open command prompt in the bot's directory and type: `npm install`
-2) Open the `token.json` file and put your bot token there
+2) Modify the last line of index.js and change it to your own token
 
 # Run the bot
 ## Windows
-Simply open the `NolanBot.bat` file or type `node .` into command prompt.
+Simply open the `NolanBot.bat` file or `NolanBot.sh` into command prompt.
 
 ## Linux
 If you're on Linux open the `NolanBot.sh` file to start the bot or type `node .` into the console.
