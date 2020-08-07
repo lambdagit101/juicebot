@@ -120,7 +120,7 @@ function play(guild, song) {
     })
     .on("error", error => console.error(error));
   dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
-  serverQueue.textChannel.send(`Start playing: **${song.title}**`);
+  serverQueue.textChannel.send(`Started playing: **${song.title}**`);
 }
 
 client.once("reconnecting", () => {
@@ -136,6 +136,11 @@ client.on('message', message => {
   if (!message.guild) return;
 	if (message.content.toLowerCase().startsWith(`${PREFIX}meme`)) {
 		randomPuppy('dankmemes').then(url => {
+			message.channel.send(url);
+		});  
+	}
+	if (message.content.toLowerCase().startsWith(`${PREFIX}sbubby`)) {
+		randomPuppy('sbubby').then(url => {
 			message.channel.send(url);
 		});  
 	}
@@ -205,6 +210,41 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
     }
   }
 
+  if (message.content.toLowerCase().startsWith(`${PREFIX}sayas`)) {
+      console.log("Said as");
+      const arguments = message.content.split(" ");
+      const messaje = arguments[0]; 
+      message.channel.send(messaje);
+  }
+	
+  if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw`)) {
+      if (message.channel.nsfw === true) {
+      	const nsfwarguments = message.content.split(" ");
+      	const typeofporn = nsfwarguments[1]; 
+	switch (nsfwarguments[0]) {
+		case 'hentai':
+			randomPuppy("hentai").then(url => {
+				message.channel.send(url);	
+			};
+		break;
+		case 'tittydrop':
+			randomPuppy("TittyDrop").then(url => {
+				message.channel.send(url);	
+			};
+		break;
+		case 'porn':
+			randomPuppy("porn").then(url => {
+				message.channel.send(url);	
+			};
+		break;
+		default:
+			message.channel.send("Invalid arguments.");
+	}
+      } else {
+      	message.channel.send("You have to be in a NSFW channel to perform this action!");
+      }
+  }
+	
   if (message.content.toLowerCase().startsWith(`${PREFIX}gta 4 pager`)) {
     console.log("GTA 4 Pager!");
     message.channel.send("https://youtu.be/Ee4ATNFER_Y");
