@@ -154,6 +154,11 @@ client.on('message', message => {
 			message.channel.send(url);
 		});  
 	}
+	if (message.content.toLowerCase().startsWith(`${PREFIX}arabfunny`)) {
+		randomPuppy('arabfunny').then(url => {
+			message.channel.send(url);
+		});  
+	}
 	if (message.content.toLowerCase().startsWith(`${PREFIX}requestavatar`)) {
 		message.channel.send("Here is your avatar!");
 		message.channel.send(message.author.displayAvatarURL());	
@@ -219,27 +224,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 	
   if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw`)) {
       if (message.channel.nsfw === true) {
-      	const nsfwarguments = message.content.split(" ");
-      	const typeofporn = nsfwarguments[1]; 
-	switch (nsfwarguments[1]) {
-		case 'hentai':
-			randomPuppy('hentai').then(url => {
-				message.channel.send(url);	
-			});
-		break;
-		case 'tittydrop':
-			randomPuppy('TittyDrop').then(url => {
-				message.channel.send(url);	
-			});
-		break;
-		case 'porn':
-			randomPuppy('porn').then(url => {
-				message.channel.send(url);	
-			});
-		break;
-		default:
-			message.channel.send("Invalid arguments.");
-	}
+      	message.channel.send("No, you horny fuck.");
       } else {
       	message.channel.send("You have to be in a NSFW channel to perform this action!");
       }
