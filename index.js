@@ -219,97 +219,11 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
       message.channel.send(messaje);
   }
 	
-  if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw ahegao`)) {
-      if (message.channel.nsfw === true) {
-      	
-      } else {
-      	message.channel.send("You have to be in a NSFW channel to perform this action!");
-      }
-  }
-	
-  if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw catgirl`)) {
-      if (message.channel.nsfw === true) {
-      	
-      } else {
-      	message.channel.send("You have to be in a NSFW channel to perform this action!");
-      }
-  }
-	
-  if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw ecchi`)) {
-      if (message.channel.nsfw === true) {
-      	
-      } else {
-      	message.channel.send("You have to be in a NSFW channel to perform this action!");
-      }
-  }
-	
-  if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw futa`)) {
-      if (message.channel.nsfw === true) {
-      	
-      } else {
-      	message.channel.send("You have to be in a NSFW channel to perform this action!");
-      }
-  }
-	
   if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw hentai`)) {
       if (message.channel.nsfw === true) {
-      	
-      } else {
-      	message.channel.send("You have to be in a NSFW channel to perform this action!");
-      }
-  }
-	
-  if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw monstergirl`)) {
-      if (message.channel.nsfw === true) {
-      	
-      } else {
-      	message.channel.send("You have to be in a NSFW channel to perform this action!");
-      }
-  }
-	
-  if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw oppai`)) {
-      if (message.channel.nsfw === true) {
-      	
-      } else {
-      	message.channel.send("You have to be in a NSFW channel to perform this action!");
-      }
-  }
-	
-  if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw yaoi`)) {
-      if (message.channel.nsfw === true) {
-      	
-      } else {
-      	message.channel.send("You have to be in a NSFW channel to perform this action!");
-      }
-  }
-	
-  if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw yuri`)) {
-      if (message.channel.nsfw === true) {
-      	
-      } else {
-      	message.channel.send("You have to be in a NSFW channel to perform this action!");
-      }
-  }
-	
-  if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw tittydrop`)) {
-      if (message.channel.nsfw === true) {
-      	
-      } else {
-      	message.channel.send("You have to be in a NSFW channel to perform this action!");
-      }
-  }
-	
-  if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw pussy`)) {
-      if (message.channel.nsfw === true) {
-      	
-      } else {
-      	message.channel.send("You have to be in a NSFW channel to perform this action!");
-      }
-  }
-	  
-  if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw milf`)) {
-      if (message.channel.nsfw === true) {
-      	
+      	randomPuppy('hentai').then(url => {
+		message.channel.send(url);
+	}); 
       } else {
       	message.channel.send("You have to be in a NSFW channel to perform this action!");
       }
