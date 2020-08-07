@@ -17,7 +17,7 @@ Also you need a bot token. If you haven't created one yet, go to https://discord
 
 # Run the bot
 ## Windows
-Simply open the `NolanBot.bat` file or `NolanBot.sh` into command prompt.
+Simply open the `NolanBot.bat` file.
 
 ## Linux
 If you're on Linux open the `NolanBot.sh` file to start the bot or type `node .` into the console.
