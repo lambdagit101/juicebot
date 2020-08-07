@@ -213,14 +213,14 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
   if (message.content.toLowerCase().startsWith(`${PREFIX}sayas`)) {
       console.log("Said as");
       const arguments = message.content.split(" ");
-      const messaje = arguments[0]; 
+      const messaje = arguments[1]; 
       message.channel.send(messaje);
   }
 	
   if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw`)) {
       if (message.channel.nsfw === true) {
       	const nsfwarguments = message.content.split(" ");
-      	const typeofporn = nsfwarguments[0]; 
+      	const typeofporn = nsfwarguments[1]; 
 	switch (nsfwarguments[0]) {
 		case 'hentai':
 			randomPuppy("hentai").then(url => {
