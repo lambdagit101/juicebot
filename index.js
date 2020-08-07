@@ -215,8 +215,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
   if (message.content.toLowerCase().startsWith(`${PREFIX}sayas`)) {
       console.log("Said as");
       const arguments = message.content.split(" ");
-      const messaje = arguments[1]; 
-      message.channel.send(messaje);
+      message.channel.send(arguments);
   }
 	
   if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw hentai`)) {
