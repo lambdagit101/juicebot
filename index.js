@@ -221,7 +221,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
       if (message.channel.nsfw === true) {
       	const nsfwarguments = message.content.split(" ");
       	const typeofporn = nsfwarguments[1]; 
-	switch (nsfwarguments[0]) {
+	switch (nsfwarguments[1]) {
 		case 'hentai':
 			randomPuppy("hentai").then(url => {
 				message.channel.send(url);	
