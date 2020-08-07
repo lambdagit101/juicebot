@@ -144,6 +144,11 @@ client.on('message', message => {
 			message.channel.send(url);
 		});  
 	}
+	if (message.content.toLowerCase().startsWith(`${PREFIX}pic`)) {
+		randomPuppy('pics').then(url => {
+			message.channel.send(url);
+		});  
+	}
 	if (message.content.toLowerCase().startsWith(`${PREFIX}comedyheaven`)) {
 		randomPuppy('comedyheaven').then(url => {
 			message.channel.send(url);
