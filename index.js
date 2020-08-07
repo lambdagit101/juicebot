@@ -152,14 +152,9 @@ client.on('message', message => {
 		});  
 	}
 	if (message.content.toLowerCase().startsWith(`${PREFIX}dankmeme`)) {
-		api.{memes}.{dank}().then(res => {
-			message.channel.send({file: res.url});
- 		});
-	}
-	if (message.content.toLowerCase().startsWith(`${PREFIX}spongebobmeme`)) {
-		api.{memes}.{spongebob}().then(res => {
-			message.channel.send({file: res.url});
- 		});
+		randomPuppy('dankmemes').then(url => {
+			message.channel.send(url);
+		});  
 	}
 	if (message.content.toLowerCase().startsWith(`${PREFIX}requestavatar`)) {
 		message.channel.send("Here is your avatar!");
@@ -226,9 +221,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 	
   if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw ahegao`)) {
       if (message.channel.nsfw === true) {
-      	api.{nsfw}.{ahegao}().then(res => {
-		message.channel.send({file: res.url});
- 	});
+      	
       } else {
       	message.channel.send("You have to be in a NSFW channel to perform this action!");
       }
@@ -236,9 +229,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 	
   if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw catgirl`)) {
       if (message.channel.nsfw === true) {
-      	api.{nsfw}.{catgirl}().then(res => {
-		message.channel.send({file: res.url});
- 	});
+      	
       } else {
       	message.channel.send("You have to be in a NSFW channel to perform this action!");
       }
@@ -246,9 +237,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 	
   if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw ecchi`)) {
       if (message.channel.nsfw === true) {
-      	api.{nsfw}.{ecchi}().then(res => {
-		message.channel.send({file: res.url});
- 	});
+      	
       } else {
       	message.channel.send("You have to be in a NSFW channel to perform this action!");
       }
@@ -256,9 +245,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 	
   if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw futa`)) {
       if (message.channel.nsfw === true) {
-      	api.{nsfw}.{futa}().then(res => {
-		message.channel.send({file: res.url});
- 	});
+      	
       } else {
       	message.channel.send("You have to be in a NSFW channel to perform this action!");
       }
@@ -266,9 +253,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 	
   if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw hentai`)) {
       if (message.channel.nsfw === true) {
-      	api.{nsfw}.{hentai}().then(res => {
-		message.channel.send({file: res.url});
- 	});
+      	
       } else {
       	message.channel.send("You have to be in a NSFW channel to perform this action!");
       }
@@ -276,9 +261,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 	
   if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw monstergirl`)) {
       if (message.channel.nsfw === true) {
-      	api.{nsfw}.{monstergirl}().then(res => {
-		message.channel.send({file: res.url});
- 	});
+      	
       } else {
       	message.channel.send("You have to be in a NSFW channel to perform this action!");
       }
@@ -286,9 +269,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 	
   if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw oppai`)) {
       if (message.channel.nsfw === true) {
-      	api.{nsfw}.{oppai}().then(res => {
-		message.channel.send({file: res.url});
- 	});
+      	
       } else {
       	message.channel.send("You have to be in a NSFW channel to perform this action!");
       }
@@ -296,9 +277,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 	
   if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw yaoi`)) {
       if (message.channel.nsfw === true) {
-      	api.{nsfw}.{yaoi}().then(res => {
-		message.channel.send({file: res.url});
- 	});
+      	
       } else {
       	message.channel.send("You have to be in a NSFW channel to perform this action!");
       }
@@ -306,9 +285,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 	
   if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw yuri`)) {
       if (message.channel.nsfw === true) {
-      	api.{nsfw}.{yuri}().then(res => {
-		message.channel.send({file: res.url});
- 	});
+      	
       } else {
       	message.channel.send("You have to be in a NSFW channel to perform this action!");
       }
@@ -316,9 +293,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 	
   if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw tittydrop`)) {
       if (message.channel.nsfw === true) {
-      	api.{nsfw}.{tittydropgif}().then(res => {
-		message.channel.send({file: res.url});
- 	});
+      	
       } else {
       	message.channel.send("You have to be in a NSFW channel to perform this action!");
       }
@@ -326,9 +301,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 	
   if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw pussy`)) {
       if (message.channel.nsfw === true) {
-      	api.{nsfw}.{pussy}().then(res => {
-		message.channel.send({file: res.url});
- 	});
+      	
       } else {
       	message.channel.send("You have to be in a NSFW channel to perform this action!");
       }
@@ -336,9 +309,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 	  
   if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw milf`)) {
       if (message.channel.nsfw === true) {
-      	api.{nsfw}.{milf}().then(res => {
-		message.channel.send({file: res.url});
- 	});
+      	
       } else {
       	message.channel.send("You have to be in a NSFW channel to perform this action!");
       }
