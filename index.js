@@ -10,7 +10,7 @@ const PREFIX = "/";
 
 client.on('ready', () => {
   console.log('I am ready!');
-  client.user.setActivity('Hentai', { type: 'WATCHING' });
+  client.user.setActivity('Hentai | /help general', { type: 'WATCHING' });
 });
 
 const queue = new Map();
