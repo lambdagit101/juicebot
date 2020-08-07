@@ -211,12 +211,6 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
       message.reply("Please specify a person to ban!");
     }
   }
-
-  if (message.content.toLowerCase().startsWith(`${PREFIX}sayas`)) {
-      console.log("Said as");
-      const arguments = message.content.split(" ");
-      message.channel.send(arguments);
-  }
 	
   if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw hentai`)) {
       if (message.channel.nsfw === true) {
@@ -247,7 +241,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 	
   if (message.content.toLowerCase().startsWith(`${PREFIX}help general`)) {
 	console.log("General helped");
-	message.channel.send("Link coming soon!");
+	message.channel.send("https://lambdagit101.github.io/nolanbotweb/help.html");
 	message.channel.send('https://cdn.discordapp.com/attachments/722508329678798881/741004886841229402/Help.png');
   }
 	
