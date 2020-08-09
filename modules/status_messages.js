@@ -9,7 +9,7 @@ setInterval(function() {
     const guildCount = client.guilds.cache.size;
 
     const statusMessages = [
-        { type: 'WATCHING', name: `hentai | /help`},
+        { type: 'WATCHING', name: `Hentai | /help`},
         { type: 'WATCHING', name: `${guildCount} guilds | /help`},
         { type: 'LISTENING', name: `${userCount} users | /help`}
     ]
