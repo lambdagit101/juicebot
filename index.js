@@ -239,6 +239,7 @@ client.on('message', message => {
                  	name: "Muted",
                 	color: "0x1c61d8"
         	      })
+  }
 		      console.error(err);
 	      let mutedRole = message.guild.roles.find(role => role.name === "Muted");
 	if(member.roles.has(mutedRole)) {
@@ -354,13 +355,14 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
         message.channel.send(nobanembed);
             console.error(err);
       }
-    } else {
+  else {
       const nospecificembed = new MessageEmbed()
 	.setTitle('Moderation')
       .setColor(0xff0000)
       .setDescription("No person was specified!");
         message.channel.send(nospecificembed);
             console.error(err);
+    }
     }
   }
 	
