@@ -273,6 +273,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
       .setTitle('NolanBot')
       .setColor(0xff0000)
       .setDescription('Made by lambdaguy101 using discord.js. Type /github for the source code');
+	 message.channel.send(creditsembed);
   }
 });
 
