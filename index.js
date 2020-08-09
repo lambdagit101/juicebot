@@ -294,4 +294,4 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
   }
 });
 
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.BOT_TOKEN || require('./token.json').token);
