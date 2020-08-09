@@ -142,12 +142,6 @@ client.once("disconnect", () => {
 client.on('message', message => {
   if (message.author.bot) return;
   if (!message.guild) return;
-	if (message.content.toLowerCase().startsWith(`${PREFIX}sayas`)) {		
-		var args = message.substring(1).split(' ');
-        	args = args.splice(1);
-		message.channel.send(args);
-		message.delete(150);
-	}
 	if (message.content.toLowerCase().startsWith(`${PREFIX}sbubby`)) {
 		randomPuppy('sbubby').then(url => {
 			message.channel.send(url);
