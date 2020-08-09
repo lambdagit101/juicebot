@@ -1,16 +1,16 @@
 const { Client, MessageEmbed } = require('discord.js');
-
 const randomPuppy = require('random-puppy');
-
 const client = new Client();
-
 const ytdl = require('ytdl-core');
-
 const PREFIX = "/";
+
+// Export the client so other modules can use it too
+module.exports.client = client;
 
 client.on('ready', () => {
   console.log('I am ready!');
-  client.user.setActivity('Hentai | /help general', { type: 'WATCHING' });
+  
+  require('./modules/status_messages'); // This runs the status messages module that changes the bot's activity
 });
 
 const queue = new Map();
