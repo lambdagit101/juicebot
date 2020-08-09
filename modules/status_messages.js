@@ -10,8 +10,8 @@ setInterval(function() {
 
     const statusMessages = [
         { type: 'WATCHING', name: `Hentai | /help`},
-        { type: 'WATCHING', name: `${guildCount} guilds | /help`},
-        { type: 'LISTENING', name: `${userCount} users | /help`}
+        { type: 'WATCHING', name: `${guildCount} Servers | /help`},
+        { type: 'LISTENING', name: `${userCount} Users | /help`}
     ]
 
     client.user.setActivity(statusMessages[index]);
