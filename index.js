@@ -260,7 +260,6 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
         message.channel.send(nospecificembed);
             console.error(err);
     }
-    }
   }
 	
   if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw hentai`)) {
