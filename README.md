@@ -22,4 +22,5 @@ Simply open the `NolanBot.bat` file.
 ## Linux
 If you're on Linux open the `NolanBot.sh` file to start the bot or type `node .` into the console.
 
+# Donations
 You can support me by donating to this Monero address: 43rf5jYqpPfCuJkaTwWrPY2DqbpLuiAMxTQxzdDc4RvyZNmxVxckZTmZeQLUaNypSDB55ARWMkMQ8GTHrXmV7PmG2qs3ZDN
