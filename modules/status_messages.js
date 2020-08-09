@@ -9,9 +9,9 @@ setInterval(function() {
     const guildCount = client.guilds.cache.size;
 
     const statusMessages = [
-        { type: 'WATCHING', name: `Hentai | /help general`},
-        { type: 'WATCHING', name: `${guildCount} Servers | /help general`},
-        { type: 'LISTENING', name: `${userCount} Users | /help general`}
+        { type: 'WATCHING', name: `Hentai | /help`},
+        { type: 'WATCHING', name: `${guildCount} Servers | /help`},
+        { type: 'LISTENING', name: `${userCount} Users | /help`}
     ]
 
     client.user.setActivity(statusMessages[index]);

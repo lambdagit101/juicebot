@@ -271,7 +271,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 	message.channel.send("https://cdn.discordapp.com/attachments/722508329678798881/741004511035916368/Help.png");
   }
 	
-  if (message.content.toLowerCase().startsWith(`${PREFIX}help general`)) {
+  if (message.content.toLowerCase().startsWith(`${PREFIX}help`)) {
 	console.log("General helped");
 	message.channel.send("https://lambdagit101.github.io/nolanbotweb/help.html");
 	message.channel.send("https://cdn.discordapp.com/attachments/722508329678798881/741004886841229402/Help.png");
