@@ -85,7 +85,6 @@ async function execute(message, serverQueue) {
       .setTitle('YouTube')
       .setColor(0xff0000)
       .setDescription(`**${song.title}** was added to the queue.`);
-    message.channel.send(embed);
     return message.channel.send(embed);
   }
 }
@@ -191,17 +190,33 @@ client.on('message', message => {
       if (member) {
         member.kick('Kick was requested')
           .then(() => {
-            message.reply(`Kicked ${user.tag} successfully!`);
+	    const kickembed = new MessageEmbed()
+	.setTitle('Moderation')
+      .setColor(0xff0000)
+      .setDescription(`${user.tag} was successfully kicked!`);
+        message.channel.send(kickembed);
           })
           .catch(err => {
-            message.reply('Unable to kick the member');
+            const cantkickembed = new MessageEmbed()
+	.setTitle('Moderation')
+      .setColor(0xff0000)
+      .setDescription("Couldn't kick the user");
+        message.channel.send(cantkickembed);
             console.error(err);
           });
       } else {
-        message.reply("The user you mentioned is not in this server!");
+	   const nomemembed = new MessageEmbed()
+	.setTitle('Moderation')
+      .setColor(0xff0000)
+      .setDescription('This user is not in this server');
+        message.channel.send(nomemembed);
       }
     } else {
-      message.reply("Please specify a person to kick!");
+      const nopersembed = new MessageEmbed()
+	.setTitle('Moderation')
+      .setColor(0xff0000)
+      .setDescription('No person was specified!');
+        message.channel.send(nopersembed);
     }
   }
 	
@@ -215,17 +230,35 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
             reason: 'Ban was requested',
           })
           .then(() => {
-            message.reply(`Banned ${user.tag} successfully!`);
+            const banembed = new MessageEmbed()
+	.setTitle('Moderation')
+      .setColor(0xff0000)
+      .setDescription(`${user.tag} was successfully banned!`);
+        message.channel.send(banembed);
           })
           .catch(err => {
-            message.reply('Unable to ban the member');
+            const cantbanembed = new MessageEmbed()
+	.setTitle('Moderation')
+      .setColor(0xff0000)
+      .setDescription("Couldn't ban the user");
+        message.channel.send(cantbanembed);
             console.error(err);
           });
       } else {
-        message.reply("The user you mentioned is not in this server!");
+        const nobanembed = new MessageEmbed()
+	.setTitle('Moderation')
+      .setColor(0xff0000)
+      .setDescription("This user is not in this server");
+        message.channel.send(nobanembed);
+            console.error(err);
       }
     } else {
-      message.reply("Please specify a person to ban!");
+      const nospecificembed = new MessageEmbed()
+	.setTitle('Moderation')
+      .setColor(0xff0000)
+      .setDescription("No person was specified!");
+        message.channel.send(nospecificembed);
+            console.error(err);
     }
   }
 	
