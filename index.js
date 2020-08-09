@@ -268,15 +268,13 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 
   if (message.content.toLowerCase().startsWith(`${PREFIX}help music`)) {
 	console.log("Music helped");
-  	const helpMAttch = new MessageAttachment('https://cdn.discordapp.com/attachments/722508329678798881/741004511035916368/Help.png');
-	message.channel.send(helpMAttch);
+	message.channel.send("https://cdn.discordapp.com/attachments/722508329678798881/741004511035916368/Help.png");
   }
 	
   if (message.content.toLowerCase().startsWith(`${PREFIX}help general`)) {
 	console.log("General helped");
 	message.channel.send("https://lambdagit101.github.io/nolanbotweb/help.html");
-	const helpAttch = new MessageAttachment('https://cdn.discordapp.com/attachments/722508329678798881/741004886841229402/Help.png');
-	message.channel.send(helpAttch);
+	message.channel.send("https://cdn.discordapp.com/attachments/722508329678798881/741004886841229402/Help.png");
   }
 	
   if (message.content.toLowerCase().startsWith(`${PREFIX}bonk`)) {
