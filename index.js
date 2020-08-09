@@ -284,6 +284,11 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 	message.channel.send('https://cdn.discordapp.com/attachments/686015484281225241/722533493435007066/posterbonk.png');
   }
 
+  if (message.content.toLowerCase().startsWith(`${PREFIX}invite`)) {
+	console.log("Invited link");
+	message.channel.send('Invite link for NolanBot is: https://discord.com/oauth2/authorize?client_id=722490368003670028&scope=bot&permissions=8');
+  }
+	
  if (message.content.toLowerCase() === (`${PREFIX}credits`)) {
 	console.log("Made by lambdaguy101");
 	 const creditsembed = new MessageEmbed()
