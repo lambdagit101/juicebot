@@ -250,7 +250,6 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
       .setColor(0xff0000)
       .setDescription("This user is not in this server");
         message.channel.send(nobanembed);
-            console.error(err);
       } else {
       const nospecificembed = new MessageEmbed()
 	.setTitle('Moderation')
