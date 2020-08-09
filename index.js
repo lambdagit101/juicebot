@@ -1,8 +1,8 @@
-const Discord = require('discord.js');
+const { Client, MessageEmbed } = require('discord.js');
 
 const randomPuppy = require('random-puppy');
 
-const client = new Discord.Client();
+const client = new Client();
 
 const ytdl = require('ytdl-core');
 
@@ -46,7 +46,7 @@ async function execute(message, serverQueue) {
   const permissions = voiceChannel.permissionsFor(message.client.user);
   if (!permissions.has("CONNECT") || !permissions.has("SPEAK")) {
     return message.channel.send(
-      "I need the permissions to join and speak in your voice channel!"
+      "No permission!"
     );
   }
 
@@ -81,7 +81,12 @@ async function execute(message, serverQueue) {
     }
   } else {
     serverQueue.songs.push(song);
-    return message.channel.send(`**${song.title}** has been added to the queue!`);
+    const embed = new MessageEmbed()
+      .setTitle('YouTube')
+      .setColor(0xff0000)
+      .setDescription(`**${song.title}** was added to the queue.`);
+    message.channel.send(embed);
+    return message.channel.send(embed);
   }
 }
 
@@ -91,7 +96,7 @@ function skip(message, serverQueue) {
       "You have to be in a voice channel to stop the music!"
     );
   if (!serverQueue)
-    return message.channel.send("There is no song that I could skip!");
+    return message.channel.send("There is no song that I can skip!");
   serverQueue.connection.dispatcher.end();
 }
 
@@ -120,7 +125,11 @@ function play(guild, song) {
     })
     .on("error", error => console.error(error));
   dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
-  serverQueue.textChannel.send(`Started playing: **${song.title}**`);
+  const embed2 = new MessageEmbed()
+      .setTitle('YouTube')
+      .setColor(0xff0000)
+      .setDescription(`Started playing: **${song.title}**`);
+  serverQueue.textChannel.send(embed2);
 }
 
 client.once("reconnecting", () => {
@@ -260,8 +269,10 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 
  if (message.content.toLowerCase() === (`${PREFIX}credits`)) {
 	console.log("Made by lambdaguy101");
-	  message.channel.send('NolanBot - Made by lambdaguy101.');
-	  message.channel.send('Type /github for the source code.');
+	 const creditsembed = new MessageEmbed()
+      .setTitle('NolanBot')
+      .setColor(0xff0000)
+      .setDescription('Made by lambdaguy101 using discord.js. Type /github for the source code');
   }
 });
 
