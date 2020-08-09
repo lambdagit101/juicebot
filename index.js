@@ -242,7 +242,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
       .setColor(0xff0000)
       .setDescription("Couldn't ban the user");
         message.channel.send(cantbanembed);
-            console.error(err);
+            if (err) console.error(err);
           });
       } else {
         const nobanembed = new MessageEmbed()
@@ -250,14 +250,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
       .setColor(0xff0000)
       .setDescription("This user is not in this server");
         message.channel.send(nobanembed);
-      } else {
-      const nospecificembed = new MessageEmbed()
-	.setTitle('Moderation')
-      .setColor(0xff0000)
-      .setDescription("No person was specified!");
-        message.channel.send(nospecificembed);
-            console.error(err);
-    }
+      }
     }
   }
 	
