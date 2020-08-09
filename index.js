@@ -142,6 +142,15 @@ client.once("disconnect", () => {
 client.on('message', message => {
   if (message.author.bot) return;
   if (!message.guild) return;
+	if (message.content.toLowerCase().startsWith(`${PREFIX}webhook`)) {
+			message.channel.createWebhook('NolanBot Webhook', {
+  				avatar: 'https://discordapp.com/assets/322c936a8c8be1b803cd94861bdfa868.png',
+  				reason: 'Webhook Requested'
+			})
+  			.then(console.log)
+  			.catch(console.error)
+			message.channel.send("Created webhook for this channel.");
+	}
 	if (message.content.toLowerCase().startsWith(`${PREFIX}sbubby`)) {
 		randomPuppy('sbubby').then(url => {
 			message.channel.send(url);
@@ -183,7 +192,7 @@ client.on('message', message => {
 	if (message.content.toLowerCase().startsWith(`${PREFIX}evaxephon`)) {
 		message.channel.send("https://yandere-simulator.com/tampon.png");	
 	}
-	if (message.content.toLowerCase().startsWith(`${PREFIX}kick`)) {
+    if (message.content.toLowerCase().startsWith(`${PREFIX}kick`)) {
     const user = message.mentions.users.first();
     if (user) {
       const member = message.guild.member(user);
@@ -218,6 +227,99 @@ client.on('message', message => {
       .setDescription('No person was specified!');
         message.channel.send(nopersembed);
     }
+  }
+	
+	if (message.content.toLowerCase().startsWith(`${PREFIX}mute`)) {
+    const user = message.mentions.users.first();
+    if (user) {
+      const member = message.guild.member(user);
+      if (member) {
+	      if (!message.guild.roles.find("Muted")) {
+		      message.member.guild.createRole({
+                 	name: "Muted",
+                	color: "0x1c61d8"
+        	      })
+		      console.error(err);
+	      let mutedRole = message.guild.roles.find(role => role.name === "Muted");
+	if(member.roles.has(mutedRole)) {
+		const mutedembed = new MessageEmbed()
+	.setTitle('Moderation')
+      .setColor(0xff0000)
+      .setDescription(`${user.tag} is already muted!`);
+        message.channel.send(mutedembed);
+	} else {
+		member.addRole(mutedRole).catch(console.error)
+	
+          .then(() => {
+	    const muteembed = new MessageEmbed()
+	.setTitle('Moderation')
+      .setColor(0xff0000)
+      .setDescription(`${user.tag} was muted successfully!`);
+        message.channel.send(muteembed);
+          })
+          .catch(err => {
+            const cantmuteembed = new MessageEmbed()
+	.setTitle('Moderation')
+      .setColor(0xff0000)
+      .setDescription("Couldn't mute the user");
+        message.channel.send(cantmuteembed);
+            console.error(err);
+          });
+      } else {
+	   const nomutememembed = new MessageEmbed()
+	.setTitle('Moderation')
+      .setColor(0xff0000)
+      .setDescription('This user is not in this server');
+        message.channel.send(nomutememembed);
+      }
+    } else {
+      const nopersemutembed = new MessageEmbed()
+	.setTitle('Moderation')
+      .setColor(0xff0000)
+      .setDescription('No person was specified!');
+        message.channel.send(nopersemutembed);
+    }
+	} else {
+	    let mutedRole = message.guild.roles.find(role => role.name === "Muted");
+	if(member.roles.has(mutedRole)) {
+		const mutedembed = new MessageEmbed()
+	.setTitle('Moderation')
+      .setColor(0xff0000)
+      .setDescription(`${user.tag} is already muted!`);
+        message.channel.send(mutedembed);
+	} else {
+		member.addRole(mutedRole).catch(console.error)
+	
+          .then(() => {
+	    const muteembed = new MessageEmbed()
+	.setTitle('Moderation')
+      .setColor(0xff0000)
+      .setDescription(`${user.tag} was muted successfully!`);
+        message.channel.send(muteembed);
+          })
+          .catch(err => {
+            const cantmuteembed = new MessageEmbed()
+	.setTitle('Moderation')
+      .setColor(0xff0000)
+      .setDescription("Couldn't mute the user");
+        message.channel.send(cantmuteembed);
+            console.error(err);
+          });
+      } else {
+	   const nomutememembed = new MessageEmbed()
+	.setTitle('Moderation')
+      .setColor(0xff0000)
+      .setDescription('This user is not in this server');
+        message.channel.send(nomutememembed);
+      }
+    } else {
+      const nopersemutembed = new MessageEmbed()
+	.setTitle('Moderation')
+      .setColor(0xff0000)
+      .setDescription('No person was specified!');
+        message.channel.send(nopersemutembed);
+    }
+	}
   }
 	
 if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
