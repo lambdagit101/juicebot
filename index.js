@@ -251,8 +251,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
       .setDescription("This user is not in this server");
         message.channel.send(nobanembed);
             console.error(err);
-      }
-  else {
+      } else {
       const nospecificembed = new MessageEmbed()
 	.setTitle('Moderation')
       .setColor(0xff0000)
@@ -260,16 +259,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
         message.channel.send(nospecificembed);
             console.error(err);
     }
-  }
-	
-  if (message.content.toLowerCase().startsWith(`${PREFIX}nsfw hentai`)) {
-      if (message.channel.nsfw === true) {
-      	randomPuppy('hentai').then(url => {
-		message.channel.send(url);
-	}); 
-      } else {
-      	message.channel.send("You have to be in a NSFW channel to perform this action!");
-      }
+    }
   }
 	
   if (message.content.toLowerCase().startsWith(`${PREFIX}gta 4 pager`)) {
