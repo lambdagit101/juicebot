@@ -284,7 +284,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 
   if (message.content.toLowerCase().startsWith(`${PREFIX}invite`)) {
 	console.log("Invited link");
-	message.channel.send('Invite link for NolanBot is: https://discord.com/oauth2/authorize?client_id=722490368003670028&scope=bot&permissions=8');
+	message.channel.send('Invite link for NolanBot is: https://discord.com/api/oauth2/authorize?client_id=722490368003670028&permissions=8&redirect_uri=https%3A%2F%2Flambdagit101.github.io%2Fnolanbotweb%2Fthankyou.html&scope=bot');
   }
   if (message.content.toLowerCase() === (`${PREFIX}donate`)) {
 	console.log("Hope they donate");
