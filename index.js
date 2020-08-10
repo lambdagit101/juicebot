@@ -286,6 +286,14 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 	console.log("Invited link");
 	message.channel.send('Invite link for NolanBot is: https://discord.com/oauth2/authorize?client_id=722490368003670028&scope=bot&permissions=8');
   }
+  if (message.content.toLowerCase() === (`${PREFIX}donate`)) {
+	console.log("Hope they donate");
+	 const donatembed = new MessageEmbed()
+      .setTitle('Donate')
+      .setColor(0xff0000)
+      .setDescription('Currently I only accept Monero at this address: 43rf5jYqpPfCuJkaTwWrPY2DqbpLuiAMxTQxzdDc4RvyZNmxVxckZTmZeQLUaNypSDB55ARWMkMQ8GTHrXmV7PmG2qs3ZDN');
+	 message.channel.send(donatembed);
+  }
 	
  if (message.content.toLowerCase() === (`${PREFIX}credits`)) {
 	console.log("Made by lambdaguy101");
