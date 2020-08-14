@@ -183,6 +183,11 @@ client.on('message', message => {
 	if (message.content.toLowerCase().startsWith(`${PREFIX}evaxephon`)) {
 		message.channel.send("https://yandere-simulator.com/tampon.png");	
 	}
+	if (message.content.toLowerCase().startsWith(`${PREFIX}puppy`)) {
+		randomPuppy().then(url => {
+			message.channel.send(url);
+		});  
+	}
     if (message.content.toLowerCase().startsWith(`${PREFIX}kick`)) {
     const user = message.mentions.users.first();
     if (user) {
