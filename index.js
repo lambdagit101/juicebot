@@ -197,7 +197,7 @@ client.on('message', message => {
 		});  
 	}
 	if (message.content.toLowerCase().startsWith(`${PREFIX}aww`)) {
-		randomPuppy(aww).then(url => {
+		randomPuppy('aww').then(url => {
 			message.channel.send(url);
 		});  
 	}
