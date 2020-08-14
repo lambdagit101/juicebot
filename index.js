@@ -4,7 +4,6 @@ const client = new Client();
 const ytdl = require('ytdl-core');
 const PREFIX = "/";
 
-////////////////////////////////////////// Modules ^
 
 // Export the client so other modules can use it too
 module.exports.client = client;
@@ -14,6 +13,7 @@ client.on('ready', () => {
   
   require('./modules/status_messages'); // This runs the status messages module that changes the bot's activity
 });
+
 
 const queue = new Map();
 // This part of code was made by Gabriel Tanner, not me!
