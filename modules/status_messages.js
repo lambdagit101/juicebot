@@ -12,7 +12,7 @@ setInterval(() => {
         { type: 'WATCHING', name: `Hentai | /help`},
         { type: 'WATCHING', name: `${guildCount} Servers | /help`},
         { type: 'LISTENING', name: `${userCount} Users | /help`},
-        { type: 'WATCHING', name: 'You | /help'}
+        { type: 'WATCHING', name: 'you | /help'}
     ]
 
     client.user.setActivity(statusMessages[index]);
