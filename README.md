@@ -24,3 +24,8 @@ If you're on Linux open the `NolanBot.sh` file to start the bot or type `node .`
 
 # Donations
 You can support me by donating to this Monero address: 43rf5jYqpPfCuJkaTwWrPY2DqbpLuiAMxTQxzdDc4RvyZNmxVxckZTmZeQLUaNypSDB55ARWMkMQ8GTHrXmV7PmG2qs3ZDN
+
+# Credits
+This project is owned by lambdaguy101.
+Thanks to DavidJoacaRo for helping.
+Code was cleaned up and organized by Im_Verum.
