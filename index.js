@@ -4,6 +4,8 @@ const client = new Client();
 const ytdl = require('ytdl-core');
 const PREFIX = "/";
 
+////////////////////////////////////////// Modules ^
+
 // Export the client so other modules can use it too
 module.exports.client = client;
 
@@ -50,6 +52,8 @@ async function execute(message, serverQueue) {
     );
   }
 
+///////////////////////////////////////////////////////////////////////////////////////////// Main Bot Config ^
+	
   const songInfo = await ytdl.getInfo(args[1]);
   const song = {
     title: songInfo.title,
@@ -138,6 +142,10 @@ client.once("reconnecting", () => {
 client.once("disconnect", () => {
   console.log("Disconnect!");
 });
+
+///////////////////////////////////////////////////////////////////////////////////////////// Bot Music System Config ^
+
+///////////////////////////////////////////////////////////////////////////////////////////// Commands 
 
 client.on('message', message => {
   if (message.author.bot) return;
@@ -314,5 +322,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 	 message.channel.send(creditsembed);
   }
 });
+
+// End of the commands section.
 
 client.login(process.env.BOT_TOKEN || require('./token.json').token);
