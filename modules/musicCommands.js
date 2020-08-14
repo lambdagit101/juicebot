@@ -18,8 +18,6 @@ client.on("message", async (message) => {
     } else if (message.content.startsWith(`${PREFIX}stop`)) {
         stop(message, serverQueue);
         return;
-    } else {
-        console.log("Not music command");
     }
 });
 
