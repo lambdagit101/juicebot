@@ -188,6 +188,11 @@ client.on('message', message => {
 			message.channel.send(url);
 		});  
 	}
+	if (message.content.toLowerCase().startsWith(`${PREFIX}aww`)) {
+		randomPuppy(aww).then(url => {
+			message.channel.send(url);
+		});  
+	}
     if (message.content.toLowerCase().startsWith(`${PREFIX}kick`)) {
     const user = message.mentions.users.first();
     if (user) {
