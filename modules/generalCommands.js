@@ -1,4 +1,4 @@
-const client = require('../index').client; // Import client from index.js
+const { client, PREFIX } = require('../index'); // Import client from index.js
 
 
 client.on('message', message => {

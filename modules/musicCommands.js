@@ -1,4 +1,4 @@
-const client = require('../index').client; // Import the client from index.js
+const { client, PREFIX } = require('../index'); // Import the client from index.js
 
 
 const queue = new Map();
