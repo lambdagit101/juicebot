@@ -28,4 +28,4 @@ You can support me by donating to this Monero address: 43rf5jYqpPfCuJkaTwWrPY2Dq
 # Credits
 This project is owned by lambdaguy101.
 Thanks to DavidJoacaRo for helping.
-Code was cleaned up and organized by Im_Verum.
+Code was cleaned up and organized by Im_Verum and AstroAntics.
