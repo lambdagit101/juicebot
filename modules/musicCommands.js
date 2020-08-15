@@ -1,6 +1,6 @@
 const { client, PREFIX } = require('../index'); // Import the client from index.js
-
-
+const { MessageEmbed } = require('discord.js');
+  // test
 const queue = new Map();
 // This part of code was made by Gabriel Tanner, not me!
 client.on("message", async (message) => {
