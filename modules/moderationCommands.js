@@ -86,3 +86,51 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
 		}
 	}
 }
+
+//Muting a member.
+if (message.content.toLowerCase().startsWith(`${PREFIX}mute`))
+{
+	//The member needs to be specified.
+	const user = message.mentions.user.first();
+	if (user)
+	{
+		const member = message.guild.member(user);
+		
+		//If the member being muted is the one mentioned, mute them.
+		if (member)
+		{
+			member.mute({reason:'Mute requested'})
+		}
+		
+		.then() => 
+		{
+			//Create a new message to show that the mute was successful.
+			const mutedMessage = new MessageEmbed()
+			.setTitle('Moderation')
+			.setColor('0xff0000')
+			.setDescription(`${user.tag} was muted successfully.`);
+			message.channel.send(mutedMessage);
+		}
+		
+		//Something went wrong.
+		.catch(err =>
+		{
+			const muteFailedEmbed = new MessageEmbed()
+			.setTitle('Moderation')
+			.setColor('0xff0000')
+			.setDescription("Couldn't mute the user.");
+			message.channel.send(muteFailedEmbed);
+			if (err) console.error(err);
+		}
+		       
+		//You can't mute a member when they aren't in the server.
+		else
+		{
+		       const muteAlien = new MessageEmbed()
+		       .setTitle('Moderation')
+		       .setColor('0xff0000')
+		       .setDescription("You are trying to mute a user who isn't in the server.");
+		       message.channel.send(muteAlien);
+		} 	
+	}
+}
