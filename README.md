@@ -13,7 +13,7 @@ Also you need a bot token. If you haven't created one yet, go to https://discord
 
 # How to install
 1) Open command prompt in the bot's directory and type: `npm install`
-2) Modify the last line of index.js and change it to your own token
+2) Modify the token.js file and change it to your own token
 
 # Run the bot
 ## Windows
