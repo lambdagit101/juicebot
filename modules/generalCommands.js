@@ -1,5 +1,5 @@
 const { client, PREFIX } = require('../index'); // Import client from index.js
-
+const { MessageEmbed } = require('discord.js');
 
 client.on('message', message => {
     if (message.author.bot) return;
