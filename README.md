@@ -13,7 +13,7 @@ Also you need a bot token. If you haven't created one yet, go to https://discord
 
 # How to install
 1) Open command prompt in the bot's directory and type: `npm install`
-2) Modify the last line of index.js and change it to your own token
+2) Modify the token.js file and change it to your own token
 
 # Run the bot
 ## Windows
@@ -24,3 +24,8 @@ If you're on Linux open the `NolanBot.sh` file to start the bot or type `node .`
 
 # Donations
 You can support me by donating to this Monero address: 43rf5jYqpPfCuJkaTwWrPY2DqbpLuiAMxTQxzdDc4RvyZNmxVxckZTmZeQLUaNypSDB55ARWMkMQ8GTHrXmV7PmG2qs3ZDN
+
+# Credits
+This project is owned by lambdaguy101.
+Thanks to DavidJoacaRo for helping.
+Code was cleaned up and organized by Im_Verum.

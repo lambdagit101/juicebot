@@ -3,7 +3,7 @@ const intervalInMS = 15000;
 
 let index = 0;
 
-setInterval(function() {
+setInterval(() => {
 
     const userCount = client.users.cache.size;
     const guildCount = client.guilds.cache.size;
