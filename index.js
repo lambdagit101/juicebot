@@ -1,5 +1,4 @@
 const { Client, MessageEmbed } = require('discord.js');
-const randomPuppy = require('random-puppy');
 const client = new Client();
 const ytdl = require('ytdl-core');
 const PREFIX = "/";
