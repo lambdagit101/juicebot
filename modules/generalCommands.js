@@ -1,51 +1,61 @@
 const { client, PREFIX } = require('../index'); // Import client from index.js
-const { MessageEmbed } = require('discord.js');
-const randomPuppy = require('random-puppy');
+const { MessageEmbed } = require('discord.js'); //We throw in discord.js to ensure library functionality.
+const randomPuppy = require('random-puppy'); //Because puppies are nice.
 
 client.on('message', message => {
     if (message.author.bot) return;
     if (!message.guild) return;
+	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}sbubby`)) {
 		randomPuppy('sbubby').then(url => {
 			message.channel.send(url);
 		});  
 	}
+	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}animeme`)) {
 		randomPuppy('Animemes').then(url => {
 			message.channel.send(url);
 		});  
 	}
+	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}pic`)) {
 		randomPuppy('pics').then(url => {
 			message.channel.send(url);
 		});  
 	}
+	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}comedyheaven`)) {
 		randomPuppy('comedyheaven').then(url => {
 			message.channel.send(url);
 		});  
 	}
+	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}dankmeme`)) {
 		randomPuppy('dankmemes').then(url => {
 			message.channel.send(url);
 		});  
 	}
+	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}4chan`)) {
 		randomPuppy('greentext').then(url => {
 			message.channel.send(url);
 		});  
 	}
+	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}requestavatar`)) {
 		message.channel.send("Here is your avatar!");
 		message.channel.send(message.author.displayAvatarURL());	
 	}
+	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}github`)) {
 		message.channel.send("This is the source code for NolanBot.");
 		message.channel.send("https://github.com/lambdagit101/nolanbot/");	
 	}
+	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}evaxephon`)) {
 		message.channel.send("https://yandere-simulator.com/tampon.png");	
 	}
+	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}puppy`)) {
 		randomPuppy().then(url => {
 			message.channel.send(url);
@@ -56,6 +66,8 @@ client.on('message', message => {
 			message.channel.send(url);
 		});  
 	}
+	
+    //Kicking a member.
     if (message.content.toLowerCase().startsWith(`${PREFIX}kick`)) {
     const user = message.mentions.users.first();
     if (user) {
@@ -77,14 +89,18 @@ client.on('message', message => {
                 message.channel.send(cantkickembed);
                 console.error(err);
             });
-        } else {
+        } 
+	    //If the member is not in the server...
+	    else {
             const nomemembed = new MessageEmbed()
             .setTitle('Moderation')
                 .setColor(0xff0000)
                 .setDescription('This user is not in this server');
             message.channel.send(nomemembed);
         }
-    } else {
+    } 
+	    //Oops, you forgot to say who to kick.
+	    else {
         const nopersembed = new MessageEmbed()
             .setTitle('Moderation')
             .setColor(0xff0000)
@@ -92,7 +108,8 @@ client.on('message', message => {
         message.channel.send(nopersembed);
     }
 }
-	
+
+//Ban a member.
 if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
     const user = message.mentions.users.first();
     if (user) {
@@ -117,7 +134,9 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
                 message.channel.send(cantbanembed);
                 if (err) console.error(err);
             });
-        } else {
+        } 
+	    //Trying to ban a user who isn't in the server?
+	    else {
             const nobanembed = new MessageEmbed()
                 .setTitle('Moderation')
                 .setColor(0xff0000)
@@ -135,7 +154,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}gta 4 pager`)) {
 if (message.content.toLowerCase().startsWith(`${PREFIX}nolan`)) {
     console.log("Nolanized");
     message.channel.send('Nolan').then(sentMessage => {
-		sentMessage.delete({timeout:35000});
+		sentMessage.delete({timeout:35000}); //We delete the message to prevent spam. 
 	});
 }
 
@@ -168,6 +187,7 @@ if (message.content.toLowerCase() === (`${PREFIX}donate`)) {
 	message.channel.send(donatembed);
 }
 	
+//The man, the myth, the legend.	
 if (message.content.toLowerCase() === (`${PREFIX}credits`)) {
 	console.log("Made by lambdaguy101");
 		const creditsembed = new MessageEmbed()
