@@ -25,7 +25,7 @@ If you're on Linux open the `NolanBot.sh` file to start the bot or type `node .`
 # Donations
 You can support me by donating to this Monero address: 43rf5jYqpPfCuJkaTwWrPY2DqbpLuiAMxTQxzdDc4RvyZNmxVxckZTmZeQLUaNypSDB55ARWMkMQ8GTHrXmV7PmG2qs3ZDN
 
-# Credits
+# Credits [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/lambdagit101/NolanBot/pulls)
 This project is owned by lambdaguy101.
 Thanks to DavidJoacaRo for helping.
 Code was cleaned up and organized by Im_Verum and AstroAntics.
