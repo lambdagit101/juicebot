@@ -114,8 +114,8 @@ if (message.content.toLowerCase() === (`${PREFIX}credits`)) {
 	console.log("Made by lambdaguy101");
 		const creditsembed = new Discord.MessageEmbed()
 			.setTitle('NolanBot')
-			.setColor(0xff0000)
-			.setDescription('Made by @lambdaguy101#1433 using discord.js. Type /github for the source code');
+			.setColor('2f3136')
+			.setDescription('Made by @lambdaguy101#1433 using discord.js. Type /github for the source code.\n\n**Contributor list: **' + require('../config.json').contributors.join(', ') + '.\nThank you all for helping!');
 		message.channel.send(creditsembed);
 	}
 });
