@@ -1,5 +1,5 @@
+const Discord = require('discord.js');
 const { client, PREFIX } = require('../index'); // Import client from index.js
-const { MessageEmbed } = require('discord.js'); //We throw in discord.js to ensure library functionality.
 const randomPuppy = require('random-puppy'); //Because puppies are nice.
 
 client.on('message', message => {
@@ -102,7 +102,7 @@ if (message.content.toLowerCase().startsWith(`${PREFIX}invite`)) {
 }
 if (message.content.toLowerCase() === (`${PREFIX}donate`)) {
 	console.log("Hope they donate");
-	const donatembed = new MessageEmbed()
+	const donatembed = new Discord.MessageEmbed()
 		.setTitle('Donate')
 		.setColor(0xff0000)
 		.setDescription('Currently I only accept Monero at this address: 43rf5jYqpPfCuJkaTwWrPY2DqbpLuiAMxTQxzdDc4RvyZNmxVxckZTmZeQLUaNypSDB55ARWMkMQ8GTHrXmV7PmG2qs3ZDN');
@@ -112,7 +112,7 @@ if (message.content.toLowerCase() === (`${PREFIX}donate`)) {
 //The man, the myth, the legend.	
 if (message.content.toLowerCase() === (`${PREFIX}credits`)) {
 	console.log("Made by lambdaguy101");
-		const creditsembed = new MessageEmbed()
+		const creditsembed = new Discord.MessageEmbed()
 			.setTitle('NolanBot')
 			.setColor(0xff0000)
 			.setDescription('Made by @lambdaguy101#1433 using discord.js. Type /github for the source code');

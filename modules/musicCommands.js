@@ -1,5 +1,5 @@
 const { client, PREFIX } = require('../index'); // Import the client from index.js
-const { MessageEmbed } = require('discord.js');
+const Discord = require('discord.js');
 const ytdl = require('ytdl-core');
 const queue = new Map();
 // This part of code was made by Gabriel Tanner, not me!
@@ -63,7 +63,7 @@ async function execute(message, serverQueue) {
         }
     } else {
         serverQueue.songs.push(song);
-        const embed = new MessageEmbed()
+        const embed = new Discord.MessageEmbed()
             .setTitle("YouTube")
             .setColor(0xff0000)
             .setDescription(`**${song.title}** was added to the queue.`);
@@ -100,7 +100,7 @@ function play(guild, song) {
         .on("error", (error) => console.error(error));
 
     dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
-    const embed2 = new MessageEmbed()
+    const embed2 = new Discord.MessageEmbed()
         .setTitle("YouTube")
         .setColor(0xff0000)
         .setDescription(`Started playing: **${song.title}**`);
