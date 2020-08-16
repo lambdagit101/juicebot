@@ -66,7 +66,7 @@ client.on('message', message => {
 			message.channel.send(url);
 		});  
 	}
-}
+
 	
 if (message.content.toLowerCase().startsWith(`${PREFIX}gta 4 pager`)) {
     console.log("GTA 4 Pager!");
