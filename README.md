@@ -28,4 +28,4 @@ You can support me by donating to this Monero address: 43rf5jYqpPfCuJkaTwWrPY2Dq
 # Credits [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/lambdagit101/NolanBot/pulls)
 This project is owned by lambdaguy101.
 Thanks to DavidJoacaRo for helping.
-Code was cleaned up and organized by Im_Verum and AstroAntics.
+Code was cleaned up and organized by Im_Verum, DavidJoacaRo and AstroAntics.
