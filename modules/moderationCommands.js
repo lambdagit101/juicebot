@@ -95,6 +95,49 @@ client.on('message', message => {
                 .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL())
                 );
             }
+            
+            /*
+            Unbanning a member. 
+            Taken from https://www.reddit.com/r/Discord_Bots/comments/fjy2sd/unban_users_with_discordjs_api/
+            NOTE: Pre-commented out for safety purposes.
+            Please DO NOT uncomment it unless you can prove that it works!!
+            
+            if (message.content.toLowerCase().startsWith(`${PREFIX}unban`))
+            {   
+                let userID = message.mentions.users.first().id
+                message.guild.members.unban(userID)
+                
+                .then(() => 
+                {
+                const unbanMessage = new Discord.MessageEmbed()
+                .setTitle('Moderation')
+                .setColor(0xff0000)
+                .setDescription(`Successfully unbanned ${user.tag}!`)
+                .setFooter(`Invoked by ${message.author.username}, message.author.avatarURL());
+                message.channel.send(unbanMessage)
+                })
+                
+                .catch(err =>
+                {
+                const unbanFailed = new Discord.MessageEmbed()
+                .setTitle('Moderation')
+                .setColor(0xff0000)
+                .setDescription("Could not unban the user.")
+                .setFooter(`Invoked by ${message.author.username}, message.author.avatarURL());
+                });
+            }
+            
+                else
+                {
+                    const unbanAlien = new.Discord.MessageEmbed()
+                    .setTitle('Moderation')
+                    .setColor(0xff0000)
+                    .setDescription("You're trying to unban a user who isn't in the server.")
+                    .setFooter(`Invoked by ${message.author.username}, message.author.avatarURL());
+                }
+            }   
+            */
+   
         }
 
         //Muting a member.
