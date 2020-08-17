@@ -58,8 +58,6 @@ client.on('message', message => {
                 const member = message.guild.member(user);
                 if (message.author.id === message.mentions.users.first()) {
                     message.channel.send('You can't ban yourself!') }
-                    
-                    
                 if (member) {
                     member.ban({reason: 'Ban was requested'})
                     .then(() => {
