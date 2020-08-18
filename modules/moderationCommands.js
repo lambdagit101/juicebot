@@ -31,7 +31,7 @@ client.on('message', message => {
                 
                 /*
                     //Non-moderators shouldn't be able to kick members. If they try, throw an error.
-                    if (!member.hasPermission(KICK_MEMBERS))
+                    if (!message.member.hasPermission(['KICK_MEMBERS']))
                     {
                          const cantkickembed = new Discord.MessageEmbed()
                          .setTitle('Moderation')
@@ -82,7 +82,7 @@ client.on('message', message => {
                     
                     /*
                     //Non-moderators shouldn't be able to ban members. If they try, throw an error.
-                    if (!member.hasPermission(BAN_MEMBERS))
+                    if (!message.member.hasPermission(['BAN_MEMBERS']))
                     {
                          const cantbanembed = new Discord.MessageEmbed()
                          .setTitle('Moderation')
