@@ -28,6 +28,17 @@ client.on('message', message => {
                         console.error(err);
                     });
                 } 
+                
+                    //Non-moderators shouldn't be able to kick members. If they try, throw an error.
+                    if (!member.hasPermission(KICK_MEMBERS))
+                    {
+                         const cantkickembed = new Discord.MessageEmbed()
+                         .setTitle('Moderation')
+                         .setColor(0xff0000)
+                         .setDescription("Couldn't kick the user")
+                         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                         message.channel.send(cantkickembed);
+                    }
 
                 //You can't kick someone who isn't in the server!
                 else {
@@ -66,6 +77,17 @@ client.on('message', message => {
                             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                         message.channel.send(banembed);
                     })
+                    
+                    //Non-moderators shouldn't be able to ban members. If they try, throw an error.
+                    if (!member.hasPermission(BAN_MEMBERS))
+                    {
+                         const cantbanembed = new Discord.MessageEmbed()
+                         .setTitle('Moderation')
+                         .setColor(0xff0000)
+                         .setDescription("Couldn't ban the user")
+                         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                         message.channel.send(cantbanembed);
+                    }
 
                     .catch(err => {
                         const cantbanembed = new Discord.MessageEmbed()
