@@ -29,3 +29,6 @@ You can support me by donating to this Monero address: 43rf5jYqpPfCuJkaTwWrPY2Dq
 This project is owned by lambdaguy101.
 Thanks to DavidJoacaRo for helping.
 Code was cleaned up and organized by Im_Verum, DavidJoacaRo and AstroAntics.
+
+# Support ![Discord](https://img.shields.io/discord/735495269034098768?style=plastic)
+Ways to ask for support is either using issues or the Discord server
