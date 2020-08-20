@@ -9,9 +9,9 @@ client.on('message', message => {
         if (message.content.toLowerCase().startsWith(`${PREFIX}kick`)) {
             const user = message.mentions.users.first();
             if (user) {
-                const member = message.guild.member(user);
+                const memberiq = message.guild.member(user);
                 if (member) {
-                    if (message.author.permissions.has('KICK_MEMBERS')) {
+                    if (message.member.permissions.has('KICK_MEMBERS')) {
                         member.kick(`Kick requested by ${message.author.username}`)
                             .then(() => {
                                 const kickembed = new Discord.MessageEmbed()
@@ -58,15 +58,15 @@ client.on('message', message => {
         if (message.content.toLowerCase().startsWith(`${PREFIX}warn`)) { // prototype warn command that sends a dm to the person who has been warned
             const user = message.mentions.users.first();
             if (user) {
-                const member = message.guild.member(user);
-                if (member) {
-                    if (message.author.permissions.has('KICK_MEMBERS') || message.author.permissions.has('BAN_MEMBERS')) {
+                const memberiq = message.guild.member(user);
+                if (memberiq) {
+                    if (message.member.permissions.has('KICK_MEMBERS') || message.member.permissions.has('BAN_MEMBERS')) {
                         const warnembed = new Discord.MessageEmbed()
                         .setTitle('Moderation')
                         .setColor(0xff0000)
                         .setDescription(`You have been warned`)
                         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                        member.send(warnembed);           
+                        memberiq.send(warnembed);           
                         const warnedembed = new Discord.MessageEmbed()
                         .setTitle('Moderation')
                         .setColor(0xff0000)
@@ -89,11 +89,10 @@ client.on('message', message => {
         if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
             const user = message.mentions.users.first();
             if (user) {
-                const member = message.guild.member(user);
-                if (member) {
-                    if (message.author.permissions.has('BAN_MEMBERS')) {
-                        member.kick(`Kick requested by ${message.author.username}`)
-                        member.ban({ reason: `Ban requested by ${message.author.username}` })
+                const memberiq = message.guild.member(user);
+                if (memberiq) {
+                    if (message.member.permissions.has('BAN_MEMBERS')) {
+                        memberiq.ban({ reason: `Ban requested by ${message.author.username}` })
                             .then(() => {
                                 const banembed = new Discord.MessageEmbed()
                                     .setTitle('Moderation')
@@ -215,10 +214,10 @@ client.on('message', message => {
             //The member needs to be specified.
             const user = message.mentions.user.first();
             if (user) {
-                const member = message.guild.member(user);
+                const memberiq = message.guild.member(user);
 
                 //If the member being muted is the one mentioned, mute them.
-                if (member) {
+                if (memberiq) {
                     member.mute({reason:'Mute requested'})
                     .then(() => {
                         //Create a new message to show that the mute was successful.
