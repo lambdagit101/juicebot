@@ -10,7 +10,7 @@ client.on('message', message => {
             const user = message.mentions.users.first();
             if (user) {
                 const memberiq = message.guild.member(user);
-                if (member) {
+                if (memberiq) {
                     if (message.member.permissions.has('KICK_MEMBERS')) {
                         memberiq.kick(`Kick requested by ${message.author.username}`)
                             .then(() => {
