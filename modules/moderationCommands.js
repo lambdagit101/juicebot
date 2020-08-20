@@ -69,7 +69,7 @@ client.on('message', message => {
             if (user) {
                 const member = message.guild.member(user);
                 if (member) {
-                    if (message.author.hasPermission("KICK_MEMBERS") || message.guild.me.hasPermission("BAN_MEMBERS")) {
+                    if (message.guild.me.hasPermission("KICK_MEMBERS") || message.guild.me.hasPermission("BAN_MEMBERS")) {
                         const warnembed = new Discord.MessageEmbed()
                         .setTitle('Moderation')
                         .setColor(0xff0000)
