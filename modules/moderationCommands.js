@@ -31,7 +31,7 @@ client.on('message', message => {
                
                     /*
                     //Non-moderators shouldn't be able to kick members. If they try, throw an error.
-                    if (!message.member.hasPermission(['KICK_MEMBERS']))
+                    if (!message.author.hasPermission(['KICK_MEMBERS']))
                     {
                          const cantkickembed = new Discord.MessageEmbed()
                          .setTitle('Moderation')
@@ -69,18 +69,22 @@ client.on('message', message => {
             if (user) {
                 const member = message.guild.member(user);
                 if (member) {
-                    const warnembed = new Discord.MessageEmbed()
-                    .setTitle('Moderation')
-                    .setColor(0xff0000)
-                    .setDescription(`You have been warned`)
-                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                    member.send(warnembed);           
-                    const warnedembed = new Discord.MessageEmbed()
-                    .setTitle('Moderation')
-                    .setColor(0xff0000)
-                    .setDescription(`${user.tag} has been warned`)
-                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                    message.channel.send(warnedembed);
+                    if (message.guild.me.hasPermission("KICK_MEMBERS") || message.guild.me.hasPermission("BAN_MEMBERS")) {
+                        const warnembed = new Discord.MessageEmbed()
+                        .setTitle('Moderation')
+                        .setColor(0xff0000)
+                        .setDescription(`You have been warned`)
+                        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                        member.send(warnembed);           
+                        const warnedembed = new Discord.MessageEmbed()
+                        .setTitle('Moderation')
+                        .setColor(0xff0000)
+                        .setDescription(`${user.tag} has been warned`)
+                        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                        message.channel.send(warnedembed);
+                    } else {
+                        
+                    }
                 }
             } 
         }
