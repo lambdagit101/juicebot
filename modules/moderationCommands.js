@@ -63,6 +63,21 @@ client.on('message', message => {
                 message.channel.send(nopersembed);
             }
         }
+        
+        if (message.content.toLowerCase().startsWith(`${PREFIX}warn`)) { // prototype warn command that sends a dm to the person who has been warned
+            const user = message.mentions.users.first();
+            if (user) {
+                const member = message.guild.member(user);
+                if (member) {
+                    const warnembed = new Discord.MessageEmbed()
+                    .setTitle('Moderation')
+                    .setColor(0xff0000)
+                    .setDescription(`You have been warned`)
+                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                    member.send(warnembed);           
+                }
+            } 
+        }
 
         //Banning a member.  
         if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
