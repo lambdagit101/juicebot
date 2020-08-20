@@ -2,6 +2,8 @@ const Discord = require('discord.js');
 const { client, PREFIX } = require('../index');
 
 client.on('message', message => {
+    if (!message.guild) return;
+    if (message.author.bot) return;
     try {
         //Kicking a member
         if (message.content.toLowerCase().startsWith(`${PREFIX}kick`)) {
@@ -9,38 +11,27 @@ client.on('message', message => {
             if (user) {
                 const member = message.guild.member(user);
                 if (member) {
-                    member.kick('Kick was requested')
-                    .then(() => {
-                        const kickembed = new Discord.MessageEmbed()
-                            .setTitle('Moderation')
-                            .setColor(0xff0000)
-                            .setDescription(`${user.tag} was successfully kicked!`)
-                            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                        message.channel.send(kickembed);
-                    })
-                    .catch(err => {
-                        const cantkickembed = new Discord.MessageEmbed()
-                            .setTitle('Moderation')
-                            .setColor(0xff0000)
-                            .setDescription("Couldn't kick the user")
-                            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                        message.channel.send(cantkickembed);
-                        console.error(err);
-                    });
-                } 
-               
-                    /*
-                    //Non-moderators shouldn't be able to kick members. If they try, throw an error.
-                    if (!message.author.hasPermission(['KICK_MEMBERS']))
-                    {
-                         const cantkickembed = new Discord.MessageEmbed()
-                         .setTitle('Moderation')
-                         .setColor(0xff0000)
-                         .setDescription("Couldn't kick the user")
-                         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                         message.channel.send(cantkickembed);
+                    if (message.author.hasPermission('KICK_MEMBERS')) {
+                        member.kick(`Kick requested by ${message.author.username}`)
+                            .then(() => {
+                                const kickembed = new Discord.MessageEmbed()
+                                    .setTitle('Moderation')
+                                    .setColor(0xff0000)
+                                    .setDescription(`${user.tag} was successfully kicked!`)
+                                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                                message.channel.send(kickembed);
+                            }).catch(err => {
+                                const cantkickembed = new Discord.MessageEmbed()
+                                    .setTitle('Moderation')
+                                    .setColor(0xff0000)
+                                    .setDescription("Couldn't kick the user")
+                                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                                message.channel.send(cantkickembed);
+                                console.error(err);
+                            });
                     }
-                   */
+                  
+                } 
 
                 //You can't kick someone who isn't in the server!
                 else {
@@ -69,7 +60,7 @@ client.on('message', message => {
             if (user) {
                 const member = message.guild.member(user);
                 if (member) {
-                    if (message.guild.me.hasPermission("KICK_MEMBERS") || message.guild.me.hasPermission("BAN_MEMBERS")) {
+                    if (message.author.hasPermission('KICK_MEMBERS') || message.author.hasPermission('BAN_MEMBERS')) {
                         const warnembed = new Discord.MessageEmbed()
                         .setTitle('Moderation')
                         .setColor(0xff0000)
@@ -83,7 +74,12 @@ client.on('message', message => {
                         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                         message.channel.send(warnedembed);
                     } else {
-                        
+                        const warnemmbed = new Discord.MessageEmbed()
+                        .setTitle('Moderation')
+                        .setColor(0xff0000)
+                        .setDescription(`No permission`)
+                        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                        member.send(warnemmbed);    
                     }
                 }
             } 
@@ -95,41 +91,20 @@ client.on('message', message => {
             if (user) {
                 const member = message.guild.member(user);
                 if (member) {
-                    member.ban({reason: 'Ban was requested'})
-                    .then(() => {
-                        const banembed = new Discord.MessageEmbed()
-                            .setTitle('Moderation')
-                            .setColor(0xff0000)
-                            .setDescription(`${user.tag} was successfully banned!`)
-                            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                        message.channel.send(banembed);
-                    })
-                    
-                    
-                    //Non-moderators shouldn't be able to ban members. If they try, throw an error.
-                    
-                    /*
-                    if (!message.member.hasPermission(['BAN_MEMBERS']))
-                    {
-                         const cantbanembed = new Discord.MessageEmbed()
-                         .setTitle('Moderation')
-                         .setColor(0xff0000)
-                         .setDescription("Couldn't ban the user")
-                         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                         message.channel.send(cantbanembed);
+                    if (message.author.hasPermission('BAN_MEMBERS')) {
+                        member.kick(`Kick requested by ${message.author.username}`)
+                        member.ban({ reason: `Ban requested by ${message.author.username}` })
+                            .then(() => {
+                                const banembed = new Discord.MessageEmbed()
+                                    .setTitle('Moderation')
+                                    .setColor(0xff0000)
+                                    .setDescription(`${user.tag} was successfully banned!`)
+                                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                                message.channel.send(banembed);
+                            })
                     }
-                    */
+                }
 
-                    .catch(err => {
-                        const cantbanembed = new Discord.MessageEmbed()
-                            .setTitle('Moderation')
-                            .setColor(0xff0000)
-                            .setDescription("Couldn't ban the user")
-                            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                        message.channel.send(cantbanembed);
-                        if (err) console.error(err);
-                    });
-                } 
 
                   //You can't ban someone who isn't in the server.
                 else {

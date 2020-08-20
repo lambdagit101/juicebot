@@ -1,4 +1,10 @@
 {
-"creator": "lambdaguy101",
-"contributors": ["lambdaguy101", "AstroAntics", "ImVerum", "DavidJoacaRo"]
+  "botname": "NolanBot",
+  "gitlink": "https://github.com/lambdagit101/nolanbot",
+  "supportserver": "https://discord.gg/9gvAq7r",
+  "botinvite": "https://discord.com/oauth2/authorize?client_id=722490368003670028&permissions=8&scope=bot",
+  "donatelink": "monero:43rf5jYqpPfCuJkaTwWrPY2DqbpLuiAMxTQxzdDc4RvyZNmxVxckZTmZeQLUaNypSDB55ARWMkMQ8GTHrXmV7PmG2qs3ZDN",
+  "creator": "lambdaguy101",
+  "prefix": "/",
+  "contributors": [ "AstroAntics", "ImVerum", "DavidJoacaRo" ]
 }

@@ -5,6 +5,7 @@ const queue = new Map();
 // This part of code was made by Gabriel Tanner, not me!
 client.on("message", async (message) => {
     if (message.author.bot) return;
+    if (!message.guild) return;
     if (!message.content.startsWith(PREFIX)) return;
 
     const serverQueue = queue.get(message.guild.id);
@@ -19,13 +20,13 @@ client.on("message", async (message) => {
         stop(message, serverQueue);
         return;
     }
-    if (message.content.toLowerCase().startsWith(`${PREFIX}join')) {
-    if (message.member.voice.channel) {
-      const connection = await message.member.voice.channel.join();
-    } else {
-      message.channel.send("You need to be in a voice channel to perform this action!");
+    if (message.content.toLowerCase().startsWith(`${PREFIX}join`)) {
+        if (message.member.voice.channel) {
+          const connection = await message.member.voice.channel.join();
+        } else {
+          message.channel.send("You need to be in a voice channel to perform this action!");
+        }
     }
-  }
 });
 
 async function execute(message, serverQueue) {

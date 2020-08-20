@@ -1,7 +1,8 @@
 const { Client, MessageEmbed } = require('discord.js');
 const client = new Client();
 const ytdl = require('ytdl-core');
-const PREFIX = "/";
+
+const PREFIX = require('../config.json').prefix;
 
 // Export the client so other modules can use it too
 module.exports.client = client;
