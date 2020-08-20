@@ -75,6 +75,12 @@ client.on('message', message => {
                     .setDescription(`You have been warned`)
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                     member.send(warnembed);           
+                    const warnedembed = new Discord.MessageEmbed()
+                    .setTitle('Moderation')
+                    .setColor(0xff0000)
+                    .setDescription(`${user.tag} has been warned`)
+                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                    message.channel.send(warnedembed);
                 }
             } 
         }
