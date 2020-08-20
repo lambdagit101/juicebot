@@ -29,6 +29,13 @@ client.on('message', message => {
                                 message.channel.send(cantkickembed);
                                 console.error(err);
                             });
+                    } else {
+                        const nopermemmbed = new Discord.MessageEmbed()
+                        .setTitle('Moderation')
+                        .setColor(0xff0000)
+                        .setDescription(`No permission`)
+                        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                        message.channel.send(nopermemmbed);
                     }
 
                 }
@@ -95,12 +102,19 @@ client.on('message', message => {
                         memberiq.ban({ reason: `Ban requested by ${message.author.username}` })
                             .then(() => {
                                 const banembed = new Discord.MessageEmbed()
-                                    .setTitle('Moderation')
-                                    .setColor(0xff0000)
-                                    .setDescription(`${user.tag} was successfully banned!`)
-                                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                                .setTitle('Moderation')
+                                .setColor(0xff0000)
+                                .setDescription(`${user.tag} was successfully banned!`)
+                                .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                                 message.channel.send(banembed);
                             })
+                    } else {
+                            const nopermembed = new Discord.MessageEmbed()
+                            .setTitle('Moderation')
+                            .setColor(0xff0000)
+                            .setDescription(`No permission`)
+                            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                            message.channel.send(nopermembed);
                     }
                 }
 
