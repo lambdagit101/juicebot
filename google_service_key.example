@@ -1,0 +1,5 @@
+To get a service key, create a new Firebase project first (https://console.firebase.google.com/).
+Next, click on "Cloud Firestore" and set it up.
+Go to https://console.cloud.google.com/ and switch to your newly created project, go to Service Accounts and generate a service key for "Firebase Admin SDK Service Agent".
+Download that file and put its content into a file called "google_service_key.json" in the root of this project.
+Remember to keep this file private.

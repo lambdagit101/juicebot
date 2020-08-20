@@ -109,5 +109,6 @@ dist
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
-# Token file
+# Access tokens
 token.json
+google_service_key.json
