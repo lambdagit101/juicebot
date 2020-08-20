@@ -11,7 +11,7 @@ client.on('message', message => {
             if (user) {
                 const member = message.guild.member(user);
                 if (member) {
-                    if (message.author.hasPermission('KICK_MEMBERS')) {
+                    if (message.author.permissions.has('KICK_MEMBERS')) {
                         member.kick(`Kick requested by ${message.author.username}`)
                             .then(() => {
                                 const kickembed = new Discord.MessageEmbed()
@@ -60,7 +60,7 @@ client.on('message', message => {
             if (user) {
                 const member = message.guild.member(user);
                 if (member) {
-                    if (message.author.hasPermission('KICK_MEMBERS') || message.author.hasPermission('BAN_MEMBERS')) {
+                    if (message.author.permissions.has('KICK_MEMBERS') || message.author.permissions.has('BAN_MEMBERS')) {
                         const warnembed = new Discord.MessageEmbed()
                         .setTitle('Moderation')
                         .setColor(0xff0000)
@@ -91,7 +91,7 @@ client.on('message', message => {
             if (user) {
                 const member = message.guild.member(user);
                 if (member) {
-                    if (message.author.hasPermission('BAN_MEMBERS')) {
+                    if (message.author.permissions.has('BAN_MEMBERS')) {
                         member.kick(`Kick requested by ${message.author.username}`)
                         member.ban({ reason: `Ban requested by ${message.author.username}` })
                             .then(() => {
