@@ -48,9 +48,15 @@ client.on('message', message =>
 	}
 	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}requestavatar`)) 
-	{
-		message.channel.send("Here is your avatar!");
-		message.channel.send(message.author.displayAvatarURL());	
+    {
+        const user = message.mentions.user.first();
+        if (user) {
+            message.channel.send("Here is your requested avatar!");
+            message.channel.send(user.displayAvatarURL());	
+        } else {
+            message.channel.send("Here is your requested avatar!");
+            message.channel.send(message.author.displayAvatarURL());	
+        }
 	}
 	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}evaxephon`)) 
