@@ -255,6 +255,6 @@ client.on('message', message => {
         }
     } catch(e) {
         // Send a message if an error has occurred
-        message.channel.send(`Uh-oh, something went wrong. Error message: \`\`\`js\n${e}\n\`\`\`\nIf this keeps happening, please contact the owner of this bot or make a new issue on github using /github`);
+        console.log(`Uh-oh, something went wrong. Error message: \`\`\`js\n${e}\n\`\`\`\nIf this keeps happening, please contact the owner of this bot or make a new issue on github using /github`);
     }
 });
