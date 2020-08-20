@@ -79,7 +79,7 @@ client.on('message', message => {
                             .setColor(0xff0000)
                             .setDescription(`No permission`)
                             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                        member.send(warnemmbed);
+                        message.channel.send(warnemmbed);
                     }
                 }
             }
