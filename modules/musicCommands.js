@@ -9,16 +9,23 @@ client.on("message", async (message) => {
 
     const serverQueue = queue.get(message.guild.id);
 
-    if (message.content.startsWith(`${PREFIX}play`)) {
+    if (message.content.toLowerCase().startsWith(`${PREFIX}play`)) {
         execute(message, serverQueue);
         return;
-    } else if (message.content.startsWith(`${PREFIX}skip`)) {
+    } else if (message.content.toLowerCase().startsWith(`${PREFIX}skip`)) {
         skip(message, serverQueue);
         return;
-    } else if (message.content.startsWith(`${PREFIX}stop`)) {
+    } else if (message.content.toLowerCase().startsWith(`${PREFIX}stop`)) {
         stop(message, serverQueue);
         return;
     }
+    if (message.content.toLowerCase().startsWith(`${PREFIX}join')) {
+    if (message.member.voice.channel) {
+      const connection = await message.member.voice.channel.join();
+    } else {
+      message.channel.send("You need to be in a voice channel to perform this action!");
+    }
+  }
 });
 
 async function execute(message, serverQueue) {
