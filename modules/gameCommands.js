@@ -23,7 +23,7 @@ client.on('message', async (message) =>
         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
         message.channel.send(triviaqembed);
         const filter = m => m.author.id === message.author.id;
-        const answer = await message.channel.awaitMessages(filter, {maxMatches: 1, time: 10000, errors: ['time', 'maxMatches']});
+        const answer = await message.channel.awaitMessages(filter, {maxMatches: 1, time: 100000, errors: ['time', 'maxMatches']});
         const ans = answer.first();
         if (ans.content.toLowerCase() === correctAnswer.toLowerCase()) {
             const trivialembed = new Discord.MessageEmbed()
@@ -56,7 +56,7 @@ client.on('message', async (message) =>
             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
         message.channel.send(triviaqembed);
         const filter = m => m.author.id === message.author.id;
-        const answer = await message.channel.awaitMessages(filter, { maxMatches: 1, time: 10000, errors: ['time', 'maxMatches'] });
+        const answer = await message.channel.awaitMessages(filter, { maxMatches: 1, time: 100000, errors: ['time', 'maxMatches'] });
         const ans = answer.first();
         if (ans.content.toLowerCase() === correctAnswer.toLowerCase()) {
             const trivialembed = new Discord.MessageEmbed()
@@ -89,7 +89,7 @@ client.on('message', async (message) =>
             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
         message.channel.send(triviaqembed);
         const filter = m => m.author.id === message.author.id;
-        const answer = await message.channel.awaitMessages(filter, { maxMatches: 1, time: 10000, errors: ['time', 'maxMatches'] });
+        const answer = await message.channel.awaitMessages(filter, { maxMatches: 1, time: 100000, errors: ['time', 'maxMatches'] });
         const ans = answer.first();
         if (ans.content.toLowerCase() === correctAnswer.toLowerCase()) {
             const trivialembed = new Discord.MessageEmbed()
@@ -122,7 +122,7 @@ client.on('message', async (message) =>
             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
         message.channel.send(triviaqembed);
         const filter = m => m.author.id === message.author.id;
-        const answer = await message.channel.awaitMessages(filter, { maxMatches: 1, time: 10000, errors: ['time', 'maxMatches'] });
+        const answer = await message.channel.awaitMessages(filter, { maxMatches: 1, time: 100000, errors: ['time', 'maxMatches'] });
         const ans = answer.first();
         if (ans.content.toLowerCase() === correctAnswer.toLowerCase()) {
             const trivialembed = new Discord.MessageEmbed()
