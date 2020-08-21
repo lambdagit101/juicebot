@@ -1,1 +1,1 @@
-{"token": "insert bot token from discord.com/developers here"}
+{"token": process.env.BOT_TOKEN}
