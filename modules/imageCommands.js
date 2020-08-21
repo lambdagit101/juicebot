@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const randomPuppy = require('random-puppy'); //Because puppies are nice.
 const { client, PREFIX } = require('../index'); // Import client from index.js
 
-client.on('message', message => 
+client.on('message', async (message) => 
 {
     if (message.author.bot) return;
 
