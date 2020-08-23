@@ -46,7 +46,7 @@ client.on('message', message =>
     if (message.content.toLowerCase().startsWith(`${PREFIX}invite`)) 
     {
     	console.log("Invited link");
-        message.channel.send('Invite link for NolanBot is: ' + require('../config.json').botinvite);
+        message.channel.send('Invite link for ' + require('../config.json').botname +' is: ' + require('../config.json').botinvite);
     }
 
 
