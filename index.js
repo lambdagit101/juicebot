@@ -11,6 +11,8 @@ module.exports.PREFIX = PREFIX;
 client.on('ready', () => {
     console.log(`${client.user.tag} - Ready on ${client.guilds.cache.size} guild${client.guilds.cache.size != 1 ? 's' : ''}!`);
 
+    require('./firebase_setup');
+
     // Execute modules in /modules folder
     const fs = require('fs');
     let files = fs.readdirSync('./modules');

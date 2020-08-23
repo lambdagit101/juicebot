@@ -1,7 +1,12 @@
 const Discord = require('discord.js');
 const { client, PREFIX } = require('../index');
 
-client.on('message', message => {
+// Import Firebase DB and get "guilds" collection
+const { db } = require('../firebase_setup');
+const guildDB = db.collection('guilds');
+// Will be used for something in future commit
+
+client.on('message', async function(message) {
     if (!message.guild) return;
     if (message.author.bot) return;
     try {
@@ -30,7 +35,7 @@ client.on('message', message => {
                                 console.error(err);
                             });
                     }
-                  
+                
                 } 
 
                 //You can't kick someone who isn't in the server!
@@ -61,25 +66,38 @@ client.on('message', message => {
                 const memberiq = message.guild.member(user);
                 if (memberiq) {
                     if (message.member.permissions.has('KICK_MEMBERS') || message.member.permissions.has('BAN_MEMBERS')) {
-                        const warnembed = new Discord.MessageEmbed()
-                        .setTitle('Moderation')
-                        .setColor(0xff0000)
-                        .setDescription(`You have been warned`)
-                        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                        memberiq.send(warnembed);           
-                        const warnedembed = new Discord.MessageEmbed()
-                        .setTitle('Moderation')
-                        .setColor(0xff0000)
-                        .setDescription(`${user.tag} has been warned`)
-                        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                        message.channel.send(warnedembed);
+                        guildDB.doc(message.guild.id).get()
+                        .then(data => {
+                            
+                            console.log(JSON.stringify(data, null, 4))
+
+                            if (!data) data = {};
+                            if (!data[memberiq]) data[memberiq] = {}
+                            if (!data[memberiq].infractions) data[memberiq].infractions = 0;
+                            data[memberiq].infractions = data[memberiq].infractions + 1;
+                            let userData = guildDB.doc(message.guild.id).set(data);
+
+                            const warnembed = new Discord.MessageEmbed()
+                                .setTitle('Moderation')
+                                .setColor(0xff0000)
+                                .setDescription(`You have been warned in <#${message.channel.id}>.`)
+                                .setFooter(`Invoked by ${message.author.username} | Infraction #${userData}`, message.author.avatarURL());
+                            memberiq.send(warnembed);           
+
+                            const warnedembed = new Discord.MessageEmbed()
+                                .setTitle('Moderation')
+                                .setColor(0xff0000)
+                                .setDescription(`${user.tag} has been warned`)
+                                .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                            message.channel.send(warnedembed);
+                        });
                     } else {
                         const warnemmbed = new Discord.MessageEmbed()
-                        .setTitle('Moderation')
-                        .setColor(0xff0000)
-                        .setDescription(`No permission`)
-                        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                        member.send(warnemmbed);    
+                            .setTitle('Moderation')
+                            .setColor(0xff0000)
+                            .setDescription(`No permission`)
+                            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                        member.send(warnemmbed);
                     }
                 }
             } 
