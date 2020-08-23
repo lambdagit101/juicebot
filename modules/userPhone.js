@@ -41,8 +41,8 @@ client.on('message', async (message) => {
             sessions[sessions.length - 1].peer = message.channel.id;
             newItem = new UserPhoneSession(message.channel.id);
             newItem.peer = sessions[sessions.length - 1].channelId;
-            client.channels.cache.get(newItem.peer).send('Connection started, say hewwo!');
-            client.channels.cache.get(newItem.channelId).send('Connection started, say hewwo!');
+            client.channels.cache.get(newItem.peer).send('Connection started. Say hello!');
+            client.channels.cache.get(newItem.channelId).send('Connection started. Say hello!');
             sessions.push(newItem);
         }
         else if (sessions.length == 0 || sessions.length % 2) {
