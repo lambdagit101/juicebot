@@ -4,7 +4,6 @@ const { client, PREFIX } = require('../index'); // Import client from index.js
 client.on('message', message => 
 {
     if (message.author.bot) return;
-    if (!message.guild) return;
 	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}github`)) 
 	{
@@ -25,12 +24,6 @@ client.on('message', message =>
     	});
     }
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}help music`)) 
-    {
-    	console.log("Music helped");
-    	message.channel.send("https://cdn.discordapp.com/attachments/722508329678798881/741004511035916368/Help.png");
-    }
-	
     if (message.content.toLowerCase() == `${PREFIX}help`) 
     {
 	    console.log("General helped");

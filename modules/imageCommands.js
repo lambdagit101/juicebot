@@ -7,17 +7,6 @@ client.on('message', async (message) =>
 {
     if (message.author.bot) return;
 
-	if (message.content.toLowerCase().startsWith(`${PREFIX}lorempic`)) 
-	{
-        const image = await fetch("https://picsum.photos/v2/list?page=2&limit=100");
-        const data = await image.json();
-        var length = data.results.length;
-        var randomNumber = Math.floor(Math.random() * length);
-        var randomImage = data.results[randomNumber];
-        var imeige = randomImage.url;
-        message.channel.send(imeige);
-    }
-
     if (message.content.toLowerCase().startsWith(`${PREFIX}sbubby`)) {
         randomPuppy('sbubby').then(url => {
             message.channel.send(url);
@@ -60,14 +49,8 @@ client.on('message', async (message) =>
 	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}requestavatar`)) 
     {
-        const user = message.mentions.user.first();
-        if (user) {
-            message.channel.send("Here is your requested avatar!");
-            message.channel.send(user.displayAvatarURL());	
-        } else {
-            message.channel.send("Here is your requested avatar!");
-            message.channel.send(message.author.displayAvatarURL());	
-        }
+        message.channel.send("Here is your requested avatar!");
+        message.channel.send(message.author.displayAvatarURL());	
 	}
 	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}evaxephon`)) 
