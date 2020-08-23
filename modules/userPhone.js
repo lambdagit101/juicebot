@@ -54,11 +54,13 @@ client.on('message', async (message) => {
         }
     }
     // breach of privacy
+    /* this is a surprise tool that will help us later
     if (message.content == `${PREFIX}sessions`) {
         sessions.forEach(element => {
             message.channel.send("channelId: " + element.channelId + ", peer: " + element.peer)
         });
     }
+    */
 });
 
 class UserPhoneSession {
