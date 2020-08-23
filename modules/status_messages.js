@@ -15,8 +15,9 @@ setInterval(() => {
         { type: 'WATCHING', name: `You | ${PREFIX}help`},
         { type: 'WATCHING', name: `and waiting | ${PREFIX}help`},
         { type: 'WATCHING', name: `Osana | ${PREFIX}help`},
-        { type: 'STREAMING', name: `Hentai | ${PREFIX}help`}, 
-        { type: 'STREAMING', name: `I was born with glass bones and paper skin | ${PREFIX}help`},
+        { type: 'WATCHING', name: `Content Nuke | ${PREFIX}help`},
+        //{ type: 'STREAMING', name: `Hentai | ${PREFIX}help`}, 
+        //{ type: 'STREAMING', name: `I was born with glass bones and paper skin. Every morning I break my legs, and every afternoon I break my arms. | ${PREFIX}help`},
         { type: 'PLAYING', name: `2020 Survival Simulator | ${PREFIX}help`},
         
         
