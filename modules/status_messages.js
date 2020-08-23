@@ -15,8 +15,10 @@ setInterval(() => {
         { type: 'WATCHING', name: `You | ${PREFIX}help`},
         { type: 'WATCHING', name: `and waiting | ${PREFIX}help`},
         { type: 'WATCHING', name: `Osana | ${PREFIX}help`}
-        //Does this last one work? I've commented it out as a safe feature.
-        //{ type: 'PLAYING', name: `the Matrix | /help'}
+        { type: 'STREAMING', name: `Hentai | ${PREFIX}help`}
+        { type: 'STREAMING', name: `I was born with glass bones and paper skin | ${PREFIX}help`}
+        
+        
     ]
 
     client.user.setActivity(statusMessages[index]);
