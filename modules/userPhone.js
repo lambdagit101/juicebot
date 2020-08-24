@@ -62,7 +62,16 @@ client.on('message', async (message) => {
     }
     */
 });
-
+client.on("channelDelete", function(channel){
+    i = 0;
+    sessions.forEach(element => {
+        if(element.channelId == channel.id){
+            sessions.splice(i, 1);
+            return;
+        }
+        i++;
+    });
+});
 class UserPhoneSession {
     constructor(channelId) {
         this.channelId = channelId;
