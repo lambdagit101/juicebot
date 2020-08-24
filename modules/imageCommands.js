@@ -6,11 +6,19 @@ const fetch = require('node-fetch');
 client.on('message', async (message) => 
 {
     if (message.author.bot) return;
-
+    https://youtu.be/RtTYQuO1j6w
     if (message.content.toLowerCase().startsWith(`${PREFIX}sbubby`)) {
         randomPuppy('sbubby').then(url => {
             message.channel.send(url);
         });
+    }
+
+    if (message.content.toLowerCase().startsWith(`${PREFIX}dummyimage`)) {
+        const args = message.content.slice(PREFIX.length).trim().split(' ');
+        const width = args[1].toLowerCase();
+        const text = message.content.split(args[1] + " ")[1];
+        const forrealtext = text.replace(/ /g, "%20");
+        message.channel.send('https://dummyimage.com/' + width + '/' + '000/fff.png&text=' + forrealtext + '+');
     }
 	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}animeme`)) 

@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const { client, PREFIX } = require('../index'); // Import client from index.js
-const fetch = require('node-fetch')
+const fetch = require('node-fetch');
 
 client.on('message', async (message) => 
 {
@@ -13,9 +13,9 @@ client.on('message', async (message) =>
         const details = await fetch('http://ip-api.com/json/' + ipdeet);
         const detailsjson = await details.json();
         const ipembed = new Discord.MessageEmbed()
-            .setTitle("IP Details:")
+            .setTitle("IP Details")
             .setColor('2f3136')
-            .setDescription('IP: ' + ipdeet + '\nStatus: ' + detailsjson.country + '\nCountry code: ' + detailsjson.countryCode + "\nRegion: " + detailsjson.regionName + "\nCity: " + detailsjson.city + "\nZip code: " + detailsjson.zip + "\nTimezone: " + detailsjson.timezone + "\nISP: " + detailsjson.isp + "\nOrganization: " + detailsjson.org + `\nTorrent history: [Click here](https://iknowwhatyoudownload.com/en/peer/?ip=${ipdeet})`)
+            .setDescription('IP: ' + ipdeet + '\nCountry: ' + detailsjson.country + '\nCountry code: ' + detailsjson.countryCode + "\nRegion: " + detailsjson.regionName + "\nCity: " + detailsjson.city + "\nZip code: " + detailsjson.zip + "\nTimezone: " + detailsjson.timezone + "\nISP: " + detailsjson.isp + "\nOrganization: " + detailsjson.org + `\nTorrent history: [Click here](https://iknowwhatyoudownload.com/en/peer/?ip=${ipdeet})`)
             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
         message.channel.send(ipembed);
     }
