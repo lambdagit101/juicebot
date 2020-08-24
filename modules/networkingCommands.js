@@ -8,7 +8,7 @@ client.on('message', async (message) =>
     if (!message.guild) return;
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}iplookup`)) {
-        const args = message.content.slice(prefix.length).trim().split(' ');
+        const args = message.content.slice(PREFIX.length).trim().split(' ');
         const ipdeet = args.shift().toLowerCase();
         const details = await fetch('http://ip-api.com/json/' + ipdeet);
         const detailsjson = await details.json();
