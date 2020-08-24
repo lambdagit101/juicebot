@@ -72,8 +72,24 @@ client.on('message', async (message) =>
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}bonk`)) 
     {
+        var whichbonk = Math.floor(Math.random() * 4);
+        switch (whichbonk) {
+            case 0:
+                message.channel.send('https://cdn.discordapp.com/attachments/686015484281225241/722533493435007066/posterbonk.png');
+                break;
+            case 1:
+                message.channel.send('https://cdn.discordapp.com/attachments/735495269034098771/747478778254459089/posterbonk2.png');
+                break;
+            case 2:
+                message.channel.send('https://cdn.discordapp.com/attachments/735495269034098771/747478781454712833/posterbonk3.png');
+                break;
+            case 3:
+                message.channel.send('https://cdn.discordapp.com/attachments/735495269034098771/747478775633018970/posterbonk4.png');
+                break;
+            default:
+                message.channel.send('https://cdn.discordapp.com/attachments/686015484281225241/722533493435007066/posterbonk.png');
+        }
     	console.log("Hey can somebody keep track of my heads batted in? BONK");
-    	message.channel.send('https://cdn.discordapp.com/attachments/686015484281225241/722533493435007066/posterbonk.png');
     }
 
 });
