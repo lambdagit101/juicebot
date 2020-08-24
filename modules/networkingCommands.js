@@ -9,7 +9,7 @@ client.on('message', async (message) =>
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}iplookup`)) {
         const args = message.content.slice(PREFIX.length).trim().split(' ');
-        const ipdeet = args.shift().toLowerCase();
+        const ipdeet = args[1].toLowerCase();
         const details = await fetch('http://ip-api.com/json/' + ipdeet);
         const detailsjson = await details.json();
         const ipembed = new Discord.MessageEmbed()
