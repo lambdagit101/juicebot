@@ -1,5 +1,4 @@
-# Welcome to NolanBot!
-## It's a bot I made as a meme.
+# Welcome to JuiceBot!
 
 To run the bot, you need to have node.js installed first. If you haven't installed it yet, download it [here](https://nodejs.org/en/download/).
 
@@ -17,10 +16,10 @@ Also you need a bot token. If you haven't created one yet, go to https://discord
 
 # Run the bot
 ## Windows
-Simply open the `NolanBot.bat` file.
+Simply open the `JuiceBot.bat` file.
 
 ## Linux
-If you're on Linux open the `NolanBot.sh` file to start the bot or type `node .` into the console.
+If you're on Linux open the `JuiceBot.sh` file to start the bot or type `node .` into the console.
 
 # Donations
 You can support me by donating to this Monero address: 43rf5jYqpPfCuJkaTwWrPY2DqbpLuiAMxTQxzdDc4RvyZNmxVxckZTmZeQLUaNypSDB55ARWMkMQ8GTHrXmV7PmG2qs3ZDN

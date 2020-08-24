@@ -7,17 +7,6 @@ client.on('message', async (message) =>
 {
     if (message.author.bot) return;
 
-	if (message.content.toLowerCase().startsWith(`${PREFIX}lorempic`)) 
-	{
-        const image = await fetch("https://picsum.photos/v2/list?page=2&limit=100");
-        const data = await image.json();
-        var length = data.results.length;
-        var randomNumber = Math.floor(Math.random() * length);
-        var randomImage = data.results[randomNumber];
-        var imeige = randomImage.url;
-        message.channel.send(imeige);
-    }
-
     if (message.content.toLowerCase().startsWith(`${PREFIX}sbubby`)) {
         randomPuppy('sbubby').then(url => {
             message.channel.send(url);
@@ -60,14 +49,8 @@ client.on('message', async (message) =>
 	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}requestavatar`)) 
     {
-        const user = message.mentions.user.first();
-        if (user) {
-            message.channel.send("Here is your requested avatar!");
-            message.channel.send(user.displayAvatarURL());	
-        } else {
-            message.channel.send("Here is your requested avatar!");
-            message.channel.send(message.author.displayAvatarURL());	
-        }
+        message.channel.send("Here is your requested avatar!");
+        message.channel.send(message.author.displayAvatarURL());	
 	}
 	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}evaxephon`)) 
@@ -89,8 +72,24 @@ client.on('message', async (message) =>
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}bonk`)) 
     {
+        var whichbonk = Math.floor(Math.random() * 4);
+        switch (whichbonk) {
+            case 0:
+                message.channel.send('https://cdn.discordapp.com/attachments/686015484281225241/722533493435007066/posterbonk.png');
+                break;
+            case 1:
+                message.channel.send('https://cdn.discordapp.com/attachments/735495269034098771/747478778254459089/posterbonk2.png');
+                break;
+            case 2:
+                message.channel.send('https://cdn.discordapp.com/attachments/735495269034098771/747478781454712833/posterbonk3.png');
+                break;
+            case 3:
+                message.channel.send('https://cdn.discordapp.com/attachments/735495269034098771/747478775633018970/posterbonk4.png');
+                break;
+            default:
+                message.channel.send('https://cdn.discordapp.com/attachments/686015484281225241/722533493435007066/posterbonk.png');
+        }
     	console.log("Hey can somebody keep track of my heads batted in? BONK");
-    	message.channel.send('https://cdn.discordapp.com/attachments/686015484281225241/722533493435007066/posterbonk.png');
     }
 
 });
