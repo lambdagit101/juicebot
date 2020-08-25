@@ -1,11 +1,10 @@
 const Discord = require('discord.js');
 const { client, PREFIX } = require('../index'); // Import client from index.js
 const fetch = require('node-fetch');
-
+// send me good web apis that return json results
 client.on('message', async (message) => 
 {
     if (message.author.bot) return;
-    if (!message.guild) return;
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}iplookup`)) {
         const args = message.content.slice(PREFIX.length).trim().split(' ');
