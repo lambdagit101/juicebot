@@ -11,6 +11,7 @@ client.on('message', async (message) =>
         randomPuppy('sbubby').then(url => {
             message.channel.send(url);
         });
+        return;
     }
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}dummyimage`)) {
@@ -19,63 +20,73 @@ client.on('message', async (message) =>
         const text = message.content.split(args[1] + " ")[1];
         const forrealtext = text.replace(/ /g, "%20");
         message.channel.send('https://dummyimage.com/' + width + '/' + '000/fff.png&text=' + forrealtext + '+');
+        return;
     }
 	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}animeme`)) 
 	{
         randomPuppy('goodanimemes').then(url => {
 			message.channel.send(url);
-		});  
+        });  
+        return;
 	}
 	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}pic`)) 
 	{
 		randomPuppy('pics').then(url => {
 			message.channel.send(url);
-		});  
+        });  
+        return;
 	}
 	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}comedyheaven`)) {
 		randomPuppy('comedyheaven').then(url => {
 			message.channel.send(url);
-		});  
+        });  
+        return;
 	}
 	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}dankmeme`)) 
 	{
 		randomPuppy('dankmemes').then(url => {
 			message.channel.send(url);
-		});  
+        });  
+        return;
 	}
 	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}4chan`)) 
 	{
 		randomPuppy('greentext').then(url => {
 			message.channel.send(url);
-		});  
+        });  
+        return;
 	}
 	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}requestavatar`)) 
     {
         message.channel.send("Here is your requested avatar!");
         message.channel.send(message.author.displayAvatarURL());	
+        return;
 	}
 	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}evaxephon`)) 
 	{
-		message.channel.send("https://yandere-simulator.com/tampon.png");	
+        message.channel.send("https://yandere-simulator.com/tampon.png");	
+        return;
 	}
 	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}puppy`)) 
 	{
 		randomPuppy().then(url => {
 			message.channel.send(url);
-		});  
+        });
+        return;
 	}
 	if (message.content.toLowerCase().startsWith(`${PREFIX}aww`)) {
 		randomPuppy('aww').then(url => {
 			message.channel.send(url);
-		});  
+        });  
+        return;
 	}
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}bonk`)) 
@@ -97,6 +108,7 @@ client.on('message', async (message) =>
             default:
                 message.channel.send('https://cdn.discordapp.com/attachments/686015484281225241/722533493435007066/posterbonk.png');
         }
+        return
     	console.log("Hey can somebody keep track of my heads batted in? BONK");
     }
 
