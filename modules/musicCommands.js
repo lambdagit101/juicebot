@@ -4,11 +4,13 @@ const ytdl = require('ytdl-core');
 const queue = new Map();
 // This part of code was made by Gabriel Tanner, not me!
 client.on("message", async (message) => {
+
     if (message.author.bot) return;
     if (!message.guild) return;
     if (!message.content.startsWith(PREFIX)) return;
 
     const serverQueue = queue.get(message.guild.id);
+
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}play`)) {
         execute(message, serverQueue);
@@ -18,6 +20,10 @@ client.on("message", async (message) => {
         return;
     } else if (message.content.toLowerCase().startsWith(`${PREFIX}stop`)) {
         stop(message, serverQueue);
+        return;
+    }
+    else if (message.content.toLowerCase().startsWith(`${PREFIX}queue`)) {
+        queueue(message, serverQueue);
         return;
     }
     if (message.content.toLowerCase().startsWith(`${PREFIX}join`)) {
@@ -73,25 +79,44 @@ async function execute(message, serverQueue) {
         serverQueue.songs.push(song);
         const embed = new Discord.MessageEmbed()
             .setTitle("YouTube")
-            .setColor(0xff0000)
+            .setColor('2f3136')
             .setDescription(`**${song.title}** was added to the queue.`);
         return message.channel.send(embed);
     }
 }
 
-function skip(message, serverQueue) {
+async function queueue(message, serverQueue) {
+    try {
+        const queuembed = new Discord.MessageEmbed()
+            .setTitle(message.guild.name + " queue")
+            .setColor('2f3136')
+            .setDescription(JSON.title.join('\n'))
+            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL()); 
+        message.channel.send(queuembed);
+    } catch (error) {
+        console.log(error);
+        const noqueuembed = new Discord.MessageEmbed()
+            .setTitle(message.guild.name + " Queue")
+            .setColor('2f3136')
+            .setDescription("The queue is empty!")
+            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL()); // /.setDescription(JSON.stringify(serverQueue.songs).title.join('\n'))
+        message.channel.send(noqueuembed);
+    }
+}
+
+async function skip(message, serverQueue) {
     if (!message.member.voice.channel) return message.channel.send("You have to be in a voice channel to stop the music!");
     if (!serverQueue) return message.channel.send("There is no song that I can skip!");
     serverQueue.connection.dispatcher.end();
 }
 
-function stop(message, serverQueue) {
+async function stop(message, serverQueue) {
     if (!message.member.voice.channel) return message.channel.send("You have to be in a voice channel to stop the music!");
     serverQueue.songs = [];
     serverQueue.connection.dispatcher.end();
 }
 
-function play(guild, song) {
+async function play(guild, song) {
     const serverQueue = queue.get(guild.id);
     if (!song) {
         serverQueue.voiceChannel.leave();
@@ -110,7 +135,7 @@ function play(guild, song) {
     dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
     const embed2 = new Discord.MessageEmbed()
         .setTitle("YouTube")
-        .setColor(0xff0000)
+        .setColor('2f3136')
         .setDescription(`Started playing: **${song.title}**`);
     serverQueue.textChannel.send(embed2);
 }

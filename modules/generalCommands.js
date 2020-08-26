@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const { client, PREFIX } = require('../index'); // Import client from index.js
 
-client.on('message', message => 
+client.on('message', async (message) => 
 {
     if (message.author.bot) return;
 	
@@ -14,6 +14,19 @@ client.on('message', message =>
     {
        console.log("GTA 4 Pager!");
        message.channel.send("https://youtu.be/Ee4ATNFER_Y");
+    }
+
+    if (message.content.toLowerCase().startsWith(`${PREFIX}print`)) {
+        const args = message.content.slice(PREFIX.length).trim().split(' ');
+        const chanel = await getUserFromMention(args[1]);
+        const text = message.content.split(args[1] + " ")[1];
+        try {
+            chanel.send(text);
+        } catch (err) {
+            console.log('No channel found. Sending to current channel.');
+            const chanel = args[1];
+            message.channel.send(chanel + " " + text);
+        }
     }
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}nolan`)) 
@@ -65,3 +78,17 @@ client.on('message', message =>
     }
 
 });
+
+async function getUserFromMention(mention) {
+    if (!mention) return;
+
+    if (mention.startsWith('<#') && mention.endsWith('>')) {
+        mention = mention.slice(2, -1);
+
+        if (mention.startsWith('!')) {
+            mention = mention.slice(1);
+        }
+        console.log(mention);
+        return await client.channels.cache.get(mention);
+    }
+}

@@ -6,7 +6,7 @@ const fetch = require('node-fetch');
 client.on('message', async (message) => 
 {
     if (message.author.bot) return;
-    https://youtu.be/RtTYQuO1j6w
+    
     if (message.content.toLowerCase().startsWith(`${PREFIX}sbubby`)) {
         randomPuppy('sbubby').then(url => {
             message.channel.send(url);

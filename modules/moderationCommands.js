@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const { client, PREFIX } = require('../index');
 
-client.on('message', message => {
+client.on('message', async (message) => {
     if (!message.guild) return;
     if (message.author.bot) return;
     try {
