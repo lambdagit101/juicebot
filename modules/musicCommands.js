@@ -23,6 +23,7 @@ client.on("message", async (message) => {
         return;
     }
     else if (message.content.toLowerCase().startsWith(`${PREFIX}queue`)) {
+        //logMapElements(, , serverQueue); 
         queueue(message, serverQueue);
         return;
     }
@@ -78,20 +79,23 @@ async function execute(message, serverQueue) {
     } else {
         serverQueue.songs.push(song);
         const embed = new Discord.MessageEmbed()
-            .setTitle("YouTube")
+            .setTitle("Music")
             .setColor('2f3136')
             .setDescription(`**${song.title}** was added to the queue.`);
         return message.channel.send(embed);
     }
 }
-
+function logMapElements(value) {
+    console.log(`m${value}`);
+  }
 async function queueue(message, serverQueue) {
+    serverQueue.forEach(logMapElements);
     try {
         const queuembed = new Discord.MessageEmbed()
-            .setTitle(message.guild.name + " queue")
+            .setTitle(message.guild.name + " Queue")
             .setColor('2f3136')
-            .setDescription(JSON.title.join('\n'))
-            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL()); 
+            .setDescription('Now playing: ' + serverQueue.get('title') + "\n")
+            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());//feels like its gotta be shitting itself because that json s f'd up
         message.channel.send(queuembed);
     } catch (error) {
         console.log(error);
@@ -134,7 +138,7 @@ async function play(guild, song) {
 
     dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
     const embed2 = new Discord.MessageEmbed()
-        .setTitle("YouTube")
+        .setTitle("Music")
         .setColor('2f3136')
         .setDescription(`Started playing: **${song.title}**`);
     serverQueue.textChannel.send(embed2);

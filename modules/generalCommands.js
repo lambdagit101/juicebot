@@ -13,7 +13,7 @@ client.on('message', async (message) =>
 	
     if (message.content.toLowerCase().startsWith(`${PREFIX}gta 4 pager`)) 
     {
-       console.log("GTA 4 Pager!");
+        console.log("GTA 4 Pager!");
         message.channel.send("https://youtu.be/Ee4ATNFER_Y");
         return;
     }
@@ -23,16 +23,7 @@ client.on('message', async (message) =>
         const chanel = await getUserFromMention(args[1]);
         const text = message.content.split(args[1] + " ")[1];
         try {
-            if (chanel.name.includes('announcements')) {
-                message.channel.send('Cannot print messages in an announcements channel!');
-                return;
-            } else if (chanel.name.includes('rules')) {
-                message.channel.send('Cannot print messages in a rules channel!');
-                return;
-            } else if (chanel.name.includes('news')) {
-                message.channel.send('Cannot print messages in a news channel!');
-                return;
-            } else {
+            if (chanel.permissionsFor(message.author).has('SEND_MESSAGES')) {
                 chanel.send(text);
                 message.delete();
                 return;
@@ -45,6 +36,7 @@ client.on('message', async (message) =>
                 message.channel.send(chanel);
                 return;
             } else {
+                message.delete();
                 message.channel.send(chanel + " " + text);
                 return;
             }
