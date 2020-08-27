@@ -89,13 +89,12 @@ function logMapElements(value) {
     console.log(`m${value}`);
   }
 async function queueue(message, serverQueue) {
-    serverQueue.forEach(logMapElements);
     try {
         const queuembed = new Discord.MessageEmbed()
             .setTitle(message.guild.name + " Queue")
             .setColor('2f3136')
             .setDescription('Now playing: ' + serverQueue.get('title') + "\n")
-            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());//feels like its gotta be shitting itself because that json s f'd up
+            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
         message.channel.send(queuembed);
     } catch (error) {
         console.log(error);
