@@ -65,7 +65,6 @@ client.on('message', async (message) =>
     {
 	    console.log("General helped");
 	    message.channel.send("https://lambdagit101.github.io/juicebotweb/help");
-	    message.channel.send("https://cdn.discordapp.com/attachments/722508329678798881/741004886841229402/Help.png");
         return;
     }
 

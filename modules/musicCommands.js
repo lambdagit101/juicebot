@@ -26,6 +26,8 @@ client.on("message", async (message) => {
         //logMapElements(, , serverQueue); 
         queueue(message, serverQueue);
         return;
+    } else if (message.content.toLowerCase().startsWith(`${PREFIX}queue`)) {
+        return; // Nothing for now
     }
     if (message.content.toLowerCase().startsWith(`${PREFIX}join`)) {
         if (message.member.voice.channel) {
