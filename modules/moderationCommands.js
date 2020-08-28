@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+﻿const Discord = require('discord.js');
 const { client, PREFIX } = require('../index');
 
 client.on('message', async (message) => {
@@ -136,6 +136,45 @@ client.on('message', async (message) => {
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL())
                 );
             }
+        }
+
+        if (message.content.toLowerCase().startsWith(`${PREFIX}purge`)) {
+            if (message.member.permissions.has('MANAGE_MESSAGES')) {
+                const args = message.content.split(' ');
+                let deleteCount = 0;
+                try {
+                    deleteCount = parseInt(args[1], 10);
+                } catch (err) {
+                    const returnembed = new Discord.MessageEmbed()
+                        .setTitle('Moderation')
+                        .setColor(0xff0000)
+                        .setDescription(`Please provide a number`)
+                        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                    return message.channel.send(returnembed);
+                }
+
+
+                if (!deleteCount || deleteCount < 2 || deleteCount > 100) {
+                    const providembed = new Discord.MessageEmbed()
+                        .setTitle('Moderation')
+                        .setColor(0xff0000)
+                        .setDescription(`Please provide a number between 2 and 100`)
+                        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                    return message.channel.send(providembed);
+                }
+                const fetched = await message.channel.messages.fetch({
+                    limit: deleteCount,
+                });
+                message.channel.bulkDelete(fetched)
+                    .catch(error => message.channel.send(`Couldn't delete messages because of: ${error}`));
+            } else {
+                const nonpermembed = new Discord.MessageEmbed()
+                    .setTitle('Moderation')
+                    .setColor(0xff0000)
+                    .setDescription(`No permission`)
+                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                message.channel.send(nonpermembed);
+            }     
         }
 
         //Muting a member.

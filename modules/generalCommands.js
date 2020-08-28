@@ -9,7 +9,18 @@ client.on('message', async (message) =>
 	{
         message.channel.send(require('../config.json').gitlink);	
         return;
-	}
+    }
+
+    if (message.content.toLowerCase().startsWith(`${PREFIX}heartbeat`) || message.content.toLowerCase().startsWith(`${PREFIX}ping`)) {
+        console.log("Checking ping...");
+        message.channel.send("Pinging...").then(m => {
+            var ping = m.createdTimestamp - message.createdTimestamp;
+            var botPing = Math.round(client.pi);
+
+            m.edit('Bot ping is: ' + `${ping}ms`);
+        });
+        return;
+    }
 	
     if (message.content.toLowerCase().startsWith(`${PREFIX}gta 4 pager`)) 
     {

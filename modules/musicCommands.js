@@ -91,10 +91,14 @@ function logMapElements(value) {
 async function queueue(message, serverQueue) {
     try {
         const queuembed = new Discord.MessageEmbed()
-            .setTitle(message.guild.name + " Queue")
-            .setColor('2f3136')
-            .setDescription('Now playing: ' + serverQueue.get('title') + "\n")
-            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+        queuembed.setTitle(message.guild.name + " Queue")
+        queuembed.setColor('2f3136')
+        if (serverQueue.songs.length == 1) {
+            queuembed.setDescription(`Now playing: [${serverQueue.songs[0].title}](${serverQueue.songs[0].url})`)
+        } else {
+            queuembed.setDescription(`Now playing: [${serverQueue.songs[0].title}](${serverQueue.songs[0].url}) \n${serverQueue.songs.length} songs remaining in the queue \nNext up: [${serverQueue.songs[1].title}](${serverQueue.songs[1].url})`)
+        }
+        queuembed.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
         message.channel.send(queuembed);
     } catch (error) {
         console.log(error);
