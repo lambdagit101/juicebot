@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const { MessageAttachment } = require('discord.js');
 const randomPuppy = require('random-puppy'); //Because puppies are nice.
 const { client, PREFIX } = require('../index'); // Import client from index.js
 const fetch = require('node-fetch');
@@ -29,7 +30,13 @@ client.on('message', async (message) =>
 			message.channel.send(url);
         });  
         return;
-	}
+    }
+
+    if (message.content.toLowerCase().startsWith(`${PREFIX}borgar`)) {
+        const attachment = new MessageAttachment('https://cdn.discordapp.com/attachments/736196476837036102/749324531943997502/borgar.PNG');
+        message.channel.send(attachment);
+        return;
+    }
 	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}pic`)) 
 	{
@@ -65,7 +72,7 @@ client.on('message', async (message) =>
 	if (message.content.toLowerCase().startsWith(`${PREFIX}requestavatar`)) 
     {
         message.channel.send("Here is your requested avatar!");
-        message.channel.send(message.author.displayAvatarURL());	
+        message.channel.send(message.author.displayAvatarURL({ format: 'png', size: 512 }));
         return;
 	}
 	
