@@ -42,7 +42,7 @@ async function generateImage(message, nickname, filename) {
         }
         download(message.author.displayAvatarURL({ format: 'png', size: 512 }), options);
         await sleep(2000);
-        images(`./${username}`).resize(512, 512).save(`./resize${message.author.id}${id}.png`);
+        images(`./${username}`).resize(512, 512).save(`./${username}`);
         images(`./resize${message.author.id}${id}.png`).draw(images(`./filters/${filename}.png`), 0, 0).save(`./output${nickname}${message.author.id}${id}.png`);
         const attachment = new MessageAttachment(`./output${nickname}${message.author.id}${id}.png`);
         message.channel.send(attachment);
