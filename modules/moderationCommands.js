@@ -12,8 +12,16 @@ client.on('message', async (message) => {
                 const memberiq = message.guild.member(user);
                 if (memberiq) {
                     if (message.member.permissions.has('KICK_MEMBERS')) {
-                        memberiq.kick(`Kick requested by ${message.author.username}`)
+                        const args = message.content.slice(PREFIX.length).trim().split(' ');
+                        const text = message.content.split(args[1] + " ")[1];
+                        memberiq.kick(`Kicked by ${message.author.tag}. Reason: ${text}`)
                             .then(() => {
+                                const kickembed = new Discord.MessageEmbed()
+                                    .setTitle('Moderation')
+                                    .setColor(0xff0000)
+                                    .setDescription(`You have been kicked by ${message.author.tag}. Reason: ${text}`)
+                                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                                user.send(kickembed);
                                 const kickembed = new Discord.MessageEmbed()
                                     .setTitle('Moderation')
                                     .setColor(0xff0000)
@@ -68,10 +76,12 @@ client.on('message', async (message) => {
                 const memberiq = message.guild.member(user);
                 if (memberiq) {
                     if (message.member.permissions.has('KICK_MEMBERS') || message.member.permissions.has('BAN_MEMBERS')) {
+                        const args = message.content.slice(PREFIX.length).trim().split(' ');
+                        const text = message.content.split(args[1] + " ")[1];
                         const warnembed = new Discord.MessageEmbed()
                             .setTitle('Moderation')
                             .setColor(0xff0000)
-                            .setDescription(`You have been warned`)
+                            .setDescription(`You have been warned\nReason: ${text}`)
                             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                         memberiq.send(warnembed);
                         const warnedembed = new Discord.MessageEmbed()
@@ -99,8 +109,16 @@ client.on('message', async (message) => {
                 const memberiq = message.guild.member(user);
                 if (memberiq) {
                     if (message.member.permissions.has('BAN_MEMBERS')) {
-                        memberiq.ban({ reason: `Ban requested by ${message.author.username}` })
+                        const args = message.content.slice(PREFIX.length).trim().split(' ');
+                        const text = message.content.split(args[1] + " ")[1];
+                        memberiq.ban({ reason: `Banned by ${message.author.tag}. Reason: ${text}` })
                             .then(() => {
+                                const bannedembed = new Discord.MessageEmbed()
+                                    .setTitle('Moderation')
+                                    .setColor(0xff0000)
+                                    .setDescription(`You have been banned by ${message.author.tag}. Reason: ${text}`)
+                                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                                user.send(bannedembed);
                                 const banembed = new Discord.MessageEmbed()
                                 .setTitle('Moderation')
                                 .setColor(0xff0000)
