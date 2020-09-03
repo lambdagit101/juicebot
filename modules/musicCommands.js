@@ -82,7 +82,6 @@ async function execute(message, serverQueue) {
         serverQueue.songs.push(song);
         const embed = new Discord.MessageEmbed()
             .setTitle("Music")
-            .setColor('2f3136')
             .setDescription(`**${song.title}** was added to the queue.`);
         return message.channel.send(embed);
     }
@@ -94,7 +93,6 @@ async function queueue(message, serverQueue) {
     try {
         const queuembed = new Discord.MessageEmbed()
         queuembed.setTitle(message.guild.name + " Queue")
-        queuembed.setColor('2f3136')
         if (serverQueue.songs.length == 1) {
             queuembed.setDescription(`Now playing: [${serverQueue.songs[0].title}](${serverQueue.songs[0].url})`)
         } else {
@@ -106,7 +104,6 @@ async function queueue(message, serverQueue) {
         console.log(error);
         const noqueuembed = new Discord.MessageEmbed()
             .setTitle(message.guild.name + " Queue")
-            .setColor('2f3136')
             .setDescription("The queue is empty!")
             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL()); // /.setDescription(JSON.stringify(serverQueue.songs).title.join('\n'))
         message.channel.send(noqueuembed);
@@ -144,7 +141,6 @@ async function play(guild, song) {
     dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
     const embed2 = new Discord.MessageEmbed()
         .setTitle("Music")
-        .setColor('2f3136')
         .setDescription(`Started playing: **${song.title}**`);
     serverQueue.textChannel.send(embed2);
 }

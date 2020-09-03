@@ -40,7 +40,6 @@ client.on('message', async (message) =>
                 return;
             }
         } catch (err) {
-            console.log('No channel found. Sending to current channel.');
             const chanel = args[1];
             if (text == null) {
                 message.delete();
