@@ -104,19 +104,35 @@ client.on('message', async (message) =>
         var whichbonk = Math.floor(Math.random() * 4);
         switch (whichbonk) {
             case 0:
-                message.channel.send('https://cdn.discordapp.com/attachments/686015484281225241/722533493435007066/posterbonk.png');
+                const bonk1embed = new Discord.MessageEmbed()
+                    .setTitle('Bonk Wedding Photo')
+                    .setImage('https://cdn.discordapp.com/attachments/686015484281225241/722533493435007066/posterbonk.png')
+                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                message.channel.send(bonk1embed);
                 break;
             case 1:
-                message.channel.send('https://cdn.discordapp.com/attachments/735495269034098771/747478778254459089/posterbonk2.png');
+                const bonk2embed = new Discord.MessageEmbed()
+                    .setTitle('Bonk and Scout going home after the wedding')
+                    .setImage('https://cdn.discordapp.com/attachments/735495269034098771/747478778254459089/posterbonk2.png')
+                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                message.channel.send(bonk2embed);
                 break;
             case 2:
-                message.channel.send('https://cdn.discordapp.com/attachments/735495269034098771/747478781454712833/posterbonk3.png');
+                const bonk3embed = new Discord.MessageEmbed()
+                    .setTitle('Scout and Bonk laughing at Sniper')
+                    .setImage('https://cdn.discordapp.com/attachments/735495269034098771/747478781454712833/posterbonk3.png')
+                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                message.channel.send(bonk3embed);
                 break;
             case 3:
-                message.channel.send('https://cdn.discordapp.com/attachments/735495269034098771/747478775633018970/posterbonk4.png');
+                const bonk4embed = new Discord.MessageEmbed()
+                    .setTitle('Scout seeing Bonk for the first time')
+                    .setImage('https://cdn.discordapp.com/attachments/735495269034098771/747478775633018970/posterbonk4.png')
+                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                message.channel.send(bonk4embed);
                 break;
             default:
-                message.channel.send('https://cdn.discordapp.com/attachments/686015484281225241/722533493435007066/posterbonk.png');
+                message.channel.send('How did we get here?');
         }
         return
     	console.log("Hey can somebody keep track of my heads batted in? BONK");
