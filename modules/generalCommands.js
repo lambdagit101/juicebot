@@ -55,27 +55,23 @@ client.on('message', async (message) =>
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}nolan`)) 
     {
-        console.log("Nolanized");
         message.channel.send('Nolan');
         return;
     }
 
     if (message.content.toLowerCase() == `${PREFIX}help`) 
     {
-	    console.log("General helped");
 	    message.channel.send("https://lambdagit101.github.io/juicebotweb/help");
         return;
     }
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}support`)) {
-        console.log("Supported");
         message.channel.send('Invite link for the support server is: ' + require('../config.json').supportserver);
         return;
     }
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}invite`)) 
     {
-    	console.log("Invited link");
         message.channel.send('Invite link for ' + require('../config.json').botname +' is: ' + require('../config.json').botinvite);
         return;
     }
@@ -83,7 +79,6 @@ client.on('message', async (message) =>
 
     if (message.content.toLowerCase() === (`${PREFIX}donate`)) 
     {
-        console.log("Hope they donate");
         const donatembed = new Discord.MessageEmbed()
             .setTitle('Donate')
             .setDescription('Donate method: ' + require('../config.json').donatelink)
@@ -95,7 +90,6 @@ client.on('message', async (message) =>
 //The man, the myth, the legend.	
     if (message.content.toLowerCase() === (`${PREFIX}credits`)) 
     {
-        console.log("Made by lambdaguy101");
         const creditsembed = new Discord.MessageEmbed()
         .setTitle(require('../config.json').botname)
         .setDescription('Made by ' + require('../config.json').creator +' using discord.js. Type /github for the source code.\n\n**Contributor list: **' + require('../config.json').contributors.join(', ') + '.\nThank you all for helping!')

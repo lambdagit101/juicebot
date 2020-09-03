@@ -74,14 +74,21 @@ client.on('message', async (message) =>
 	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}requestavatar`)) 
     {
-        message.channel.send("Here is your requested avatar!");
-        message.channel.send(message.author.displayAvatarURL({ format: 'png', size: 512 }));
+        const avatarembed = new Discord.MessageEmbed()
+            .setTitle('Here is your requested avatar!')
+            .setImage(message.author.displayAvatarURL({ format: 'png', size: 512 }))
+            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+        message.channel.send(avatarembed);
         return;
 	}
 	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}evaxephon`)) 
 	{
-        message.channel.send("https://yandere-simulator.com/tampon.png");	
+        const evaembed = new Discord.MessageEmbed()
+            .setTitle('I, EvaSex')
+            .setImage('https://yandere-simulator.com/tampon.png')
+            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+        message.channel.send(evaembed);
         return;
 	}
 	
@@ -135,7 +142,6 @@ client.on('message', async (message) =>
                 message.channel.send('How did we get here?');
         }
         return
-    	console.log("Hey can somebody keep track of my heads batted in? BONK");
     }
 
 });
