@@ -112,7 +112,7 @@ client.on('message', async (message) =>
         switch (whichbonk) {
             case 0:
                 const bonk1embed = new Discord.MessageEmbed()
-                    .setTitle('Bonk Wedding Photo')
+                    .setTitle('Bonk and Scout Wedding Photo')
                     .setImage('https://cdn.discordapp.com/attachments/686015484281225241/722533493435007066/posterbonk.png')
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                 message.channel.send(bonk1embed);
