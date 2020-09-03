@@ -1,8 +1,11 @@
+// This module uses the KSoft.Si API. You need to get your own app approved to use this module.
+// If your app did not get approved, then bad luck. If you do not have a token, register one!
+// Until then, comment the entire module.
+
 const Discord = require('discord.js');
 const { client, PREFIX } = require('../index'); // Import client from index.js
 const fetch = require('node-fetch');
-const { KSoftClient } = require('@ksoft/api'); // You need to have a KSoft.SI V1 token in order to use this module as intended.
-const ksoft = new KSoftClient(process.env.KSOFTSI_TOKEN); // This is the token you get if your KSoft app is approved
+const ksoftkey = `Bearer ${process.env.KSOFTSI_TOKEN}`; // This is the token you get if your KSoft app is approved
 
 client.on('message', async (message) => 
 {
@@ -36,23 +39,29 @@ client.on('message', async (message) =>
         }
         return;
     }
-
+    // Lyrics coming soon!
     if (message.content.toLowerCase().startsWith(`${PREFIX}lyrics`)) {
-        const args = message.content.slice(PREFIX.length).trim().split(' ');
-        const text = message.content.split(args[1] + " ")[1];
-        const { lyrics } = await ksoft.lyrics.search(text, { textOnly: true });
-        message.channel.send(lyrics);
+//        const args = message.content.slice(PREFIX.length).trim().split(' ');
+//        const text = message.content.split(args[1] + " ")[1];
+//        const lyrics = await fetch('https://api.ksoft.si/lyrics/search', {
+//           headers: { 'Authorization': ksoftkey },
+//        });
+//        message.channel.send(ksoft.lyrics.search(text, { textOnly: true }));
     }
 	
 });
 
 async function fetchredditi(link, message) {
-    const details = await fetch(link);
-    const detailsjson = await details.json();
-    var imageurl = detailsjson.image_url;
-    var embedtitle = detailsjson.title;
+    var details = await fetch(link, {
+        method: 'get',
+        headers: { 'Authorization': ksoftkey },
+    });
+    var detailsjson = await details.json();
+    var imageurl = await detailsjson.image_url;
+    var embedtitle = await detailsjson.title;
     const redditembed = new Discord.MessageEmbed()
-        .setTitle(title)
+        .setTitle(embedtitle)
         .setImage(imageurl)
+        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
     message.channel.send(redditembed);
 }

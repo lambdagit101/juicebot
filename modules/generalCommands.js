@@ -86,9 +86,9 @@ client.on('message', async (message) =>
     {
         console.log("Hope they donate");
         const donatembed = new Discord.MessageEmbed()
-        .setTitle('Donate')
-        .setColor(0xff0000)
-        .setDescription('Donate method: ' + require('../config.json').donatelink);
+            .setTitle('Donate')
+            .setDescription('Donate method: ' + require('../config.json').donatelink)
+            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
         message.channel.send(donatembed);
         return;
     }
@@ -99,8 +99,8 @@ client.on('message', async (message) =>
         console.log("Made by lambdaguy101");
         const creditsembed = new Discord.MessageEmbed()
         .setTitle(require('../config.json').botname)
-        .setColor('2f3136')
-        .setDescription('Made by ' + require('../config.json').creator +' using discord.js. Type /github for the source code.\n\n**Contributor list: **' + require('../config.json').contributors.join(', ') + '.\nThank you all for helping!');
+        .setDescription('Made by ' + require('../config.json').creator +' using discord.js. Type /github for the source code.\n\n**Contributor list: **' + require('../config.json').contributors.join(', ') + '.\nThank you all for helping!')
+        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
         message.channel.send(creditsembed);
         return;
     }

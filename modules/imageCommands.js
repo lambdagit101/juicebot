@@ -33,8 +33,11 @@ client.on('message', async (message) =>
     }
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}borgar`)) {
-        const attachment = new MessageAttachment('https://cdn.discordapp.com/attachments/736196476837036102/749324531943997502/borgar.PNG');
-        message.channel.send(attachment);
+        const borgarembed = new Discord.MessageEmbed()
+            .setTitle('Borgar')
+            .setImage('https://cdn.discordapp.com/attachments/736196476837036102/749324531943997502/borgar.PNG')
+            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+        message.channel.send(borgarembed);
         return;
     }
 	

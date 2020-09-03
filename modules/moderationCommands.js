@@ -16,12 +16,12 @@ client.on('message', async (message) => {
                         const text = message.content.split(args[1] + " ")[1];
                         memberiq.kick(`Kicked by ${message.author.tag}. Reason: ${text}`)
                             .then(() => {
-                                const kickembed = new Discord.MessageEmbed()
+                                const kickedembed = new Discord.MessageEmbed()
                                     .setTitle('Moderation')
                                     .setColor(0xff0000)
                                     .setDescription(`You have been kicked by ${message.author.tag}. Reason: ${text}`)
                                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                                user.send(kickembed);
+                                user.send(kickedembed);
                                 const kickembed = new Discord.MessageEmbed()
                                     .setTitle('Moderation')
                                     .setColor(0xff0000)
