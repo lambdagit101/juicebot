@@ -62,6 +62,6 @@ async function fetchredditi(link, message) {
     const redditembed = new Discord.MessageEmbed()
         .setTitle(embedtitle)
         .setImage(imageurl)
-        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+        .setFooter(`Invoked by ${message.author.username}, provided by KSoft.Si`, message.author.avatarURL());
     message.channel.send(redditembed);
 }
