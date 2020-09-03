@@ -85,7 +85,8 @@ client.on('message', async (message) =>
         var embedtitle = await deetailsjson.title;
         var embedtitleurl = await deetailsjson.article_url;
         const wikiembed = new Discord.MessageEmbed()
-            .setTitle(`[${embedtitle}](${embedtitleurl})`)
+            .setTitle(embedtitle)
+            .setURL(embedtitleurl)
             .setImage(imageurl)
             .setFooter(`Invoked by ${message.author.username}, provided by KSoft.Si`, message.author.avatarURL());
         message.channel.send(wikiembed);
@@ -125,6 +126,7 @@ async function fetchredditi(link, message) {
     var embedtitle = await detailsjson.title;
     const redditembed = new Discord.MessageEmbed()
         .setTitle(embedtitle)
+        .setURL(detailsjson.source)
         .setImage(imageurl)
         .setFooter(`Invoked by ${message.author.username}, provided by KSoft.Si`, message.author.avatarURL());
     message.channel.send(redditembed);
