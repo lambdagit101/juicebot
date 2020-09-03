@@ -54,7 +54,7 @@ client.on('message', async (message) =>
         return;
     }
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}randomnsfw`)) {
+    if (message.content.toLowerCase().startsWith(`${PREFIX}randomnsfw`) || message.content.toLowerCase().startsWith(`${PREFIX}nsfw`)) {
         if (message.channel.nsfw == true) {
             fetchredditi('https://api.ksoft.si/images/random-nsfw', message);
         }
@@ -76,7 +76,19 @@ client.on('message', async (message) =>
     } 
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}wikihow`)) {
-        fetchredditi('https://api.ksoft.si/images/random-wikihow', message);
+        var deetails = await fetch('https://api.ksoft.si/images/random-wikihow', {
+            method: 'get',
+            headers: { 'Authorization': ksoftkey },
+        });
+        var deetailsjson = await deetails.json();
+        var imageurl = await deetailsjson.url;
+        var embedtitle = await deetailsjson.title;
+        var embedtitleurl = await deetailsjson.article_url;
+        const wikiembed = new Discord.MessageEmbed()
+            .setTitle(`[${embedtitle}](${embedtitleurl})`)
+            .setImage(imageurl)
+            .setFooter(`Invoked by ${message.author.username}, provided by KSoft.Si`, message.author.avatarURL());
+        message.channel.send(wikiembed);
         return;
     }
 
