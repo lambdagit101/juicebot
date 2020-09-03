@@ -126,14 +126,14 @@ client.on('message', async (message) =>
                 break;
             case 2:
                 const bonk3embed = new Discord.MessageEmbed()
-                    .setTitle('Scout and Bonk laughing at Sniper')
+                    .setTitle('Scout seeing Bonk for the first time')
                     .setImage('https://cdn.discordapp.com/attachments/735495269034098771/747478781454712833/posterbonk3.png')
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                 message.channel.send(bonk3embed);
                 break;
             case 3:
                 const bonk4embed = new Discord.MessageEmbed()
-                    .setTitle('Scout seeing Bonk for the first time')
+                    .setTitle('Scout and Bonk laughing at Sniper')
                     .setImage('https://cdn.discordapp.com/attachments/735495269034098771/747478775633018970/posterbonk4.png')
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                 message.channel.send(bonk4embed);
