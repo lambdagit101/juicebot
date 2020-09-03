@@ -7,13 +7,6 @@ const fetch = require('node-fetch');
 client.on('message', async (message) => 
 {
     if (message.author.bot) return;
-    
-    if (message.content.toLowerCase().startsWith(`${PREFIX}sbubby`)) {
-        randomPuppy('sbubby').then(url => {
-            message.channel.send(url);
-        });
-        return;
-    }
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}dummyimage`)) {
         const args = message.content.slice(PREFIX.length).trim().split(' ');
@@ -21,14 +14,6 @@ client.on('message', async (message) =>
         const text = message.content.split(args[1] + " ")[1];
         const forrealtext = text.replace(/ /g, "%20");
         message.channel.send('https://dummyimage.com/' + width + '/' + '000/fff.png&text=' + forrealtext + '+');
-        return;
-    }
-	
-	if (message.content.toLowerCase().startsWith(`${PREFIX}animeme`)) 
-	{
-        randomPuppy('goodanimemes').then(url => {
-			message.channel.send(url);
-        });  
         return;
     }
 
@@ -40,39 +25,8 @@ client.on('message', async (message) =>
         message.channel.send(borgarembed);
         return;
     }
-	
-	if (message.content.toLowerCase().startsWith(`${PREFIX}pic`)) 
-	{
-		randomPuppy('pics').then(url => {
-			message.channel.send(url);
-        });  
-        return;
-	}
-	
-	if (message.content.toLowerCase().startsWith(`${PREFIX}comedyheaven`)) {
-		randomPuppy('comedyheaven').then(url => {
-			message.channel.send(url);
-        });  
-        return;
-	}
-	
-	if (message.content.toLowerCase().startsWith(`${PREFIX}dankmeme`)) 
-	{
-		randomPuppy('dankmemes').then(url => {
-			message.channel.send(url);
-        });  
-        return;
-	}
-	
-	if (message.content.toLowerCase().startsWith(`${PREFIX}4chan`)) 
-	{
-		randomPuppy('greentext').then(url => {
-			message.channel.send(url);
-        });  
-        return;
-	}
-	
-	if (message.content.toLowerCase().startsWith(`${PREFIX}requestavatar`)) 
+
+    if (message.content.toLowerCase().startsWith(`${PREFIX}requestavatar`)) 
     {
         const avatarembed = new Discord.MessageEmbed()
             .setTitle('Here is your requested avatar!')
@@ -89,20 +43,6 @@ client.on('message', async (message) =>
             .setImage('https://yandere-simulator.com/tampon.png')
             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
         message.channel.send(evaembed);
-        return;
-	}
-	
-	if (message.content.toLowerCase().startsWith(`${PREFIX}puppy`)) 
-	{
-		randomPuppy().then(url => {
-			message.channel.send(url);
-        });
-        return;
-	}
-	if (message.content.toLowerCase().startsWith(`${PREFIX}aww`)) {
-		randomPuppy('aww').then(url => {
-			message.channel.send(url);
-        });  
         return;
 	}
 
