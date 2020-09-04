@@ -20,6 +20,7 @@ client.on('message', async (message) =>
     if (message.content.toLowerCase().startsWith(`${PREFIX}borgar`)) {
         const borgarembed = new Discord.MessageEmbed()
             .setTitle('Borgar')
+            .setURL('https://youtu.be/LqL1Pm5-uek')
             .setImage('https://cdn.discordapp.com/attachments/736196476837036102/749324531943997502/borgar.PNG')
             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
         message.channel.send(borgarembed);
@@ -30,6 +31,7 @@ client.on('message', async (message) =>
     {
         const avatarembed = new Discord.MessageEmbed()
             .setTitle('Here is your requested avatar!')
+            .setURL('https://youtu.be/RLhfThlBW1A')
             .setImage(message.author.displayAvatarURL({ format: 'png', size: 512 }))
             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
         message.channel.send(avatarembed);
@@ -40,6 +42,7 @@ client.on('message', async (message) =>
 	{
         const evaembed = new Discord.MessageEmbed()
             .setTitle('I, EvaSex')
+            .setURL('https://youtu.be/dxnevAItvFM')
             .setImage('https://yandere-simulator.com/tampon.png')
             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
         message.channel.send(evaembed);
@@ -53,6 +56,7 @@ client.on('message', async (message) =>
             case 0:
                 const bonk1embed = new Discord.MessageEmbed()
                     .setTitle('Bonk and Scout Wedding Photo')
+                    .setURL('https://youtu.be/kuNixp-wvWM')
                     .setImage('https://cdn.discordapp.com/attachments/686015484281225241/722533493435007066/posterbonk.png')
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                 message.channel.send(bonk1embed);
@@ -60,6 +64,7 @@ client.on('message', async (message) =>
             case 1:
                 const bonk2embed = new Discord.MessageEmbed()
                     .setTitle('Bonk and Scout going home after the wedding')
+                    .setURL('https://youtu.be/9kQ2GtvDV3s')
                     .setImage('https://cdn.discordapp.com/attachments/735495269034098771/747478778254459089/posterbonk2.png')
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                 message.channel.send(bonk2embed);
@@ -67,6 +72,7 @@ client.on('message', async (message) =>
             case 2:
                 const bonk3embed = new Discord.MessageEmbed()
                     .setTitle('Scout seeing Bonk for the first time')
+                    .setURL('https://youtu.be/udx5Oa0s7K4')
                     .setImage('https://cdn.discordapp.com/attachments/735495269034098771/747478781454712833/posterbonk3.png')
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                 message.channel.send(bonk3embed);
@@ -74,6 +80,7 @@ client.on('message', async (message) =>
             case 3:
                 const bonk4embed = new Discord.MessageEmbed()
                     .setTitle('Scout and Bonk laughing at Sniper')
+                    .setURL('https://youtu.be/KS0KAb4ZeRQ')
                     .setImage('https://cdn.discordapp.com/attachments/735495269034098771/747478775633018970/posterbonk4.png')
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                 message.channel.send(bonk4embed);
