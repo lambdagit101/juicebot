@@ -127,6 +127,9 @@ async function fetchredditi(link, message) {
     const redditembed = new Discord.MessageEmbed()
         .setTitle(embedtitle)
         .setURL(detailsjson.source)
+        .addFields(
+          {name: 'Publisher', value: detailsjson.author, inline: true}
+        )
         .setImage(imageurl)
         .setFooter(`Invoked by ${message.author.username}, provided by KSoft.Si`, message.author.avatarURL());
     message.channel.send(redditembed);
