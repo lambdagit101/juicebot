@@ -6,7 +6,7 @@ client.on('message', async (message) =>
 {
     if (message.author.bot) return;
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}iplookup`)) {
+    if (message.content.toLowerCase().startsWith(`${PREFIX}iplookup`) || message.content.toLowerCase().startsWith(`${PREFIX}ip`)) {
         const args = message.content.slice(PREFIX.length).trim().split(' ');
         const ipdeet = args[1].toLowerCase();
         const details = await fetch('http://ip-api.com/json/' + ipdeet);

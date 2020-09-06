@@ -5,7 +5,7 @@
 const Discord = require('discord.js');
 const { client, PREFIX } = require('../index'); // Import client from index.js
 const fetch = require('node-fetch');
-const ksoftkey = `Bearer ${process.env.KSOFTSI_TOKEN}`; // This is the token you get if your KSoft app is approved
+const ksoftsikey = `Bearer ${process.env.KSOFTSI_TOKEN}`; // This is the token you get if your KSoft.Si app is approved
 
 client.on('message', async (message) => 
 {
@@ -78,7 +78,7 @@ client.on('message', async (message) =>
     if (message.content.toLowerCase().startsWith(`${PREFIX}wikihow`)) {
         var deetails = await fetch('https://api.ksoft.si/images/random-wikihow', {
             method: 'get',
-            headers: { 'Authorization': ksoftkey },
+            headers: { 'Authorization': ksoftsikey },
         });
         var deetailsjson = await deetails.json();
         var imageurl = await deetailsjson.url;
@@ -97,7 +97,7 @@ client.on('message', async (message) =>
         const args = message.content.slice(PREFIX.length).trim().split(' ');
         const text = message.content.split(args[1] + " ")[1];
         const lyrics = await fetch(`https://api.ksoft.si/lyrics/search?q=${text}&limit=1`, {
-           headers: { 'Authorization': ksoftkey },
+           headers: { 'Authorization': ksoftsikey },
         });
         var lyricsjson = await lyrics.json();
         const lyricsembed = new Discord.MessageEmbed()
@@ -119,7 +119,7 @@ client.on('message', async (message) =>
 async function fetchredditi(link, message) {
     var details = await fetch(link, {
         method: 'get',
-        headers: { 'Authorization': ksoftkey },
+        headers: { 'Authorization': ksoftsikey },
     });
     var detailsjson = await details.json();
     var imageurl = await detailsjson.image_url;

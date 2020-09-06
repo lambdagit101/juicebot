@@ -8,7 +8,7 @@ client.on('message', async (message) =>
 {
     if (message.author.bot) return;
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}dummyimage`)) {
+    if (message.content.toLowerCase().startsWith(`${PREFIX}dummyimage`) || message.content.toLowerCase().startsWith(`${PREFIX}di`) || message.content.toLowerCase().startsWith(`${PREFIX}dim`)) {
         const args = message.content.slice(PREFIX.length).trim().split(' ');
         const width = args[1].toLowerCase();
         const text = message.content.split(args[1] + " ")[1];
@@ -20,42 +20,42 @@ client.on('message', async (message) =>
     if (message.content.toLowerCase().startsWith(`${PREFIX}borgar`)) {
         const borgarembed = new Discord.MessageEmbed()
             .setTitle('Borgar')
-            .setURL('https://youtu.be/LqL1Pm5-uek')
             .setImage('https://cdn.discordapp.com/attachments/736196476837036102/749324531943997502/borgar.PNG')
             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
         message.channel.send(borgarembed);
         return;
     }
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}requestavatar`)) 
+    if (message.content.toLowerCase().startsWith(`${PREFIX}requestavatar`) || message.content.toLowerCase().startsWith(`${PREFIX}ra`)) 
     {
-        const avatarembed = new Discord.MessageEmbed()
-            .setTitle('Here is your requested avatar!')
-            .setURL('https://youtu.be/TYqEcxfYMt0')
-            .setImage(message.author.displayAvatarURL({ format: 'png', size: 512 }))
-            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-        message.channel.send(avatarembed);
+        const user = message.mentions.users.first();
+        if (user) {
+            try {
+                const avatarembed = new Discord.MessageEmbed()
+                    .setTitle('Here is your requested avatar!')
+                    .setImage(user.displayAvatarURL({ format: 'png', size: 512 }))
+                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                message.channel.send(avatarembed);
+            } catch (err) {
+                console.log(err);
+            }
+        } else {
+            const avatarembed = new Discord.MessageEmbed()
+                .setTitle('Here is your requested avatar!')
+                .setImage(message.author.displayAvatarURL({ format: 'png', size: 512 }))
+                .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+            message.channel.send(avatarembed);
+        }
         return;
 	}
 	
-	if (message.content.toLowerCase().startsWith(`${PREFIX}evaxephon`)) 
+    if (message.content.toLowerCase().startsWith(`${PREFIX}evaxephon`) || message.content.toLowerCase().startsWith(`${PREFIX}evax`)) 
 	{
         const evaembed = new Discord.MessageEmbed()
             .setTitle('I, EvaSex')
-            .setURL('https://youtu.be/dxnevAItvFM')
             .setImage('https://yandere-simulator.com/tampon.png')
             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
         message.channel.send(evaembed);
-        return;
-    }
-    
-    if (message.content.toLowerCase().startsWith(`${PREFIX}trigger`)) {
-        const tigerembed = new Discord.MessageEmbed()
-            .setTitle('Trigger')
-            .setURL('https://youtu.be/TYqEcxfYMt0')
-            .setImage('https://i.redd.it/hz43b4ia84l51.png')
-            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-        message.channel.send(tigerembed);
         return;
     }
 
