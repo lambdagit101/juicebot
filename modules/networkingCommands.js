@@ -22,7 +22,7 @@ client.on('message', async (message) =>
     if (message.content.toLowerCase().startsWith(`${PREFIX}country`)) {
         const args = message.content.slice(PREFIX.length).trim().split(' ');
         const countryname = args[1].toLowerCase();
-        const detailsc = await fetch('https://restcountries.eu/rest/v2/name/' + countryname).then(res => {
+        const detailsc = await fetch('https://restcountries.eu/rest/v2/name/' + countryname).then(async (res) => {
             if (checkStatus(res) == '404') {
                 const detailscnew = await fetch('https://restcountries.eu/rest/v2/name/romania')
                 const detailscjsonnew = await detailscnew.json();
