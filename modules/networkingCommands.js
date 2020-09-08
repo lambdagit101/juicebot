@@ -22,24 +22,13 @@ client.on('message', async (message) =>
     if (message.content.toLowerCase().startsWith(`${PREFIX}country`)) {
         const args = message.content.slice(PREFIX.length).trim().split(' ');
         const countryname = args[1].toLowerCase();
-        const detailsc = await fetch('https://restcountries.eu/rest/v2/name/' + countryname).then(async (res) => {
-            if (checkStatus(res) == '404') {
-                const detailscnew = await fetch('https://restcountries.eu/rest/v2/name/romania')
-                const detailscjsonnew = await detailscnew.json();
-                const newcountryembed = new Discord.MessageEmbed()
-                    .setTitle("Country details:")
-                    .setDescription('Country Name: ' + countryname + '\nCapital: ' + detailscjsonnew.capital + '\nRegion: ' + detailscjsonnew.region + "\nSubegion: " + detailscjsonnew.rubregion + "\nPopulation: " + detailscjsonnew.population + "\nDemonym: " + detailscjsonnew.demonym + "\nNative name: " + detailscjsonnew.nativeName + "\nTop-level Domain: " + detailscjsonnew.topLevelDomain)
-                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                message.channel.send(newcountryembed);
-            } else {
+        const detailsc = await fetch('https://restcountries.eu/rest/v2/name/' + countryname)
                 const detailscjson = await detailsc.json();
                 const countryembed = new Discord.MessageEmbed()
                     .setTitle("Country details:")
                     .setDescription('Country Name: ' + countryname + '\nCapital: ' + detailscjson.capital + '\nRegion: ' + detailscjson.region + "\nSubegion: " + detailscjson.rubregion + "\nPopulation: " + detailscjson.population + "\nDemonym: " + detailscjson.demonym + "\nNative name: " + detailscjson.nativeName + "\nTop-level Domain: " + detailscjson.topLevelDomain)
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                 message.channel.send(countryembed);
-            }
-        });
         return;
     }
 });
