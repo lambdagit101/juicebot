@@ -24,7 +24,7 @@ client.on('message', async (message) =>
         return;
     }
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}dankmeme`)) {
+    if (message.content.toLowerCase().startsWith(`${PREFIX}dankmeme`) || message.content.toLowerCase().startsWith(`${PREFIX}meme`)) {
         fetchredditi('https://api.ksoft.si/images/random-meme', message);
         return;
     }
@@ -44,7 +44,7 @@ client.on('message', async (message) =>
         return;
     }
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}4chan`)) {
+    if (message.content.toLowerCase().startsWith(`${PREFIX}4chan`) || message.content.toLowerCase().startsWith(`${PREFIX}greentext`)) {
         fetchredditi('https://api.ksoft.si/images/rand-reddit/greentext', message);
         return;
     }
@@ -54,7 +54,7 @@ client.on('message', async (message) =>
         return;
     }
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}randomnsfw`) || message.content.toLowerCase().startsWith(`${PREFIX}nsfw`)) {
+    if (message.content.toLowerCase().startsWith(`${PREFIX}randomnsfw`) || message.content.toLowerCase().startsWith(`${PREFIX}nsfw`) || message.content.toLowerCase().startsWith(`${PREFIX}rnsfw`)) {
         if (message.channel.nsfw == true) {
             fetchredditi('https://api.ksoft.si/images/random-nsfw', message);
         }
@@ -68,7 +68,7 @@ client.on('message', async (message) =>
         return;
     }
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}rule34`)) {
+    if (message.content.toLowerCase().startsWith(`${PREFIX}rule34`) || message.content.toLowerCase().startsWith(`${PREFIX}r34`)) {
         if (message.channel.nsfw == true) {
             fetchredditi('https://api.ksoft.si/images/rand-reddit/rule34', message);
         }
