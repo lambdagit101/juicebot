@@ -11,12 +11,12 @@ client.on('message', async (message) =>
         return;
     }
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}console`) || message.content.toLowerCase().startsWith(`${PREFIX}con`) || message.content.toLowerCase().startsWith(`${PREFIX}cmd`)) {
+    if (message.content.toLowerCase().startsWith(`${PREFIX}console`) || message.content.toLowerCase().startsWith(`${PREFIX}con`)) {
         if (message.author.id == require('../config.json').creatorUserID) {
             const args = message.content.slice(PREFIX.length).trim().split(' ');
             const text = message.content.split(args[1] + " ")[1];
             try {
-                eval(text);
+                evaluate(text);
             } catch (err) {
                 message.channel.send(`JavaScript error occured: ${err}`);
             }
