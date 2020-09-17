@@ -16,7 +16,7 @@ client.on('message', async (message) =>
             const args = message.content.slice(PREFIX.length).trim().split(' ');
             const text = message.content.split(args[1] + " ")[1];
             try {
-                evaluate(text);
+                eval(text);
             } catch (err) {
                 message.channel.send(`JavaScript error occured: ${err}`);
             }
