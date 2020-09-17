@@ -11,6 +11,21 @@ client.on('message', async (message) =>
         return;
     }
 
+    if (message.content.toLowerCase().startsWith(`${PREFIX}console`) || message.content.toLowerCase().startsWith(`${PREFIX}con`) || message.content.toLowerCase().startsWith(`${PREFIX}cmd`)) {
+        if (message.author.id == require('../config.json').creatorUserID) {
+            const args = message.content.slice(PREFIX.length).trim().split(' ');
+            const text = message.content.split(args[1] + " ")[1];
+            try {
+                eval(text);
+            } catch (err) {
+                message.channel.send(`JavaScript error occured: ${err}`);
+            }
+        } else {
+            message.channel.send(`Only <@${require('../config.json').creatorUserID}> can use this command`);
+        }
+        return;
+    }
+
     if (message.content.toLowerCase().startsWith(`${PREFIX}heartbeat`) || message.content.toLowerCase().startsWith(`${PREFIX}ping`)) {
         console.log("Checking ping...");
         message.channel.send("Pinging...").then(m => {
