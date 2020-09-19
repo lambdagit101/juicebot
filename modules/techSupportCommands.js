@@ -35,13 +35,17 @@ async function playtechsupportsong(connection) {
 
 async function techsupport(message, connection) {
 	playtechsupportsong(connection); // Not the best idea but let's try it out!
-	message.channel.send(`Thank you for calling support, my name is ${malenames[Math.floor(Math.random(0, malenames.length))]}, how can I help you?`);
-	message.channel.awaitMessages(async (m) => m.author.id == message.author.id,
-                            {max: 1, time: 30000}).then( async (collected) => {
-                                    const stacksearch = await fetch(`https://api.stackexchange.com/2.2/search/advanced?order=desc&sort=activity&q=${message.content}&site=stackoverflow`);
-									const stackjson = await stacksearch.json();
-									message.channel.send(`This might be a solution: \n${stackjson.items[1].link}`);
+	message.channel.send('Thank you for calling support, my name is ' + malenames[Math.floor(Math.random(0, malenames.length))] + ', how can I help you?');
+	message.channel.awaitMessages(m => m.author.id == message.author.id,
+                            {max: 1, time: 30000}).then( collected => {
+                                searchstack(message);    
                             }).catch(() => {
-                                    message.channel.send('Timed out.');
+                                message.channel.send('Timed out.');
                             });
+}
+
+async function searchstack(message) {
+	const stacksearch = await fetch(`https://api.stackexchange.com/2.2/search/advanced?order=desc&sort=activity&q=${message.content.toLowerCase()}&site=stackoverflow`);
+	const stackjson = await stacksearch.json();
+	message.channel.send(`This might be a solution: \n${stackjson.items[1].link}`);	
 }
