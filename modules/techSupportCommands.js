@@ -13,7 +13,7 @@ client.on("message", async (message) => {
     if (message.content.toLowerCase().startsWith(`${PREFIX}techsupport`)) {
         if (message.member.voice.channel) {
           var connection = await message.member.voice.channel.join();
-		  techsupport(message);
+		  techsupport(message, connection);
         } else {
           message.channel.send("You need to be in a voice channel to start a tech support session.");
         }
@@ -21,7 +21,7 @@ client.on("message", async (message) => {
     }
 });
 
-async function techsupport(message) {
+async function techsupport(message, connection) {
 	const dispatcher = connection
         .play(ytdl('https://youtu.be/DJztXj2GPfk'))
         .on("finish", () => {
