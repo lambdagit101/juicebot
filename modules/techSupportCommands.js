@@ -45,7 +45,14 @@ async function techsupport(message, connection) {
 }
 
 async function searchstack(message) {
-	const stacksearch = await fetch(`https://api.stackexchange.com/2.2/search/advanced?order=desc&sort=activity&q=${message.content.toLowerCase()}&site=stackoverflow`);
+	try {
+		const stacksearch = await fetch(`https://api.stackexchange.com/2.2/search/advanced?order=desc&sort=activity&q=${message.content.toLowerCase()}&site=stackoverflow`);
 	const stackjson = await stacksearch.json();
-	message.channel.send(`This might be a solution: \n${stackjson.items[0].owner.link}`);	
+	console.log(stackjson.items[0]);
+	message.channel.send(`This might be a solution: \n${stackjson.items[0].link}`);	
+	} catch(err){
+		console.log(err);
+		
+	}
+	
 }
