@@ -21,13 +21,20 @@ client.on("message", async (message) => {
     }
 });
 
-async function techsupport(message, connection) {
+async function playtechsupportsong(connection) {
+	
 	const dispatcher = connection
         .play(ytdl('https://youtu.be/DJztXj2GPfk'))
         .on("finish", () => {
-            console.log('song ended ;-;');
+            playtechsupportsong(connection);
+			return;
         })
         .on("error", (error) => console.error(error));
+	
+}
+
+async function techsupport(message, connection) {
+	playtechsupportsong(connection); // Not the best idea but let's try it out!
 	message.channel.send(`Thank you for calling support, my name is ${malenames[Math.floor(Math.random(0, malenames.length))]}, how can I help you?`);
 	message.channel.awaitMessages(async (m) => m.author.id == message.author.id,
                             {max: 1, time: 30000}).then( async (collected) => {
