@@ -4,6 +4,7 @@ const { client, PREFIX } = require('../index');
 client.on('message', async (message) => {
     if (!message.guild) return;
     if (message.author.bot) return;
+	if (!message.content.startsWith(PREFIX)) return;
     try {
         //Kicking a member
         if (message.content.toLowerCase().startsWith(`${PREFIX}kick`)) {

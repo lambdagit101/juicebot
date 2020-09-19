@@ -11,6 +11,7 @@ client.on('message', async (message) =>
 {
     if (message.author.bot) return;
     if (!message.guild) return;
+	if (!message.content.startsWith(PREFIX)) return;
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}hentai`)) {
         if (message.channel.nsfw == true) {
@@ -44,7 +45,7 @@ client.on('message', async (message) =>
         return;
     }
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}4chan`) || message.content.toLowerCase().startsWith(`${PREFIX}greentext`)) {
+    if (message.content.toLowerCase().startsWith(`${PREFIX}greentext`)) {
         fetchredditi('https://api.ksoft.si/images/rand-reddit/greentext', message);
         return;
     }

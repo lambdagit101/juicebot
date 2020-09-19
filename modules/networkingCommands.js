@@ -5,6 +5,7 @@ const fetch = require('node-fetch');
 client.on('message', async (message) => 
 {
     if (message.author.bot) return;
+	if (!message.content.startsWith(PREFIX)) return;
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}iplookup`) || message.content.toLowerCase().startsWith(`${PREFIX}ip`)) {
         const args = message.content.slice(PREFIX.length).trim().split(' ');

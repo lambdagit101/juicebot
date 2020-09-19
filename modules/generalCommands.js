@@ -4,6 +4,7 @@ const { client, PREFIX } = require('../index'); // Import client from index.js
 client.on('message', async (message) => 
 {
     if (message.author.bot) return;
+	if (!message.content.startsWith(PREFIX)) return;
 	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}github`)) 
 	{
