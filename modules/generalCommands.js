@@ -15,7 +15,7 @@ client.on('message', async (message) =>
     if (message.content.toLowerCase().startsWith(`${PREFIX}console`) || message.content.toLowerCase().startsWith(`${PREFIX}con`)) {
         if (message.author.id == require('../config.json').creatorUserID) {
             const args = message.content.slice(PREFIX.length).trim().split(' ');
-            const text = message.content.split(args[0] + " ")[0];
+            const text = message.content.split(args[0] + " ")[1];
             try {
                 eval(text); 
             } catch (err) {
