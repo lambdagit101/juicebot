@@ -21,7 +21,7 @@ client.on('message', async (message) =>
 				console.log(finalresult);
                 eval(finalresult); 
             } catch (err) {
-				console.log(err);
+		
                 message.channel.send(`JavaScript error occured: ${err}`);
 				console.log(err);
             }
