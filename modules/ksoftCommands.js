@@ -79,7 +79,9 @@ client.on('message', async (message) =>
     if (message.content.toLowerCase().startsWith(`${PREFIX}wikihow`)) {
         var deetails = await fetch('https://api.ksoft.si/images/random-wikihow', {
             method: 'get',
-            headers: { 'Authorization': ksoftsikey },
+            headers: { 'Authorization': ksoftsikey,
+					   'User-Agent': message.author.id
+					 },
         });
         var deetailsjson = await deetails.json();
         var imageurl = await deetailsjson.url;
@@ -98,7 +100,9 @@ client.on('message', async (message) =>
         const args = message.content.slice(PREFIX.length).trim().split(' ');
         const text = message.content.split(args[1] + " ")[1];
         const lyrics = await fetch(`https://api.ksoft.si/lyrics/search?q=${text}&limit=1`, {
-           headers: { 'Authorization': ksoftsikey },
+           headers: { 'Authorization': ksoftsikey,
+					  'User-Agent': message.author.id
+					},
         });
         var lyricsjson = await lyrics.json();
         const lyricsembed = new Discord.MessageEmbed()
@@ -120,7 +124,9 @@ client.on('message', async (message) =>
 async function fetchredditi(link, message) {
     var details = await fetch(link, {
         method: 'get',
-        headers: { 'Authorization': ksoftsikey },
+        headers: { 'Authorization': ksoftsikey,
+				   'User-Agent': message.author.id
+				 },
     });
     var detailsjson = await details.json();
     var imageurl = await detailsjson.image_url;
