@@ -15,17 +15,18 @@ client.on('message', async (message) =>
     if (message.content.toLowerCase().startsWith(`${PREFIX}console`) || message.content.toLowerCase().startsWith(`${PREFIX}con`)) {
         if (message.author.id == require('../config.json').creatorUserID) {
             const args = message.content.slice(PREFIX.length).trim().split(' ');
-            const text = message.content.split(args[0] + " ")[0];
+			var command = args.slice(1, args.length);
+			var finalresult = command.join(" ");
             try {
-				console.log(text);
-                eval(text); 
+				console.log(finalresult);
+                eval(finalresult); 
             } catch (err) {
 				console.log(err);
                 message.channel.send(`JavaScript error occured: ${err}`);
 				console.log(err);
             }
         } else {
-            message.channel.send(`Only ${require('../config.json').creator} can use this command`);
+            message.channel.send(`Only ${require('../config.json').creator} can use this command!`);
         }
         return;
     }
