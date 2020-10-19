@@ -28,10 +28,10 @@ client.on("message", async (message) => {
 	if (message.content.toLowerCase().startsWith(`${PREFIX}meeting`)) {
             const args = message.content.slice(PREFIX.length).trim().split(' ');
 			var text = args.slice(1, args.length);
-			var finalresult = text.join(" ");
+			var finalresult = text.join("%20");
             try {
 				const meembed = new Discord.MessageEmbed()
-				.setTitle(`${message.author.name} called a meeting`)
+				.setTitle(`${message.author.username} called a meeting`)
 				.setImage(`https://vacefron.nl/api/emergencymeeting?text=${finalresult}`)
 				.setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());
 				message.channel.send(meembed);
@@ -44,10 +44,10 @@ client.on("message", async (message) => {
 	if (message.content.toLowerCase().startsWith(`${PREFIX}changemymind`)) {
             const args = message.content.slice(PREFIX.length).trim().split(' ');
 			var text = args.slice(1, args.length);
-			var finalresult = text.join(" ");
+			var finalresult = text.join("%20");
             try {
 				const cmmembed = new Discord.MessageEmbed()
-				.setTitle(`${message.author.name} wants their mind changed`)
+				.setTitle(`${message.author.username} wants their mind changed`)
 				.setImage(`https://vacefron.nl/api/changemymind?text=${finalresult}`)
 				.setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());
 				message.channel.send(cmmembed);
