@@ -9,14 +9,21 @@ setInterval(() => {
     const guildCount = client.guilds.cache.size;
 
     const statusMessages = [
+        
         { type: 'WATCHING', name: `Hentai | ${PREFIX}help`},
         { type: 'WATCHING', name: `${guildCount} Servers | ${PREFIX}help`},
         { type: 'LISTENING', name: `${userCount} Users | ${PREFIX}help`},
-        { type: 'WATCHING', name: `You | ${PREFIX}help`},
-        { type: 'WATCHING', name: `and waiting | ${PREFIX}help`},
-        { type: 'WATCHING', name: `Osana | ${PREFIX}help`}
-        //Does this last one work? I've commented it out as a safe feature.
-        //{ type: 'PLAYING', name: `the Matrix | /help'}
+        { type: 'PLAYING', name: `Counter-Strike Global Offensive | ${PREFIX}help`},
+        { type: 'WATCHING', name: `CS:GO Pro League | ${PREFIX}help`},
+        { type: 'PLAYING', name: `Genshin Impact | ${PREFIX}help`},
+        { type: 'WATCHING', name: `lambdaguy101 play Crispy Doom | ${PREFIX}help`},
+        { type: 'PLAYING', name: `Geometry Dash | ${PREFIX}help`},
+        { type: 'WATCHING', name: `Meme Compilations | ${PREFIX}help`},
+        { type: 'LISTENING', name: `Necromantic by Stack | ${PREFIX}help`},
+        { type: 'LISTENING', name: `Dancing Polish Cow at 4:00 | ${PREFIX}help`},
+        { type: 'PLAYING', name: `AssaultCube | ${PREFIX}help`},
+        // Does this last one work? I've commented it out as a safe feature.
+        // { type: 'PLAYING', name: `the Matrix | /help'}
     ]
 
     client.user.setActivity(statusMessages[index]);
