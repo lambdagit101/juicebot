@@ -30,7 +30,7 @@ client.on("message", async (message) => {
 			var text = args.slice(1, args.length);
             try {
 				const meembed = new Discord.MessageEmbed()
-				.setTitle(`${message.author.name} called a meeting`)
+				.setTitle(`<@${message.author.id}> called a meeting`)
 				.setImage(`https://vacefron.nl/api/emergencymeeting?text=${text}`)
 				.setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());
 				message.channel.send(meembed);
@@ -45,7 +45,7 @@ client.on("message", async (message) => {
 			var text = args.slice(1, args.length);
             try {
 				const cmmembed = new Discord.MessageEmbed()
-				.setTitle(`${message.author.name} wants their mind changed`)
+				.setTitle(`<@${message.author.id}> wants their mind changed`)
 				.setImage(`https://vacefron.nl/api/changemymind?text=${text}`)
 				.setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());
 				message.channel.send(cmmembed);
