@@ -14,10 +14,9 @@ client.on("message", async (message) => {
 			var color = args[2];
 			var crewpostor = args[3];
             try {
-				var image = await fetch(`https://vacefron.nl/api/ejected?name=${name}&impostor=${crewpostor}&crewmate=${color}`);
 				const impostembed = new Discord.MessageEmbed()
 				.setTitle(`${name} was ejected`)
-				.setImage(image)
+				.setImage(`https://vacefron.nl/api/ejected?name=${name}&impostor=${crewpostor}&crewmate=${color}`)
 				.setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());
 				message.channel.send(impostembed);
 			} catch (err) {
@@ -30,10 +29,9 @@ client.on("message", async (message) => {
             const args = message.content.slice(PREFIX.length).trim().split(' ');
 			var text = args.slice(1, args.length);
             try {
-				var image = await fetch(`https://vacefron.nl/api/emergencymeeting?text=${text}`);
 				const meembed = new Discord.MessageEmbed()
 				.setTitle(`${message.author.name} called a meeting`)
-				.setImage(image)
+				.setImage(`https://vacefron.nl/api/emergencymeeting?text=${text}`)
 				.setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());
 				message.channel.send(meembed);
 			} catch (err) {
@@ -46,10 +44,9 @@ client.on("message", async (message) => {
             const args = message.content.slice(PREFIX.length).trim().split(' ');
 			var text = args.slice(1, args.length);
             try {
-				var image = await fetch(`https://vacefron.nl/api/changemymind?text=${text}`);
 				const cmmembed = new Discord.MessageEmbed()
 				.setTitle(`${message.author.name} wants their mind changed`)
-				.setImage(image)
+				.setImage(`https://vacefron.nl/api/changemymind?text=${text}`)
 				.setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());
 				message.channel.send(cmmembed);
 			} catch (err) {
