@@ -35,7 +35,7 @@ client.on('message', async (message) =>
 
 async function ircfunctionality(server, nickname, channelsto, message) {
 	var client = new irc.Client(server, nickname, {
-		channels: channels,
+		channels: channelsto,
 	});
 	
 	client.addListener('message', function (from, to, message) {
