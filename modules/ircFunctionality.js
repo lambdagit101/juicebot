@@ -26,7 +26,7 @@ client.on('message', async (message) =>
 		const args1 = message.content.slice(PREFIX.length).trim().split(' ');
 		var server = args1[1];
 		var nickname = args1[2];
-		var channel = args1.slice(3, args.length);
+		var channel = args1.slice(3, args1.length);
 		ircfunctionality(server, nickname, channel, message);
 		return;
 	}
