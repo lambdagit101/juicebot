@@ -7,6 +7,7 @@ const bot = new MusicBot({
     ytApiKey: process.env.YT_APIKEY,
     botClient: client
 });
+
 client.on("message", async (message) => {
 
     if (message.author.bot) return;
@@ -15,6 +16,5 @@ client.on("message", async (message) => {
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}`)) {
         bot.onMessage(message);
-        return;
     }
 });

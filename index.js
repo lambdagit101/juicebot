@@ -1,6 +1,5 @@
 const { Client, MessageEmbed } = require('discord.js');
 const client = new Client();
-const ytdl = require('ytdl-core');
 
 const PREFIX = require('./config.json').prefix;
 
