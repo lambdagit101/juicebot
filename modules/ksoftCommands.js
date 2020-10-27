@@ -97,6 +97,7 @@ client.on('message', async (message) =>
     }
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}lyrics`)) {
+        var args = message.content.split(' ');
         var command = args.slice(1, args.length);
 	var text = command.join("%20");
         const lyrics = await fetch(`https://api.ksoft.si/lyrics/search?q=${text}&limit=1`, {
