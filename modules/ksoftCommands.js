@@ -16,7 +16,17 @@ client.on('message', async (message) =>
     if (message.content.toLowerCase().startsWith(`${PREFIX}hentai`)) {
         if (message.channel.nsfw == true) {
             fetchredditi('https://api.ksoft.si/images/rand-reddit/hentai', message);
+		//console.log(`${message.author.username} went to horny jail.`)
         }
+	    else {
+		    //Shamelessly stolen from the moderationCommands embed.
+		    const not_in_nsfw_channel = new Discord.MessageEmbed()
+		    .setTitle = ('Cannot perform command')
+		    .setDescription = ("Sorry, you can't get this image because you aren't in an NSFW channel!")
+		    .setFooter = `Invoked by ${message.author.username}`, message.author.avatarURL());
+		    message.channel.send(not_in_nsfw_channel);
+		    return;
+	    }
         return;
     }
 
@@ -58,21 +68,37 @@ client.on('message', async (message) =>
     if (message.content.toLowerCase().startsWith(`${PREFIX}randomnsfw`) || message.content.toLowerCase().startsWith(`${PREFIX}nsfw`) || message.content.toLowerCase().startsWith(`${PREFIX}rnsfw`)) {
         if (message.channel.nsfw == true) {
             fetchredditi('https://api.ksoft.si/images/random-nsfw', message);
+		//console.log(`${message.author.username} went to horny jail.`)
         }
+	    else {
+		   message.channel.send(not_in_nsfw_channel);
+		   return;
+	    }
         return;
     }
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}porn`)) {
         if (message.channel.nsfw == true) {
             fetchredditi('https://api.ksoft.si/images/rand-reddit/porn', message);
+		//console.log(`${message.author.username} went to horny jail.`)
         }
+	    else {
+		    //We don't need to create a new message, just send the same one created for the hentai image.
+		    message.channel.send(not_in_nsfw_channel);
+		    return;
+	    }	    
         return;
     }
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}rule34`) || message.content.toLowerCase().startsWith(`${PREFIX}r34`)) {
         if (message.channel.nsfw == true) {
             fetchredditi('https://api.ksoft.si/images/rand-reddit/rule34', message);
+		//console.log(`${message.author.username} went to horny jail.`)
         }
+	    else {
+		    message.channel.send(not_in_nsfw_channel);		  
+		    return;
+	    }
         return;
     } 
 
