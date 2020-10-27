@@ -95,10 +95,10 @@ client.on('message', async (message) =>
         message.channel.send(wikiembed);
         return;
     }
-/**
+
     if (message.content.toLowerCase().startsWith(`${PREFIX}lyrics`)) {
-        const args = message.content.slice(PREFIX.length).trim().split(' ');
-        const text = message.content.split(args[1] + " ")[1];
+        var command = args.slice(1, args.length);
+	var text = command.join("%20");
         const lyrics = await fetch(`https://api.ksoft.si/lyrics/search?q=${text}&limit=1`, {
            headers: { 'Authorization': ksoftsikey,
 					  'User-Agent': message.author.id
@@ -118,7 +118,7 @@ client.on('message', async (message) =>
             .setFooter(`Invoked by ${message.author.username}, provided by KSoft.Si`, message.author.avatarURL());
         message.channel.send(lyricsembed);
     }
-**/
+
 });
 
 async function fetchredditi(link, message) {
