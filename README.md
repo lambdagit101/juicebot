@@ -34,3 +34,6 @@ Ways to ask for support is either using issues or the Discord server
 
 # License
 This software is protected under The Giant Penis License (GPL) LMFAO
+
+# How to use the code
+Copy it and use it to your heart's content. The most notable example is [Doughnut](https://github.com/DavidJoacaRo/doughnut/) which you should check out
