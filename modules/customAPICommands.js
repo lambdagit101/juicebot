@@ -16,7 +16,7 @@ client.on("message", async (message) => {
             try {
 				const impostembed = new Discord.MessageEmbed()
 				.setTitle(`${name.replace(/%20/g, ' ').replace(/-/g, ' ')} was ejected`)
-				.setImage(`https://vacefron.nl/api/ejected?name=${name.replace('-', '%20')}&impostor=${crewpostor}&crewmate=${color}`)
+				.setImage(`https://vacefron.nl/api/ejected?name=${name.replace(/-/g, '%20')}&impostor=${crewpostor}&crewmate=${color}`)
 				.setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());
 				message.channel.send(impostembed);
 			} catch (err) {
