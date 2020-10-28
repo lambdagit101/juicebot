@@ -95,7 +95,7 @@ client.on('message', async (message) =>
         message.channel.send(wikiembed);
         return;
     }
-
+/**
     if (message.content.toLowerCase().startsWith(`${PREFIX}lyrics`)) {
         var args = message.content.split(' ');
         var command = args.slice(1, args.length);
@@ -119,7 +119,7 @@ client.on('message', async (message) =>
             .setFooter(`Invoked by ${message.author.username}, provided by KSoft.Si`, message.author.avatarURL());
         message.channel.send(lyricsembed);
     }
-
+**/
 });
 
 async function fetchredditi(link, message) {
