@@ -56,17 +56,17 @@ client.on('message', async (message) =>
         try {
             if (chanel.permissionsFor(message.author).has('SEND_MESSAGES')) {
                 chanel.send(text);
-                message.delete();
+                
                 return;
             }
         } catch (err) {
             const chanel = args[1];
             if (text == null) {
-                message.delete();
+                
                 message.channel.send(chanel);
                 return;
             } else {
-                message.delete();
+                
                 message.channel.send(chanel + " " + text);
                 return;
             }
