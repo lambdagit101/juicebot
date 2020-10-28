@@ -15,7 +15,7 @@ client.on("message", async (message) => {
 			var crewpostor = args[3];
             try {
 				const impostembed = new Discord.MessageEmbed()
-				.setTitle(`${name.replace('%20', ' ')} was ejected`)
+				.setTitle(`${name.replace(/%20/g, ' ')} was ejected`)
 				.setImage(`https://vacefron.nl/api/ejected?name=${name.replace('-', '%20')}&impostor=${crewpostor}&crewmate=${color}`)
 				.setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());
 				message.channel.send(impostembed);
