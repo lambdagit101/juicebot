@@ -6,7 +6,6 @@ client.on('message', async (message) => {
     if (message.author.bot) return;
 	if (!message.content.startsWith(PREFIX)) return;
     try {
-        //Kicking a member
         if (message.content.toLowerCase().startsWith(`${PREFIX}kick`)) {
             const user = message.mentions.users.first();
             if (user) {
