@@ -79,7 +79,7 @@ client.on("message", async (message) => {
             try {
 				const cmmembed = new Discord.MessageEmbed()
 				.setTitle(`${message.author.username} is horny`)
-				.setImage(`https://api.alexflipnote.dev/pornhub?text=${args[1]}&text2=${args[2]}`)
+				.setImage(`https://api.alexflipnote.dev/pornhub?text=${args[1].replace(/-/g, ' ')}&text2=${args[2].replace(/-/g, ' ')}`)
 				.setFooter(`Invoked by ${message.author.username}, provided by api.alexflipnote.dev`, message.author.avatarURL());
 				message.channel.send(cmmembed);
 			} catch (err) {
@@ -113,6 +113,61 @@ client.on("message", async (message) => {
 				.setTitle(`${message.author.username} has gotten this achievement`)
 				.setImage(`https://api.alexflipnote.dev/achievement?text=${finalresult}`)
 				.setFooter(`Invoked by ${message.author.username}, provided by api.alexflipnote.dev`, message.author.avatarURL());
+				message.channel.send(cmmembed);
+			} catch (err) {
+				console.log(err);
+            }
+        return;
+    }
+	
+	if (message.content.toLowerCase().startsWith(`${PREFIX}water`)) {
+            const args = message.content.slice(PREFIX.length).trim().split(' ');
+			var text = args.slice(1, args.length);
+			var finalresult = text.join("%20");
+            try {
+				const cmmembed = new Discord.MessageEmbed()
+				.setTitle(`${message.author.username} is thirsty`)
+				.setImage(`https://api.alexflipnote.dev/water?text=${finalresult}`)
+				.setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());
+				message.channel.send(cmmembed);
+			} catch (err) {
+				console.log(err);
+            }
+        return;
+    }
+	
+	if (message.content.toLowerCase().startsWith(`${PREFIX}grave`)) 
+    {
+        const user = message.mentions.users.first();
+        if (user) {
+            try {
+                const avatarembed = new Discord.MessageEmbed()
+                    .setTitle('Rest in peace')
+                    .setImage(`https://vacefron.nl/api/grave?user=${user.displayAvatarURL({ format: 'png', size: 512 })}`)
+                    .setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());
+                message.channel.send(avatarembed);
+            } catch (err) {
+                console.log(err);
+            }
+        } else {
+            const avatarembed = new Discord.MessageEmbed()
+                .setTitle('Rest in peace')
+                .setImage(`https://vacefron.nl/api/grave?user=${message.author.displayAvatarURL({ format: 'png', size: 512 })}`)
+                .setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());
+            message.channel.send(avatarembed);
+        }
+        return;
+	}
+	
+	if (message.content.toLowerCase().startsWith(`${PREFIX}carreverse`)) {
+            const args = message.content.slice(PREFIX.length).trim().split(' ');
+			var text = args.slice(1, args.length);
+			var finalresult = text.join("%20");
+            try {
+				const cmmembed = new Discord.MessageEmbed()
+				.setTitle(`${message.author.username} is driving`)
+				.setImage(`https://api.alexflipnote.dev/carreverse?text=${finalresult}`)
+				.setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());
 				message.channel.send(cmmembed);
 			} catch (err) {
 				console.log(err);
