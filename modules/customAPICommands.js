@@ -79,7 +79,7 @@ client.on("message", async (message) => {
             try {
 				const cmmembed = new Discord.MessageEmbed()
 				.setTitle(`${message.author.username} is horny`)
-				.setImage(`https://api.alexflipnote.dev/pornhub?text=${args[1].replace(/-/g, ' ')}&text2=${args[2].replace(/-/g, ' ')}`)
+				.setImage(`https://api.alexflipnote.dev/pornhub?text=${args[1].replace(/-/g, '%20')}&text2=${args[2].replace(/-/g, '%20')}`)
 				.setFooter(`Invoked by ${message.author.username}, provided by api.alexflipnote.dev`, message.author.avatarURL());
 				message.channel.send(cmmembed);
 			} catch (err) {
