@@ -2,8 +2,6 @@
 
 [![CodeFactor](https://www.codefactor.io/repository/github/lambdagit101/juicebot/badge)](https://www.codefactor.io/repository/github/lambdagit101/juicebot) [![Build Status](https://img.shields.io/badge/build-who%20cares-green)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
-[![Donate Monero](https://img.shields.io/badge/donate-monero-green)](monero:43rf5jYqpPfCuJkaTwWrPY2DqbpLuiAMxTQxzdDc4RvyZNmxVxckZTmZeQLUaNypSDB55ARWMkMQ8GTHrXmV7PmG2qs3ZDN)
-
 To run the bot, you need to have node.js installed first. If you haven't installed it yet, download it [here](https://nodejs.org/en/download/).
 
 Also you need a bot token. If you haven't created one yet, go to https://discord.com/developers/applications/ and create a new application. Then, go to the "Bot" tab, click on "Add Bot" and copy the token. **KEEP THIS TOKEN PRIVATE!**
