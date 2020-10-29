@@ -120,22 +120,6 @@ client.on("message", async (message) => {
         return;
     }
 	
-	if (message.content.toLowerCase().startsWith(`${PREFIX}water`)) {
-            const args = message.content.slice(PREFIX.length).trim().split(' ');
-			var text = args.slice(1, args.length);
-			var finalresult = text.join("%20");
-            try {
-				const cmmembed = new Discord.MessageEmbed()
-				.setTitle(`${message.author.username} is thirsty`)
-				.setImage(`https://api.alexflipnote.dev/water?text=${finalresult}`)
-				.setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());
-				message.channel.send(cmmembed);
-			} catch (err) {
-				console.log(err);
-            }
-        return;
-    }
-	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}grave`)) 
     {
         const user = message.mentions.users.first();
