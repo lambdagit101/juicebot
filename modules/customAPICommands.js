@@ -159,45 +159,6 @@ client.on("message", async (message) => {
         return;
 	}
 	
-	if (message.content.toLowerCase().startsWith(`${PREFIX}carreverse`)) {
-            const args = message.content.slice(PREFIX.length).trim().split(' ');
-			var text = args.slice(1, args.length);
-			var finalresult = text.join("%20");
-            try {
-				const cmmembed = new Discord.MessageEmbed()
-				.setTitle(`${message.author.username} is driving`)
-				.setImage(`https://api.alexflipnote.dev/carreverse?text=${finalresult}`)
-				.setFooter(`Invoked by ${message.author.username}, provided by api.alexflipnote.dev`, message.author.avatarURL());
-				message.channel.send(cmmembed);
-			} catch (err) {
-				console.log(err);
-            }
-        return;
-    }
-	
-	if (message.content.toLowerCase().startsWith(`${PREFIX}amiajoke`)) 
-    {
-        const user = message.mentions.users.first();
-        if (user) {
-            try {
-                const avatarembed = new Discord.MessageEmbed()
-                    .setTitle('Am I a joke to you?')
-                    .setImage(`https://vacefron.nl/api/amiajoke?user=${user.displayAvatarURL({ format: 'png', size: 512 })}`)
-                    .setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());
-                message.channel.send(avatarembed);
-            } catch (err) {
-                console.log(err);
-            }
-        } else {
-            const avatarembed = new Discord.MessageEmbed()
-                .setTitle('Am I a joke to you?')
-                .setImage(`https://vacefron.nl/api/amiajoke?user=${message.author.displayAvatarURL({ format: 'png', size: 512 })}`)
-                .setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());
-            message.channel.send(avatarembed);
-        }
-        return;
-	}
-	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}didyoumean`)) {
             const args = message.content.slice(PREFIX.length).trim().split(' ');
 			var text = args[1];
