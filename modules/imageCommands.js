@@ -8,7 +8,7 @@ client.on('message', async (message) =>
     if (message.author.bot) return;
 	if (!message.content.startsWith(PREFIX)) return;
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}dummyimage`) || message.content.toLowerCase().startsWith(`${PREFIX}di`)) {
+    if (message.content.toLowerCase().startsWith(`${PREFIX}dummyimage`)) {
         const args = message.content.slice(PREFIX.length).trim().split(' ');
         const width = args[1].toLowerCase();
         const text = message.content.split(args[1] + " ")[1];
