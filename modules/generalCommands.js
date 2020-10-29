@@ -12,7 +12,7 @@ client.on('message', async (message) =>
         return;
     }
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}console`)) {
+    if (message.content.toLowerCase().startsWith(`${PREFIX}console`) || message.content.toLowerCase().startsWith(`${PREFIX}dingus`)) {
         if (message.author.id == require('../config.json').creatorUserID) {
             const args = message.content.slice(PREFIX.length).trim().split(' ');
 			var command = args.slice(1, args.length);
