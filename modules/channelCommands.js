@@ -12,6 +12,8 @@ client.on('message', async (message) =>
 {
         if (message.author.bot || !message.content.startsWith(PREFIX)) return; 
   
+   try
+   {
         if (message.content.toLowerCase().startsWith(`${PREFIX}createchannel`) || message.content.toLowerCase().startsWith(`${PREFIX}cchan`))
         {
                 if (message.member.permissions.has('MANAGE_SERVER') || message.member.permissions.has('ADMINISTRATOR'))
@@ -46,4 +48,10 @@ client.on('message', async (message) =>
                 }
         
         }
+   }
+   
+   catch(e)
+   {
+           console.log(`An unexpected error occurred. Error: {e}.`);
+   }
 }
