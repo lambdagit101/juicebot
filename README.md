@@ -21,10 +21,8 @@ Simply open the `JuiceBot.bat` file.
 ## Linux or Mac
 If you're on Linux open the `JuiceBot.sh` file to start the bot or type `node .` into the console.
 
-# Credits [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/lambdagit101/NolanBot/pulls)
-This project is owned by lambdaguy101.
-Thanks to DavidJoacaRo for helping.
-Code was cleaned up and organized by Im_Verum, DavidJoacaRo and AstroAntics.
+# Credits [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)]
+MilkBot is owned by AstroAntics, and JuiceBot is owned by lambdaguy101. This section will be updated frequently with anyone who wishes to contribute to MilkBot.
 
 # Support [![Discord](https://img.shields.io/discord/735495269034098768?style=flat)](https://discord.gg/9gvAq7r)
 MilkBot and JuiceBot share the same support process. This Discord server can help you with issues encountered with MilkBot or JuiceBot.
