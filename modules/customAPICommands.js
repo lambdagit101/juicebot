@@ -122,12 +122,24 @@ client.on("message", async (message) => {
 	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}grave`)) 
     {
-        const user = message.mentions.users.first() || message.author;
+        const user = message.mentions.users.first();
+        if (user) {
+            try {
                 const avatarembed = new Discord.MessageEmbed()
                     .setTitle('Rest in peace')
                     .setImage(`https://vacefron.nl/api/grave?user=${user.displayAvatarURL({ format: 'png', size: 512 })}`)
                     .setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());
                 message.channel.send(avatarembed);
+            } catch (err) {
+                console.log(err);
+            }
+        } else {
+            const avatarembed = new Discord.MessageEmbed()
+                .setTitle('Rest in peace')
+                .setImage(`https://vacefron.nl/api/grave?user=${message.author.displayAvatarURL({ format: 'png', size: 512 })}`)
+                .setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());
+            message.channel.send(avatarembed);
+        }
         return;
 	}
 	
