@@ -14,27 +14,35 @@ client.on('message', async (message) =>
   
         if (message.content.toLowerCase().startsWith(`${PREFIX}createchannel`) || message.content.toLowerCase().startsWith(`${PREFIX}cchan`))
         {
-                if (message.member.permissions.has('MANAGE_SERVER'))
+                if (message.member.permissions.has('MANAGE_SERVER') || message.member.permissions.has('ADMINISTRATOR'))
                 {
                     message.channel.send("Sorry, the create channel feature doesn't work yet. We're currently working on it.");
                 }
                 
                 else
                 {
-                        message.channel.send("No permission to create a channel, sorry!");
+                        const noCreatePerms = new Discord.MessageEmbed()
+                        .setTitle('Server Administration')
+                        .setDescription(`${message.author.tag} doesn't have permission to create a channel!`)
+                        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                        message.channel.send(noCreatePerms);
                 }
         }
   
         if (message.content.toLowerCase().startsWith(`${PREFIX}deletechannel`) || message.content.toLowerCase().startsWith(`${PREFIX}delchan`))
         {
-                if (message.member.permissions.has('MANAGE_SERVER'))
+                if (message.member.permissions.has('MANAGE_SERVER') || message.member.permissions.has('ADMINISTRATOR'))
                 {
                         message.channel.send("Sorry, the delete channel feature doesn't work yet. We're currently working on it.");
                 }
                 
                 else
                 {
-                        message.channel.send("No permission to delete a channel, sorry!");
+                        const noDelPerms = new Discord.MessageEmbed()
+                        .setTitle('Server Administration')
+                        .setDescription(`${message.author.tag} doesn't have permission to delete a channel!`)
+                        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                        message.channel.send(noDelPerms);
                 }
         
         }
