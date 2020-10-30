@@ -1,7 +1,7 @@
 {
-  "name": "NolanBot",
+  "name": "MilkBot",
   "version": "1.0.0",
-  "description": "",
+  "description": "MilkBot, a fork of JuiceBot, which is all that remains of the legendary NolanBot.",
   "main": "index.js",
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
