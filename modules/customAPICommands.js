@@ -145,7 +145,6 @@ client.on("message", async (message) => {
 	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}didyoumean`)) {
             const args = message.content.slice(PREFIX.length).trim().split(' ');
-			var text = args[1];
             try {
 				const cmmembed = new Discord.MessageEmbed()
 				.setTitle(`Correction.`)
@@ -155,6 +154,28 @@ client.on("message", async (message) => {
 			} catch (err) {
 				console.log(err);
             }
+        return;
+    }
+//https://api.alexflipnote.dev/supreme?text=
+	if (message.content.toLowerCase().startsWith(`${PREFIX}heaven`)) {
+		const user = message.mentions.users.first() || message.author;
+		const heavenembed = new Discord.MessageEmbed()
+			.setTitle(`${user.username} has risen`)
+			.setImage(`https://vacefron.nl/api/heaven?user=${user.displayAvatarURL({ format: 'png', size: 512 })}`)
+			.setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());
+			message.channel.send(heavenembed);
+        return;
+    }
+	
+	if (message.content.toLowerCase().startsWith(`${PREFIX}supreme`)) {
+		const args = message.content.slice(PREFIX.length).trim().split(' ');
+			var text = args.slice(1, args.length);
+			var finalresult = text.join("%20");
+		const heavenembed = new Discord.MessageEmbed()
+			.setTitle(`${user.username} is rich`)
+			.setImage(`https://api.alexflipnote.dev/supreme?text=${finalresult}`)
+			.setFooter(`Invoked by ${message.author.username}, provided by api.alexflipnote.dev`, message.author.avatarURL());
+			message.channel.send(heavenembed);
         return;
     }
 

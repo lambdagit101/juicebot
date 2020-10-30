@@ -46,6 +46,28 @@ client.on('message', async (message) =>
         message.channel.send(evaembed);
         return;
     }
+	
+	if (message.content.toLowerCase().startsWith(`${PREFIX}hug`)) {
+		const user = message.mentions.users.first() || message.author;
+		const huggifs = ['https://media.tenor.com/images/aab83bd3725feeaccb9929f8ca964db9/tenor.gif', 'https://media4.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif', 'https://i.pinimg.com/originals/f2/80/5f/f2805f274471676c96aff2bc9fbedd70.gif', 'https://media1.tenor.com/images/506aa95bbb0a71351bcaa753eaa2a45c/tenor.gif?itemid=7552075', 'https://i.imgur.com/r9aU2xv.gif?noredirect', 'https://acegif.com/wp-content/uploads/anime-hug.gif', 'https://25.media.tumblr.com/tumblr_ma7l17EWnk1rq65rlo1_500.gif'];
+		const hugembed = new Discord.MessageEmbed()
+            .setTitle(`<@${message.author.id}> hugged <@${user.id}>`)
+            .setImage(huggifs[Math.floor(Math.random() * huggifs.length + 1)])
+            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+        message.channel.send(hugembed);
+		return;
+	}
+	
+	if (message.content.toLowerCase().startsWith(`${PREFIX}kiss`)) {
+		const user = message.mentions.users.first() || message.author;
+		const kissgifs = ['https://i.pinimg.com/originals/e3/4e/31/e34e31123f8f35d5c771a2d6a70bef52.gif', 'https://media1.tenor.com/images/78095c007974aceb72b91aeb7ee54a71/tenor.gif?itemid=5095865', 'https://i.pinimg.com/originals/e3/ad/1d/e3ad1d5e15e6679d2b6ed31d2cd0caf6.gif', 'https://i.pinimg.com/originals/04/7e/1b/047e1bef01702b9252ef3a528a2401ad.gif', 'https://25.media.tumblr.com/6a0377e5cab1c8695f8f115b756187a8/tumblr_msbc5kC6uD1s9g6xgo1_500.gif', 'https:', 'https://25.media.tumblr.com/tumblr_ma7l17EWnk1rq65rlo1_500.gif'];
+		const kissembed = new Discord.MessageEmbed()
+            .setTitle(`<@${message.author.id}> kissed <@${user.id}>`)
+            .setImage(kissgifs[Math.floor(Math.random() * kissgifs.length + 1)])
+            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+        message.channel.send(kissembed);
+		return;
+	}
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}bonk`)) 
     {
