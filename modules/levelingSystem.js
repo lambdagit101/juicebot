@@ -14,7 +14,7 @@ client.on('message', async (message) => {
 		var user = message.mentions.users.first() || message.author;
 		const levembed = new Discord.MessageEmbed()
                 .setTitle(`Rank card for ${user.tag}`)
-                .setImage(`https://vacefron.nl/api/rankcard?username=${user.username}&avatar=${user.displayAvatarURL({format: 'png', size: 512})}&level=${level}&rank=${Math.floor(Math.random() * 10)}&currentxp=${Math.floor(Math.random * 10)}&nextlevelxp=0&previouslevelxp=0&xpcolor=#4287f5`)
+                .setImage(`https://vacefron.nl/api/rankcard?username=${user.username}&avatar=${user.displayAvatarURL({format: 'png', size: 512})}&level=${Math.floor(Math.random() * 10)}&rank=${Math.floor(Math.random() * 10)}&currentxp=${Math.floor(Math.random * 10)}&nextlevelxp=0&previouslevelxp=0&xpcolor=#4287f5`)
                 .setFooter(`Invoked by ${message.author.username}, powered by vacefron.nl`, message.author.avatarURL());
 		return message.channel.send(levembed);
 	}
