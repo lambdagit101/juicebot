@@ -1,3 +1,3 @@
 @echo off
-echo Launching Nolan
+echo Launching Milkbot
 node index.js
