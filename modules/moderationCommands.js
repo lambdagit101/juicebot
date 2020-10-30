@@ -1,230 +1,305 @@
-﻿const Discord = require('discord.js');
-const { client, PREFIX } = require('../index');
+/*
+* This file deals with the moderation work that MilkBot can perform: kick/ban/unban/mute/unmute users, etc.
+* All of these commands work on a try/catch/else basis so that exceptions can be caught!
+* The individual commands will also perform permissions checks on a per-command basis, to prevent any non-moderator from using unauthorized permissions.
+*/
 
-client.on('message', async (message) => {
+const Discord = require('discord.js'); //import the Discord client...
+const { client, PREFIX } = require('../index'); //...and import the prefix
+
+client.on('message', async (message) => 
+{
     if (!message.guild) return;
     if (message.author.bot) return;
 	if (!message.content.startsWith(PREFIX)) return;
-    try {
-        if (message.content.toLowerCase().startsWith(`${PREFIX}kick`)) {
-            const user = message.mentions.users.first();
-            if (user) {
-                const memberiq = message.guild.member(user);
-                if (memberiq) {
-                    if (message.member.permissions.has('KICK_MEMBERS')) {
-                        const args = message.content.slice(PREFIX.length).trim().split(' ');
-                        const text = message.content.split(args[1] + " ")[1];
-                        memberiq.kick(`Kicked by ${message.author.tag}. Reason: ${text}`)
-                            .then(() => {
-                                const kickedembed = new Discord.MessageEmbed()
-                                    .setTitle('Moderation')
-                                    .setDescription(`You have been kicked by ${message.author.tag} from ${message.guild.name}. Reason: ${text}`)
-                                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                                user.send(kickedembed);
-                                const kickembed = new Discord.MessageEmbed()
-                                    .setTitle('Moderation')
-                                    .setDescription(`${user.tag} was successfully kicked!`)
-                                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                                message.channel.send(kickembed);
-                            }).catch(err => {
-                                const cantkickembed = new Discord.MessageEmbed()
-                                    .setTitle('Moderation')
-                                    .setDescription("Couldn't kick the user")
-                                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                                message.channel.send(cantkickembed);
-                                console.error(err);
-                            });
-                    } else {
-                        const nopermemmbed = new Discord.MessageEmbed()
-                        .setTitle('Moderation')
-                        .setDescription(`No permission`)
-                        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                        message.channel.send(nopermemmbed);
-                    }
-
-                }
-
-                //You can't kick someone who isn't in the server!
-                else {
-                    const nomemembed = new Discord.MessageEmbed()
-                        .setTitle('Moderation')
-                        .setDescription('This user is not in this server')
-                        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                    message.channel.send(nomemembed);
-                }
-            }
-
-            //You have to specify someone!
-            else {
-                const nopersembed = new Discord.MessageEmbed()
-                    .setTitle('Moderation')
-                    .setDescription('No person was specified!')
-                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                message.channel.send(nopersembed);
-            }
-        }
-
-        if (message.content.toLowerCase().startsWith(`${PREFIX}warn`)) { // prototype warn command that sends a dm to the person who has been warned
-            const user = message.mentions.users.first();
-            if (user) {
-                const memberiq = message.guild.member(user);
-                if (memberiq) {
-                    if (message.member.permissions.has('KICK_MEMBERS') || message.member.permissions.has('BAN_MEMBERS')) {
-                        const args = message.content.slice(PREFIX.length).trim().split(' ');
-                        const text = message.content.split(args[1] + " ")[1];
-                        const warnembed = new Discord.MessageEmbed()
-                            .setTitle('Moderation')
-                            .setDescription(`You have been warned\nReason: ${text}`)
-                            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                        memberiq.send(warnembed);
-                        const warnedembed = new Discord.MessageEmbed()
-                            .setTitle('Moderation')
-                            .setDescription(`${user.tag} has been warned`)
-                            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                        message.channel.send(warnedembed);
-                    } else {
-                        const warnemmbed = new Discord.MessageEmbed()
-                            .setTitle('Moderation')
-                            .setDescription(`No permission`)
-                            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                        message.channel.send(warnemmbed);
-                    }
-                }
-            }
-        }
-
-        //Banning a member.  
-        if (message.content.toLowerCase().startsWith(`${PREFIX}ban`)) {
-            const user = message.mentions.users.first();
-            if (user) {
-                const memberiq = message.guild.member(user);
-                if (memberiq) {
-                    if (message.member.permissions.has('BAN_MEMBERS')) {
-                        const args = message.content.slice(PREFIX.length).trim().split(' ');
-                        const text = message.content.split(args[1] + " ")[1];
-                        memberiq.ban({ reason: `Banned by ${message.author.tag} from ${message.guild.name}. Reason: ${text}` })
-                            .then(() => {
-                                const bannedembed = new Discord.MessageEmbed()
-                                    .setTitle('Moderation')
-                                    .setDescription(`You have been banned by ${message.author.tag}. Reason: ${text}`)
-                                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                                user.send(bannedembed);
-                                const banembed = new Discord.MessageEmbed()
-                                .setTitle('Moderation')
-                                .setDescription(`${user.tag} was successfully banned!`)
-                                .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                                message.channel.send(banembed);
-                            })
-                    } else {
-                            const nopermembed = new Discord.MessageEmbed()
-                            .setTitle('Moderation')
-                            .setDescription(`No permission`)
-                            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                            message.channel.send(nopermembed);
-                    }
-                }
-
-
-                //You can't ban someone who isn't in the server.
-                else {
-                    const nobanembed = new Discord.MessageEmbed()
-                        .setTitle('Moderation')
-                        .setDescription("This user is not in this server")
-                        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                    message.channel.send(nobanembed);
-                }
-            } else {
-                message.channel.send(new Discord.MessageEmbed()
-                    .setTitle('Unable to ban')
-                    .setDescription('No person was specified!')
-                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL())
-                );
-            }
-        }
-
-        if (message.content.toLowerCase().startsWith(`${PREFIX}purge`)) {
-            if (message.member.permissions.has('MANAGE_MESSAGES')) {
-                const args = message.content.split(' ');
-                let deleteCount = 0;
-                try {
-                    deleteCount = parseInt(args[1], 10);
-                } catch (err) {
-                    const returnembed = new Discord.MessageEmbed()
-                        .setTitle('Moderation')
-                        .setDescription(`Please provide a number`)
-                        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                    return message.channel.send(returnembed);
-                }
-
-
-                if (!deleteCount || deleteCount < 2 || deleteCount > 100) {
-                    const providembed = new Discord.MessageEmbed()
-                        .setTitle('Moderation')
-                        .setDescription(`Please provide a number between 2 and 100`)
-                        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                    return message.channel.send(providembed);
-                }
-                const fetched = await message.channel.messages.fetch({
-                    limit: deleteCount,
-                });
-                message.channel.bulkDelete(fetched)
-                    .catch(error => message.channel.send(`Couldn't delete messages because of: ${error}`));
-            } else {
-                const nonpermembed = new Discord.MessageEmbed()
-                    .setTitle('Moderation')
-                    .setDescription(`No permission`)
-                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                message.channel.send(nonpermembed);
-            }     
-        }
+	
+	/*
+	* Command: Kick
+	* Will remove a member from the server (who can later rejoin)
+	* Parameters:
+	*  - kickTarget = the member to kick
+	*  - message.member = the invoker
+	*/
+	
+   try
+   {
+	
+	try
+	{
+		if message.content.toLowerCase().startsWith(`${PREFIX}kick`))
+		{
+			//The first user specified is the target for the kick.
+			const kickTarget = message.mentions.users.first();
+			
+			if (kickTarget)
+			{
+				//If the target exists and the attempted kicker is allowed to kick members, we can go ahead with the command.
+				if (message.member.permissions.has('KICK_MEMBERS'))
+				{
+					//We split the arguments and the reason why the member should be kicked, then continue.
+					const args = message.content.slice(PREFIX.length).trim().split(' ');
+					const kickReason = message.content.split(args[1] + " ")[1];
+					
+					//Once we have the reason, just kick the member and log the action...
+					kickTarget.kick(`Kicked by ${message.author.tag}. Reason: ${kickReason}`).then(() =>
+					{
+						//DM the user with one of the kick messages.
+						const kickEmbedUser = new Discord.MessageEmbed()
+						.setTitle('Moderation')
+						.setDescription(`{$message.author.tag} kicked you from ${message.guild.name} because of: ${kickReason}`)
+						.setFooter(`${message.author.username}`, message.author.avatarURL());
+						kickTarget.send(kickEmbedUser);
+						
+						//Echo the kick to the channel.
+						const kickEmbedChannel = new Discord.MessageEmbed()
+						.setTitle('Moderation')
+						.setDescription(`${kickTarget.tag} was kicked for reason: ${kickReason}`)
+						.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+						message.channel.send(kickEmbedChannel);
+					}
+					
+					//Something went wrong. Let the user know this and log the error.
+					}).catch (err =>
+					{
+						const kickFailed = new Discord.MessageEmbed()
+						.setTitle('Moderation')
+						.setDescription(`Error: Couldn't kick the user specified`)
+						.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+						message.channel.send(kickFailed);
+					}
+				}
+				
+				//No permission! End it here.
+				else
+				{
+					const noKickPermission = new Discord.MessageEmbed()
+                        		.setTitle('Moderation')
+					.setDescription(`Error: No permission to kick the specified user`)
+					.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+					message.channel.send(noKickPermission);
+				}
+			}
+			
+			//No target was specified or the target wasn't in the server. That's unfortunate: since we can't do anything else, end it here.
+			else 
+			{
+				const noUserExists = new Discord.MessageEmbed()
+				.setTitle('Moderation')
+				.setDescription(`Error: The user you are trying to kick isn't in the server or wasn't specified`)
+				.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+				message.channel.send(noUserExists);
+			}
+		}
+	}
+	
+	/*
+	* Command: Warn
+	* This is a prototype command.
+	* Once invoked, it will send the warn target a DM to the user who has been warned and echo it to the channel.
+	*/
+	
+	if (message.content.toLowerCase().startsWith(`${PREFIX}warn`))
+	{
+		//Let the target be the user first mentioned.
+		const warnTarget = message.mentions.users.first()
+		
+		if (warnTarget)
+		{
+			//Gotta check permissions first.
+			if (message.member.permissions.has('KICK_MEMBERS') || message.member.permissions.has('BAN_MEMBERS'))
+			{
+				const args = message.content.slice(PREFIX.length).trim().split(' ');
+				const warnReason = message.content.split(args[1] + " ")[1];
+				
+				const warnUserMessage = new Discord.MessageEmbed()
+				.setTitle('Moderation')
+				.setDescription(`You were warned in ${message.guild.name} for reason: ${warnReason}`)
+				.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+				warnTarget.send(warnUserMessage);
+				
+				const warnUserChannelMessage = new Discord.MessageEmbed()
+				.setTitle('Moderation')
+				.setDescription(`${warnTarget.tag} was warned for reason: ${warnReason}`)
+				.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+				message.channel.send(warnUserChannelMessage);
+			}
+		}
+		
+			//No permission.
+			else
+			{
+				const noWarnPermission = new Discord.MessageEmbed()
+				.setTitle('Moderation')
+				.setDescription(`Error: No permission to warn user`)
+				.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+				message.channel.send(noWarnPermission);
+			}
+		
+		//You didn't specify anyone to warn!
+		else
+		{
+			const noUserSpecified = new Discord.MessageEmbed()
+			.setTitle('Moderation')
+			.setDescription(`Error: No user specified`)
+			.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+			message.channel.send(noUserSpecified);
+		}
+		
+		
+	/*
+	* Command: Ban
+	* This one's pretty self explanatory...
+	* Once invoked, it will smack the targeted user with a banhammer.
+	*/
+		
+	if (message.content.toLowerCase().startsWith(`${PREFIX}ban`))
+	{
+		const banTarget = message.mentions.users.first();
+		
+		//The target is specified, so we can continue.
+		if (banTarget)
+		{
+			//Permissions check. We don't want non-mods going crazy.
+			if (message.member.permissions.has('BAN_MEMBERS'))
+			{
+				const args = message.content.slice(PREFIX.length).trim().split(' ');
+				const banReason = message.content.split(args[1] + " ")[1];
+				
+				//Ban the target and issue a message to them and the channel.
+				banTarget.ban(`${message.author.tag} banned ${banTarget.tag} for reason: ${banReason}`)
+				.then(() => 
+				{
+					const userBanNotice = new Discord.MessageEmbed()
+					.setTitle('Moderation')
+					.setDescription(`You were banned from ${message.guild.name} by ${message.author.tag}\n for: {$banReason}`)
+					.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+					banTarget.send(userBanNotice);
+					
+					const channelBanNotice = new Discord.MessageEmbed()
+					.setTitle('Moderation')
+					.setDescription(`${banTarget.tag} was successfully banned by ${message.author.tag} for: {$banReason}`)
+					.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+					message.channel.send(channelBanNotice);
+				}
+			}
+			
+			//No permissions - none shall pass! Abort.
+			else
+			{
+				const noPermsForBan = new Discord.MessageEmbed()
+				.setTitle('Moderation')
+				.setDescription(`Error: No permissions to ban members`)
+				.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+				message.channel.send(noPermsForBan);
+			}
+		}
+		
+		//No one was specified. Abort.
+		else
+		{
+			const noBanTargetSpecified = new Discord.MessageEmbed()
+			.setTitle('Moderation')
+			.setDescription(`Error: Unable to ban - no target specified or target isn't in this server`)
+			.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+			message.channel.send(noBanTargetSpecified);
+		}
+	}
+		
+	if (message.content.toLowerCase().startsWith(`${PREFIX}purge`))
+	{
+		if (message.member.permissions.has('MANAGE_MESSAGES'))
+		{
+			const args = message.content.split(' ');
+			let deleteCount = 0;
+			
+			if (!deleteCount || deleteCount < 2 || deleteCount > 100)
+			{
+				const numberBetweenMessage = new Discord.MessageEmbed()
+				.setTitle('Moderation')
+				.setDescription(`Please provide a number between 2 and 100!`)
+				.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+				message.channel.send(numberBetweenMessage)
+			}
+			
+			const fetchedMsgs = await message.channel.messages.fetch(
+			{
+			limit = deleteCount, 
+			});
+			
+			message.channel.bulkDelete(fetchedMsgs).catch(error => message.channel.send(`Could not delete messages due to: ${error}`));
+			
+			try
+			{
+				deleteCount = parseInt(args [1], 10);
+			}
+			
+			catch (err)
+			{
+				const noPurgeNumber = new Discord.MessageEmbed()
+				.setTitle('Moderation')
+				.setDescription(`Please provide the number of messages you would like to purge from the channel.`)
+				.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+				message.channel.send(noPurgeNumber);
+			}
+		}
+		
+		else
+		{
+			const noPurgePerms = new Discord.MessageEmbed()
+			.setTitle('Moderation')
+			.setDescription(`Error: No permissions to purge messages.`)
+			.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+			message.channel.send(noPurgePerms);
+		}
+	}
 
         //Muting a member.
-        if (message.content.toLowerCase().startsWith(`${PREFIX}mute`)) {
-            return message.channel.send('Muting does not work right now, we are working on it though.');
-
+        if (message.content.toLowerCase().startsWith(`${PREFIX}mute`)) 
+	{
             //The member needs to be specified.
-            const user = message.mentions.user.first();
-            if (user) {
-                const memberiq = message.guild.member(user);
-
+            const muteTarget = message.mentions.user.first();
+            
+	    if (muteTarget) 
+	    {
                 //If the member being muted is the one mentioned, mute them.
-                if (memberiq) {
-                    member.mute({ reason: 'Mute requested' })
-                        .then(() => {
+                    muteTarget.mute({ reason: 'Mute requested' })
+                        .then(() => 
+			{
                             //Create a new message to show that the mute was successful.
                             const mutedMessage = new Discord.MessageEmbed()
-                                .setTitle('Moderation')
-                                .setColor('0xff0000')
-                                .setDescription(`${user.tag} was muted successfully.`)
-                                .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                            .setTitle('Moderation')
+                            .setColor('0xff0000')
+                            .setDescription(`${user.tag} was muted successfully.`)
+                            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                             message.channel.send(mutedMessage);
                         })
 
                         //Something went wrong.
-                        .catch(err => {
-                            const muteFailedEmbed = new Discord.MessageEmbed()
-                                .setTitle('Moderation')
-                                .setColor('0xff0000')
-                                .setDescription("Couldn't mute the user.")
-                                .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                            message.channel.send(muteFailedEmbed);
-                            if (err) console.error(err);
-                        });
-                }
-
-                //You can't mute a member when they aren't in the server.
-                else {
-                    const muteAlien = new Discord.MessageEmbed()
+                        .catch(err => 
+			{
+                        const muteFailedEmbed = new Discord.MessageEmbed()
                         .setTitle('Moderation')
                         .setColor('0xff0000')
-                        .setDescription("You are trying to mute a user who isn't in the server.")
+                        .setDescription("Couldn't mute the user.")
                         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                    message.channel.send(muteAlien);
+                        message.channel.send(muteFailedEmbed);
+                        if (err) console.error(err);
+                        });
                 }
             }
         }
-    } catch (e) {
+    } 
+	catch (e) 
+	{
         // Send a message if an error has occurred
         console.log(`Uh-oh, something went wrong. Error message: \`\`\`js\n${e}\n\`\`\`\nIf this keeps happening, please contact the owner of this bot or make a new issue on github using /github`);
-    }
+    	}
+	
+	//leaving this in here for debugging purposes
+	finally
+	{
+		console.log("If you can see this message, everything is working normally.");
+	}
 });
+
+
