@@ -16,10 +16,10 @@ You also will need a bot token. If you haven't created one yet, go to https://di
 
 # Run the bot
 ## Windows
-Simply open the `JuiceBot.bat` file.
+Simply open the `milkbot.bat` file.
 
 ## Linux or Mac
-If you're on Linux open the `JuiceBot.sh` file to start the bot or type `node .` into the console.
+If you're on Linux open the `milkbot.sh` file to start the bot or type `node .` into the console.
 
 # Credits [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)]
 MilkBot is owned by AstroAntics, and JuiceBot is owned by lambdaguy101. This section will be updated frequently with anyone who wishes to contribute to MilkBot.
