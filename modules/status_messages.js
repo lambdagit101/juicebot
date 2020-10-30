@@ -21,6 +21,7 @@ setInterval(() => {
         { type: 'WATCHING', name: `Meme Compilations | ${PREFIX}help`},
         { type: 'LISTENING', name: `Necromantic by Stack | ${PREFIX}help`},
         { type: 'LISTENING', name: `Dancing Polish Cow at 4:00 | ${PREFIX}help`},
+		{ type: 'PLAYING', name: `Minecraft | ${PREFIX}help`},
         { type: 'LISTENING', name: `https://youtu.be/RtTYQuO1j6w | ${PREFIX}help`}, //I couldn't resist the urge.
         { type: 'PLAYING', name: `AssaultCube | ${PREFIX}help`},
         // Does this last one work? I've commented it out as a safe feature.

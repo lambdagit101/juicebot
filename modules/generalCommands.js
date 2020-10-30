@@ -81,18 +81,31 @@ client.on('message', async (message) =>
 
     if (message.content.toLowerCase() == `${PREFIX}help`) 
     {
-	    message.channel.send("https://lambdagit101.github.io/juicebotweb/help");
+		try {
+			message.author.send('https://lambdagit101.github.io/juicebotweb/help');
+		} catch (err) {
+			console.log(err);
+			message.channel.send("https://lambdagit101.github.io/juicebotweb/help");
+		}
         return;
     }
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}support`)) {
-        message.channel.send('Invite link for the support server is: ' + require('../config.json').supportserver);
+		try {
+			message.author.send('Support server: ' + require('../config.json').supportserver);
+		} catch (err) {
+			message.channel.send('Support server: ' + require('../config.json').supportserver);
+		}
         return;
     }
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}invite`)) 
     {
-        message.channel.send('Invite link for ' + require('../config.json').botname +' is: ' + require('../config.json').botinvite);
+		try {
+			message.author.send('Invite link for ' + require('../config.json').botname +' is: ' + require('../config.json').botinvite);
+		} catch (err) {
+			message.channel.send('Invite link for ' + require('../config.json').botname +' is: ' + require('../config.json').botinvite);
+		}
         return;
     }
 

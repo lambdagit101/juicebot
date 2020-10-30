@@ -28,24 +28,12 @@ client.on('message', async (message) =>
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}requestavatar`)) 
     {
-        const user = message.mentions.users.first();
-        if (user) {
-            try {
+        const user = message.mentions.users.first() || message.author;
                 const avatarembed = new Discord.MessageEmbed()
                     .setTitle('Here is your requested avatar!')
                     .setImage(user.displayAvatarURL({ format: 'png', size: 512 }))
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                 message.channel.send(avatarembed);
-            } catch (err) {
-                console.log(err);
-            }
-        } else {
-            const avatarembed = new Discord.MessageEmbed()
-                .setTitle('Here is your requested avatar!')
-                .setImage(message.author.displayAvatarURL({ format: 'png', size: 512 }))
-                .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-            message.channel.send(avatarembed);
-        }
         return;
 	}
 	

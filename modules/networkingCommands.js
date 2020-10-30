@@ -19,25 +19,4 @@ client.on('message', async (message) =>
         message.channel.send(ipembed);
         return;
     }
-
-    if (message.content.toLowerCase().startsWith(`${PREFIX}country`)) {
-        const args = message.content.slice(PREFIX.length).trim().split(' ');
-        const countryname = args[1].toLowerCase();
-        const detailsc = await fetch('https://restcountries.eu/rest/v2/name/' + countryname)
-                const detailscjson = await detailsc.json();
-                const countryembed = new Discord.MessageEmbed()
-                    .setTitle("Country details:")
-                    .setDescription('Country Name: ' + countryname + '\nCapital: ' + detailscjson.capital + '\nRegion: ' + detailscjson.region + "\nSubegion: " + detailscjson.rubregion + "\nPopulation: " + detailscjson.population + "\nDemonym: " + detailscjson.demonym + "\nNative name: " + detailscjson.nativeName + "\nTop-level Domain: " + detailscjson.topLevelDomain)
-                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                message.channel.send(countryembed);
-        return;
-    }
 });
-
-async function checkStatus(res) {
-    if (res.ok) {
-        return '200';
-    } else {
-        return '404';
-    }
-}
