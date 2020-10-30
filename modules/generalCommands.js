@@ -1,3 +1,8 @@
+/*
+* This module of MilkBot handles "general commands", which are all signaled by a prefix and a short command phrase.
+* MilkBot will almost always handle commands as follows => try/catch/else. This way, exceptions are always caught and recorded for the user's benefit.
+*/
+
 const Discord = require('discord.js');
 const { client, PREFIX } = require('../index'); // Import client from index.js
 
