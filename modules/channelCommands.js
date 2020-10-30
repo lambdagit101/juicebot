@@ -8,7 +8,7 @@
 const Discord = require('discord.js');
 const {client, PREFIX} = require('../index'); // Import client from index.js
 
-client.on('message', async (message) =>
+client.on('message' async(message) =>
 {
         if (message.author.bot || !message.content.startsWith(PREFIX)) return; 
   
@@ -18,7 +18,22 @@ client.on('message', async (message) =>
         {
                 if (message.member.permissions.has('MANAGE_SERVER') || message.member.permissions.has('ADMINISTRATOR'))
                 {
-                    message.channel.send("Sorry, the create channel feature doesn't work yet. We're currently working on it.");
+                    if (!args[0])
+                    {
+                            message.channel.send("Please specify a name for the channel!");
+                    }
+                        
+                    else
+                    {
+                            message.guild.channels.create(args.slice(0).join(" "), {type: 'text'})
+                            
+                            const channelCreatedSuccessfully = new Discord.MessageEmbed()
+                            .setTitle('Server Administration')
+                            .setDescription(`Channel was successfully created by {$message.author.username}`)
+                            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                            message.channel.send(channelCreatedSuccessfully);
+                    }
+                   
                 }
                 
                 else
