@@ -1,3 +1,8 @@
+/* 
+* This module of MilkBot deals with commands regarding images (as its filename would suggest)
+* General commands can be found in the generalCommands.js file.
+*/
+
 const Discord = require('discord.js');
 const { MessageAttachment } = require('discord.js');
 const { client, PREFIX } = require('../index'); // Import client from index.js
@@ -8,7 +13,8 @@ client.on('message', async (message) =>
     if (message.author.bot) return;
 	if (!message.content.startsWith(PREFIX)) return;
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}dummyimage`)) {
+    if (message.content.toLowerCase().startsWith(`${PREFIX}dummyimage`)) 
+    {
         const args = message.content.slice(PREFIX.length).trim().split(' ');
         const width = args[1].toLowerCase();
         const text = message.content.split(args[1] + " ")[1];
@@ -17,26 +23,32 @@ client.on('message', async (message) =>
         return;
     }
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}borgar`)) {
+    if (message.content.toLowerCase().startsWith(`${PREFIX}borgar`)) 
+    {
         const borgarembed = new Discord.MessageEmbed()
-            .setTitle('Borgar')
-            .setImage('https://cdn.discordapp.com/attachments/736196476837036102/749324531943997502/borgar.PNG')
-            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+        .setTitle('Borgar')
+        .setImage('https://cdn.discordapp.com/attachments/736196476837036102/749324531943997502/borgar.PNG')
+        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
         message.channel.send(borgarembed);
         return;
     }
+	
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}requestavatar`)) 
     {
         const user = message.mentions.users.first();
-        if (user) {
-            try {
+        if (user) 
+	{
+            try 
+	    {
                 const avatarembed = new Discord.MessageEmbed()
                     .setTitle('Here is your requested avatar!')
                     .setImage(user.displayAvatarURL({ format: 'png', size: 512 }))
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                 message.channel.send(avatarembed);
-            } catch (err) {
+            } 
+	catch (err) 
+		{
                 console.log(err);
             }
         } else {
@@ -49,12 +61,23 @@ client.on('message', async (message) =>
         return;
 	}
 	
+    //Dead meme? Eh, who cares.
+    if (message.content.toLowerCase.startsWith(`${PREFIX}yanderedev`) || message.content.toLowerCase.startsWith(`${PREFIX}chalice`))
+    {
+	    const chalice_embed = new Discord.MessageEmbed()
+	    .setTitle('I, ${message.author.username}...')
+	    .setImage('https://www.publicdomainpictures.net/pictures/20000/velka/glass-of-milk.jpg')
+	    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+	    message.channel.send(chalice_embed);
+	    return;
+    }
+	
     if (message.content.toLowerCase().startsWith(`${PREFIX}evaxephon`) || message.content.toLowerCase().startsWith(`${PREFIX}evax`)) 
-	{
+    {
         const evaembed = new Discord.MessageEmbed()
-            .setTitle('I, EvaSex')
-            .setImage('https://yandere-simulator.com/tampon.png')
-            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+        .setTitle('I, EvaSex')
+        .setImage('https://yandere-simulator.com/tampon.png')
+        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
         message.channel.send(evaembed);
         return;
     }
@@ -62,7 +85,8 @@ client.on('message', async (message) =>
     if (message.content.toLowerCase().startsWith(`${PREFIX}bonk`)) 
     {
         var whichbonk = Math.floor(Math.random() * 4);
-        switch (whichbonk) {
+        switch (whichbonk) 
+	{
             case 0:
                 const bonk1embed = new Discord.MessageEmbed()
                     .setTitle('Bonk and Scout Wedding Photo')
