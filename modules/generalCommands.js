@@ -4,39 +4,51 @@ const { client, PREFIX } = require('../index'); // Import client from index.js
 client.on('message', async (message) => 
 {
     if (message.author.bot) return;
-	if (!message.content.startsWith(PREFIX)) return;
+	if (!message.content.startsWith(PREFIX)) return; 
 	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}github`)) 
 	{
-        message.channel.send(require('../config.json').gitlink);	
-        return;
-    }
+		const gitembed = new Discord.MessageEmbed()
+		.setTitle('MilkBot')
+		.setDescription(require('../config.json').gitlink)
+		.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+		message.channel.send(gitembed);
+		console.log("Someone got MilkBot's code.");
+		return;
+    	}
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}console`) || message.content.toLowerCase().startsWith(`${PREFIX}dingus`)) {
-        if (message.author.id == require('../config.json').creatorUserID) {
+    if (message.content.toLowerCase().startsWith(`${PREFIX}console`) || message.content.toLowerCase().startsWith(`${PREFIX}dingus`)) 
+    {
+        if (message.author.id == require('../config.json').creatorUserID) 
+	{
             const args = message.content.slice(PREFIX.length).trim().split(' ');
 			var command = args.slice(1, args.length);
 			var finalresult = command.join(" ");
-            try {
-				console.log(finalresult);
+            try 
+	    {
+		console.log(finalresult);
                 eval(finalresult); 
-            } catch (err) {
-		
+            } 
+		catch (err) 
+		{
                 message.channel.send(`JavaScript error occured: ${err}`);
-				console.log(err);
-            }
-        } else {
+		console.log(err);
+            	}
+        } 
+	    else 
+	    {
             message.channel.send(`Only ${require('../config.json').creator} can use this command!`);
-        }
+            }
         return;
     }
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}heartbeat`) || message.content.toLowerCase().startsWith(`${PREFIX}ping`)) {
+    if (message.content.toLowerCase().startsWith(`${PREFIX}heartbeat`) || message.content.toLowerCase().startsWith(`${PREFIX}ping`)) 
+    {
         console.log("Checking ping...");
-        message.channel.send("Pinging...").then(m => {
+        message.channel.send("Pinging...").then(m => 
+	{
             var ping = m.createdTimestamp - message.createdTimestamp;
             var botPing = Math.round(client.pi);
-
             m.edit('Bot ping is: ' + `${ping}ms`);
         });
         return;
@@ -48,29 +60,37 @@ client.on('message', async (message) =>
         message.channel.send("https://youtu.be/Ee4ATNFER_Y");
         return;
     }
-
-    if (message.content.toLowerCase().startsWith(`${PREFIX}print`)) {
-        const args = message.content.slice(PREFIX.length).trim().split(' ');
-        const chanel = await getUserFromMention(args[1]);
-        const text = message.content.split(args[1] + " ")[1];
-        try {
-            if (chanel.permissionsFor(message.author).has('SEND_MESSAGES')) {
-                chanel.send(text);
-                
-                return;
-            }
-        } catch (err) {
-            const chanel = args[1];
-            if (text == null) {
-                
-                message.channel.send(chanel);
-                return;
-            } else {
-                
-                message.channel.send(chanel + " " + text);
-                return;
-            }
-        }
+    
+    if (message.content.toLowerCase().startsWith(`${PREFIX}print`))
+    {
+	    const args = message.content.slice(PREFIX.length).trim().split(' ');
+	    const _channel = await getUserFromMention(args[1]); //replaced typo with underscored variable to make it clearer
+	    const text = message.content.split(args[1] + "")[1];
+	    
+	    try
+	    {
+		    if (_channel.permissionsFor(message.author).has('SEND_MESSAGES'))
+		    {
+			    _channel.send(text);
+			    return;
+		    }
+	    }
+	    
+	    catch (err)
+	    {
+		    const _channel = args[1];
+		    if (text == null) 
+		    {
+			    message.channel.send(_channel);
+			    return;
+		    }
+		    
+		    else
+		    {
+			    message.channel.send(_channel + "" + text);
+			    return;
+		    }
+	    }
     }
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}nolan`)) 
@@ -81,11 +101,12 @@ client.on('message', async (message) =>
 
     if (message.content.toLowerCase() == `${PREFIX}help`) 
     {
-	    message.channel.send("https://lambdagit101.github.io/juicebotweb/help");
+	message.channel.send("https://lambdagit101.github.io/juicebotweb/help");
         return;
     }
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}support`)) {
+    if (message.content.toLowerCase().startsWith(`${PREFIX}support`)) 
+    {
         message.channel.send('Invite link for the support server is: ' + require('../config.json').supportserver);
         return;
     }
@@ -99,11 +120,11 @@ client.on('message', async (message) =>
 
     if (message.content.toLowerCase() === (`${PREFIX}donate`)) 
     {
-        const donatembed = new Discord.MessageEmbed()
-            .setTitle('Donate')
-            .setDescription('Donate method: ' + require('../config.json').donatelink)
-            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-        message.channel.send(donatembed);
+        const donatemsg = new Discord.MessageEmbed()
+        .setTitle('Donate')
+        .setDescription('Donate method: ' + require('../config.json').donatelink)
+        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+        message.channel.send(donatemsg);
         return;
     }
 	
@@ -119,13 +140,16 @@ client.on('message', async (message) =>
     }
 });
 
-async function getUserFromMention(mention) {
+async function getUserFromMention(mention) 
+{
     if (!mention) return;
 
-    if (mention.startsWith('<#') && mention.endsWith('>')) {
+    if (mention.startsWith('<#') && mention.endsWith('>')) 
+    {
         mention = mention.slice(2, -1);
 
-        if (mention.startsWith('!')) {
+        if (mention.startsWith('!')) 
+	{
             mention = mention.slice(1);
         }
         console.log(mention);
