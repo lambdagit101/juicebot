@@ -1,3 +1,3 @@
 #!/bin/bash
-echo "Launching Nolan"
+echo "Launching MilkBot"
 node index.js
