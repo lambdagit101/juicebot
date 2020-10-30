@@ -1,4 +1,4 @@
-# Welcome to JuiceBot!
+# Welcome to MilkBot!
 
 MilkBot is an open-source fork of JuiceBot created by lambdagit101.  To run the bot, you need to have node.js installed first. If you haven't installed it yet, download it [here](https://nodejs.org/en/download/).
 
