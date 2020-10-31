@@ -17,7 +17,7 @@ client.on('message', async (message) =>
 		const profilepicture = message.author.displayAvatarURL({ format: 'png', size: 512 });
 		var command = args.slice(1, args.length);
 		var finalresult = command.join(" ");
-		const image = await canvacord.phub({username, finalresult, profilepicture});
+		const image = await canvacord.Canvas.phub({username, finalresult, profilepicture});
         const attachment = new Discord.MessageAttachment(image.toBuffer(), "phub.png");
         message.channel.send(attachment);
     }
