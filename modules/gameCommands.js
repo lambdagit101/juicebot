@@ -16,7 +16,6 @@ client.on("message", async (message) => {
 		const triviaembed = new Discord.MessageEmbed()
             .setTitle("Trivia")
             .setDescription(`${triviajson.results[randomquestion].question}\nPossible answers:\n${triviajson.results[randomquestion].incorrect_answers.join('\n')}\n${triviajson.results[randomquestion].correct_answer}`)
-			.addField('Possible answer', triviajson.results[randomquestion].correct_answer, true)
             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
 		
 		prompter.message(message.channel, {
@@ -34,7 +33,7 @@ client.on("message", async (message) => {
         const response = responses.first();
  
         // Respond
-		if (response.startsWith(triviajson.results[randomquestion].correct_answer)) {
+		if (response === triviajson.results[randomquestion].correct_answer) {
 			var receivedtriviapoints = Math.trunc(Math.random() * 10);
 			db.add(`${message.author.id}_triviapoints`, receivedtriviapointstriviapoints);
 			var usertriviapoints = db.get(`${message.author.id}_triviapoints`);
