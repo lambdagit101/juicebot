@@ -15,8 +15,7 @@ client.on("message", async (message) => {
 		var randomquestion = Math.trunc(Math.random() * 10);
 		const triviaembed = new Discord.MessageEmbed()
             .setTitle("Trivia")
-            .setDescription(`${triviajson.results[randomquestion].question}`)
-			triviajson.results[randomquestion].incorrect_answers.forEach(triviaembed.addField({ name: 'Possible answer', value: item, inline: true }))
+            .setDescription(`${triviajson.results[randomquestion].question}\nPossible answers:\n${triviajson.results[randomquestion].incorrect_answers.join('\n')}\n${triviajson.results[randomquestion].correct_answer}`)
 			.addField('Possible answer', triviajson.results[randomquestion].correct_answer, true)
             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
 		prompter
