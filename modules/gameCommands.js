@@ -18,8 +18,8 @@ client.on("message", async (message) => {
             .setDescription(`${triviajson.results[randomquestion].question}\nPossible answers:\n${triviajson.results[randomquestion].incorrect_answers.join('\n')}\n${triviajson.results[randomquestion].correct_answer}`)
 			.addField('Possible answer', triviajson.results[randomquestion].correct_answer, true)
             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-		prompter
-		.message(message.channel, {
+		
+		prompter.message(message.channel, {
         question: triviaembed,
         userId: message.author.id,
         max: 1,

@@ -19,7 +19,8 @@ client.on('ready', () => {
                 console.log('Running module: ' + file);
                 require('./modules/' + file);
             } catch (e) {
-                console.log(`Module ${file} has crashed: ${e}`);
+                console.log(`Module ${file} has crashed`);
+				console.log(e);
             }
         }
     });
