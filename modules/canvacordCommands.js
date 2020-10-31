@@ -13,9 +13,11 @@ client.on('message', async (message) =>
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}phub`)) {
 		const args = message.content.slice(PREFIX.length).trim().split(' ');
+		const username = message.author.username;
+		const profilepicture = message.author.displayAvatarURL({ format: 'png', size: 512 });
 		var command = args.slice(1, args.length);
 		var finalresult = command.join(" ");
-		const image = await canvacord.phub({message.author.username, finalresult, message.author.displayAvatarURL({ format: 'png', size: 512 })});
+		const image = await canvacord.phub({username, finalresult, profilepicture});
         const attachment = new Discord.MessageAttachment(image.toBuffer(), "phub.png");
         message.channel.send(attachment);
     }
