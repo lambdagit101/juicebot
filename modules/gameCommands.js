@@ -34,7 +34,7 @@ client.on("message", async (message) => {
         const response = responses.first();
  
         // Respond
-		if (response.toLowerCase().startsWith(triviajson.results[randomquestion].correct_answer)) {
+		if (response.startsWith(triviajson.results[randomquestion].correct_answer)) {
 			var receivedtriviapoints = Math.trunc(Math.random() * 10);
 			db.add(`${message.author.id}_triviapoints`, receivedtriviapointstriviapoints);
 			var usertriviapoints = db.get(`${message.author.id}_triviapoints`);
