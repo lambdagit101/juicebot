@@ -12,18 +12,13 @@ client.on('message', async (message) =>
 	if (!message.content.startsWith(PREFIX)) return;
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}phub`)) {
-		const user = message.mentions.users.first() || message.author;
 		const args = message.content.slice(PREFIX.length).trim().split(' ');
-		const text = args.slice(2, args.length);
-		const heytext = text.join(' ');
-		const image = await canvacord.Canvas.phub({user.username, heytext, user.displayAvatarURL({ format: 'png', size: 512 })});
-		
-        const borgarembed = new Discord.MessageEmbed()
-            .setTitle(`${user.username}, why are you here?`)
-            .setImage(image)
-            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-        message.channel.send(borgarembed);
-        return;
+		var command = args.slice(1, args.length);
+		var finalresult = command.join(" ");
+		const image = await canvacord.Canvas.phub({message.author.username, finalresult, user.displayAvatarURL({ format: 'png', size: 512 })});
+        const attachment = new Discord.MessageAttachment(image.toBuffer(), "phub.png");
+        message.channel.send(attachment);
     }
+	
 
 });
