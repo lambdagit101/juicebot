@@ -172,7 +172,7 @@ client.on("message", async (message) => {
 			var text = args.slice(1, args.length);
 			var finalresult = text.join("%20");
 		const heavenembed = new Discord.MessageEmbed()
-			.setTitle(`${user.username} is rich`)
+			.setTitle(`${message.author.username} is rich`)
 			.setImage(`https://api.alexflipnote.dev/supreme?text=${finalresult}`)
 			.setFooter(`Invoked by ${message.author.username}, provided by api.alexflipnote.dev`, message.author.avatarURL());
 			message.channel.send(heavenembed);
