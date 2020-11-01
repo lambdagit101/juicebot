@@ -60,7 +60,7 @@ client.on('message', async (message) =>
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}bonk`)) 
     {
-        var whichbonk = Math.floor(Math.random() * 4);
+        var whichbonk = Math.floor(Math.random() * 7);
         switch (whichbonk) {
             case 0:
                 const bonk1embed = new Discord.MessageEmbed()
@@ -91,6 +91,30 @@ client.on('message', async (message) =>
                     .setTitle('Scout and Bonk laughing at Sniper')
                     .setURL('https://youtu.be/kuNixp-wvWM')
                     .setImage('https://cdn.discordapp.com/attachments/735495269034098771/747478775633018970/posterbonk4.png')
+                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                message.channel.send(bonk4embed);
+                break;
+			case 4:
+                const bonk4embed = new Discord.MessageEmbed()
+                    .setTitle('Bonk defending her newbord child')
+                    .setURL('https://youtu.be/kuNixp-wvWM')
+                    .setImage('https://cdn.discordapp.com/attachments/735495269034098771/772525441897463828/posterbonkchild1.png')
+                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                message.channel.send(bonk4embed);
+                break;
+			case 5:
+                const bonk4embed = new Discord.MessageEmbed()
+                    .setTitle('Bonk stopping Scout from beating up the RED Scout')
+                    .setURL('https://youtu.be/kuNixp-wvWM')
+                    .setImage('https://cdn.discordapp.com/attachments/735495269034098771/772534170509377536/posterbonk699.png')
+                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                message.channel.send(bonk4embed);
+                break;
+			case 6:
+                const bonk4embed = new Discord.MessageEmbed()
+                    .setTitle('In terms of home, they have no phone... for now.')
+                    .setURL('https://youtu.be/kuNixp-wvWM')
+                    .setImage('https://cdn.discordapp.com/attachments/735495269034098771/772537922758639626/posterbonkchild699.png')
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                 message.channel.send(bonk4embed);
                 break;
