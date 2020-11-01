@@ -95,28 +95,28 @@ client.on('message', async (message) =>
                 message.channel.send(bonk4embed);
                 break;
 			case 4:
-                const bonk4embed = new Discord.MessageEmbed()
+                const bonk5embed = new Discord.MessageEmbed()
                     .setTitle('Bonk defending her newbord child')
                     .setURL('https://youtu.be/kuNixp-wvWM')
                     .setImage('https://cdn.discordapp.com/attachments/735495269034098771/772525441897463828/posterbonkchild1.png')
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                message.channel.send(bonk4embed);
+                message.channel.send(bonk5embed);
                 break;
 			case 5:
-                const bonk4embed = new Discord.MessageEmbed()
+                const bonk6embed = new Discord.MessageEmbed()
                     .setTitle('Bonk stopping Scout from beating up the RED Scout')
                     .setURL('https://youtu.be/kuNixp-wvWM')
                     .setImage('https://cdn.discordapp.com/attachments/735495269034098771/772534170509377536/posterbonk699.png')
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                message.channel.send(bonk4embed);
+                message.channel.send(bonk6embed);
                 break;
 			case 6:
-                const bonk4embed = new Discord.MessageEmbed()
+                const bonk7embed = new Discord.MessageEmbed()
                     .setTitle('In terms of home, they have no phone... for now.')
                     .setURL('https://youtu.be/kuNixp-wvWM')
                     .setImage('https://cdn.discordapp.com/attachments/735495269034098771/772537922758639626/posterbonkchild699.png')
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                message.channel.send(bonk4embed);
+                message.channel.send(bonk7embed);
                 break;
             default:
                 message.channel.send('How did we get here?');
