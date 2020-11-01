@@ -112,7 +112,7 @@ client.on('message', async (message) =>
                 break;
 			case 6:
                 const bonk7embed = new Discord.MessageEmbed()
-                    .setTitle('In terms of home, they have no phone... for now.')
+                    .setTitle('In terms of home, they have no home... for now.')
                     .setURL('https://youtu.be/kuNixp-wvWM')
                     .setImage('https://cdn.discordapp.com/attachments/735495269034098771/772537922758639626/posterbonkchild699.png')
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
