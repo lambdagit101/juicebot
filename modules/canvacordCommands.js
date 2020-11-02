@@ -20,7 +20,7 @@ client.on('message', async (message) =>
 		var image = new canvacord.phub({username, text, pfp});
 		const phubembed = new Discord.MessageEmbed()
                 .setTitle(`${username}, what are you doing here?`)
-                .setImage(image.toBuffer())
+                .setImage(image)
                 .setFooter(`Invoked by ${message.author.username}, provided by Canvacord`, message.author.avatarURL());
             message.channel.send(phubembed);
 	}
