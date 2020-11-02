@@ -13,7 +13,7 @@ client.on('message', async (message) =>
 	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}phub`)) {
 		var username = message.author.username;
-		var pfp = message.author.displayAvatarURL({ format: 'png', size: 512 })
+		var pfp = message.author.displayAvatarURL({ format: 'png', size: 512 });
 		const args = message.content.slice(PREFIX.length).trim().split(' ');
 		var text = args.slice(1, args.length);
 		var finalresult = text.join("%20");

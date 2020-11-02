@@ -118,6 +118,14 @@ client.on('message', async (message) =>
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                 message.channel.send(bonk7embed);
                 break;
+			case 7:
+                const bonk8embed = new Discord.MessageEmbed()
+                    .setTitle('READY FOR COMBAT')
+                    .setURL('https://youtu.be/kuNixp-wvWM')
+                    .setImage('https://cdn.discordapp.com/attachments/767285367497555979/772922867956056074/posterbonk7893458.png')
+                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+                message.channel.send(bonk8embed);
+                break;
             default:
                 message.channel.send('How did we get here?');
         }
