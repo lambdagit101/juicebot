@@ -17,10 +17,12 @@ client.on('message', async (message) =>
 		const args = message.content.slice(PREFIX.length).trim().split(' ');
 		var text = args.slice(1, args.length);
 		var finalresult = text.join("%20");
-		var image = new canvacord.phub({username, text, pfp});
+		var image = await canvacord.Canvas.phub({username, text, pfp});
+		const attachment = new Discord.MessageAttachment(image, `phub${message.author.id}.png`);
 		const phubembed = new Discord.MessageEmbed()
                 .setTitle(`${username}, what are you doing here?`)
-                .setImage(image)
+                .attachFiles([attachment])
+				.setImage(`attachment://phub${message.author.id}.png`)
                 .setFooter(`Invoked by ${message.author.username}, provided by Canvacord`, message.author.avatarURL());
             message.channel.send(phubembed);
 	}
