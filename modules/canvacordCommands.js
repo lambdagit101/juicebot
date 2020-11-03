@@ -16,8 +16,8 @@ client.on('message', async (message) =>
 		var pfp = message.author.displayAvatarURL({ format: 'png', size: 512 });
 		const args = message.content.slice(PREFIX.length).trim().split(' ');
 		var text = args.slice(1, args.length);
-		var finalresult = text.join("%20");
-		var image = await canvacord.Canvas.phub({username, text, pfp});
+		var finalresult = text.join(" ");
+		var image = await canvacord.Canvas.phub({username, message: finalresult, image: pfp});
 		const attachment = new MessageAttachment(image, `phub${message.author.id}.png`);
 		const phubembed = new Discord.MessageEmbed()
                 .setTitle(`${username}, what are you doing here?`)
