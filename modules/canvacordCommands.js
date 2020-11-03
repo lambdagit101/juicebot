@@ -18,7 +18,7 @@ client.on('message', async (message) =>
 		var text = args.slice(1, args.length);
 		var finalresult = text.join("%20");
 		var image = await canvacord.Canvas.phub({username, text, pfp});
-		const attachment = new Discord.MessageAttachment(image, `phub${message.author.id}.png`);
+		const attachment = new MessageAttachment(image, `phub${message.author.id}.png`);
 		const phubembed = new Discord.MessageEmbed()
                 .setTitle(`${username}, what are you doing here?`)
                 .attachFiles([attachment])
