@@ -20,11 +20,11 @@ client.on('message', async (message) =>
 		var image = await canvacord.Canvas.phub({username, message: finalresult, image: pfp});
 		const attachment = new MessageAttachment(image, `phub${message.author.id}.png`);
 		const phubembed = new Discord.MessageEmbed()
-                .setTitle(`${username}, what are you doing here?`)
-                .attachFiles([attachment])
-				.setImage(`attachment://phub${message.author.id}.png`)
-                .setFooter(`Invoked by ${message.author.username}, provided by Canvacord`, message.author.avatarURL());
-            message.channel.send(phubembed);
+            .setTitle(`${username}, what are you doing here?`)
+            .attachFiles([attachment])
+			.setImage(`attachment://phub${message.author.id}.png`)
+            .setFooter(`Invoked by ${message.author.username}, provided by Canvacord`, message.author.avatarURL());
+        message.channel.send(phubembed);
 	}
 
 });
