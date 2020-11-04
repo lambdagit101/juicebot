@@ -131,11 +131,11 @@ client.on('message', async (message) =>
 async function fetchredditi(link, message) {
 	const captcha = new CaptchaGenerator(options); //getting captcha constructor
 	const buffer = await captcha.generate();
-	fs.writeFileSync(`captcha.png`, buffer);
+	const attachment = new MessageAttachment(buffer, `captcha.png`);
 	const captchaembed = new Discord.MessageEmbed()
         .setTitle('To use this feature, you must complete this captcha.')
 		.setColor("BLURPLE")
-        .setImage('captcha.png')
+        .setImage('attachment://captcha.png')
         .setFooter(`Invoked by ${message.author.username}, provided by KSoft.Si`, message.author.avatarURL());
 	prompter
       .message(message.channel, {
