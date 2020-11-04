@@ -132,6 +132,7 @@ async function fetchredditi(link, message) {
 	const captcha = new CaptchaGenerator(options); //getting captcha constructor
 	const buffer = await captcha.generate();
 	fs.writeFileSync('captcha.png', buffer);
+	const attachment = new Discord.MessageAttachment('./captcha.png', `captcha.png`);
 	const captchaembed = new Discord.MessageEmbed()
         .setTitle('To use this feature, you must complete this captcha.')
 		.setColor("BLURPLE")
