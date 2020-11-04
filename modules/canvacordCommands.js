@@ -1,11 +1,9 @@
 const Discord = require('discord.js');
 const { MessageAttachment } = require('discord.js');
-const { client, PREFIX } = require('../index'); // Import client from index.js
+const { client, PREFIX } = require('../index');
 const fetch = require('node-fetch');
 const canvacord = require('canvacord');
 
-// Coming soon! Maybe will make a leveling system with cards using this API
-/**
 client.on('message', async (message) => 
 {
     if (message.author.bot) return;
@@ -17,7 +15,7 @@ client.on('message', async (message) =>
 		const args = message.content.slice(PREFIX.length).trim().split(' ');
 		var text = args.slice(1, args.length);
 		var finalresult = text.join(" ");
-		var image = await canvacord.Canvas.phub({username: username, message: finalresult, image: pfp});
+		var image = await canvacord.Canvas.phub({username, finalresult, pfp});
 		const attachment = new MessageAttachment(image, `phub${message.author.id}.png`);
 		const phubembed = new Discord.MessageEmbed()
             .setTitle(`${username}, what are you doing here?`)
