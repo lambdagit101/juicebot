@@ -196,8 +196,8 @@ client.on("message", async (message) => {
 		var text = args.slice(1, args.length);
 		var finalresult = text.join("%20");
 		const chatbot = await fetch(`https://api.snowflakedev.xyz/chatbot?message=${finalresult}&name=${require('../config.json').botname}&gender=MALE&user=${message.author.id}`);
-		const message = await chatbot.json();
-		message.channel.send(message.message);
+		const messag = await chatbot.json();
+		message.channel.send(messag.message);
 	}
 
 });
