@@ -190,5 +190,14 @@ client.on("message", async (message) => {
 			message.channel.send(heavenembed);
         return;
     }
+	
+	if (message.content.toLowerCase().startsWith(`${PREFIX}chatbot`)) {
+		const args = message.content.slice(PREFIX.length).trim().split(' ');
+		var text = args.slice(1, args.length);
+		var finalresult = text.join("%20");
+		const chatbot = await fetch(`https://api.snowflakedev.xyz/chatbot?message=${finalresult}&name=${require('../config.json').botname}&gender=MALE&user=${message.author.id}`);
+		const message = await chatbot.json();
+		message.channel.send(message.message);
+	}
 
 });
