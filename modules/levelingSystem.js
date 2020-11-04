@@ -28,7 +28,7 @@ client.on('message', async (message) => {
         return message.channel.send(`${message.author} has ${money} coins.`);
     }
 
-    if (message.content.toLowerCase.startsWith(`${PREFIX}leaderboard`)) {
+    if (message.content.toLowerCase().startsWith(`${PREFIX}leaderboard`)) {
         let lb = await eco.leaderboard(false, 10);
         const embed = new Discord.MessageEmbed()
         .setAuthor("Leaderboard")
