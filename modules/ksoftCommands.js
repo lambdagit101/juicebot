@@ -136,7 +136,7 @@ async function fetchredditi(link, message) {
 	const captchaembed = new Discord.MessageEmbed()
         .setTitle('To use this feature, you must complete this captcha.')
 		.setColor("BLURPLE")
-        .setImage('./captcha.png')
+        .setImage('attachment://captcha.png')
         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
 	prompter
       .message(message.channel, {
