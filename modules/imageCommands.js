@@ -21,6 +21,7 @@ client.on('message', async (message) =>
         const borgarembed = new Discord.MessageEmbed()
             .setTitle('Borgar')
             .setImage('https://cdn.discordapp.com/attachments/736196476837036102/749324531943997502/borgar.PNG')
+			.setColor("BLURPLE")
             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
         message.channel.send(borgarembed);
         return;
@@ -32,6 +33,7 @@ client.on('message', async (message) =>
                 const avatarembed = new Discord.MessageEmbed()
                     .setTitle('Here is your requested avatar!')
                     .setImage(user.displayAvatarURL({ format: 'png', size: 512 }))
+					.setColor("BLURPLE")
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                 message.channel.send(avatarembed);
         return;
@@ -42,6 +44,7 @@ client.on('message', async (message) =>
         const evaembed = new Discord.MessageEmbed()
             .setTitle('I, EvaSex')
             .setImage('https://yandere-simulator.com/tampon.png')
+			.setColor("BLURPLE")
             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
         message.channel.send(evaembed);
         return;
@@ -53,6 +56,7 @@ client.on('message', async (message) =>
 		const hugembed = new Discord.MessageEmbed()
             .setTitle(`${message.author.username} hugged ${user.username}`)
             .setImage(huggifs[Math.floor(Math.random() * huggifs.length)])
+			.setColor("BLURPLE")
             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
         message.channel.send(hugembed);
 		return;
@@ -66,6 +70,7 @@ client.on('message', async (message) =>
                 const bonk1embed = new Discord.MessageEmbed()
                     .setTitle('Bonk and Scout Wedding Photo')
                     .setURL('https://youtu.be/kuNixp-wvWM')
+					.setColor("BLURPLE")
                     .setImage('https://cdn.discordapp.com/attachments/686015484281225241/722533493435007066/posterbonk.png')
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                 message.channel.send(bonk1embed);
@@ -74,6 +79,7 @@ client.on('message', async (message) =>
                 const bonk2embed = new Discord.MessageEmbed()
                     .setTitle('Bonk and Scout going home after the wedding')
                     .setURL('https://youtu.be/kuNixp-wvWM')
+					.setColor("BLURPLE")
                     .setImage('https://cdn.discordapp.com/attachments/735495269034098771/747478778254459089/posterbonk2.png')
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                 message.channel.send(bonk2embed);
@@ -82,6 +88,7 @@ client.on('message', async (message) =>
                 const bonk3embed = new Discord.MessageEmbed()
                     .setTitle('Scout seeing Bonk for the first time')
                     .setURL('https://youtu.be/kuNixp-wvWM')
+					.setColor("BLURPLE")
                     .setImage('https://cdn.discordapp.com/attachments/735495269034098771/747478781454712833/posterbonk3.png')
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                 message.channel.send(bonk3embed);
@@ -90,6 +97,7 @@ client.on('message', async (message) =>
                 const bonk4embed = new Discord.MessageEmbed()
                     .setTitle('Scout and Bonk laughing at Sniper')
                     .setURL('https://youtu.be/kuNixp-wvWM')
+					.setColor("BLURPLE")
                     .setImage('https://cdn.discordapp.com/attachments/735495269034098771/747478775633018970/posterbonk4.png')
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                 message.channel.send(bonk4embed);
@@ -98,6 +106,7 @@ client.on('message', async (message) =>
                 const bonk5embed = new Discord.MessageEmbed()
                     .setTitle('Bonk defending her newbord child')
                     .setURL('https://youtu.be/kuNixp-wvWM')
+					.setColor("BLURPLE")
                     .setImage('https://cdn.discordapp.com/attachments/735495269034098771/772525441897463828/posterbonkchild1.png')
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                 message.channel.send(bonk5embed);
@@ -106,6 +115,7 @@ client.on('message', async (message) =>
                 const bonk6embed = new Discord.MessageEmbed()
                     .setTitle('Bonk stopping Scout from beating up the RED Scout')
                     .setURL('https://youtu.be/kuNixp-wvWM')
+					.setColor("BLURPLE")
                     .setImage('https://cdn.discordapp.com/attachments/735495269034098771/772534170509377536/posterbonk699.png')
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                 message.channel.send(bonk6embed);
@@ -114,6 +124,7 @@ client.on('message', async (message) =>
                 const bonk7embed = new Discord.MessageEmbed()
                     .setTitle('In terms of home, they have no home... for now.')
                     .setURL('https://youtu.be/kuNixp-wvWM')
+					.setColor("BLURPLE")
                     .setImage('https://cdn.discordapp.com/attachments/735495269034098771/772537922758639626/posterbonkchild699.png')
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                 message.channel.send(bonk7embed);
@@ -122,6 +133,7 @@ client.on('message', async (message) =>
                 const bonk8embed = new Discord.MessageEmbed()
                     .setTitle('READY FOR COMBAT')
                     .setURL('https://youtu.be/kuNixp-wvWM')
+					.setColor("BLURPLE")
                     .setImage('https://cdn.discordapp.com/attachments/767285367497555979/772922867956056074/posterbonk7893458.png')
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                 message.channel.send(bonk8embed);

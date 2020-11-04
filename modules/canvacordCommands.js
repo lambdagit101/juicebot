@@ -23,6 +23,7 @@ client.on('message', async (message) =>
             .setTitle(`${username}, what are you doing here?`)
             .attachFiles([attachment])
 			.setImage(`attachment://phub${message.author.id}.png`)
+			.setColor("BLURPLE")
             .setFooter(`Invoked by ${message.author.username}, provided by Canvacord`, message.author.avatarURL());
         message.channel.send(phubembed);
 	}

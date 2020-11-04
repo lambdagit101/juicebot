@@ -7,6 +7,10 @@ const { client, PREFIX } = require('../index'); // Import client from index.js
 const fetch = require('node-fetch');
 const ksoftsikey = `Bearer ${process.env.KSOFTSI_TOKEN}`; // This is the token you get if your KSoft.Si app is approved
 
+const { CaptchaGenerator } = require('captcha-canvas');  //require package here
+const fs = require('fs'); //require fs module for saving image in a file
+const options = {height: 200, width: 600};  //options for captcha image
+
 client.on('message', async (message) => 
 {
     if (message.author.bot) return;
@@ -89,6 +93,7 @@ client.on('message', async (message) =>
         var embedtitleurl = await deetailsjson.article_url;
         const wikiembed = new Discord.MessageEmbed()
             .setTitle(embedtitle)
+			.setColor("BLURPLE")
             .setURL(embedtitleurl)
             .setImage(imageurl)
             .setFooter(`Invoked by ${message.author.username}, provided by KSoft.Si`, message.author.avatarURL());
@@ -109,6 +114,7 @@ client.on('message', async (message) =>
         const lyricsembed = new Discord.MessageEmbed()
             .setTitle('Lyrics')
             .setThumbnail(lyricsjson.data[0].album_art)
+			.setColor("BLURPLE")
             .addFields(
                 { name: 'Artist Name', value: lyricsjson.data[0].artist, inline: true },
                 { name: 'Song Album', value: lyricsjson.data[0].album, inline: true },
@@ -123,7 +129,42 @@ client.on('message', async (message) =>
 });
 
 async function fetchredditi(link, message) {
-    var details = await fetch(link, {
+	const captcha = new CaptchaGenerator(options); //getting captcha constructor
+	const buffer = await captcha.generate();
+	fs.writeFileSync(`captcha.png`, buffer);
+	const captchaembed = new Discord.MessageEmbed()
+        .setTitle('To use this feature, you must complete this captcha.')
+		.setColor("BLURPLE")
+        .setImage('captcha.png')
+        .setFooter(`Invoked by ${message.author.username}, provided by KSoft.Si`, message.author.avatarURL());
+	prompter
+      .message(message.channel, {
+        question: captchaembed,
+        userId: message.author.id,
+        max: 1,
+        timeout: 20000,
+      })
+      .then(responses => {
+        // If no responses, the time ran out
+        if (!responses.size) {
+          return message.channel.send(`No time for questions? I see.`);
+        }
+        // Gets the first message in the collection
+        const response = responses.first();
+ 
+        // Respond
+        if (response == captcha.text) {
+			message.delete();
+			finishfetch(link, message);
+		} else {
+			message.channel.send(`The answer was ${captcha.text}. You failed.`);
+		}
+      });
+	
+}
+
+async function finishfetch(link, message) {
+	var details = await fetch(link, {
         method: 'get',
         headers: { 'Authorization': ksoftsikey,
 				   'User-Agent': message.author.id
@@ -134,6 +175,7 @@ async function fetchredditi(link, message) {
     var embedtitle = await detailsjson.title;
     const redditembed = new Discord.MessageEmbed()
         .setTitle(embedtitle)
+		.setColor("BLURPLE")
         .setURL(detailsjson.source)
         .addFields(
           {name: 'Publisher', value: detailsjson.author, inline: true}

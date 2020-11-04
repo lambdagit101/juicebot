@@ -18,17 +18,20 @@ client.on('message', async (message) => {
                             .then(() => {
                                 const kickedembed = new Discord.MessageEmbed()
                                     .setTitle('Moderation')
+									.setColor("BLURPLE")
                                     .setDescription(`You have been kicked by ${message.author.tag} from ${message.guild.name}. Reason: ${text}`)
                                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                                 user.send(kickedembed);
                                 const kickembed = new Discord.MessageEmbed()
                                     .setTitle('Moderation')
+									.setColor("BLURPLE")
                                     .setDescription(`${user.tag} was successfully kicked!`)
                                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                                 message.channel.send(kickembed);
                             }).catch(err => {
                                 const cantkickembed = new Discord.MessageEmbed()
                                     .setTitle('Moderation')
+									.setColor("BLURPLE")
                                     .setDescription("Couldn't kick the user")
                                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                                 message.channel.send(cantkickembed);
@@ -37,6 +40,7 @@ client.on('message', async (message) => {
                     } else {
                         const nopermemmbed = new Discord.MessageEmbed()
                         .setTitle('Moderation')
+						.setColor("BLURPLE")
                         .setDescription(`No permission`)
                         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                         message.channel.send(nopermemmbed);
@@ -48,6 +52,7 @@ client.on('message', async (message) => {
                 else {
                     const nomemembed = new Discord.MessageEmbed()
                         .setTitle('Moderation')
+						.setColor("BLURPLE")
                         .setDescription('This user is not in this server')
                         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                     message.channel.send(nomemembed);
@@ -58,6 +63,7 @@ client.on('message', async (message) => {
             else {
                 const nopersembed = new Discord.MessageEmbed()
                     .setTitle('Moderation')
+					.setColor("BLURPLE")
                     .setDescription('No person was specified!')
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                 message.channel.send(nopersembed);
@@ -75,17 +81,20 @@ client.on('message', async (message) => {
                         const warnembed = new Discord.MessageEmbed()
                             .setTitle('Moderation')
                             .setDescription(`You have been warned\nReason: ${text}`)
+							.setColor("BLURPLE")
                             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                         memberiq.send(warnembed);
                         const warnedembed = new Discord.MessageEmbed()
                             .setTitle('Moderation')
                             .setDescription(`${user.tag} has been warned`)
+							.setColor("BLURPLE")
                             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                         message.channel.send(warnedembed);
                     } else {
                         const warnemmbed = new Discord.MessageEmbed()
                             .setTitle('Moderation')
                             .setDescription(`No permission`)
+							.setColor("BLURPLE")
                             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                         message.channel.send(warnemmbed);
                     }
@@ -106,6 +115,7 @@ client.on('message', async (message) => {
                             .then(() => {
                                 const bannedembed = new Discord.MessageEmbed()
                                     .setTitle('Moderation')
+									.setColor("BLURPLE")
                                     .setDescription(`You have been banned by ${message.author.tag}. Reason: ${text}`)
                                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                                 user.send(bannedembed);
@@ -119,6 +129,7 @@ client.on('message', async (message) => {
                             const nopermembed = new Discord.MessageEmbed()
                             .setTitle('Moderation')
                             .setDescription(`No permission`)
+							.setColor("BLURPLE")
                             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                             message.channel.send(nopermembed);
                     }
@@ -129,6 +140,7 @@ client.on('message', async (message) => {
                 else {
                     const nobanembed = new Discord.MessageEmbed()
                         .setTitle('Moderation')
+						.setColor("BLURPLE")
                         .setDescription("This user is not in this server")
                         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                     message.channel.send(nobanembed);
@@ -136,6 +148,7 @@ client.on('message', async (message) => {
             } else {
                 message.channel.send(new Discord.MessageEmbed()
                     .setTitle('Unable to ban')
+					.setColor("BLURPLE")
                     .setDescription('No person was specified!')
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL())
                 );
@@ -151,6 +164,7 @@ client.on('message', async (message) => {
                 } catch (err) {
                     const returnembed = new Discord.MessageEmbed()
                         .setTitle('Moderation')
+						.setColor("BLURPLE")
                         .setDescription(`Please provide a number`)
                         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                     return message.channel.send(returnembed);
@@ -160,6 +174,7 @@ client.on('message', async (message) => {
                 if (!deleteCount || deleteCount < 2 || deleteCount > 100) {
                     const providembed = new Discord.MessageEmbed()
                         .setTitle('Moderation')
+						.setColor("BLURPLE")
                         .setDescription(`Please provide a number between 2 and 100`)
                         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                     return message.channel.send(providembed);
@@ -172,6 +187,7 @@ client.on('message', async (message) => {
             } else {
                 const nonpermembed = new Discord.MessageEmbed()
                     .setTitle('Moderation')
+					.setColor("BLURPLE")
                     .setDescription(`No permission`)
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                 message.channel.send(nonpermembed);
@@ -194,7 +210,7 @@ client.on('message', async (message) => {
                             //Create a new message to show that the mute was successful.
                             const mutedMessage = new Discord.MessageEmbed()
                                 .setTitle('Moderation')
-                                .setColor('0xff0000')
+								.setColor("BLURPLE")
                                 .setDescription(`${user.tag} was muted successfully.`)
                                 .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                             message.channel.send(mutedMessage);
@@ -204,7 +220,7 @@ client.on('message', async (message) => {
                         .catch(err => {
                             const muteFailedEmbed = new Discord.MessageEmbed()
                                 .setTitle('Moderation')
-                                .setColor('0xff0000')
+								.setColor("BLURPLE")
                                 .setDescription("Couldn't mute the user.")
                                 .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                             message.channel.send(muteFailedEmbed);
@@ -216,7 +232,7 @@ client.on('message', async (message) => {
                 else {
                     const muteAlien = new Discord.MessageEmbed()
                         .setTitle('Moderation')
-                        .setColor('0xff0000')
+                        .setColor("BLURPLE")
                         .setDescription("You are trying to mute a user who isn't in the server.")
                         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                     message.channel.send(muteAlien);
