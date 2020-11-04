@@ -148,7 +148,7 @@ async function fetchredditi(link, message) {
       .then(responses => {
         // If no responses, the time ran out
         if (!responses.size) {
-          return message.channel.send(`No time for questions? I see.`);
+          return message.channel.send(`You ran out of time.`);
         }
         // Gets the first message in the collection
         const response = responses.first();
