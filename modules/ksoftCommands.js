@@ -6,7 +6,7 @@ const Discord = require('discord.js');
 const { client, PREFIX } = require('../index'); // Import client from index.js
 const fetch = require('node-fetch');
 const ksoftsikey = `Bearer ${process.env.KSOFTSI_TOKEN}`; // This is the token you get if your KSoft.Si app is approved
-
+const prompter = require('discordjs-prompter');
 const { CaptchaGenerator } = require('captcha-canvas');  //require package here
 const fs = require('fs'); //require fs module for saving image in a file
 const options = {height: 200, width: 600};  //options for captcha image
