@@ -73,13 +73,6 @@ client.on('message', async (message) =>
         return;
     }
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}rule34`) || message.content.toLowerCase().startsWith(`${PREFIX}r34`)) {
-        if (message.channel.nsfw == true) {
-            fetchredditi('https://api.ksoft.si/images/rand-reddit/rule34', message);
-        }
-        return;
-    } 
-
     if (message.content.toLowerCase().startsWith(`${PREFIX}wikihow`)) {
         var deetails = await fetch('https://api.ksoft.si/images/random-wikihow', {
             method: 'get',
