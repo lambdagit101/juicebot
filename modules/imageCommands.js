@@ -39,23 +39,13 @@ client.on('message', async (message) =>
         return;
 	}
 	
-    if (message.content.toLowerCase().startsWith(`${PREFIX}evaxephon`) || message.content.toLowerCase().startsWith(`${PREFIX}evax`)) 
-	{
-        const evaembed = new Discord.MessageEmbed()
-            .setTitle('I, EvaSex')
-            .setImage('https://yandere-simulator.com/tampon.png')
-			.setColor("BLURPLE")
-            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-        message.channel.send(evaembed);
-        return;
-    }
-	
 	if (message.content.toLowerCase().startsWith(`${PREFIX}hug`)) {
 		const user = message.mentions.users.first() || message.author;
-		const huggifs = ['https://media.tenor.com/images/aab83bd3725feeaccb9929f8ca964db9/tenor.gif', 'https://media4.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif', 'https://i.pinimg.com/originals/f2/80/5f/f2805f274471676c96aff2bc9fbedd70.gif', 'https://media1.tenor.com/images/506aa95bbb0a71351bcaa753eaa2a45c/tenor.gif?itemid=7552075', 'https://i.imgur.com/r9aU2xv.gif?noredirect', 'https://acegif.com/wp-content/uploads/anime-hug.gif', 'https://25.media.tumblr.com/tumblr_ma7l17EWnk1rq65rlo1_500.gif'];
-		const hugembed = new Discord.MessageEmbed()
+		const huggifs = await fetch('https://some-random-api.ml/animu/hug');
+		const huggifsjson = await huggifs.json();
+		const hugembed = new Discord.MessageEmbed();
             .setTitle(`${message.author.username} hugged ${user.username}`)
-            .setImage(huggifs[Math.floor(Math.random() * huggifs.length)])
+            .setImage(huggifsjson.link)
 			.setColor("BLURPLE")
             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
         message.channel.send(hugembed);
