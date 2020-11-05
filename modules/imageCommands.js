@@ -43,7 +43,7 @@ client.on('message', async (message) =>
 		const user = message.mentions.users.first() || message.author;
 		const huggifs = await fetch('https://some-random-api.ml/animu/hug');
 		const huggifsjson = await huggifs.json();
-		const hugembed = new Discord.MessageEmbed();
+		const hugembed = new Discord.MessageEmbed()
             .setTitle(`${message.author.username} hugged ${user.username}`)
             .setImage(huggifsjson.link)
 			.setColor("BLURPLE")
