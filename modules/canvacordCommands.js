@@ -16,14 +16,8 @@ client.on('message', async (message) =>
 		var text = args.slice(1, args.length);
 		var finalresult = text.join(" ");
 		var image = await canvacord.Canvas.phub({username, finalresult, pfp});
-		const attachment = new MessageAttachment(image, `phub${message.author.id}.png`);
-		const phubembed = new Discord.MessageEmbed()
-            .setTitle(`${username}, what are you doing here?`)
-            .attachFiles([attachment])
-			.setImage(`attachment://phub${message.author.id}.png`)
-			.setColor("BLURPLE")
-            .setFooter(`Invoked by ${message.author.username}, provided by Canvacord`, message.author.avatarURL());
-        message.channel.send(phubembed);
+		const attachment = new MessageAttachment(image.toBuffer(), `phub${message.author.id}.png`);
+        message.channel.send(`${message.author.username}, what are you doing here?`, attachment);
 	}
 
 });

@@ -131,16 +131,10 @@ client.on('message', async (message) =>
 async function fetchredditi(link, message) {
 	const captcha = new CaptchaGenerator(options); //getting captcha constructor
 	const buffer = await captcha.generate();
-	fs.writeFileSync('captcha.png', buffer);
-	const attachment = new Discord.MessageAttachment('./captcha.png', `captcha.png`);
-	const captchaembed = new Discord.MessageEmbed()
-        .setTitle('To use this feature, you must complete this captcha.')
-		.setColor("BLURPLE")
-        .setImage('attachment://captcha.png')
-        .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+	const attachment = new Discord.MessageAttachment(buffer, `captcha.png`);
 	prompter
       .message(message.channel, {
-        question: captchaembed,
+        question: ['To continue, you must solve this captcha', attachment],
         userId: message.author.id,
         max: 1,
         timeout: 20000,
@@ -158,7 +152,7 @@ async function fetchredditi(link, message) {
 			message.delete();
 			finishfetch(link, message);
 		} else {
-			message.channel.send(`The answer was ${captcha.text}. You failed.`);
+			message.channel.send(`You failed the verification process..`);
 		}
       });
 	
