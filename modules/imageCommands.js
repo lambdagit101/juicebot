@@ -51,6 +51,23 @@ client.on('message', async (message) =>
         message.channel.send(hugembed);
 		return;
 	}
+	
+	if (message.content.toLowerCase().startsWith(`${PREFIX}rule34`) || message.content.toLowerCase().startsWith(`${PREFIX}r34`)) {
+        if (message.channel.nsfw == true) {
+			const args = message.content.slice(PREFIX.length).trim().split(' ');
+			var command = args.slice(1, args.length);
+			var finalresult = command.join("+");
+            const rule34 = await fetch(`https://r34-json-api.herokuapp.com/posts?tags=${finalresult}`);
+			const rule34json = await rule34.json();
+			const r34embed = new Discord.MessageEmbed()
+				.setTitle(`${message.author.username}, here is your requested rule 34`)
+				.setColor("BLURPLE")
+				.setImage(rule34json[Math.floor(Math.random() * rule34json.length)].file_url)
+				.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+			message.channel.send(r34embed);
+        }
+        return;
+    } 
 
     if (message.content.toLowerCase().startsWith(`${PREFIX}bonk`)) 
     {
