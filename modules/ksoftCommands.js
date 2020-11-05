@@ -148,11 +148,11 @@ async function fetchredditi(link, message) {
         const response = responses.first();
  
         // Respond
-        if (response == captcha.text) {
+        if (response === captcha.text) {
 			message.delete();
 			finishfetch(link, message);
 		} else {
-			message.channel.send(`You failed the verification process..`);
+			message.channel.send(`You failed the verification process.`);
 		}
       });
 	
