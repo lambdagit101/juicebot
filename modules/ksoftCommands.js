@@ -129,33 +129,7 @@ client.on('message', async (message) =>
 });
 
 async function fetchredditi(link, message) {
-	const captcha = new CaptchaGenerator(options); //getting captcha constructor
-	const buffer = await captcha.generate();
-	const attachment = new Discord.MessageAttachment(buffer, `captcha.png`);
-	prompter
-      .message(message.channel, {
-        question: ['To continue, you must solve this captcha', attachment],
-        userId: message.author.id,
-        max: 1,
-        timeout: 20000,
-      })
-      .then(responses => {
-        // If no responses, the time ran out
-        if (!responses.size) {
-          return message.channel.send(`You ran out of time.`);
-        }
-        // Gets the first message in the collection
-        const response = responses.first();
- 
-        // Respond
-        if (response === captcha.text) {
-			message.delete();
-			finishfetch(link, message);
-		} else {
-			message.channel.send(`You failed the verification process.`);
-		}
-      });
-	
+	finishfetch(link, message);
 }
 
 async function finishfetch(link, message) {
