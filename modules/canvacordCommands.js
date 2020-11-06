@@ -15,7 +15,7 @@ client.on('message', async (message) =>
 		const args = message.content.slice(PREFIX.length).trim().split(' ');
 		var text = args.slice(1, args.length);
 		var finalresult = text.join(" ");
-		var image = await canvacord.phub({username, finalresult, pfp});
+		var image = await canvacord.Canvas.phub({username, finalresult, pfp});
 		image.build()
 			.then(data => {
 				const attachment = new Discord.MessageAttachment(data, `phub${message.author.id}.png`);
