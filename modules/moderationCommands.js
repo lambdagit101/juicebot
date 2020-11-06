@@ -116,7 +116,7 @@ client.on('message', async (message) => {
                                 const bannedembed = new Discord.MessageEmbed()
                                     .setTitle('Moderation')
 									.setColor("BLURPLE")
-                                    .setDescription(`You have been banned by ${message.author.tag}. Reason: ${text}`)
+                                    .setDescription(`You have been banned by ${message.author.tag} from ${message.guild.name}. Reason: ${text}`)
                                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                                 user.send(bannedembed);
                                 const banembed = new Discord.MessageEmbed()
