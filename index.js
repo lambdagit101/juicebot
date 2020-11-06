@@ -54,4 +54,4 @@ client.on("message", async (message) => {
     }
 });
 
-client.login(require('./token.json').token || process.env.BOT_TOKEN);
+client.login(process.env.BOT_TOKEN);
