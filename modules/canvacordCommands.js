@@ -15,17 +15,12 @@ client.on('message', async (message) =>
 		const args = message.content.slice(PREFIX.length).trim().split(' ');
 		var text = args.slice(1, args.length);
 		var finalresult = text.join(" ");
-		var image = await canvacord.Canvas.phub({username, finalresult, pfp});
-		image.build()
-			.then(data => {
-				const attachment = new Discord.MessageAttachment(data, `phub${message.author.id}.png`);
-				const phubembed = new Discord.MessageEmbed()
-                    .setTitle(`${message.author.username}, what are you doing here?`)
-					.setColor("BLURPLE")
-					.setImage(attachment)
-                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-				message.channel.send(phubembed);
-		});
+		var image = await canvacord.Canvas.phub(username, finalresult, pfp);
+		console.log(args);
+		console.log(text);
+		console.log(finalresult);
+		const attachment = new Discord.MessageAttachment(image, `phub${message.author.id}.png`);
+		return message.channel.send(attachment);
 	}
 
 });
