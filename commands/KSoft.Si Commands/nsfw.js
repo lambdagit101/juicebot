@@ -1,4 +1,4 @@
-cconst Discord = require('discord.js');
+const Discord = require('discord.js');
 const fetch = require('node-fetch');
 const ksoftsikey = `Bearer ${process.env.KSOFTSI_TOKEN}`
 
