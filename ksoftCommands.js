@@ -3,77 +3,74 @@
 // Until then, comment the entire module.
 
 const Discord = require('discord.js');
-const { client, PREFIX } = require('../index'); // Import client from index.js
+const { client } = require('./index.js'); // Import client from index.js
+const { prefix } = require('./config.json')
 const fetch = require('node-fetch');
 const ksoftsikey = `Bearer ${process.env.KSOFTSI_TOKEN}`; // This is the token you get if your KSoft.Si app is approved
-const prompter = require('discordjs-prompter');
-const { CaptchaGenerator } = require('captcha-canvas');  //require package here
-const fs = require('fs'); //require fs module for saving image in a file
-const options = {height: 200, width: 600};  //options for captcha image
 
 client.on('message', async (message) => 
 {
     if (message.author.bot) return;
     if (!message.guild) return;
-	if (!message.content.startsWith(PREFIX)) return;
+	if (!message.content.startsWith(prefix)) return;
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}hentai`)) {
+    if (message.content.toLowerCase().startsWith(`${prefix}hentai`)) {
         if (message.channel.nsfw == true) {
             fetchredditi('https://api.ksoft.si/images/rand-reddit/hentai', message);
         }
         return;
     }
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}animeme`)) {
+    if (message.content.toLowerCase().startsWith(`${prefix}animeme`)) {
         fetchredditi('https://api.ksoft.si/images/rand-reddit/goodanimemes', message);
         return;
     }
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}dankmeme`) || message.content.toLowerCase().startsWith(`${PREFIX}meme`)) {
+    if (message.content.toLowerCase().startsWith(`${prefix}dankmeme`) || message.content.toLowerCase().startsWith(`${prefix}meme`)) {
         fetchredditi('https://api.ksoft.si/images/random-meme', message);
         return;
     }
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}sbubby`)) {
+    if (message.content.toLowerCase().startsWith(`${prefix}sbubby`)) {
         fetchredditi('https://api.ksoft.si/images/rand-reddit/sbubby', message);
         return;
     }
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}comedyheaven`)) {
+    if (message.content.toLowerCase().startsWith(`${prefix}comedyheaven`)) {
         fetchredditi('https://api.ksoft.si/images/rand-reddit/comedyheaven', message);
         return;
     }
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}pic`)) {
+    if (message.content.toLowerCase().startsWith(`${prefix}pic`)) {
         fetchredditi('https://api.ksoft.si/images/rand-reddit/pic', message);
         return;
     }
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}greentext`)) {
+    if (message.content.toLowerCase().startsWith(`${prefix}greentext`)) {
         fetchredditi('https://api.ksoft.si/images/rand-reddit/greentext', message);
         return;
     }
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}aww`)) {
+    if (message.content.toLowerCase().startsWith(`${prefix}aww`)) {
         fetchredditi('https://api.ksoft.si/images/rand-reddit/aww', message);
         return;
     }
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}randomnsfw`) || message.content.toLowerCase().startsWith(`${PREFIX}nsfw`) || message.content.toLowerCase().startsWith(`${PREFIX}rnsfw`)) {
+    if (message.content.toLowerCase().startsWith(`${prefix}randomnsfw`) || message.content.toLowerCase().startsWith(`${prefix}nsfw`) || message.content.toLowerCase().startsWith(`${prefix}rnsfw`)) {
         if (message.channel.nsfw == true) {
             fetchredditi('https://api.ksoft.si/images/random-nsfw', message);
         }
         return;
     }
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}porn`)) {
+    if (message.content.toLowerCase().startsWith(`${prefix}porn`)) {
         if (message.channel.nsfw == true) {
             fetchredditi('https://api.ksoft.si/images/rand-reddit/porn', message);
         }
         return;
     }
 
-    if (message.content.toLowerCase().startsWith(`${PREFIX}wikihow`)) {
+    if (message.content.toLowerCase().startsWith(`${prefix}wikihow`)) {
         var deetails = await fetch('https://api.ksoft.si/images/random-wikihow', {
             method: 'get',
             headers: { 'Authorization': ksoftsikey,
@@ -94,7 +91,7 @@ client.on('message', async (message) =>
         return;
     }
 /**
-    if (message.content.toLowerCase().startsWith(`${PREFIX}lyrics`)) {
+    if (message.content.toLowerCase().startsWith(`${prefix}lyrics`)) {
         var args = message.content.split(' ');
         var command = args.slice(1, args.length);
 	var text = command.join("%20");

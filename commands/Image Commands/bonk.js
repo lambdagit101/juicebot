@@ -1,77 +1,7 @@
 const Discord = require('discord.js');
-const { MessageAttachment } = require('discord.js');
-const { client, PREFIX } = require('../index'); // Import client from index.js
-const fetch = require('node-fetch');
 
-client.on('message', async (message) => 
-{
-    if (message.author.bot) return;
-	if (!message.content.startsWith(PREFIX)) return;
-
-    if (message.content.toLowerCase().startsWith(`${PREFIX}dummyimage`)) {
-        const args = message.content.slice(PREFIX.length).trim().split(' ');
-        const width = args[1].toLowerCase();
-        const text = message.content.split(args[1] + " ")[1];
-        const forrealtext = text.replace(/ /g, "%20");
-        message.channel.send('https://dummyimage.com/' + width + '/' + '000/fff.png&text=' + forrealtext + '+');
-        return;
-    }
-
-    if (message.content.toLowerCase().startsWith(`${PREFIX}borgar`)) {
-        const borgarembed = new Discord.MessageEmbed()
-            .setTitle('Borgar')
-            .setImage('https://cdn.discordapp.com/attachments/736196476837036102/749324531943997502/borgar.PNG')
-			.setColor("BLURPLE")
-            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-        message.channel.send(borgarembed);
-        return;
-    }
-
-    if (message.content.toLowerCase().startsWith(`${PREFIX}requestavatar`)) 
-    {
-        const user = message.mentions.users.first() || message.author;
-                const avatarembed = new Discord.MessageEmbed()
-                    .setTitle('Here is your requested avatar!')
-                    .setImage(user.displayAvatarURL({ format: 'png', size: 512 }))
-					.setColor("BLURPLE")
-                    .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-                message.channel.send(avatarembed);
-        return;
-	}
-	
-	if (message.content.toLowerCase().startsWith(`${PREFIX}hug`)) {
-		const user = message.mentions.users.first() || message.author;
-		const huggifs = await fetch('https://some-random-api.ml/animu/hug');
-		const huggifsjson = await huggifs.json();
-		const hugembed = new Discord.MessageEmbed()
-            .setTitle(`${message.author.username} hugged ${user.username}`)
-            .setImage(huggifsjson.link)
-			.setColor("BLURPLE")
-            .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-        message.channel.send(hugembed);
-		return;
-	}
-	
-	if (message.content.toLowerCase().startsWith(`${PREFIX}rule34`) || message.content.toLowerCase().startsWith(`${PREFIX}r34`)) {
-        if (message.channel.nsfw == true) {
-			const args = message.content.slice(PREFIX.length).trim().split(' ');
-			var command = args.slice(1, args.length);
-			var finalresult = command.join("+");
-            const rule34 = await fetch(`https://r34-json-api.herokuapp.com/posts?tags=${finalresult}`);
-			const rule34json = await rule34.json();
-			const r34embed = new Discord.MessageEmbed()
-				.setTitle(`${message.author.username}, here is your requested rule 34`)
-				.setColor("BLURPLE")
-				.setImage(rule34json[Math.floor(Math.random() * rule34json.length)].file_url)
-				.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
-			message.channel.send(r34embed);
-        }
-        return;
-    } 
-
-    if (message.content.toLowerCase().startsWith(`${PREFIX}bonk`)) 
-    {
-        var whichbonk = Math.floor(Math.random() * 7);
+module.exports.run = async (client, message, args) => {
+    var whichbonk = Math.floor(Math.random() * 7);
         switch (whichbonk) {
             case 0:
                 const bonk1embed = new Discord.MessageEmbed()
@@ -148,7 +78,10 @@ client.on('message', async (message) =>
             default:
                 message.channel.send('How did we get here?');
         }
-        return
-    }
+};
 
-});
+module.exports.help = {
+    name: "bonk",
+    description: "Not talking about an e-girl, talking about the tales of BLU Scout and Bonk.",
+    aliases: []
+};

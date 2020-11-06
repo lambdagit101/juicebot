@@ -1,4 +1,5 @@
-const { client, PREFIX } = require('../index'); // Import the client from index.js
+const { client } = require('./index'); // Import the client from index.js
+const { PREFIX } = require("./config.js");
 const Discord = require('discord.js');
 const MusicBot = require('discord-music-system');
  

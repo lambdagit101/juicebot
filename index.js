@@ -1,43 +1,57 @@
-const { Client, MessageEmbed } = require('discord.js');
-const client = new Client();
+require("dotenv").config();
+const Discord = require("discord.js");
+const client = new Discord.Client();
+const config = require("./config.json");
+const fs = require("fs");
+client.commands = new Discord.Collection();
+client.aliases = new Discord.Collection();
 
-const PREFIX = require('./config.json').prefix;
+fs.readdir(`${__dirname}/commands`, (error, ctg) => {
+    if (error) throw error;
 
-// Export the client so other modules can use it too
-module.exports.client = client;
-module.exports.PREFIX = PREFIX;
+    ctg.forEach(category => {
 
-client.on('ready', () => {
-    console.log(`${client.user.tag} - Ready on ${client.guilds.cache.size} guild${client.guilds.cache.size != 1 ? 's' : ''}!`);
+        fs.readdir(`${__dirname}/commands/${category}`, (err, commands) => {
+            if (err) throw err;
 
-    // Execute modules in /modules folder
-    const fs = require('fs');
-    let files = fs.readdirSync('./modules');
-    files.forEach(file => {
-        if (file.endsWith('.js')) {
-            try {
-                console.log('Running module: ' + file);
-                require('./modules/' + file);
-            } catch (e) {
-                console.log(`Module ${file} has crashed`);
-				console.log(e);
-            }
-        }
+            commands.forEach(command => {
+                const cmd = require(`${__dirname}/commands/${category}/${command}`);
+                if (!cmd.help) throw new Error(`Invalid command file structure ${command}!`);
+
+                cmd.help.category = category;
+                cmd.location = `${__dirname}/commands/${category}/${command}`;
+
+                console.log(`Loading command ${command}...`);
+
+                client.commands.set(cmd.help.name, cmd);
+                if (cmd.help.aliases && Array.isArray(cmd.help.aliases)) cmd.help.aliases.forEach(alias => client.aliases.set(alias, cmd.help.name));
+            });
+        });
     });
 });
 
-client.once("reconnecting", () => {
-    console.log("Reconnecting.");
+client.on("ready", () => {
+    console.log("Bot is online!");
+});
+client.on("warn", console.warn);
+client.on("error", console.error);
+
+client.on("message", async (message) => {
+    if (message.author.bot) return;
+    if (message.content.indexOf(config.prefix) !== 0) return;
+
+    const args = message.content.slice(config.prefix.length).trim().split(" ");
+    const cmd = args.shift().toLowerCase();
+    const command = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
+
+    if (!command) return;
+
+    try {
+        await command.run(client, message, args);
+    } catch(e) {
+        console.error(e);
+        message.channel.send(`Something went wrong while executing command "**${command}**"!`);
+    }
 });
 
-client.once("disconnect", () => {
-    console.log("Disconnected. Client will no longer attempt to reconnect.");
-});
-
-// Log in to discord
-client.login(process.env.BOT_TOKEN || require('./token.json').token)
-.catch(e => {
-	console.log('----- Login failed. Reason: -----');
-	console.error(e);
-	process.exit(1); // Exit process with an error code
-});
+client.login(require('./token.json').token || process.env.BOT_TOKEN);
