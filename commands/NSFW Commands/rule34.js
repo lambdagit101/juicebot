@@ -1,9 +1,10 @@
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
+const { prefix } = require('.../config.json');
 
 module.exports.run = async (client, message, args) => {
     if (message.channel.nsfw == true) {
-			const args = message.content.slice(PREFIX.length).trim().split(' ');
+			const args = message.content.slice(prefix.length).trim().split(' ');
 			var command = args.slice(1, args.length);
 			var finalresult = command.join("+");
             const rule34 = await fetch(`https://r34-json-api.herokuapp.com/posts?tags=${finalresult}`);
