@@ -14,7 +14,7 @@ module.exports.run = async (client, message, args) => {
     var imageurl = await detailsjson.image_url;
     var embedtitle = await detailsjson.title;
     const redditembed = new Discord.MessageEmbed()
-        .setAuthor(embedtitle)
+        .setTitle(embedtitle)
 		.setColor("BLURPLE")
         .setURL(detailsjson.source)
         .addFields(
