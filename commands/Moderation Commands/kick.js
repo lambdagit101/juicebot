@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const { prefix } = require('.../config.json');
 
 module.exports.run = async (client, message, args) => {
     const user = message.mentions.users.first();
@@ -6,7 +7,7 @@ module.exports.run = async (client, message, args) => {
                 const memberiq = message.guild.member(user);
                 if (memberiq) {
                     if (message.member.permissions.has('KICK_MEMBERS')) {
-                        const argus = message.content.slice(PREFIX.length).trim().split(' ');
+                        const argus = message.content.slice(prefix.length).trim().split(' ');
                         const text = message.content.split(argus[1] + " ")[1];
                         memberiq.kick(`Kicked by ${message.author.tag}. Reason: ${text}`)
                             .then(() => {
