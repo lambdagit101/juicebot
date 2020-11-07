@@ -5,13 +5,13 @@ const { prefix } = require('../../config.json');
 module.exports.run = async (client, message, args) => {
 	var user = message.mentions.users.first() || message.author;
     let avatar = user.displayAvatarURL({ dynamic: false, format: 'png' });
-    let image = await canvacord.Canvas.wasted(avatar);
-    let attachment = new Discord.MessageAttachment(image, "wasted.png");
+    let image = await canvacord.Canvas.affect(avatar);
+    let attachment = new Discord.MessageAttachment(image, "affected.png");
     return message.channel.send(attachment);
 };
 
 module.exports.help = {
-    name: "wasted",
-    description: "Makes a GTA Wasted image using your or someone else's profile picture.",
+    name: "affect",
+    description: "Creates an affected baby.",
     aliases: []
 };
