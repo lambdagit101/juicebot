@@ -1,4 +1,4 @@
-const { prefix } = require('.../config.json');
+const { prefix } = require('..../config.json');
 
 module.exports.run = async (client, message, args) => {
     if (message.author.id == require('../config.json').creatorUserID) {
