@@ -6,8 +6,12 @@ const fs = require("fs");
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 
+try {
 // require('./musicCommands.js');
-require('./status_messages.js');
+	require('./status_messages.js');
+} catch (err) {
+	console.log(err);
+}
 
 fs.readdir(`${__dirname}/commands`, (error, ctg) => {
     if (error) throw error;
