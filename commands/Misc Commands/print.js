@@ -1,5 +1,7 @@
+const { prefix } = require('.../config.json');
+
 module.exports.run = async (client, message, args) => {
-    const argus = message.content.slice(PREFIX.length).trim().split(' ');
+    const argus = message.content.slice(prefix.length).trim().split(' ');
         const chanel = await getUserFromMention(argus[1]);
         const text = message.content.split(argus[1] + " ")[1];
         try {
