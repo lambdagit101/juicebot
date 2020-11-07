@@ -7,11 +7,11 @@ module.exports.run = async (client, message, args) => {
                 const memberiq = message.guild.member(user);
                 if (memberiq) {
                     if (message.member.permissions.has('KICK_MEMBERS') || message.member.permissions.has('BAN_MEMBERS')) {
-                        const args = message.content.slice(prefix.length).trim().split(' ');
-                        const text = message.content.split(args[1] + " ")[1];
+						var text = args.slice(1, args.length);
+						var reason = text.join(" ");
                         const warnembed = new Discord.MessageEmbed()
                             .setTitle('Moderation')
-                            .setDescription(`You have been warned\nReason: ${text}`)
+                            .setDescription(`You have been warned\nReason: ${reason}`)
 							.setColor("BLURPLE")
                             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                         memberiq.send(warnembed);

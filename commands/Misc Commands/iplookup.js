@@ -3,9 +3,7 @@ const Discord = require('discord.js');
 const { prefix } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
-    const argus = message.content.slice(prefix.length).trim().split(' ');
-        const ipdeet = argus[1].toLowerCase();
-        const details = await fetch('http://ip-api.com/json/' + ipdeet);
+        const details = await fetch('http://ip-api.com/json/' + args[0]);
         const detailsjson = await details.json();
         const ipembed = new Discord.MessageEmbed()
             .setTitle("IP Details")

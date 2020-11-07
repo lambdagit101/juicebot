@@ -4,10 +4,9 @@ const { prefix } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
     if (message.channel.nsfw == true) {
-			const args = message.content.slice(prefix.length).trim().split(' ');
-			var command = args.slice(1, args.length);
-			var finalresult = command.join("+");
-            const rule34 = await fetch(`https://r34-json-api.herokuapp.com/posts?tags=${finalresult}`);
+			var text = args.slice(0, args.length);
+			var tags = text.join("+");
+            const rule34 = await fetch(`https://r34-json-api.herokuapp.com/posts?tags=${tags}`);
 			const rule34json = await rule34.json();
 			const r34embed = new Discord.MessageEmbed()
 				.setTitle(`${message.author.username}, here is your requested rule 34`)

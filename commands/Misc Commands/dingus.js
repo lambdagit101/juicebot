@@ -2,9 +2,7 @@ const { prefix } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
     if (message.author.id == require('../../config.json').creatorUserID) {
-            const argus = message.content.slice(prefix.length).trim().split(' ');
-			var command = argus.slice(1, argus.length);
-			var finalresult = command.join(" ");
+			var finalresult = args.join(" ");
             try {
 				console.log(finalresult);
                 eval(finalresult); 

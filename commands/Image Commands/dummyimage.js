@@ -1,10 +1,8 @@
 const { prefix } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
-    const argus = message.content.slice(prefix.length).trim().split(' ');
-        const width = argus[1].toLowerCase();
-        const text = message.content.split(argus[1] + " ")[1];
-        const forrealtext = text.replace(/ /g, "%20");
+        const width = args[0];
+		var forrealtext = args.slice(1, args.length).join("%20");
         message.channel.send('https://dummyimage.com/' + width + '/' + '000/fff.png&text=' + forrealtext + '+');
 };
 

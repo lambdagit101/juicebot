@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@quick.eco/mysql": "^1.0.2",
+    "canvacord": "^5.0.8",
     "captcha-canvas": "^2.2.2",
     "discord-music-system": "^3.2.1",
     "discord.js": "^12.4.1",

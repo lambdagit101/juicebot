@@ -7,9 +7,9 @@ module.exports.run = async (client, message, args) => {
                 const memberiq = message.guild.member(user);
                 if (memberiq) {
                     if (message.member.permissions.has('KICK_MEMBERS')) {
-                        const argus = message.content.slice(prefix.length).trim().split(' ');
-                        const text = message.content.split(argus[1] + " ")[1];
-                        memberiq.kick(`Kicked by ${message.author.tag}. Reason: ${text}`)
+                        var text = args.slice(1, args.length);
+						var reason = text.join(" ");
+                        memberiq.kick(`Kicked by ${message.author.tag} from ${message.guild.name}. Reason: ${reason}`)
                             .then(() => {
                                 const kickedembed = new Discord.MessageEmbed()
                                     .setTitle('Moderation')

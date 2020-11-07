@@ -1,9 +1,8 @@
 const { prefix } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
-    const argus = message.content.slice(prefix.length).trim().split(' ');
-        const chanel = await getUserFromMention(argus[1]);
-        const text = message.content.split(argus[1] + " ")[1];
+        const chanel = await getUserFromMention(args[0]);
+		var text = args.slice(1, args.length).join(' ');
         try {
             if (chanel.permissionsFor(message.author).has('SEND_MESSAGES')) {
                 chanel.send(text);
@@ -13,11 +12,9 @@ module.exports.run = async (client, message, args) => {
         } catch (err) {
             const chanel = args[1];
             if (text == null) {
-                
                 message.channel.send(chanel);
                 return;
             } else {
-                
                 message.channel.send(chanel + " " + text);
                 return;
             }
