@@ -6,8 +6,8 @@ module.exports.run = async (client, message, args) => {
 	var user = message.mentions.users.first() || message.author;
     let avatar = user.displayAvatarURL({ dynamic: false, format: 'png' });
 	let username = user.username;
-	let message = args.join(' ');
-    let image = await canvacord.Canvas.phub({username, message , avatar});
+	let messagec = args.join(' ');
+    let image = await canvacord.Canvas.phub({username, messagec, avatar});
     let attachment = new Discord.MessageAttachment(image, "phub.png");
     return message.channel.send(attachment);
 };
