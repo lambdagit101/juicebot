@@ -50,7 +50,7 @@ client.on("message", async (message) => {
         await command.run(client, message, args);
     } catch(e) {
         console.error(e);
-        message.channel.send(`Something went wrong while executing command "**${command}**"!`);
+        message.channel.send(`Something went wrong while executing command "**${command}**": ${e}`);
     }
 });
 
