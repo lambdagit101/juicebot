@@ -1,4 +1,4 @@
-const { prefix } = require('.../config.json');
+const { prefix } = require('..../config.json');
 const fetch = require('node-fetch');
 
 module.exports.run = async (client, message, args) => {
