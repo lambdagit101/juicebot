@@ -6,7 +6,7 @@ const fs = require("fs");
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 
-require('./musicCommands.js');
+// require('./musicCommands.js');
 require('./status_messages.js');
 
 fs.readdir(`${__dirname}/commands`, (error, ctg) => {
