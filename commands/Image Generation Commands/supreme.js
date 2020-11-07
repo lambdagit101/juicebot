@@ -2,9 +2,10 @@ const Discord = require('discord.js');
 const { prefix } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
-    const argus = message.content.slice(prefix.length).trim().split(' ');
-			var text = args.slice(1, argus.length);
+   const argus = message.content.slice(prefix.length).trim().split(' ');
+			var text = argus.slice(1, argus.length);
 			var finalresult = text.join("%20");
+
 		const heavenembed = new Discord.MessageEmbed()
 			.setTitle(`${message.author.username} is rich`)
 			.setColor("BLURPLE")
