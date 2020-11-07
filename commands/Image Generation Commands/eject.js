@@ -1,7 +1,8 @@
 const Discord = require('discord.js');
+const { prefix } = require('.../config.json');
 
 module.exports.run = async (client, message, args) => {
-    const argus = message.content.slice(PREFIX.length).trim().split(' ');
+    const argus = message.content.slice(prefix.length).trim().split(' ');
 	var name = argus[1];
 	var color = argus[2];
 	var crewpostor = argus[3];
