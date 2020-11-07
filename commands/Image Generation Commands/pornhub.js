@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
 				const cmmembed = new Discord.MessageEmbed()
 				.setTitle(`${message.author.username} is horny`)
 				.setColor("BLURPLE")
-				.setImage(`https://api.alexflipnote.dev/pornhub?text=${args[1].replace(/-/g, '%20')}&text2=${args[2].replace(/-/g, '%20')}`)
+				.setImage(`https://api.alexflipnote.dev/pornhub?text=${argus[1].replace(/-/g, '%20')}&text2=${argus[2].replace(/-/g, '%20')}`)
 				.setFooter(`Invoked by ${message.author.username}, provided by api.alexflipnote.dev`, message.author.avatarURL());
 				message.channel.send(cmmembed);
 			} catch (err) {
