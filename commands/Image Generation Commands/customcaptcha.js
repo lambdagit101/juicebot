@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args) => {
 		var finalresult = text.join("%20");
             try {
 				const cmmembed = new Discord.MessageEmbed()
-				.setTitle(`${message.author.username} wants someone to solve this captcha`)
+				.setAuthor(`${message.author.username} wants someone to solve this captcha`)
 				.setColor("BLURPLE")
 				.setImage(`https://api.alexflipnote.dev/captcha?text=${finalresult}`)
 				.setFooter(`Invoked by ${message.author.username}, provided by api.alexflipnote.dev`, message.author.avatarURL());

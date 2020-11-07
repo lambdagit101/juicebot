@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args) => {
 		var finalresult = text.join("%20");
 
 		const heavenembed = new Discord.MessageEmbed()
-			.setTitle(`${message.author.username} is rich`)
+			.setAuthor(`${message.author.username} is rich`)
 			.setColor("BLURPLE")
 			.setImage(`https://api.alexflipnote.dev/supreme?text=${finalresult}`)
 			.setFooter(`Invoked by ${message.author.username}, provided by api.alexflipnote.dev`, message.author.avatarURL());

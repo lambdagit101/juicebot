@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
                     deleteCount = parseInt(args[1], 10);
                 } catch (err) {
                     const returnembed = new Discord.MessageEmbed()
-                        .setTitle('Moderation')
+                        .setAuthor('Moderation')
 						.setColor("BLURPLE")
                         .setDescription(`Please provide a number`)
                         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
@@ -19,7 +19,7 @@ module.exports.run = async (client, message, args) => {
 
                 if (!deleteCount || deleteCount < 2 || deleteCount > 100) {
                     const providembed = new Discord.MessageEmbed()
-                        .setTitle('Moderation')
+                        .setAuthor('Moderation')
 						.setColor("BLURPLE")
                         .setDescription(`Please provide a number between 2 and 100`)
                         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
@@ -32,7 +32,7 @@ module.exports.run = async (client, message, args) => {
                     .catch(error => message.channel.send(`Couldn't delete messages because of: ${error}`));
             } else {
                 const nonpermembed = new Discord.MessageEmbed()
-                    .setTitle('Moderation')
+                    .setAuthor('Moderation')
 					.setColor("BLURPLE")
                     .setDescription(`No permission`)
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());

@@ -14,7 +14,7 @@ module.exports.run = async (client, message, args) => {
         var embedtitle = await deetailsjson.title;
         var embedtitleurl = await deetailsjson.article_url;
         const wikiembed = new Discord.MessageEmbed()
-            .setTitle(embedtitle)
+            .setAuthor(embedtitle)
 			.setColor("BLURPLE")
             .setURL(embedtitleurl)
             .setImage(imageurl)

@@ -10,20 +10,20 @@ module.exports.run = async (client, message, args) => {
 						var text = args.slice(1, args.length);
 						var reason = text.join(" ");
                         const warnembed = new Discord.MessageEmbed()
-                            .setTitle('Moderation')
+                            .setAuthor('Moderation')
                             .setDescription(`You have been warned\nReason: ${reason}`)
 							.setColor("BLURPLE")
                             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                         memberiq.send(warnembed);
                         const warnedembed = new Discord.MessageEmbed()
-                            .setTitle('Moderation')
+                            .setAuthor('Moderation')
                             .setDescription(`${user.tag} has been warned`)
 							.setColor("BLURPLE")
                             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                         message.channel.send(warnedembed);
                     } else {
                         const warnemmbed = new Discord.MessageEmbed()
-                            .setTitle('Moderation')
+                            .setAuthor('Moderation')
                             .setDescription(`No permission`)
 							.setColor("BLURPLE")
                             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
