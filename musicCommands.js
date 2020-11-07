@@ -1,8 +1,8 @@
-const { client } = require('./index');
+const { client } = require('./index.js');
 const { prefix } = require("./config.json");
 const Discord = require('discord.js');
 const MusicBot = require('discord-music-system');
- 
+
 const bot = new MusicBot({
     botPrefix: prefix,
     ytApiKey: process.env.YT_APIKEY,
