@@ -1,4 +1,4 @@
-const { prefix } = require('.../config.json');
+const { prefix } = require('./config.json');
 
 module.exports.run = async (client, message, args) => {
     const argus = message.content.slice(prefix.length).trim().split(' ');
