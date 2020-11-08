@@ -1,12 +1,11 @@
 const { prefix } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
-        const chanel = await getUserFromMention(args[0]);
+        const chanel = await getUserFromMention(args[0], client);
 		var text = args.slice(1, args.length).join(' ');
         try {
             if (chanel.permissionsFor(message.author).has('SEND_MESSAGES')) {
                 chanel.send(text);
-                
                 return;
             }
         } catch (err) {
@@ -27,7 +26,7 @@ module.exports.help = {
     aliases: ["say"]
 };
 
-async function getUserFromMention(mention) {
+async function getUserFromMention(mention, client) {
     if (!mention) return;
 
     if (mention.startsWith('<#') && mention.endsWith('>')) {
