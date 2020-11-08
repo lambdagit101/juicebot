@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args) => {
 		const huggifs = await fetch('https://some-random-api.ml/animu/hug');
 		const huggifsjson = await huggifs.json();
 		const hugembed = new Discord.MessageEmbed()
-            .setAuthor(`${message.author.username} hugged ${user.username}`)
+            .setTitle(`${message.author.username} hugged ${user.username}`)
             .setImage(huggifsjson.link)
 			.setColor("BLURPLE")
             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());

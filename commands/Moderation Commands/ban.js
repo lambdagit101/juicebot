@@ -12,20 +12,20 @@ module.exports.run = async (client, message, args) => {
                         memberiq.ban({ reason: `Banned by ${message.author.tag} from ${message.guild.name}. Reason: ${reason}` })
                             .then(() => {
                                 const bannedembed = new Discord.MessageEmbed()
-                                    .setAuthor('Moderation')
+                                    .setTitle('Moderation')
 									.setColor("BLURPLE")
                                     .setDescription(`You have been banned by ${message.author.tag} from ${message.guild.name}. Reason: ${text}`)
                                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                                 user.send(bannedembed);
                                 const banembed = new Discord.MessageEmbed()
-                                .setAuthor('Moderation')
+                                .setTitle('Moderation')
                                 .setDescription(`${user.tag} was successfully banned!`)
                                 .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                                 message.channel.send(banembed);
                             })
                     } else {
                             const nopermembed = new Discord.MessageEmbed()
-                            .setAuthor('Moderation')
+                            .setTitle('Moderation')
                             .setDescription(`No permission`)
 							.setColor("BLURPLE")
                             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
@@ -35,7 +35,7 @@ module.exports.run = async (client, message, args) => {
 
                 else {
                     const nobanembed = new Discord.MessageEmbed()
-                        .setAuthor('Moderation')
+                        .setTitle('Moderation')
 						.setColor("BLURPLE")
                         .setDescription("This user is not in this server")
                         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
@@ -43,7 +43,7 @@ module.exports.run = async (client, message, args) => {
                 }
             } else {
                 message.channel.send(new Discord.MessageEmbed()
-                    .setAuthor('Unable to ban')
+                    .setTitle('Unable to ban')
 					.setColor("BLURPLE")
                     .setDescription('No person was specified!')
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL())

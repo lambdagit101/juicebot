@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args) => {
             try {
                 const avatarembed = new Discord.MessageEmbed()
 					.setColor("BLURPLE")
-                    .setAuthor('Rest in peace')
+                    .setTitle('Rest in peace')
                     .setImage(`https://vacefron.nl/api/grave?user=${user.displayAvatarURL({ format: 'png', size: 512 })}`)
                     .setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());
                 message.channel.send(avatarembed);
@@ -15,7 +15,7 @@ module.exports.run = async (client, message, args) => {
             }
         } else {
             const avatarembed = new Discord.MessageEmbed()
-                .setAuthor('Rest in peace')
+                .setTitle('Rest in peace')
 				.setColor("BLURPLE")
                 .setImage(`https://vacefron.nl/api/grave?user=${message.author.displayAvatarURL({ format: 'png', size: 512 })}`)
                 .setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());

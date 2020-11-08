@@ -12,20 +12,20 @@ module.exports.run = async (client, message, args) => {
                         memberiq.kick(`Kicked by ${message.author.tag} from ${message.guild.name}. Reason: ${reason}`)
                             .then(() => {
                                 const kickedembed = new Discord.MessageEmbed()
-                                    .setAuthor('Moderation')
+                                    .setTitle('Moderation')
 									.setColor("BLURPLE")
                                     .setDescription(`You have been kicked by ${message.author.tag} from ${message.guild.name}. Reason: ${text}`)
                                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                                 user.send(kickedembed);
                                 const kickembed = new Discord.MessageEmbed()
-                                    .setAuthor('Moderation')
+                                    .setTitle('Moderation')
 									.setColor("BLURPLE")
                                     .setDescription(`${user.tag} was successfully kicked!`)
                                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                                 message.channel.send(kickembed);
                             }).catch(err => {
                                 const cantkickembed = new Discord.MessageEmbed()
-                                    .setAuthor('Moderation')
+                                    .setTitle('Moderation')
 									.setColor("BLURPLE")
                                     .setDescription("Couldn't kick the user")
                                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
@@ -34,7 +34,7 @@ module.exports.run = async (client, message, args) => {
                             });
                     } else {
                         const nopermemmbed = new Discord.MessageEmbed()
-                        .setAuthor('Moderation')
+                        .setTitle('Moderation')
 						.setColor("BLURPLE")
                         .setDescription(`No permission`)
                         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
@@ -45,7 +45,7 @@ module.exports.run = async (client, message, args) => {
 
                 else {
                     const nomemembed = new Discord.MessageEmbed()
-                        .setAuthor('Moderation')
+                        .setTitle('Moderation')
 						.setColor("BLURPLE")
                         .setDescription('This user is not in this server')
                         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
@@ -55,7 +55,7 @@ module.exports.run = async (client, message, args) => {
 
             else {
                 const nopersembed = new Discord.MessageEmbed()
-                    .setAuthor('Moderation')
+                    .setTitle('Moderation')
 					.setColor("BLURPLE")
                     .setDescription('No person was specified!')
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());

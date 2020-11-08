@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports.run = async (client, message, args) => {
     const user = message.mentions.users.first() || message.author;
 		const heavenembed = new Discord.MessageEmbed()
-			.setAuthor(`${user.username} has risen`)
+			.setTitle(`${user.username} has risen`)
 			.setColor("BLURPLE")
 			.setImage(`https://vacefron.nl/api/heaven?user=${user.displayAvatarURL({ format: 'png', size: 512 })}`)
 			.setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());

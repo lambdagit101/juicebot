@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
             try {
 				const cmmembed = new Discord.MessageEmbed()
 				.setColor("BLURPLE")
-				.setAuthor(`${message.author.username}, who has gotten this achievement?`)
+				.setTitle(`${message.author.username}, who has gotten this achievement?`)
 				.setImage(`https://api.alexflipnote.dev/achievement?text=${finalresult}`)
 				.setFooter(`Invoked by ${message.author.username}, provided by api.alexflipnote.dev`, message.author.avatarURL());
 				message.channel.send(cmmembed);
