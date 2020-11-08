@@ -35,7 +35,6 @@ async function getUserFromMention(mention, client) {
         if (mention.startsWith('!')) {
             mention = mention.slice(1);
         }
-        console.log(mention);
         return await client.channels.cache.get(mention);
     }
 }
