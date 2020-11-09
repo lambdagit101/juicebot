@@ -21,7 +21,7 @@ module.exports.run = async (client, message, args) => {
 				}).then((response) => {
 					const winner = response.emojis[0];
 					if (winner.emoji == '✅') {
-						votedperson.ban({ reason: `Vote initiated by ${message.author.tag} passed.` });
+						banvote(votedperson, `Vote initiated by ${message.author.tag} passed.`);
 						message.channel.send(`${votedperson} has been banned successfully!`);
 					} else {
 						message.channel.send(`Vote failed, ${votedperson} has not been banned.`);
@@ -34,6 +34,10 @@ module.exports.run = async (client, message, args) => {
 		message.channel.send('You lack permissions!');
 	}
 };
+
+async function banvote(person, reason) {
+	person.ban({reason: reason});
+}
 
 module.exports.help = {
     name: "voteban",
