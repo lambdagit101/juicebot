@@ -1,4 +1,4 @@
-# JuiceBot [![HitCount](http://hits.dwyl.com/{username}/{project}.svg)](http://hits.dwyl.com/{username}/{project})
+# JuiceBot [![HitCount](http://hits.dwyl.com/lambdagit101/JuiceBot.svg)](http://hits.dwyl.com/lambdagit101/JuiceBot.svg)
 
 ### What is JuiceBot?
 
