@@ -47,7 +47,7 @@ client.on("error", console.error);
 
 client.on("message", async (message) => {
     if (message.author.bot) return;
-    if (message.content.indexOf(refix) !== 0) return;
+    if (message.content.indexOf(prefix) !== 0) return;
 
     const args = message.content.slice(prefix.length).trim().split(" ");
     const cmd = args.shift().toLowerCase();
