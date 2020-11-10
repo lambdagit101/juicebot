@@ -46,6 +46,8 @@ client.on("ready", () => {
 client.on("warn", console.warn);
 client.on("error", console.error);
 
+// below are the music commands
+
 const bot = new MusicBot({
     botPrefix: prefix,
     ytApiKey: process.env.YT_APIKEY,
@@ -62,6 +64,8 @@ client.on("message", async (message) => {
         bot.onMessage(message);
     }
 });
+
+// above are the music commands
 
 client.on("message", async (message) => {
     if (message.author.bot) return;
@@ -80,6 +84,8 @@ client.on("message", async (message) => {
         message.channel.send(`Something went wrong while executing command "**${command}**": ${e}`);
     }
 });
+
+// below are the status messages
 
 const intervalInMS = 15000;
 
@@ -114,6 +120,8 @@ setInterval(() => {
     index += 1;
     if (index == statusMessages.length) index = 0;
 }, intervalInMS);
+
+// above are the status messages
 
 
 client.login(process.env.BOT_TOKEN);

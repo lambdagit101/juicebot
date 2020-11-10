@@ -1,8 +1,7 @@
 const Discord = require('discord.js');
 const { prefix, botname, gitlink, creator } = require('../../config.json');
-// [Click here](https://juicebotdocs.shitpost.business/)
+
 module.exports.run = async (client, message, args) => {
-	const msgCreated = message.createdTimestamp;
     const hembed = new Discord.MessageEmbed()
         .setTitle(`${botname} stats`)
 		.setColor("BLURPLE")
