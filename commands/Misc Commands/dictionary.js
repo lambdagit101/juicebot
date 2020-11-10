@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
 		.setColor("BLURPLE")
 		.addFields(
 			{ name: 'Meaning', value: definition.meaning },
-			{ name: 'Pronounciation', value: `[${definition.pronounciation}](definition.audio[0].url)`, inline: true },
+			{ name: 'Pronounciation', value: `[${definition.pronounciation}](${definition.audio[0].url})`, inline: true },
 			{ name: 'Type', value: definition.type, inline: true },
 			{ name: 'Example', value: definition.examples[0] }
 		)

@@ -46,7 +46,7 @@ client.on("ready", () => {
 client.on("warn", console.warn);
 client.on("error", console.error);
 
-// below are the music commands
+/**
 
 const bot = new MusicBot({
     botPrefix: prefix,
@@ -65,7 +65,7 @@ client.on("message", async (message) => {
     }
 });
 
-// above are the music commands
+**/
 
 client.on("message", async (message) => {
     if (message.author.bot) return;
