@@ -3,7 +3,7 @@ const CambDict = require("camb-dict");
 const dictionary = new CambDict.Dictionary();
 
 module.exports.run = async (client, message, args) => {
-	const definition = await dictionary.meaning(args.join(' ')).then(console.log).catch(console.error);
+	const definition = dictionary.meaning(args.join(' ')).then(console.log).catch(console.error);
     const dictembed = new Discord.MessageEmbed()
         .setTitle(`Definition for ${definition.word}`)
 		.setColor("BLURPLE")
