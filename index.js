@@ -7,8 +7,6 @@ client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 const MusicBot = require('discord-music-system');
 
-require('./web/serber.js');
-
 /**
 try {
 	require('./musicCommands.js');
