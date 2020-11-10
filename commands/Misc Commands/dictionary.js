@@ -11,7 +11,7 @@ module.exports.run = async (client, message, args) => {
 			{ name: 'Meaning', value: definition.meaning },
 			{ name: 'Pronounciation', value: `[${definition.pronounciation}](definition.audio[0].url)`, inline: true },
 			{ name: 'Type', value: definition.type, inline: true },
-			{ name: 'Example', value: definition.examples[Math.floor(Math.random() * definition.examples.length)] }
+			{ name: 'Example', value: definition.examples[0] }
 		)
         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
     message.channel.send(dictembed);
