@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
                 return;
             }
         } catch (err) {
-            const chanel = args[1];
+            const chanel = args[0];
             if (text == null) {
                 message.channel.send(chanel);
                 return;

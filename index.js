@@ -5,7 +5,7 @@ const { prefix } = require("./config.json");
 const fs = require("fs");
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
-const MusicBot = require('discord-music-system');
+
 
 /**
 try {

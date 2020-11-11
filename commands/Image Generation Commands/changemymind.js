@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args) => {
 		var finalresult = text.join("%20");
             try {
 				const cmmembed = new Discord.MessageEmbed()
-				.setTitle(`${message.author.username} wants their mind changed`)
+				.setTitle(`Someone wants their mind changed`)
 				.setColor("BLURPLE")
 				.setImage(`https://vacefron.nl/api/changemymind?text=${finalresult}`)
 				.setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());

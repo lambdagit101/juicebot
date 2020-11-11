@@ -3,11 +3,11 @@ const Discord = require('discord.js');
 
 module.exports.run = async (client, message, args) => {
     const user = message.mentions.users.first() || message.author;
-		const huggifs = await fetch('https://some-random-api.ml/animu/hug');
+		const huggifs = await fetch('https://nekos.life/api/hug');
 		const huggifsjson = await huggifs.json();
 		const hugembed = new Discord.MessageEmbed()
             .setTitle(`${message.author.username} hugged ${user.username}`)
-            .setImage(huggifsjson.link)
+            .setImage(huggifsjson.url)
 			.setColor("BLURPLE")
             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
         message.channel.send(hugembed);

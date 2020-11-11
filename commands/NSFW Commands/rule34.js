@@ -1,12 +1,12 @@
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
 const { prefix } = require('../../config.json');
+const querystring = require('querystring');
 
 module.exports.run = async (client, message, args) => {
     if (message.channel.nsfw == true) {
-			var text = args.slice(0, args.length);
-			var tags = text.join("+");
-            const rule34 = await fetch(`https://r34-json-api.herokuapp.com/posts?tags=${tags}`);
+			const query = querystring.stringify({ term: args.join("+") });
+            const rule34 = await fetch(`https://r34-json-api.herokuapp.com/posts?tags=${query}`);
 			const rule34json = await rule34.json();
 			const r34embed = new Discord.MessageEmbed()
 				.setTitle(`${message.author.username}, here is your requested rule 34`)
