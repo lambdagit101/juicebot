@@ -14,7 +14,6 @@ module.exports.run = async (client, message, args) => {
 					)
 					.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
 				message.channel.send(hembed);
-			})
 			.catch(console.error);
 };
 
