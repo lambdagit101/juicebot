@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 const ksoftsikey = `Bearer ${process.env.KSOFTSI_TOKEN}`
 
 module.exports.run = async (client, message, args) => {
-    var { image_url, title, source, author, subreddit } = await fetch('https://api.ksoft.si/images/rand-meme', { method: 'get', headers: { 'Authorization': ksoftsikey, 'User-Agent': message.author.id }}).then(response => response.json());
+    var { image_url, title, source, author, subreddit } = await fetch('https://api.ksoft.si/images/random-meme', { method: 'get', headers: { 'Authorization': ksoftsikey, 'User-Agent': message.author.id }}).then(response => response.json());
     const redditembed = new Discord.MessageEmbed()
         .setTitle(title)
 		.setColor("BLURPLE")
@@ -20,5 +20,5 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: "meme",
     description: "Sends a random meme. Isn't this world fascinating?",
-    aliases: []
+    aliases: ['dankmeme']
 };
