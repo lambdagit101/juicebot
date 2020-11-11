@@ -21,8 +21,10 @@ module.exports.run = async (client, message, args) => {
 			.setColor('BLURPLE')
 			.setTitle(answer.word)
 			.setURL(answer.permalink)
+			.setFooter(`Invoked by ${message.author.username}, powered by api.urbandictionary.com`, message.author.avatarURL());
+			.setThumbnail('https://cdn.discordapp.com/emojis/773794480134160395.png')
 			.addFields(
-				{ name: 'Definition', value: answer.definition },
+				{ name: 'Definition', value: answer.definition.replace(/[/g, '**').replace(/]/g, '**') },
 				{ name: 'Example', value: answer.example },
 				{ name: 'Rating', value: `${answer.thumbs_up} thumbs up. ${answer.thumbs_down} thumbs down.` }
 			);
