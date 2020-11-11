@@ -1,5 +1,6 @@
 const { prefix } = require('../../config.json');
 const fetch = require('node-fetch');
+const Discord = require('discord.js');
 const querystring = require('querystring');
 
 module.exports.run = async (client, message, args) => {
@@ -16,7 +17,7 @@ module.exports.run = async (client, message, args) => {
 	} else {
 		const [answer] = list;
 
-		const embed = new MessageEmbed()
+		const embed = new Discord.MessageEmbed()
 			.setColor('BLURPLE')
 			.setTitle(answer.word)
 			.setURL(answer.permalink)
