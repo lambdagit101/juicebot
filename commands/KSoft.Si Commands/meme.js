@@ -3,21 +3,14 @@ const fetch = require('node-fetch');
 const ksoftsikey = `Bearer ${process.env.KSOFTSI_TOKEN}`
 
 module.exports.run = async (client, message, args) => {
-    var details = await fetch('https://api.ksoft.si/images/random-meme', {
-        method: 'get',
-        headers: { 'Authorization': ksoftsikey,
-				   'User-Agent': message.author.id
-				 },
-    });
-    var detailsjson = await details.json();
-    var imageurl = await detailsjson.image_url;
-    var embedtitle = await detailsjson.title;
+    var { image_url, title, source, author, subreddit } = await fetch('https://api.ksoft.si/images/rand-meme', { method: 'get', headers: { 'Authorization': ksoftsikey, 'User-Agent': message.author.id }}).then(response => response.json())
     const redditembed = new Discord.MessageEmbed()
-        .setTitle(embedtitle)
+        .setTitle(title)
 		.setColor("BLURPLE")
-        .setURL(detailsjson.source)
+        .setURL(source)
         .addFields(
-          {name: 'Publisher', value: detailsjson.author, inline: true}
+          {name: 'Publisher', value: author, inline: true},
+		  {name: 'Subreddit', value: subreddit, inline: true}
         )
         .setImage(imageurl)
         .setFooter(`Invoked by ${message.author.username}, provided by KSoft.Si`, message.author.avatarURL());
