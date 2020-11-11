@@ -23,7 +23,6 @@
     "discordjs-prompter": "^2.0.4",
     "dotenv": "^8.2.0",
     "ffmpeg-static": "^4.2.7",
-    "kurasuta": "^2.2.0",
     "quick.eco": "^6.0.0",
     "ytdl-core-discord": "^1.2.4"
   }
