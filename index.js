@@ -1,6 +1,6 @@
 require("dotenv").config();
 const Discord = require("discord.js");
-const client = new Discord.Client({ shardCount: 'auto' });
+const client = new Discord.Client();
 const { prefix } = require("./config.json");
 const fs = require("fs");
 client.commands = new Discord.Collection();
@@ -91,16 +91,15 @@ const intervalInMS = 15000;
 
 let index = 0;
 
+process.on('unhandledRejection', error => {
+	console.error('Unhandled promise rejection:', error);
+});
+
 setInterval(() => {
 
-    const userCount = client.users.cache.size;
-    const guildCount = client.guilds.cache.size;
-
     const statusMessages = [
-        
+
         { type: 'WATCHING', name: `Hentai | ${prefix}help`},
-        { type: 'WATCHING', name: `${guildCount} Servers | ${prefix}help`},
-        { type: 'LISTENING', name: `${userCount} Users | ${prefix}help`},
         { type: 'PLAYING', name: `Counter-Strike Global Offensive | ${prefix}help`},
         { type: 'WATCHING', name: `CS:GO Pro League | ${prefix}help`},
         { type: 'PLAYING', name: `Genshin Impact | ${prefix}help`},
@@ -109,7 +108,7 @@ setInterval(() => {
         { type: 'WATCHING', name: `Meme Compilations | ${prefix}help`},
         { type: 'LISTENING', name: `Necromantic by Stack | ${prefix}help`},
         { type: 'LISTENING', name: `Dancing Polish Cow at 4:00 | ${prefix}help`},
-		{ type: 'PLAYING', name: `Minecraft | ${prefix}help`},
+				{ type: 'PLAYING', name: `Minecraft | ${prefix}help`},
         { type: 'LISTENING', name: `https://youtu.be/RtTYQuO1j6w | ${prefix}help`}, //I couldn't resist the urge.
         { type: 'PLAYING', name: `AssaultCube | ${prefix}help`},
         // Does this last one work? I've commented it out as a safe feature.
