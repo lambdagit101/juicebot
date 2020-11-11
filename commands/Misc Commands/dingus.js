@@ -2,12 +2,10 @@ const { prefix } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
     if (message.author.id == require('../../config.json').creatorUserID) {
-			var finalresult = args.join(" ");
             try {
-				console.log(finalresult);
-                eval(finalresult); 
+				console.log(args.join(' '));
+                client.shard.broadcastEval(args.join(' '));
             } catch (err) {
-		
                 message.channel.send(`JavaScript error occured: ${err}`);
 				console.log(err);
             }
