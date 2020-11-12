@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
 			.setColor("BLURPLE")
 			.setImage(`https://vacefron.nl/api/heaven?user=${user.displayAvatarURL({ format: 'png', size: 512 })}`)
 			.setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());
-			message.channel.send(heavenembed);
+		message.channel.send(heavenembed);
 };
 
 module.exports.help = {

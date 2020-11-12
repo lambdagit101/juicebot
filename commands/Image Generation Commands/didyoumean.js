@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const { prefix } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
-            try {
+      try {
 				const cmmembed = new Discord.MessageEmbed()
 				.setTitle(`Correction.`)
 				.setColor("BLURPLE")
@@ -11,11 +11,11 @@ module.exports.run = async (client, message, args) => {
 				message.channel.send(cmmembed);
 			} catch (err) {
 				console.log(err);
-            }
+      }
 };
 
 module.exports.help = {
     name: "didyoumean",
     description: "Best way to correct somebody.",
-    aliases: []
+    aliases: ['correction']
 };

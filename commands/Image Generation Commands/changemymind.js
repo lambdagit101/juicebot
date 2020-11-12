@@ -4,7 +4,7 @@ const { prefix } = require('../../config.json');
 module.exports.run = async (client, message, args) => {
     var text = args.slice(0, args.length);
 		var finalresult = text.join("%20");
-            try {
+      try {
 				const cmmembed = new Discord.MessageEmbed()
 				.setTitle(`Someone wants their mind changed`)
 				.setColor("BLURPLE")
@@ -13,11 +13,11 @@ module.exports.run = async (client, message, args) => {
 				message.channel.send(cmmembed);
 			} catch (err) {
 				console.log(err);
-            }
+      }
 };
 
 module.exports.help = {
     name: "changemymind",
     description: "Changes minds.",
-    aliases: []
+    aliases: ['cmm']
 };

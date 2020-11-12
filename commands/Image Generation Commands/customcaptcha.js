@@ -4,7 +4,7 @@ const { prefix } = require('../../config.json');
 module.exports.run = async (client, message, args) => {
     var text = args.slice(0, args.length);
 		var finalresult = text.join("%20");
-            try {
+      try {
 				const cmmembed = new Discord.MessageEmbed()
 				.setTitle(`${message.author.username} wants someone to solve this captcha`)
 				.setColor("BLURPLE")
@@ -13,11 +13,11 @@ module.exports.run = async (client, message, args) => {
 				message.channel.send(cmmembed);
 			} catch (err) {
 				console.log(err);
-            }
+      }
 };
 
 module.exports.help = {
     name: "customcaptcha",
     description: "Creates custom checkbox reCAPTCHA v2 styled images.",
-    aliases: []
+    aliases: ['ccaptcha', '']
 };

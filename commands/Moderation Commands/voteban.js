@@ -3,7 +3,7 @@ const Prompter = require('discordjs-prompter');
 const { prefix } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
-    const votedperson = message.mentions.users.first();
+  const votedperson = message.mentions.members.first();
 	if (message.member.permissions.has('BAN_MEMBERS')) {
 	if (votedperson == message.author) {
 		message.channel.send('You cannot initiate a voteban on yourself.');

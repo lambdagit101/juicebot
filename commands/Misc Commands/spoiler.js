@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 module.exports.run = async (client, message, args) => {
 	const spoiler = await fetch(`https://nekos.life/api/v2/spoiler?text=${args.join('%20')}`);
 	const messag = await spoiler.json();
-	message.channel.send(messag.msg || messag.owo);
+	message.channel.send(messag.owo || 'Error: No text or over 1000 letters');
 };
 
 module.exports.help = {
