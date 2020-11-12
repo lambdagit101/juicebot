@@ -23,7 +23,9 @@ module.exports.run = async (client, message, args) => {
 			)
 			.setFooter(`Invoked by ${message.author.username}, provided by KSoft.Si`, message.author.avatarURL());
 		if (addinfo.length) {
-				infembed.addField(name: 'Additional Information', value: addinfo.join('\n'));
+				infembed.addFields(
+					{name: 'Additional Information', value: addinfo.join('\n')}
+				);
 		}
 		message.channel.send(infembed);
 };
