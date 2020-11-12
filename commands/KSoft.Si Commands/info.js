@@ -10,7 +10,7 @@ module.exports.run = async (client, message, args) => {
 		if (!message.guild.member(user.id)) {
 			addinfo.push('This user is not in the server.') ;
 		};
-		if (is_banned = true) {
+		if (is_banned == true) {
 			addinfo.push('This person has been caught breaking Discord TOS in the past.')
 		}
 		const infembed = new Discord.MessageEmbed()
