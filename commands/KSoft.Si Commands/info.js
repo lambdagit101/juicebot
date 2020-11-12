@@ -20,9 +20,11 @@ module.exports.run = async (client, message, args) => {
 			.addFields(
 				{ name: 'Account Creation Date', value: user.createdAt, inline: true },
 				{ name: 'Presence', value: user.presence.status, inline: true },
-				{ name: 'Additional Information', value: addinfo.join('\n') }
 			)
 			.setFooter(`Invoked by ${message.author.username}, provided by KSoft.Si`, message.author.avatarURL());
+		if (addinfo.length) {
+				infembed.addField({ name: 'Additional Information', value: addinfo.join('\n') });
+		}
 		message.channel.send(infembed);
 };
 
