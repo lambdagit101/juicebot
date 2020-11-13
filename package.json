@@ -13,7 +13,6 @@
     "nodemon": "^2.0.6"
   },
   "dependencies": {
-    "@quick.eco/mysql": "^1.0.2",
     "canvacord": "^5.0.8",
     "captcha-canvas": "^2.2.2",
     "discord-leveling": "^1.1.0",
@@ -23,7 +22,6 @@
     "discordjs-prompter": "^2.0.4",
     "dotenv": "^8.2.0",
     "ffmpeg-static": "^4.2.7",
-    "quick.eco": "^6.0.0",
     "ytdl-core-discord": "^1.2.4"
   }
 }
