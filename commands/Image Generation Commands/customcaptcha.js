@@ -19,5 +19,5 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: "customcaptcha",
     description: "Creates custom checkbox reCAPTCHA v2 styled images.",
-    aliases: ['ccaptcha', '']
+    aliases: ['ccaptcha']
 };
