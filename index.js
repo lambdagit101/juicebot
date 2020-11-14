@@ -5,16 +5,7 @@ const { prefix } = require("./config.json");
 const fs = require("fs");
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
-
-
-/**
-try {
-	require('./musicCommands.js');
-	require('./status_messages.js');
-} catch (err) {
-	console.log(err);
-}
-**/
+var leveling = require('discord-leveling');
 
 fs.readdir(`${__dirname}/commands`, (error, ctg) => {
     if (error) throw error;
@@ -46,27 +37,6 @@ client.on("ready", () => {
 client.on("warn", console.warn);
 client.on("error", console.error);
 
-/**
-
-const bot = new MusicBot({
-    botPrefix: prefix,
-    ytApiKey: process.env.YT_APIKEY,
-    botClient: client
-});
-
-client.on("message", async (message) => {
-
-    if (message.author.bot) return;
-    if (!message.guild) return;
-    if (!message.content.startsWith(prefix)) return;
-
-    if (message.content.toLowerCase().startsWith(`${prefix}`)) {
-        bot.onMessage(message);
-    }
-});
-
-**/
-
 client.on("message", async (message) => {
     if (message.author.bot) return;
     if (message.content.indexOf(prefix) !== 0) return;
@@ -75,7 +45,17 @@ client.on("message", async (message) => {
     const cmd = args.shift().toLowerCase();
     const command = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
 
-    if (!command) return;
+    if (!command) {
+			var profile = await leveling.Fetch(message.author.id);
+  		leveling.AddXp(message.author.id, 5);
+  		if (profile.xp + 5 > 100) {
+    		await leveling.AddLevel(message.author.id, 1);
+    		await leveling.SetXp(message.author.id, 0);
+    		message.reply(`you have leveled up to level ${profile.level + 1}!`);
+			};
+  	}
+
+		};
 
     try {
         await command.run(client, message, args);

@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 
 module.exports.run = async (client, message, args) => {
-    const user = client.users.cache.find(user => user.id === message.mentions.users.first().id) || message.author;
+    const user = message.mentions.users.first() || message.author;
     const avatarembed = new Discord.MessageEmbed()
           .setTitle('Here is your requested avatar!')
           .setImage(user.displayAvatarURL({ format: 'png', size: 512 }))
