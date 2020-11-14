@@ -5,8 +5,8 @@ const { prefix } = require("./config.json");
 const fs = require("fs");
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
-const leveling = require('discord-leveling');
-module.exports.leveling = leveling;
+const DiscordLevels = require('discord-levels');
+module.exports.leveling = DiscordLevels;
 
 fs.readdir(`${__dirname}/commands`, (error, ctg) => {
     if (error) throw error;
@@ -41,13 +41,13 @@ client.on("error", console.error);
 client.on("message", async (message) => {
     if (message.author.bot) return;
 
-    var profile = await leveling.Fetch(message.author.id);
-    leveling.AddXp(message.author.id, 5);
-    if (profile.xp + 5 > 100) {
-      await leveling.AddLevel(message.author.id, 1);
-      await leveling.SetXp(message.author.id, 0);
-      message.reply(`you have leveled up to level ${profile.level + 1}!`);
-    };
+    DiscordLevels.addXp(message.author.id, Math.trunc(Math.random() * 30));
+    let Profile = DiscordLevels.getProfile(message.author.id);
+    if (Profile.xp > 1000) {
+      DiscordLevels.setXp(message.author.id, 0);
+      DiscordLevels.addLevel(message.author.id, 1);
+      message.reply(`you just advanced to level ${Profile.level}!`);
+    }
 
     if (message.content.indexOf(prefix) !== 0) return;
 
