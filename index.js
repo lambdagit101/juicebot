@@ -53,9 +53,7 @@ client.on("message", async (message) => {
     		await leveling.SetXp(message.author.id, 0);
     		message.reply(`you have leveled up to level ${profile.level + 1}!`);
 			};
-  	}
-
-		};
+  	};
 
     try {
         await command.run(client, message, args);
