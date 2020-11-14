@@ -1,9 +1,9 @@
-const { leveling } = require('../../index.js');
+const indexfile = require('../../index.js');
 const canvacord = require('canvacord');
 
 module.exports.run = async (client, message, args) => {
 	var user = message.mentions.users.first() || message.author;
-	var output = await leveling.Fetch(user.id);
+	var output = await indexfile.leveling.Fetch(user.id);
 	const rank = new canvacord.Rank()
     .setAvatar(user.displayAvatarURL({format: 'png', size: 512}))
     .setCurrentXP(output.xp)
