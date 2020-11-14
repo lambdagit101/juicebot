@@ -40,27 +40,27 @@ client.on("error", console.error);
 
 client.on("message", async (message) => {
     if (message.author.bot) return;
+
+    var profile = await leveling.Fetch(message.author.id);
+    leveling.AddXp(message.author.id, 5);
+    if (profile.xp + 5 > 100) {
+      await leveling.AddLevel(message.author.id, 1);
+      await leveling.SetXp(message.author.id, 0);
+      message.reply(`you have leveled up to level ${profile.level + 1}!`);
+    };
+
     if (message.content.indexOf(prefix) !== 0) return;
 
     const args = message.content.slice(prefix.length).trim().split(" ");
     const cmd = args.shift().toLowerCase();
     const command = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
 
-    if (!command) {
-			var profile = await leveling.Fetch(message.author.id);
-  		leveling.AddXp(message.author.id, 5);
-  		if (profile.xp + 5 > 100) {
-    		await leveling.AddLevel(message.author.id, 1);
-    		await leveling.SetXp(message.author.id, 0);
-    		message.reply(`you have leveled up to level ${profile.level + 1}!`);
-			};
-  	};
+    if (!command) return;
 
     try {
         await command.run(client, message, args);
     } catch(e) {
         console.error(e);
-        message.channel.send(`Something went wrong while executing command "**${command}**": ${e}`);
     }
 });
 
