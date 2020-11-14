@@ -26,7 +26,7 @@ module.exports.run = async (client, message, args) => {
 					.setColor('BLURPLE');
         message.channel.send(leadembed)
 
-      })
+      });
 };
 
 module.exports.help = {
