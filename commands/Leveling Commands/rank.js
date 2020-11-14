@@ -10,7 +10,7 @@ module.exports.run = async (client, message, args) => {
     .setCurrentXP(output.xp)
     .setRequiredXP(100)
 		.setRank(output.placement, 'RANK', [true])
-		.setLevel(output.level, 'LEVEL', [true])
+		.setLevel(0, 'LEVEL', [false])
     .setStatus(user.presence.status)
     .setProgressBar("#FFFFFF")
     .setUsername(user.username)
