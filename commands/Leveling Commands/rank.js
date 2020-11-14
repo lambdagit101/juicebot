@@ -1,5 +1,6 @@
 const indexfile = require('../../index.js');
 const canvacord = require('canvacord');
+const Discord = require('discord.js');
 
 module.exports.run = async (client, message, args) => {
 	var user = message.mentions.users.first() || message.author;
