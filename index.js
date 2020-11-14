@@ -6,6 +6,7 @@ const fs = require("fs");
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 const leveling = require('discord-leveling');
+module.exports.leveling = leveling;
 
 fs.readdir(`${__dirname}/commands`, (error, ctg) => {
     if (error) throw error;
