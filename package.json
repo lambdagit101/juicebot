@@ -15,7 +15,7 @@
   "dependencies": {
     "canvacord": "^5.0.8",
     "captcha-canvas": "^2.2.2",
-    "discord-levels": "^1.5.3",
+    "discord-levels": "^1.5.4",
     "discord.js": "^12.4.1",
     "discord_auto_prefix": "^1.4.4",
     "discordjs-prompter": "^2.0.4",
