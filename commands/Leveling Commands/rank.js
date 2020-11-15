@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
     .setAvatar(user.displayAvatarURL({format: 'png', size: 512}))
     .setCurrentXP(output.Xp)
     .setRequiredXP(1000)
-		.setRank(output.placement, 'RANK', [true])
+		.setRank(0, 'RANK', [false])
 		.setLevel(output.Level, 'LEVEL', [true])
     .setStatus(user.presence.status)
     .setProgressBar("#FFFFFF")
