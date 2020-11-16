@@ -54,6 +54,7 @@ client.on("message", async (message) => {
         if (Profile.Xp < 0 && Profile.Level > 1) {
           DiscordLevels.setXp(message.author.id, Math.trunc(Math.random() * 25));
           DiscordLevels.removeLevel(message.author.id, 1);
+          return;
         }
       }
     }
