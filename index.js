@@ -6,6 +6,7 @@ const fs = require("fs");
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 const DiscordLevels = require('discord-levels');
+const DiscordStopSpam = require("discord-stop-spam");
 module.exports.leveling = DiscordLevels;
 
 fs.readdir(`${__dirname}/commands`, (error, ctg) => {
@@ -41,27 +42,46 @@ client.on("error", console.error);
 client.on("message", async (message) => {
     if (message.author.bot) return;
 
-    DiscordLevels.addXp(message.author.id, Math.trunc(Math.random() * 30));
-    let Profile = DiscordLevels.getProfile(message.author.id);
-    if (Profile.xp > 1000) {
-      DiscordLevels.setXp(message.author.id, 0);
-      DiscordLevels.addLevel(message.author.id, 1);
-      message.reply(`you just advanced to level ${Profile.level}!`);
+    await DiscordStopSpam.logAuthor(message.author.id);
+    await DiscordStopSpam.logMessage(message.author.id, message.content);
+    const SpamDetected = await DiscordStopSpam.checkMessageInterval(message);
+    if(SpamDetected) {
+      let Profile = DiscordLevels.getProfile(message.author.id);
+      if (Profile.level == 0) {
+        return;
+      } else {
+        DiscordLevels.removeXp(message.author.id, Math.trunc(Math.random() * 30));
+        if (Profile.Xp < 0 && Profile.Level > 1) {
+          DiscordLevels.setXp(message.author.id, Math.trunc(Math.random() * 25));
+          DiscordLevels.removeLevel(message.author.id, 1);
+        }
+      }
     }
+      let Profile = DiscordLevels.getProfile(message.author.id);
+      if (Profile.level == 0) {
+        DiscordLevels.setLevel(message.author.id, 1);
+      } else {
+        DiscordLevels.addXp(message.author.id, Math.trunc(Math.random() * 30));
+        if (Profile.Xp > Profile.Level * 12) {
+          DiscordLevels.setXp(message.author.id, Profile.Xp - Profile.Level * 12);
+          DiscordLevels.addLevel(message.author.id, 1);
+          message.reply(`you just advanced to level ${Profile.level}!`);
+        }
+      }
 
-    if (message.content.indexOf(prefix) !== 0) return;
+      if (message.content.indexOf(prefix) !== 0) return;
 
-    const args = message.content.slice(prefix.length).trim().split(" ");
-    const cmd = args.shift().toLowerCase();
-    const command = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
+      const args = message.content.slice(prefix.length).trim().split(" ");
+      const cmd = args.shift().toLowerCase();
+      const command = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
 
-    if (!command) return;
+      if (!command) return;
 
-    try {
-        await command.run(client, message, args);
-    } catch(e) {
-        console.error(e);
-    }
+      try {
+          await command.run(client, message, args);
+      } catch(e) {
+          console.error(e);
+      }
 });
 
 // below are the status messages

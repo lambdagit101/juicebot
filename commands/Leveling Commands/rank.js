@@ -8,7 +8,7 @@ module.exports.run = async (client, message, args) => {
 	const rank = new canvacord.Rank()
     .setAvatar(user.displayAvatarURL({format: 'png', size: 512}))
     .setCurrentXP(output.Xp)
-    .setRequiredXP(1000)
+    .setRequiredXP(output.Xp * 12)
 		.setRank(0, 'RANK', [false])
 		.setLevel(output.Level, 'LEVEL', [true])
     .setStatus(user.presence.status)
