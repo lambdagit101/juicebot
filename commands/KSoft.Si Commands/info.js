@@ -3,9 +3,14 @@ const fetch = require('node-fetch');
 const ksoftsikey = `Bearer ${process.env.KSOFTSI_TOKEN}`
 
 module.exports.run = async (client, message, args) => {
-		var user = client.users.cache.find(user => user.id === args[0]) || message.author;
-    let avatar = user.displayAvatarURL({ dynamic: false, format: 'png' });
 		var addinfo = [];
+		const banList = await message.guild.fetchBans();
+		const bannedUser = banList.find(user => user.id === args[0] || message.author.id);
+		if (bannedUser) {
+			addinfo.push('This user is banned from this server');
+		}
+		var user = client.users.cache.find(user => user.id === args[0]) || message.author;
+		let avatar = user.displayAvatarURL({ dynamic: false, format: 'png' });
 		const { is_banned } = await fetch(`https://api.ksoft.si/bans/check?user=${args[0]}`, { method: 'get', headers: { 'Authorization': ksoftsikey, 'User-Agent': message.author.id }}).then(response => response.json());
 		if (!message.guild.member(user.id)) {
 			addinfo.push('This user is not in the server.') ;
