@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const { prefix } = require('../../config.json');
+const { embedcolor } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
     var text = args.slice(0, args.length);
@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
       try {
 				const cmmembed = new Discord.MessageEmbed()
 				.setTitle(`Someone wants their mind changed`)
-				.setColor("BLURPLE")
+				.setColor(embedcolor)
 				.setImage(`https://vacefron.nl/api/changemymind?text=${finalresult}`)
 				.setFooter(`Invoked by ${message.author.username}, provided by vacefron.nl`, message.author.avatarURL());
 				message.channel.send(cmmembed);

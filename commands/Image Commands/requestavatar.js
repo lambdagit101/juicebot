@@ -1,11 +1,12 @@
 const Discord = require('discord.js');
+const { embedcolor } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
     const user = message.mentions.users.first() || message.author;
     const avatarembed = new Discord.MessageEmbed()
           .setTitle('Here is your requested avatar!')
           .setImage(user.displayAvatarURL({ format: 'png', size: 512 }))
-					.setColor("BLURPLE")
+					.setColor(embedcolor)
           .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
     message.channel.send(avatarembed);
 };

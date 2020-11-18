@@ -40,7 +40,7 @@ client.on("warn", console.warn);
 client.on("error", console.error);
 
 client.on("message", async (message) => {
-    if (message.author.bot) return;
+    if (message.author.bot || !message.guild) return;
 
     await DiscordStopSpam.logAuthor(message.author.id);
     await DiscordStopSpam.logMessage(message.author.id, message.content);
@@ -66,7 +66,7 @@ client.on("message", async (message) => {
         if (Profile.Xp > Profile.Level * 12) {
           DiscordLevels.setXp(message.author.id, Profile.Xp - Profile.Level * 12);
           DiscordLevels.addLevel(message.author.id, 1);
-          message.reply(`you just advanced to level ${Profile.level}!`);
+          message.reply(`you just advanced to level ${Profile.Level}!`);
         }
       }
 
@@ -111,6 +111,7 @@ setInterval(() => {
 				{ type: 'PLAYING', name: `Minecraft | ${prefix}help`},
         { type: 'LISTENING', name: `https://youtu.be/RtTYQuO1j6w | ${prefix}help`}, //I couldn't resist the urge.
         { type: 'PLAYING', name: `AssaultCube | ${prefix}help`},
+        { type: 'PLAYING', name: `osu! | ${prefix}help`},
         // Does this last one work? I've commented it out as a safe feature.
         // { type: 'PLAYING', name: `the Matrix | /help'}
     ]

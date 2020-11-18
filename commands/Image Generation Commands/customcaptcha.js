@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
       try {
 				const cmmembed = new Discord.MessageEmbed()
 				.setTitle(`${message.author.username} wants someone to solve this captcha`)
-				.setColor("BLURPLE")
+				.setColor(embedcolor)
 				.setImage(`https://api.alexflipnote.dev/captcha?text=${finalresult}`)
 				.setFooter(`Invoked by ${message.author.username}, provided by api.alexflipnote.dev`, message.author.avatarURL());
 				message.channel.send(cmmembed);

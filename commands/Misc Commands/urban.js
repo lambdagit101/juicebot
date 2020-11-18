@@ -1,4 +1,4 @@
-const { prefix } = require('../../config.json');
+const { embedcolor } = require('../../config.json');
 const fetch = require('node-fetch');
 const Discord = require('discord.js');
 const querystring = require('querystring');
@@ -11,14 +11,14 @@ module.exports.run = async (client, message, args) => {
 	const query = querystring.stringify({ term: args.join(' ') });
 
 	const { list } = await fetch(`https://api.urbandictionary.com/v0/define?${query}`).then(response => response.json());
-	
+
 	if (!list.length) {
 		return message.channel.send(`No results found for **${args.join(' ')}**.`);
 	} else {
 		const [answer] = list;
 
 		const embed = new Discord.MessageEmbed()
-			.setColor('BLURPLE')
+			.setColor(embedcolor)
 			.setTitle(answer.word)
 			.setURL(answer.permalink)
 			.setFooter(`Invoked by ${message.author.username}, powered by api.urbandictionary.com`, message.author.avatarURL())

@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const { prefix } = require('../../config.json');
+const { embedcolor } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
     if (message.member.permissions.has('MANAGE_MESSAGES')) {
@@ -10,7 +10,7 @@ module.exports.run = async (client, message, args) => {
                 } catch (err) {
                     const returnembed = new Discord.MessageEmbed()
                         .setTitle('Moderation')
-						.setColor("BLURPLE")
+						            .setColor(embedcolor)
                         .setDescription(`Please provide a number`)
                         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                     return message.channel.send(returnembed);
@@ -20,7 +20,7 @@ module.exports.run = async (client, message, args) => {
                 if (!deleteCount || deleteCount < 2 || deleteCount > 100) {
                     const providembed = new Discord.MessageEmbed()
                         .setTitle('Moderation')
-						.setColor("BLURPLE")
+						            .setColor(embedcolor)
                         .setDescription(`Please provide a number between 2 and 100`)
                         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                     return message.channel.send(providembed);
@@ -33,11 +33,11 @@ module.exports.run = async (client, message, args) => {
             } else {
                 const nonpermembed = new Discord.MessageEmbed()
                     .setTitle('Moderation')
-					.setColor("BLURPLE")
+					          .setColor(embedcolor)
                     .setDescription(`No permission`)
                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                 message.channel.send(nonpermembed);
-            }  
+            }
 };
 
 module.exports.help = {

@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
-const { prefix } = require('../../config.json');
+const { embedcolor } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
     if (message.channel.nsfw == true) {
@@ -8,7 +8,7 @@ module.exports.run = async (client, message, args) => {
 			const rule34json = await rule34.json();
 			const r34embed = new Discord.MessageEmbed()
 				.setTitle(`${message.author.username}, here is your requested rule 34`)
-				.setColor("BLURPLE")
+				.setColor(embedcolor)
 				.setImage(rule34json[Math.floor(Math.random() * rule34json.length)].file_url)
 				.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
 			message.channel.send(r34embed);

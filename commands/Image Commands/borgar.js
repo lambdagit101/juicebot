@@ -1,10 +1,11 @@
 const Discord = require('discord.js');
+const { embedcolor } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
     const borgarembed = new Discord.MessageEmbed()
             .setTitle('Borgar')
             .setImage('https://cdn.discordapp.com/attachments/736196476837036102/749324531943997502/borgar.PNG')
-			      .setColor("BLURPLE")
+			      .setColor(embedcolor)
             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
         message.channel.send(borgarembed);
 };

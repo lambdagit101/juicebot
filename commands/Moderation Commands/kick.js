@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const { prefix } = require('../../config.json');
+const { embedcolor } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
     const user = message.mentions.users.first();
@@ -8,25 +8,25 @@ module.exports.run = async (client, message, args) => {
                 if (memberiq) {
                     if (message.member.permissions.has('KICK_MEMBERS')) {
                         var text = args.slice(1, args.length);
-						var reason = text.join(" ");
+						            var reason = text.join(" ");
                         memberiq.kick(`Kicked by ${message.author.tag} from ${message.guild.name}. Reason: ${reason}`)
                             .then(() => {
                                 const kickedembed = new Discord.MessageEmbed()
                                     .setTitle('Moderation')
-									.setColor("BLURPLE")
+									                  .setColor(embedcolor)
                                     .setDescription(`You have been kicked by ${message.author.tag} from ${message.guild.name}. Reason: ${text}`)
                                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                                 user.send(kickedembed);
                                 const kickembed = new Discord.MessageEmbed()
                                     .setTitle('Moderation')
-									.setColor("BLURPLE")
+									                  .setColor(embedcolor)
                                     .setDescription(`${user.tag} was successfully kicked!`)
                                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                                 message.channel.send(kickembed);
                             }).catch(err => {
                                 const cantkickembed = new Discord.MessageEmbed()
                                     .setTitle('Moderation')
-									.setColor("BLURPLE")
+									                  .setColor(embedcolor)
                                     .setDescription("Couldn't kick the user")
                                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                                 message.channel.send(cantkickembed);
@@ -35,7 +35,7 @@ module.exports.run = async (client, message, args) => {
                     } else {
                         const nopermemmbed = new Discord.MessageEmbed()
                         .setTitle('Moderation')
-						.setColor("BLURPLE")
+						            .setColor(embedcolor)
                         .setDescription(`No permission`)
                         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                         message.channel.send(nopermemmbed);

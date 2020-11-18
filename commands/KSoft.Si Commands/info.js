@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
+const { embedcolor } = require('../../config.json');
 const ksoftsikey = `Bearer ${process.env.KSOFTSI_TOKEN}`
 
 module.exports.run = async (client, message, args) => {
@@ -20,7 +21,7 @@ module.exports.run = async (client, message, args) => {
 		}
 		const infembed = new Discord.MessageEmbed()
 			.setTitle(`Information about ${user.username}`)
-			.setColor("BLURPLE")
+			.setColor(embedcolor)
 			.setThumbnail(user.displayAvatarURL({format: 'png', size: 512}))
 			.addFields(
 				{ name: 'Account Creation Date', value: user.createdAt, inline: true },

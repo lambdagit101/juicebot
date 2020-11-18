@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
+const { embedcolor } = require('../../config.json');
 const ksoftsikey = `Bearer ${process.env.KSOFTSI_TOKEN}`
 
 module.exports.run = async (client, message, args) => {
@@ -7,7 +8,7 @@ module.exports.run = async (client, message, args) => {
     var { image_url, title, source, author, subreddit } = await fetch('https://api.ksoft.si/images/random-nsfw', { method: 'get', headers: { 'Authorization': ksoftsikey, 'User-Agent': message.author.id }}).then(response => response.json());
     const redditembed = new Discord.MessageEmbed()
         	.setTitle(title)
-					.setColor("BLURPLE")
+					.setColor(embedcolor)
         	.setURL(source)
         	.addFields(
           	{name: 'Publisher', value: author, inline: true},

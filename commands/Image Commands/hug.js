@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 const Discord = require('discord.js');
+const { embedcolor } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
     const user = message.mentions.users.first() || message.author;
@@ -7,7 +8,7 @@ module.exports.run = async (client, message, args) => {
 		const hugembed = new Discord.MessageEmbed()
         .setTitle(`${message.author.username} hugged ${user.username}`)
         .setImage(link)
-			  .setColor("BLURPLE")
+			  .setColor(embedcolor)
         .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
     message.channel.send(hugembed);
 };

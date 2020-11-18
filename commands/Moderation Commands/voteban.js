@@ -16,7 +16,7 @@ module.exports.run = async (client, message, args) => {
 			} else {
 				Prompter.vote(message.channel, {
 					question: `Ban ${votedperson}?`,
-					choices: ['✅', '❌'],
+					choices: ['❌', '✅'],
 					timeout: args[1],
 				}).then((response) => {
 					const winner = response.emojis[0];
