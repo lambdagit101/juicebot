@@ -27,7 +27,7 @@ module.exports.run = async (client, message, args) => {
 				{ name: 'Account Creation Date', value: user.createdAt, inline: true },
 				{ name: 'Presence', value: user.presence.status, inline: true },
 			)
-			.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
+			.setFooter(`Invoked by ${message.author.username}, provided by KSoft.Si Bans`, message.author.avatarURL());
 		if (addinfo.length) {
 				infembed.addFields(
 					{name: 'Additional Information', value: addinfo.join('\n')}
