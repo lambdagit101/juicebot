@@ -17,7 +17,7 @@ module.exports.run = async (client, message, args) => {
 			addinfo.push('This user is not in the server.') ;
 		};
 		if (is_banned == true) {
-			addinfo.push('This person has been caught breaking Discord TOS in the past.')
+			addinfo.push('This person has been caught breaking Discord TOS in the past (according to [KSoft.Si Bans](https://bans.ksoft.si/share?user=${user.id})).')
 		}
 		const infembed = new Discord.MessageEmbed()
 			.setTitle(`Information about ${user.username}`)
@@ -27,7 +27,7 @@ module.exports.run = async (client, message, args) => {
 				{ name: 'Account Creation Date', value: user.createdAt, inline: true },
 				{ name: 'Presence', value: user.presence.status, inline: true },
 			)
-			.setFooter(`Invoked by ${message.author.username}, provided by KSoft.Si`, message.author.avatarURL());
+			.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
 		if (addinfo.length) {
 				infembed.addFields(
 					{name: 'Additional Information', value: addinfo.join('\n')}
