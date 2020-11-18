@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
 		const banList = await message.guild.fetchBans();
 		const bannedUser = banList.find(user => user.id === args[0] || message.author.id);
 		if (bannedUser) {
-			addinfo.push('This user is banned from this server');
+			addinfo.push('This user is banned from this server.');
 		}
 		var user = client.users.cache.find(user => user.id === args[0]) || message.author;
 		let avatar = user.displayAvatarURL({ dynamic: false, format: 'png' });
