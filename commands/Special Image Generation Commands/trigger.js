@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const canvacord = require('canvacord');
-const { prefix } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
 	var user = message.mentions.users.first() || message.author;

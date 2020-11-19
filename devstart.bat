@@ -1,0 +1,3 @@
+@echo off
+echo Launching in dev mode (Bot will be restarted after each filechange)...
+nodemon index.js
