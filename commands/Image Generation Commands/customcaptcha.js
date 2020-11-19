@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const { embedcoor } = require('../../config.json');
+const { embedcolor } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
     var text = args.slice(0, args.length);
