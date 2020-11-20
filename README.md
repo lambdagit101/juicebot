@@ -1,4 +1,4 @@
-# JuiceBot [![HitCount](http://hits.dwyl.com/lambdagit101/JuiceBot.svg)](http://hits.dwyl.com/lambdagit101/JuiceBot.svg)
+# JuiceBot [![JuiceBot is protected under the MIT license](https://img.shields.io/badge/license-MIT-green)](https://github.com/lambdagit101/juicebot/blob/master/LICENSE) [![HitCount](http://hits.dwyl.com/lambdagit101/JuiceBot.svg)](http://hits.dwyl.com/lambdagit101/JuiceBot.svg)
 
 ### What is JuiceBot?
 
