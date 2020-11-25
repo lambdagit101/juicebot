@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const client = require('alexflipnote.js');
 const alexclient = new client(process.env.AFAPI_KEY);
+const { embedcolor } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
 		try {

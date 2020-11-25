@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const Canvas = require('canvas');
+const { embedcolor } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
 		try {
