@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
         const ipembed = new Discord.MessageEmbed()
             .setTitle("IP Details")
 			      .setColor(embedcolor)
-            .setDescription('IP: ' + query + '\nCountry: ' + country + '\nCountry code: ' + countryCode + "\nRegion: " + regionName + "\nCity: " + city + "\nZip code: " + zip + "\nTimezone: " + timezone + "\nISP: " + isp + "\nOrganization: " + org + `\nTorrent history: [Click here](https://iknowwhatyoudownload.com/en/peer/?ip=${ipdeet})`)
+            .setDescription('IP: ' + query + '\nCountry: ' + country + '\nCountry code: ' + countryCode + "\nRegion: " + regionName + "\nCity: " + city + "\nZip code: " + zip + "\nTimezone: " + timezone + "\nISP: " + isp + "\nOrganization: " + org + `\nTorrent history: [Click here](https://iknowwhatyoudownload.com/en/peer/?ip=${query})`)
             .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
         message.channel.send(ipembed);
 };
