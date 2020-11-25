@@ -9,6 +9,7 @@ module.exports.run = async (client, message, args) => {
 			let attachment = new Discord.MessageAttachment(link, "achievement.png");
 			const achembed = new Discord.MessageEmbed()
 				.setTitle(`Achievement Get!`)
+				.attachFiles({ attachment: link, name: "achievement.png" })
 				.setImage(`attachment://achievement.png`)
 				.setColor(embedcolor)
 				.setFooter(`Invoked by ${message.author.username}, provided by api.alexflipnote.dev`, message.author.avatarURL());

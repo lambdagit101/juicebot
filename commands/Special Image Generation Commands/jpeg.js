@@ -10,6 +10,7 @@ module.exports.run = async (client, message, args) => {
 			let attachment = new Discord.MessageAttachment(link, "jpeg.png");
 			const jpembed = new Discord.MessageEmbed()
 				.setTitle(`Does ${user.username} look like they know what a JPEG is?`)
+				.attachFiles({ attachment: link, name: "jpeg.png" })
 				.setImage(`attachment://jpeg.png`)
 				.setColor(embedcolor)
 				.setFooter(`Invoked by ${message.author.username}, provided by api.alexflipnote.dev`, message.author.avatarURL());

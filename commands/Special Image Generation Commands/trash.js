@@ -10,6 +10,7 @@ module.exports.run = async (client, message, args) => {
 		  let attachment = new Discord.MessageAttachment(image, "trash.png");
 			const magembed = new Discord.MessageEmbed()
 				.setTitle(`Trash`)
+				.attachFiles({ attachment: link, name: "trash.png" })
 				.setImage(`attachment://trash.png`)
 				.setColor(embedcolor)
 				.setFooter(`Invoked by ${message.author.username}, provided by Canvacord`, message.author.avatarURL());

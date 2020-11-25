@@ -9,6 +9,7 @@ module.exports.run = async (client, message, args) => {
 			let attachment = new Discord.MessageAttachment(link, "challenge.png");
 			const cembed = new Discord.MessageEmbed()
 				.setTitle(`Challenge Complete!`)
+				.attachFiles({ attachment: link, name: "challenge.png" })
 				.setImage(`attachment://challenge.png`)
 				.setColor(embedcolor)
 				.setFooter(`Invoked by ${message.author.username}, provided by api.alexflipnote.dev`, message.author.avatarURL());
