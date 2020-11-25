@@ -42,13 +42,14 @@ client.on("error", console.error);
 client.on("message", async (message) => {
     if (message.author.bot || !message.guild) return;
 
+    /**
     await DiscordStopSpam.logAuthor(message.author.id);
     await DiscordStopSpam.logMessage(message.author.id, message.content);
     const SpamDetected = await DiscordStopSpam.checkMessageInterval(message);
     if(SpamDetected) {
       let Profile = DiscordLevels.getProfile(message.author.id);
       if (Profile.level == 0) {
-        return;
+          
       } else {
         DiscordLevels.removeXp(message.author.id, Math.trunc(Math.random() * 30));
         if (Profile.Xp < 0 && Profile.Level > 1) {
@@ -69,6 +70,7 @@ client.on("message", async (message) => {
           message.reply(`you just advanced to level ${Profile.Level}!`);
         }
       }
+      **/
 
       if (message.content.indexOf(prefix) !== 0) return;
 
