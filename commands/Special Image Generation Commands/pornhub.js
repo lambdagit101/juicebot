@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
 			let attachment = new Discord.MessageAttachment(link, "pornhub.png");
 			const pornembed = new Discord.MessageEmbed()
 				.setTitle(`${message.author.username} is horny`)
-				.attachFiles({ attachment: link, name: "pornhub.png" })
+				.attachFiles({ attachment: `attachment://pornhub.png`, name: "pornhub.png" })
 				.setImage(`attachment://pornhub.png`)
 				.setColor(embedcolor)
 				.setFooter(`Invoked by ${message.author.username}, provided by api.alexflipnote.dev`, message.author.avatarURL());

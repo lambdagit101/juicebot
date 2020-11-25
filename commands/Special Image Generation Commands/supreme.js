@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
 			let attachment = new Discord.MessageAttachment(link, "supreme.png");
 			const suprembed = new Discord.MessageEmbed()
 				.setTitle(`${message.author.username} is rich`)
-				.attachFiles({ attachment: link, name: "supreme.png" })
+				.attachFiles({ attachment: `attachment://supreme.png`, name: "supreme.png" })
 				.setImage(`attachment://supreme.png`)
 				.setColor(embedcolor)
 				.setFooter(`Invoked by ${message.author.username}, provided by api.alexflipnote.dev`, message.author.avatarURL());

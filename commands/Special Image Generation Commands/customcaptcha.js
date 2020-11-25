@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
 			let attachment = new Discord.MessageAttachment(link, "ccaptcha.png");
 			const cembed = new Discord.MessageEmbed()
 				.setTitle(`${message.author.username} needs someone to solve this captcha`)
-				.attachFiles({ attachment: link, name: "ccaptcha.png" })
+				.attachFiles({ attachment: `attachment://ccaptcha.png`, name: "ccaptcha.png" })
 				.setImage(`attachment://ccaptcha.png`)
 				.setColor(embedcolor)
 				.setFooter(`Invoked by ${message.author.username}, provided by api.alexflipnote.dev`, message.author.avatarURL());
