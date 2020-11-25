@@ -3,7 +3,7 @@ const client = require('alexflipnote.js');
 const alexclient = new client(process.env.AFAPI_KEY);
 
 module.exports.run = async (client, message, args) => {
-		let link = await alexclient.image.achievement(args.join(' '));
+		let link = await alexclient.image.achievement({text: args.join(' ')});
 		let attachment = new Discord.MessageAttachment(link, "achievement.png");
 		message.channel.send(attachment);
 };
