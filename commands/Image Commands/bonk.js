@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const { embedcolor } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
-    var whichbonk = Math.floor(Math.random() * 7);
+    var whichbonk = Math.floor(Math.random() * 8);
         switch (whichbonk) {
             case 0:
                 const bonk1embed = new Discord.MessageEmbed()
