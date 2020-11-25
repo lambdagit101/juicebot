@@ -14,6 +14,13 @@ If you don't have Node.js, download it [here](https://nodejs.org/en/download/).
 
 You can read more about this process on JuiceBot's hub.
 
+### How do I change the tokens?
+
+You can make a file called `.env.` and add the required variables. The required variables are:
+`BOT_TOKEN` is your bot's token.
+`KSOFTSI_TOKEN` adds things like some image commands and some other things I do not know how to explain.
+`AFAPI_KEY` is for the alexflipnote.dev API.
+
 ### What is the bot's prefix?
 
 jb/
