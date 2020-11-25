@@ -3,9 +3,18 @@ const client = require('alexflipnote.js');
 const alexclient = new client(process.env.AFAPI_KEY);
 
 module.exports.run = async (client, message, args) => {
-		let link = await alexclient.image.captcha({text: args.join(' ')});
-		let attachment = new Discord.MessageAttachment(link, "ccaptcha.png");
-		message.channel.send(attachment);
+		try {
+			let link = await alexclient.image.captcha({text: args.join(' ')});
+			let attachment = new Discord.MessageAttachment(link, "ccaptcha.png");
+			const cembed = new Discord.MessageEmbed()
+				.setTitle(`${message.author.username} needs someone to solve this captcha`)
+				.setImage(`attachment://ccaptcha.png`)
+				.setColor(embedcolor)
+				.setFooter(`Invoked by ${message.author.username}, provided by api.alexflipnote.dev`, message.author.avatarURL());
+			message.channel.send(cembed);
+		} catch (err) {
+			console.log(err);
+	  }
 };
 
 module.exports.help = {

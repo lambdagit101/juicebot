@@ -3,9 +3,18 @@ const client = require('alexflipnote.js');
 const alexclient = new client(process.env.AFAPI_KEY);
 
 module.exports.run = async (client, message, args) => {
-		let link = await alexclient.image.pornhub({text: args[0].replace(/-/g, ' '), text2: args[1].replace(/-/g, ' ')});
-		let attachment = new Discord.MessageAttachment(link, "pornhub.png");
-		message.channel.send(attachment);
+		try {
+			let link = await alexclient.image.pornhub({text: args[0].replace(/-/g, ' '), text2: args[1].replace(/-/g, ' ')});
+			let attachment = new Discord.MessageAttachment(link, "pornhub.png");
+			const pornembed = new Discord.MessageEmbed()
+				.setTitle(`${message.author.username} is horny`)
+				.setImage(`attachment://pornhub.png`)
+				.setColor(embedcolor)
+				.setFooter(`Invoked by ${message.author.username}, provided by api.alexflipnote.dev`, message.author.avatarURL());
+			message.channel.send(pornembed);
+		} catch (err) {
+			console.log(err);
+	  }
 };
 
 module.exports.help = {
