@@ -8,7 +8,7 @@ module.exports.run = async (client, message, args) => {
 	    let attachment = new Discord.MessageAttachment(image, "clyde.png");
 			const cembed = new Discord.MessageEmbed()
 				.setTitle(`Only you can see this message`)
-				.attachFiles({ attachment: attachment, name: "clyde.png" })
+				.attachFiles({ attachment: image, name: "clyde.png" })
 				.setImage(`attachment://clyde.png`)
 				.setColor(embedcolor)
 				.setFooter(`Invoked by ${message.author.username}, provided by Canvacord`, message.author.avatarURL());

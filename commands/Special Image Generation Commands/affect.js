@@ -7,10 +7,9 @@ module.exports.run = async (client, message, args) => {
 			var user = message.mentions.users.first() || message.author;
 	    let avatar = user.displayAvatarURL({ dynamic: false, format: 'png' });
 	    let image = await canvacord.Canvas.affect(avatar);
-	    let attachment = new Discord.MessageAttachment(image, "affected.png");
 			const cembed = new Discord.MessageEmbed()
 				.setTitle(`That sure affected the baby`)
-				.attachFiles({ attachment: attachment, name: "affected.png" })
+				.attachFiles({ attachment: image, name: "affected.png" })
 				.setImage(`attachment://affected.png`)
 				.setColor(embedcolor)
 				.setFooter(`Invoked by ${message.author.username}, provided by Canvacord`, message.author.avatarURL());
