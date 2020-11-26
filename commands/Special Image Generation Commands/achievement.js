@@ -6,10 +6,9 @@ const { embedcolor } = require('../../config.json');
 module.exports.run = async (client, message, args) => {
 		try {
 			let link = await alexclient.image.achievement({text: args.join(' ')});
-			let attachment = new Discord.MessageAttachment(link, "achievement.png");
 			const achembed = new Discord.MessageEmbed()
 				.setTitle(`Achievement Get!`)
-				.attachFiles({ attachment: `attachment://achievement.png`, name: "achievement.png" })
+				.attachFiles({ attachment: link, name: "achievement.png" })
 				.setImage(`attachment://achievement.png`)
 				.setColor(embedcolor)
 				.setFooter(`Invoked by ${message.author.username}, provided by api.alexflipnote.dev`, message.author.avatarURL());

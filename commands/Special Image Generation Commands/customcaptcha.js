@@ -6,10 +6,9 @@ const { embedcolor } = require('../../config.json');
 module.exports.run = async (client, message, args) => {
 		try {
 			let link = await alexclient.image.captcha({text: args.join(' ')});
-			let attachment = new Discord.MessageAttachment(link, "ccaptcha.png");
 			const cembed = new Discord.MessageEmbed()
 				.setTitle(`${message.author.username} needs someone to solve this captcha`)
-				.attachFiles({ attachment: `attachment://ccaptcha.png`, name: "ccaptcha.png" })
+				.attachFiles({ attachment: link, name: "ccaptcha.png" })
 				.setImage(`attachment://ccaptcha.png`)
 				.setColor(embedcolor)
 				.setFooter(`Invoked by ${message.author.username}, provided by api.alexflipnote.dev`, message.author.avatarURL());

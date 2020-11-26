@@ -7,10 +7,9 @@ module.exports.run = async (client, message, args) => {
 		try {
 			const user = message.mentions.users.first() || message.author;
 			let link = await alexclient.image.jpegify({image: user.displayAvatarURL({ format: 'png', size: 512 })});
-			let attachment = new Discord.MessageAttachment(link, "jpeg.png");
 			const jpembed = new Discord.MessageEmbed()
 				.setTitle(`Does ${user.username} look like they know what a JPEG is?`)
-				.attachFiles({ attachment: `attachment://jpeg.png`, name: "jpeg.png" })
+				.attachFiles({ attachment: link, name: "jpeg.png" })
 				.setImage(`attachment://jpeg.png`)
 				.setColor(embedcolor)
 				.setFooter(`Invoked by ${message.author.username}, provided by api.alexflipnote.dev`, message.author.avatarURL());
