@@ -14,7 +14,7 @@ module.exports.run = async (client, message, args) => {
 	    let attachment = new Discord.MessageAttachment(canvas.toBuffer(), "yangrave.png");
 			const magembed = new Discord.MessageEmbed()
 				.setTitle(`Poor ${user.username}`)
-				.attachFiles({ attachment: `attachment://yangrave.png`, name: "yangrave.png" })
+				.attachFiles({ attachment: attachment, name: "yangrave.png" })
 				.setImage(`attachment://yangrave.png`)
 				.setColor(embedcolor)
 				.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
