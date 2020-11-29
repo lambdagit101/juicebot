@@ -10,7 +10,7 @@ module.exports.run = async (client, message, args) => {
 			const magembed = new Discord.MessageEmbed()
 				.setTitle(`Merasmus is here. MAGIK!`)
 				.attachFiles({ attachment: link, name: "magik.png" })
-				.setImage(`attachment://supreme.png`)
+				.setImage(`attachment://magik.png`)
 				.setColor(embedcolor)
 				.setFooter(`Invoked by ${message.author.username}, provided by api.alexflipnote.dev`, message.author.avatarURL());
 			message.channel.send(magembed);
