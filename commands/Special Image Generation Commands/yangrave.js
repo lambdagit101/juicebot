@@ -11,10 +11,9 @@ module.exports.run = async (client, message, args) => {
 			ctx.drawImage(yangrave, 0, 0, 1280, 720);
 			const avatar = await Canvas.loadImage(user.displayAvatarURL({ format: 'png', size: 512 }));
 			ctx.drawImage(avatar, 736, 168, 450, 450);
-	    		let attachment = new Discord.MessageAttachment(canvas.toBuffer(), "yangrave.png");
 			const magembed = new Discord.MessageEmbed()
 				.setTitle(`Poor ${user.username}`)
-				.attachFiles({ attachment: attachment, name: "yangrave.png" })
+				.attachFiles({ attachment: canvas.toBuffer(), name: "yangrave.png" })
 				.setImage(`attachment://yangrave.png`)
 				.setColor(embedcolor)
 				.setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
