@@ -6,7 +6,7 @@ const ksoftsikey = `Bearer ${process.env.KSOFTSI_TOKEN}`
 module.exports.run = async (client, message, args) => {
 		var addinfo = [];
 		const banList = await message.guild.fetchBans();
-		const bannedUser = banList.find(user => user.id === args[0] || message.author.id);
+		const bannedUser = banList.find(user => user.id === args[0]);
 		if (bannedUser) {
 			addinfo.push('This user is banned from this server.');
 		}
