@@ -58,7 +58,7 @@ client.on("message", async (message) => {
         }
       }
     }
-      let Profile = DiscordLeveling.getProfile(message.author.id);
+      let Profile = DiscordLeveling.Fetch(message.author.id);
       if (Profile.Level == 0) {
         DiscordLeveling.SetLevel(message.author.id, 1);
       } else {
