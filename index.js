@@ -63,8 +63,8 @@ client.on("message", async (message) => {
         DiscordLeveling.SetLevel(message.author.id, 1);
       } else {
         DiscordLeveling.AddXp(message.author.id, Math.trunc(Math.random() * 20));
-        if (Profile.Xp > Profile.Level * 12) {
-          DiscordLeveling.SetXp(message.author.id, Profile.Xp - Profile.Level * 12);
+        if (Profile.Xp > Profile.Level * 7) {
+          DiscordLeveling.SetXp(message.author.id, Profile.Xp - Profile.Level * 7);
           DiscordLeveling.AddLevel(message.author.id, 1);
           message.reply(`you just advanced to level ${Profile.level}!`);
         }
