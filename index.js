@@ -58,14 +58,14 @@ client.on("message", async (message) => {
         }
       }
     }
-      let Profile = DiscordLevels.getProfile(message.author.id);
+      let Profile = DiscordLeveling.getProfile(message.author.id);
       if (Profile.Level == 0) {
-        DiscordLevels.SetLevel(message.author.id, 1);
+        DiscordLeveling.SetLevel(message.author.id, 1);
       } else {
-        DiscordLevels.AddXp(message.author.id, Math.trunc(Math.random() * 20));
+        DiscordLeveling.AddXp(message.author.id, Math.trunc(Math.random() * 20));
         if (Profile.Xp > Profile.Level * 12) {
-          DiscordLevels.SetXp(message.author.id, Profile.Xp - Profile.Level * 12);
-          DiscordLevels.AddLevel(message.author.id, 1);
+          DiscordLeveling.SetXp(message.author.id, Profile.Xp - Profile.Level * 12);
+          DiscordLeveling.AddLevel(message.author.id, 1);
           message.reply(`you just advanced to level ${Profile.level}!`);
         }
       }
