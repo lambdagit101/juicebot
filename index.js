@@ -5,9 +5,9 @@ const { prefix } = require("./config.json");
 const fs = require("fs");
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
-const DiscordLevels = require('discord-levels');
+const DiscordLeveling = require('discord-leveling');
 const DiscordStopSpam = require("discord-stop-spam");
-module.exports.leveling = DiscordLevels;
+module.exports.leveling = DiscordLeveling;
 
 fs.readdir(`${__dirname}/commands`, (error, ctg) => {
     if (error) throw error;
@@ -46,27 +46,27 @@ client.on("message", async (message) => {
     await DiscordStopSpam.logMessage(message.author.id, message.content);
     const SpamDetected = await DiscordStopSpam.checkMessageInterval(message);
     if(SpamDetected) {
-      let Profile = DiscordLevels.getProfile(message.author.id);
+      var profile = await DiscordLeveling.Fetch(message.author.id)
       if (Profile.level == 0) {
-          
+
       } else {
-        DiscordLevels.removeXp(message.author.id, Math.trunc(Math.random() * 30));
-        if (Profile.Xp < 0 && Profile.Level > 1) {
-          DiscordLevels.setXp(message.author.id, Math.trunc(Math.random() * 25));
-          DiscordLevels.removeLevel(message.author.id, 1);
+        DiscordLeveling.SetXp(message.author.id, Math.trunc(Math.random() * 10));
+        if (Profile.Xp < 0 && Profile.level > 1) {
+          DiscordLeveling.SetXp(message.author.id, Math.trunc(Math.random() * 10));
+          DiscordLeveling.SetLevel(message.author.id, Profile.level - 1);
           return;
         }
       }
     }
       let Profile = DiscordLevels.getProfile(message.author.id);
-      if (Profile.level == 0) {
-        DiscordLevels.setLevel(message.author.id, 1);
+      if (Profile.Level == 0) {
+        DiscordLevels.SetLevel(message.author.id, 1);
       } else {
-        DiscordLevels.addXp(message.author.id, Math.trunc(Math.random() * 30));
+        DiscordLevels.AddXp(message.author.id, Math.trunc(Math.random() * 20));
         if (Profile.Xp > Profile.Level * 12) {
-          DiscordLevels.setXp(message.author.id, Profile.Xp - Profile.Level * 12);
-          DiscordLevels.addLevel(message.author.id, 1);
-          message.reply(`you just advanced to level ${Profile.Level}!`);
+          DiscordLevels.SetXp(message.author.id, Profile.Xp - Profile.Level * 12);
+          DiscordLevels.AddLevel(message.author.id, 1);
+          message.reply(`you just advanced to level ${Profile.level}!`);
         }
       }
 

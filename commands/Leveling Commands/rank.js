@@ -4,13 +4,13 @@ const Discord = require('discord.js');
 
 module.exports.run = async (client, message, args) => {
 	var user = message.mentions.users.first() || message.author;
-	var output = await indexfile.leveling.getProfile(user.id);
+	var output = await indexfile.leveling.Fetch(user.id);
 	const rank = new canvacord.Rank()
     .setAvatar(user.displayAvatarURL({format: 'png', size: 512}))
-    .setCurrentXP(output.Xp)
-    .setRequiredXP(output.Xp * 12)
+    .setCurrentXP(output.xp)
+    .setRequiredXP(output.xp * 12)
 		.setRank(0, 'RANK', [false])
-		.setLevel(output.Level, 'LEVEL', [true])
+		.setLevel(output.level, 'LEVEL', [true])
     .setStatus(user.presence.status)
     .setProgressBar("#FFFFFF")
     .setUsername(user.username)
