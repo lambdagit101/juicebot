@@ -3,18 +3,18 @@ const canvacord = require('canvacord');
 const Discord = require('discord.js');
 
 module.exports.run = async (client, message, args) => {
-	var user = message.mentions.users.first() || message.author;
-	var output = await indexfile.leveling.Fetch(user.id);
+	const target = message.mentions.users.first() || message.author;
+	const user = await indexfile.Levels.fetch(target.id, message.guild.id);
 	const rank = new canvacord.Rank()
-    .setAvatar(user.displayAvatarURL({format: 'png', size: 512}))
-    .setCurrentXP(output.xp)
-    .setRequiredXP(output.level * 7)
-		.setRank(output.placement)
-		.setLevel(output.level)
-    .setStatus(user.presence.status)
+    .setAvatar(target.displayAvatarURL({format: 'png', size: 512}))
+    .setCurrentXP(user.xp)
+    .setRequiredXP(indexfile.Levels.xpFor(user.level))
+		.setRank(0)
+		.setLevel(user.level)
+    .setStatus(target.presence.status)
     .setProgressBar("#FFFFFF")
-    .setUsername(user.username)
-    .setDiscriminator(user.discriminator);
+    .setUsername(target.username)
+    .setDiscriminator(target.discriminator);
 
 		rank.build()
     	.then(data => {

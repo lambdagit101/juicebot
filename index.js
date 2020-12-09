@@ -3,10 +3,10 @@ const Discord = require("discord.js");
 const client = new Discord.Client({ disableMentions: "everyone" });
 const { prefix } = require("./config.json");
 const fs = require("fs");
+const Levels = require("discord-xp");
+module.exports.Levels = Levels;
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
-const DiscordLeveling = require('discord-leveling');
-module.exports.leveling = DiscordLeveling;
 
 fs.readdir(`${__dirname}/commands`, (error, ctg) => {
     if (error) throw error;
@@ -34,24 +34,21 @@ fs.readdir(`${__dirname}/commands`, (error, ctg) => {
 
 client.on("ready", () => {
     console.log("Bot is online!");
+    Levels.setURL(process.env.MONGODB_URL);
 });
 client.on("warn", console.warn);
 client.on("error", console.error);
 
 client.on("message", async (message) => {
-    if (message.author.bot || !message.guild) return;
 
-      let Profile = DiscordLeveling.Fetch(message.author.id);
-      if (Profile.Level == 0) {
-        DiscordLeveling.SetLevel(message.author.id, 1);
-      } else {
-        DiscordLeveling.AddXp(message.author.id, Math.trunc(Math.random() * 20));
-        if (Profile.Xp > Profile.Level * 7) {
-          DiscordLeveling.SetXp(message.author.id, Profile.Xp - Profile.Level * 7);
-          DiscordLeveling.AddLevel(message.author.id, 1);
-          message.reply(`you just advanced to level ${Profile.level}!`);
-        }
-      }
+    const randomAmountOfXp = Math.floor(Math.random() * 29) + 1; // Min 1, Max 30
+    const hasLeveledUp = await Levels.appendXp(message.author.id, message.guild.id, randomAmountOfXp);
+    if (hasLeveledUp) {
+      const user = await Levels.fetch(message.author.id, message.guild.id);
+      message.channel.send(`${message.author}, congratulations! You have leveled up to **${user.level}**`);
+    }
+
+    if (message.author.bot || !message.guild) return;
 
       if (message.content.indexOf(prefix) !== 0) return;
 
