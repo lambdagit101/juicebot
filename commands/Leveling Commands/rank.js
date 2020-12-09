@@ -7,8 +7,8 @@ module.exports.run = async (client, message, args) => {
 	var output = await indexfile.leveling.Fetch(user.id);
 	const rank = new canvacord.Rank()
     .setAvatar(user.displayAvatarURL({format: 'png', size: 512}))
-    .setCurrentXP(output.Xp)
-    .setRequiredXP(output.Level * 7)
+    .setCurrentXP(output.xp)
+    .setRequiredXP(output.level * 7)
 		.setRank(0, 'RANK', [false])
 		.setLevel(output.level, 'LEVEL', [true])
     .setStatus(user.presence.status)
