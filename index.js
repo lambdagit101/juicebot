@@ -6,7 +6,6 @@ const fs = require("fs");
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 const DiscordLeveling = require('discord-leveling');
-const DiscordStopSpam = require("discord-stop-spam");
 module.exports.leveling = DiscordLeveling;
 
 fs.readdir(`${__dirname}/commands`, (error, ctg) => {
@@ -42,22 +41,6 @@ client.on("error", console.error);
 client.on("message", async (message) => {
     if (message.author.bot || !message.guild) return;
 
-    await DiscordStopSpam.logAuthor(message.author.id);
-    await DiscordStopSpam.logMessage(message.author.id, message.content);
-    const SpamDetected = await DiscordStopSpam.checkMessageInterval(message);
-    if(SpamDetected) {
-      var profile = await DiscordLeveling.Fetch(message.author.id)
-      if (Profile.level == 0) {
-
-      } else {
-        DiscordLeveling.SetXp(message.author.id, Math.trunc(Math.random() * 10));
-        if (Profile.Xp < 0 && Profile.level > 1) {
-          DiscordLeveling.SetXp(message.author.id, Math.trunc(Math.random() * 10));
-          DiscordLeveling.SetLevel(message.author.id, Profile.level - 1);
-          return;
-        }
-      }
-    }
       let Profile = DiscordLeveling.Fetch(message.author.id);
       if (Profile.Level == 0) {
         DiscordLeveling.SetLevel(message.author.id, 1);

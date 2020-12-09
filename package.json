@@ -18,7 +18,6 @@
     "canvas": "^2.6.1",
     "captcha-canvas": "^2.2.2",
     "discord-leveling": "^1.1.0",
-    "discord-stop-spam": "^1.0.2",
     "discord.js": "^12.4.1",
     "discordjs-prompter": "^2.0.4",
     "dotenv": "^8.2.0"
