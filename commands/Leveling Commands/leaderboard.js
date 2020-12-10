@@ -12,7 +12,7 @@ module.exports.run = async (client, message, args) => {
 	      //Searches for the top 3 and outputs it to the user.
 	    } else {
 
-	      leveling.Leaderboard({
+	      indexfile.Levels.Leaderboard({
 	        limit: 3 //Only takes top 3 ( Totally Optional )
 	      }).then(async users => { //make sure it is async
 
