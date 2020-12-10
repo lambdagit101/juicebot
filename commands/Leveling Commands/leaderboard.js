@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 module.exports.run = async (client, message, args) => {
 	if (message.mentions.users.first()) {
 
-	      var output = await indexfile.leveling.Leaderboard({
+	      var output = await indexfile.Levels.Leaderboard({
 	        search: message.mentions.users.first().id
 	      })
 	      message.channel.send(`The user ${message.mentions.users.first().tag} is number ${output.placement} on my leaderboard!`);
