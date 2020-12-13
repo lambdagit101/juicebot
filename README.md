@@ -18,8 +18,14 @@ You can read more about this process on JuiceBot's hub.
 
 You can make a file called `.env.` and add the required variables. The required variables are:
 `BOT_TOKEN` is your bot's token.
+
 `KSOFTSI_TOKEN` adds things like some image commands and some other things I do not know how to explain.
+
 `AFAPI_KEY` is for the alexflipnote.dev API.
+
+`MONGODB_URL` is used for the leveling system.
+
+`LEVEL_SYSTEM` determines whether the leveling system is enabled or not. It should either be `true` or absolutely anything. 
 
 ### What is the bot's prefix?
 
