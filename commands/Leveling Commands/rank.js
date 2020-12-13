@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
 	const user = await indexfile.Levels.fetch(target.id, message.guild.id);
 	const rank = new canvacord.Rank()
     .setAvatar(target.displayAvatarURL({format: 'png', size: 512}))
-    .setCurrentXP(user.xp - 300)
+    .setCurrentXP(user.xp)
     .setRequiredXP(indexfile.Levels.xpFor(user.level))
 		.setRank(0)
 		.setLevel(user.level)
