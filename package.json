@@ -21,6 +21,6 @@
     "discord.js": "^12.4.1",
     "discordjs-prompter": "^2.0.4",
     "dotenv": "^8.2.0",
-    "mongoose": "^5.11.5"
+    "mongoose": "^5.11.7"
   }
 }
