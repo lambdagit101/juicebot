@@ -17,3 +17,4 @@ module.exports.help = {
     name: "serverinfo",
     aliases: []
 }
+
