@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 
-module.exports.run = (bot, message,args) =>{
+module.exports.run = (client, message,args) =>{
         let serverembed = new Discord.MessageEmbed()
         .setDescription("Information of server:")
         .setColor('RANDOM')
