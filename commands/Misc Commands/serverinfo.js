@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const { embedcolor } = require('../../config.json');
 
 module.exports.run = (client, message, args) =>{
-        if (message.guild) return;
+        if (!message.guild) return;
         let serverembed = new Discord.MessageEmbed()
         .setTitle(`Information about ${message.guild.name}:`)
         .setColor(embedcolor)

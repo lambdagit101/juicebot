@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const { embedcolor } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
-  if (message.guild) return;
+  if (!message.guild) return;
     const user = message.mentions.users.first();
             if (user) {
                 const memberiq = message.guild.member(user);
