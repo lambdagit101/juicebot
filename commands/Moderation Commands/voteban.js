@@ -3,7 +3,7 @@ const Prompter = require('discordjs-prompter');
 const { prefix } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
-  if message.guild return;
+  if (message.guild) return;
   const votedperson = message.mentions.members.first();
 	if (message.member.permissions.has('BAN_MEMBERS')) {
 	if (votedperson == message.author) {
