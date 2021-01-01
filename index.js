@@ -41,7 +41,7 @@ client.on("error", console.error);
 
 client.on("message", async (message) => {
 
-    if (message.author.bot || !message.guild) return;
+    if (message.author.bot) return;
 
     if (process.env.LEVEL_SYSTEM == true) {
       const randomAmountOfXp = Math.floor(Math.random() * 29) + 1; // Min 1, Max 30

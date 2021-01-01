@@ -2,7 +2,7 @@ const { prefix } = require('../../config.json');
 const fetch = require('node-fetch');
 
 module.exports.run = async (client, message, args) => {
-		const chatbot = await fetch(`https://api.snowflakedev.xyz/chatbot?message=${args.join("%20")}&name=${require('../../config.json').botname}&gender=MALE&user=${message.author.id}`);
+		const chatbot = await fetch(`https://some-random-api.ml/chatbot?message=${args.join("%20")}`);
 		const messag = await chatbot.json();
 		message.channel.send(messag.message);
 };

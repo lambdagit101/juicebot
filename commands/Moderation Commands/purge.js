@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const { embedcolor } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
+  if message.guild return;
     if (message.member.permissions.has('MANAGE_MESSAGES')) {
                 const args = message.content.split(' ');
                 let deleteCount = 0;
