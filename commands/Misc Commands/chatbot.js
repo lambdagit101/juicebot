@@ -2,9 +2,9 @@ const { prefix } = require('../../config.json');
 const fetch = require('node-fetch');
 
 module.exports.run = async (client, message, args) => {
-		const chatbot = await fetch(`https://some-random-api.ml/chatbot?message=${args.join("%20")}`);
-		const messag = await chatbot.json();
-		message.channel.send(messag.message);
+		fetch('https://some-random-api.ml/chatbot?message=' + encodeURIComponent(args.join(' ')))
+			.then(res => res.json())
+			.then(message.channel.send(json.response));
 };
 
 module.exports.help = {
