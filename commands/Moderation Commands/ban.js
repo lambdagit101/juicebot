@@ -10,7 +10,7 @@ module.exports.run = async (client, message, args) => {
                     if (message.member.permissions.has('BAN_MEMBERS')) {
                         var text = args.slice(1, args.length);
 						            var reason = text.join(" ");
-                        memberiq.ban({ reason: `Banned by ${message.author.tag} from ${message.guild.name}. Reason: ${reason}` })
+                        memberiq.ban({ reason: `Banned by ${message.author.tag}. Reason: ${reason}` })
                             .then(() => {
                                 const bannedembed = new Discord.MessageEmbed()
                                     .setTitle('Moderation')

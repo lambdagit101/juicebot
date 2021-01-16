@@ -10,7 +10,7 @@ module.exports.run = async (client, message, args) => {
                     if (message.member.permissions.has('KICK_MEMBERS')) {
                         var text = args.slice(1, args.length);
 						            var reason = text.join(" ");
-                        memberiq.kick(`Kicked by ${message.author.tag} from ${message.guild.name}. Reason: ${reason}`)
+                        memberiq.kick(`Kicked by ${message.author.tag}. Reason: ${reason}`)
                             .then(() => {
                                 const kickedembed = new Discord.MessageEmbed()
                                     .setTitle('Moderation')
