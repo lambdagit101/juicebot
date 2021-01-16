@@ -4,7 +4,7 @@ module.exports.run = async (client, message, args) => {
     if (require('../../config.json').devpass.includes(message.author.id)) {
         try {
               	await eval(args.join(' '));
-		message.react(':hamburger:');
+		message.react('🍔');
         } catch (err) {
               	message.channel.send(`JavaScript error occured: ${err}`);
 		console.log(err);
@@ -17,5 +17,5 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: "dingus",
     description: "Executes raw JavaScript code. People on the 'devpass' list can use this command.",
-    aliases: ['gay']
+    aliases: ['console']
 };

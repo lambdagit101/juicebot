@@ -4,7 +4,7 @@ const { embedcolor } = require('../../config.json');
 
 module.exports.run = async (client, message, args) => {
         const { query, country, countryCode, regionName, city, zip, timezone, isp, org } = await fetch('http://ip-api.com/json/' + args[0]).then(response => response.json());
-	if (country !== unfedined) {
+	if (typeof country === 'undefined') {
         	const ipembed = new Discord.MessageEmbed()
             		.setTitle("IP Details")
 	    		.setColor(embedcolor)
