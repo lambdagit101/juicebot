@@ -15,7 +15,7 @@ module.exports.run = async (client, message, args) => {
                                 const kickedembed = new Discord.MessageEmbed()
                                     .setTitle('Moderation')
 									                  .setColor(embedcolor)
-                                    .setDescription(`You have been kicked by ${message.author.tag} from ${message.guild.name}. Reason: ${text}`)
+                                    .setDescription(`You have been kicked by ${message.author.tag} from ${message.guild.name}. Reason: ${text.join(' ')}`)
                                     .setFooter(`Invoked by ${message.author.username}`, message.author.avatarURL());
                                 user.send(kickedembed);
                                 const kickembed = new Discord.MessageEmbed()
