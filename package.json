@@ -21,7 +21,7 @@
     "discord.js": "^12.5.1",
     "discordjs-prompter": "^2.0.4",
     "dotenv": "^8.2.0",
-    "mongoose": "^5.11.13",
+    "mongoose": "^5.11.14",
     "random-anime": "^1.0.6"
   }
 }
